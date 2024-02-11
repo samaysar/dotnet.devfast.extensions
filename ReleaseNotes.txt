@@ -1,4 +1,4 @@
-DevFast.Net.Extensions 0.1.2
+DevFast.Net.Extensions 0.2.0
 
  1. New feature - Adding net8.0 as target framework.
 
