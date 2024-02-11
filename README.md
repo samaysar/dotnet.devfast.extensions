@@ -1,4 +1,4 @@
-# Part of <strong><a href="https://github.com/samaysar/dotnet.devfast">dotnet.devfast</a></strong> project.
+# Part of [dotnet.devfast](https://github.com/samaysar/dotnet.devfast) project.
 
 ## DevFast.Net.Extensions [![Build status](https://ci.appveyor.com/api/projects/status/7naggm2lvjcikgn2?svg=true)](https://ci.appveyor.com/project/samaysar/devfast-dotnet-extensions) [![codecov](https://codecov.io/gh/samaysar/dotnet.devfast.extensions/graph/badge.svg?token=7DXJsSSBLm)](https://codecov.io/gh/samaysar/dotnet.devfast.extensions) [![NuGet](https://buildstats.info/nuget/DevFast.Net.Extensions)](https://www.nuget.org/packages/DevFast.Net.Extensions)
 [Developer Documentation](https://github.com/samaysar/dotnet.devfast.extensions/blob/master/docs/index.md 'index'), [Release Notes](https://raw.githubusercontent.com/samaysar/dotnet.devfast.extensions/master/ReleaseNotes.txt)
