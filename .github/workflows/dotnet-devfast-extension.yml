@@ -12,11 +12,11 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - name: Checkout
-      uses: actions/checkout@latest
+      uses: actions/checkout
       with:
         fetch-depth: 0
     - name: Install .NET ${{ matrix.dotnet-version }}
-      uses: actions/setup-dotnet@latest
+      uses: actions/setup-dotnet
       with:
         dotnet-version: ${{ matrix.dotnet-version }}
     - name: Display dotnet version
@@ -24,6 +24,6 @@ jobs:
     - name: Execute unit tests
       run: dotnet test . --collect:"XPlat Code Coverage;Format=json,cobertura,lcov,teamcity,opencover"
     - name: Upload coverage reports to Codecov
-      uses: codecov/codecov-action@latest
+      uses: codecov/codecov-action
       with:
         token: ${{ secrets.CODECOV_TOKEN }}
