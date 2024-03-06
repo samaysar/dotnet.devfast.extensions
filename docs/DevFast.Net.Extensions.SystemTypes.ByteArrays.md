@@ -32,11 +32,11 @@ Inheritance [System.Object](https://docs.microsoft.com/en-us/dotnet/api/System.O
 
 ## ByteArrays.CopyToSafe(this byte[], byte[], int, int, int) Method
 
-Copies [total](DevFast.Net.Extensions.SystemTypes.ByteArrays.md#DevFast.Net.Extensions.SystemTypes.ByteArrays.CopyToSafe(thisbyte[],byte[],int,int,int).total 'DevFast.Net.Extensions.SystemTypes.ByteArrays.CopyToSafe(this byte[], byte[], int, int, int).total') bytes of [source](DevFast.Net.Extensions.SystemTypes.ByteArrays.md#DevFast.Net.Extensions.SystemTypes.ByteArrays.CopyToSafe(thisbyte[],byte[],int,int,int).source 'DevFast.Net.Extensions.SystemTypes.ByteArrays.CopyToSafe(this byte[], byte[], int, int, int).source') array starting from 
+Copies [total](DevFast.Net.Extensions.SystemTypes.ByteArrays.md#DevFast.Net.Extensions.SystemTypes.ByteArrays.CopyToSafe(thisbyte[],byte[],int,int,int).total 'DevFast.Net.Extensions.SystemTypes.ByteArrays.CopyToSafe(this byte[], byte[], int, int, int).total') bytes of [source](DevFast.Net.Extensions.SystemTypes.ByteArrays.md#DevFast.Net.Extensions.SystemTypes.ByteArrays.CopyToSafe(thisbyte[],byte[],int,int,int).source 'DevFast.Net.Extensions.SystemTypes.ByteArrays.CopyToSafe(this byte[], byte[], int, int, int).source') array starting from
 [sourcePosition](DevFast.Net.Extensions.SystemTypes.ByteArrays.md#DevFast.Net.Extensions.SystemTypes.ByteArrays.CopyToSafe(thisbyte[],byte[],int,int,int).sourcePosition 'DevFast.Net.Extensions.SystemTypes.ByteArrays.CopyToSafe(this byte[], byte[], int, int, int).sourcePosition') (included) to [target](DevFast.Net.Extensions.SystemTypes.ByteArrays.md#DevFast.Net.Extensions.SystemTypes.ByteArrays.CopyToSafe(thisbyte[],byte[],int,int,int).target 'DevFast.Net.Extensions.SystemTypes.ByteArrays.CopyToSafe(this byte[], byte[], int, int, int).target') array's
 [targetPosition](DevFast.Net.Extensions.SystemTypes.ByteArrays.md#DevFast.Net.Extensions.SystemTypes.ByteArrays.CopyToSafe(thisbyte[],byte[],int,int,int).targetPosition 'DevFast.Net.Extensions.SystemTypes.ByteArrays.CopyToSafe(this byte[], byte[], int, int, int).targetPosition') (included) and onwards.
 
-This method is SAFE version of [CopyToUnSafe(this byte[], byte[], int, int, int)](DevFast.Net.Extensions.SystemTypes.ByteArrays.md#DevFast.Net.Extensions.SystemTypes.ByteArrays.CopyToUnSafe(thisbyte[],byte[],int,int,int) 'DevFast.Net.Extensions.SystemTypes.ByteArrays.CopyToUnSafe(this byte[], byte[], int, int, int)') 
+This method is SAFE version of [CopyToUnSafe(this byte[], byte[], int, int, int)](DevFast.Net.Extensions.SystemTypes.ByteArrays.md#DevFast.Net.Extensions.SystemTypes.ByteArrays.CopyToUnSafe(thisbyte[],byte[],int,int,int) 'DevFast.Net.Extensions.SystemTypes.ByteArrays.CopyToUnSafe(this byte[], byte[], int, int, int)')
 as constraint are checked.
 
 ```csharp
@@ -78,13 +78,13 @@ Position in target array to start writing the bytes to.
 
 ## ByteArrays.CopyToUnSafe(this byte[], byte[], int, int, int) Method
 
-Copies [total](DevFast.Net.Extensions.SystemTypes.ByteArrays.md#DevFast.Net.Extensions.SystemTypes.ByteArrays.CopyToUnSafe(thisbyte[],byte[],int,int,int).total 'DevFast.Net.Extensions.SystemTypes.ByteArrays.CopyToUnSafe(this byte[], byte[], int, int, int).total') bytes of [source](DevFast.Net.Extensions.SystemTypes.ByteArrays.md#DevFast.Net.Extensions.SystemTypes.ByteArrays.CopyToUnSafe(thisbyte[],byte[],int,int,int).source 'DevFast.Net.Extensions.SystemTypes.ByteArrays.CopyToUnSafe(this byte[], byte[], int, int, int).source') array starting from 
+Copies [total](DevFast.Net.Extensions.SystemTypes.ByteArrays.md#DevFast.Net.Extensions.SystemTypes.ByteArrays.CopyToUnSafe(thisbyte[],byte[],int,int,int).total 'DevFast.Net.Extensions.SystemTypes.ByteArrays.CopyToUnSafe(this byte[], byte[], int, int, int).total') bytes of [source](DevFast.Net.Extensions.SystemTypes.ByteArrays.md#DevFast.Net.Extensions.SystemTypes.ByteArrays.CopyToUnSafe(thisbyte[],byte[],int,int,int).source 'DevFast.Net.Extensions.SystemTypes.ByteArrays.CopyToUnSafe(this byte[], byte[], int, int, int).source') array starting from
 [sourcePosition](DevFast.Net.Extensions.SystemTypes.ByteArrays.md#DevFast.Net.Extensions.SystemTypes.ByteArrays.CopyToUnSafe(thisbyte[],byte[],int,int,int).sourcePosition 'DevFast.Net.Extensions.SystemTypes.ByteArrays.CopyToUnSafe(this byte[], byte[], int, int, int).sourcePosition') (included) to [target](DevFast.Net.Extensions.SystemTypes.ByteArrays.md#DevFast.Net.Extensions.SystemTypes.ByteArrays.CopyToUnSafe(thisbyte[],byte[],int,int,int).target 'DevFast.Net.Extensions.SystemTypes.ByteArrays.CopyToUnSafe(this byte[], byte[], int, int, int).target') array's
 [targetPosition](DevFast.Net.Extensions.SystemTypes.ByteArrays.md#DevFast.Net.Extensions.SystemTypes.ByteArrays.CopyToUnSafe(thisbyte[],byte[],int,int,int).targetPosition 'DevFast.Net.Extensions.SystemTypes.ByteArrays.CopyToUnSafe(this byte[], byte[], int, int, int).targetPosition') (included) and onwards.
 
 !!!- CALL IT AT YOUR OWN RISK -!!!
 
-This method is UNSAFE version of [CopyToSafe(this byte[], byte[], int, int, int)](DevFast.Net.Extensions.SystemTypes.ByteArrays.md#DevFast.Net.Extensions.SystemTypes.ByteArrays.CopyToSafe(thisbyte[],byte[],int,int,int) 'DevFast.Net.Extensions.SystemTypes.ByteArrays.CopyToSafe(this byte[], byte[], int, int, int)') 
+This method is UNSAFE version of [CopyToSafe(this byte[], byte[], int, int, int)](DevFast.Net.Extensions.SystemTypes.ByteArrays.md#DevFast.Net.Extensions.SystemTypes.ByteArrays.CopyToSafe(thisbyte[],byte[],int,int,int) 'DevFast.Net.Extensions.SystemTypes.ByteArrays.CopyToSafe(this byte[], byte[], int, int, int)')
 as no constraint will be check. Caller MUST make sure all required constraints are checked beforehand.
 
 ```csharp
@@ -197,7 +197,7 @@ Minimum length of the array
 
 ## ByteArrays.LiftNCopySafe(this byte[], int, int, int) Method
 
-Copies [total](DevFast.Net.Extensions.SystemTypes.ByteArrays.md#DevFast.Net.Extensions.SystemTypes.ByteArrays.LiftNCopySafe(thisbyte[],int,int,int).total 'DevFast.Net.Extensions.SystemTypes.ByteArrays.LiftNCopySafe(this byte[], int, int, int).total') bytes starting from [sourcePosition](DevFast.Net.Extensions.SystemTypes.ByteArrays.md#DevFast.Net.Extensions.SystemTypes.ByteArrays.LiftNCopySafe(thisbyte[],int,int,int).sourcePosition 'DevFast.Net.Extensions.SystemTypes.ByteArrays.LiftNCopySafe(this byte[], int, int, int).sourcePosition') (included) 
+Copies [total](DevFast.Net.Extensions.SystemTypes.ByteArrays.md#DevFast.Net.Extensions.SystemTypes.ByteArrays.LiftNCopySafe(thisbyte[],int,int,int).total 'DevFast.Net.Extensions.SystemTypes.ByteArrays.LiftNCopySafe(this byte[], int, int, int).total') bytes starting from [sourcePosition](DevFast.Net.Extensions.SystemTypes.ByteArrays.md#DevFast.Net.Extensions.SystemTypes.ByteArrays.LiftNCopySafe(thisbyte[],int,int,int).sourcePosition 'DevFast.Net.Extensions.SystemTypes.ByteArrays.LiftNCopySafe(this byte[], int, int, int).sourcePosition') (included)
 to [targetPosition](DevFast.Net.Extensions.SystemTypes.ByteArrays.md#DevFast.Net.Extensions.SystemTypes.ByteArrays.LiftNCopySafe(thisbyte[],int,int,int).targetPosition 'DevFast.Net.Extensions.SystemTypes.ByteArrays.LiftNCopySafe(this byte[], int, int, int).targetPosition') (Included) and onwards.
 
 NOTE: This method is SAFE version of [LiftNCopyUnSafe(this byte[], int, int, int)](DevFast.Net.Extensions.SystemTypes.ByteArrays.md#DevFast.Net.Extensions.SystemTypes.ByteArrays.LiftNCopyUnSafe(thisbyte[],int,int,int) 'DevFast.Net.Extensions.SystemTypes.ByteArrays.LiftNCopyUnSafe(this byte[], int, int, int)') as
@@ -236,12 +236,12 @@ Position at which starting writing the bytes.
 
 ## ByteArrays.LiftNCopyUnSafe(this byte[], int, int, int) Method
 
-Copies [total](DevFast.Net.Extensions.SystemTypes.ByteArrays.md#DevFast.Net.Extensions.SystemTypes.ByteArrays.LiftNCopyUnSafe(thisbyte[],int,int,int).total 'DevFast.Net.Extensions.SystemTypes.ByteArrays.LiftNCopyUnSafe(this byte[], int, int, int).total') bytes starting from [sourcePosition](DevFast.Net.Extensions.SystemTypes.ByteArrays.md#DevFast.Net.Extensions.SystemTypes.ByteArrays.LiftNCopyUnSafe(thisbyte[],int,int,int).sourcePosition 'DevFast.Net.Extensions.SystemTypes.ByteArrays.LiftNCopyUnSafe(this byte[], int, int, int).sourcePosition') (included) 
+Copies [total](DevFast.Net.Extensions.SystemTypes.ByteArrays.md#DevFast.Net.Extensions.SystemTypes.ByteArrays.LiftNCopyUnSafe(thisbyte[],int,int,int).total 'DevFast.Net.Extensions.SystemTypes.ByteArrays.LiftNCopyUnSafe(this byte[], int, int, int).total') bytes starting from [sourcePosition](DevFast.Net.Extensions.SystemTypes.ByteArrays.md#DevFast.Net.Extensions.SystemTypes.ByteArrays.LiftNCopyUnSafe(thisbyte[],int,int,int).sourcePosition 'DevFast.Net.Extensions.SystemTypes.ByteArrays.LiftNCopyUnSafe(this byte[], int, int, int).sourcePosition') (included)
 to [targetPosition](DevFast.Net.Extensions.SystemTypes.ByteArrays.md#DevFast.Net.Extensions.SystemTypes.ByteArrays.LiftNCopyUnSafe(thisbyte[],int,int,int).targetPosition 'DevFast.Net.Extensions.SystemTypes.ByteArrays.LiftNCopyUnSafe(this byte[], int, int, int).targetPosition') (Included) and onwards.
 
 !!!- CALL IT AT YOUR OWN RISK -!!!
 
-This method is UNSAFE version of [LiftNCopySafe(this byte[], int, int, int)](DevFast.Net.Extensions.SystemTypes.ByteArrays.md#DevFast.Net.Extensions.SystemTypes.ByteArrays.LiftNCopySafe(thisbyte[],int,int,int) 'DevFast.Net.Extensions.SystemTypes.ByteArrays.LiftNCopySafe(this byte[], int, int, int)') 
+This method is UNSAFE version of [LiftNCopySafe(this byte[], int, int, int)](DevFast.Net.Extensions.SystemTypes.ByteArrays.md#DevFast.Net.Extensions.SystemTypes.ByteArrays.LiftNCopySafe(thisbyte[],int,int,int) 'DevFast.Net.Extensions.SystemTypes.ByteArrays.LiftNCopySafe(this byte[], int, int, int)')
 as no constraint will be check. Caller MUST make sure all required constraints are checked beforehand.
 
 ```csharp
