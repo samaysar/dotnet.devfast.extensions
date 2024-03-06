@@ -6,7 +6,7 @@
     public static class ByteArrays
     {
         /// <summary>
-        /// Copies <paramref name="total"/> bytes starting from <paramref name="sourcePosition"/> (included) 
+        /// Copies <paramref name="total"/> bytes starting from <paramref name="sourcePosition"/> (included)
         /// to <paramref name="targetPosition"/> (Included) and onwards.
         /// <para>
         /// NOTE: This method is SAFE version of <see cref="LiftNCopyUnSafe(byte[], int, int, int)"/> as
@@ -27,13 +27,13 @@
         }
 
         /// <summary>
-        /// Copies <paramref name="total"/> bytes starting from <paramref name="sourcePosition"/> (included) 
+        /// Copies <paramref name="total"/> bytes starting from <paramref name="sourcePosition"/> (included)
         /// to <paramref name="targetPosition"/> (Included) and onwards.
         /// <para>
         /// !!!- CALL IT AT YOUR OWN RISK -!!!
         /// </para>
         /// <para>
-        /// This method is UNSAFE version of <see cref="LiftNCopySafe(byte[], int, int, int)"/> 
+        /// This method is UNSAFE version of <see cref="LiftNCopySafe(byte[], int, int, int)"/>
         /// as no constraint will be check. Caller MUST make sure all required constraints are checked beforehand.
         /// </para>
         /// </summary>
@@ -82,11 +82,11 @@
         }
 
         /// <summary>
-        /// Copies <paramref name="total"/> bytes of <paramref name="source"/> array starting from 
+        /// Copies <paramref name="total"/> bytes of <paramref name="source"/> array starting from
         /// <paramref name="sourcePosition"/> (included) to <paramref name="target"/> array's
         /// <paramref name="targetPosition"/> (included) and onwards.
         /// <para>
-        /// This method is SAFE version of <see cref="CopyToUnSafe(byte[], byte[], int, int, int)"/> 
+        /// This method is SAFE version of <see cref="CopyToUnSafe(byte[], byte[], int, int, int)"/>
         /// as constraint are checked.
         /// </para>
         /// </summary>
@@ -105,14 +105,14 @@
         }
 
         /// <summary>
-        /// Copies <paramref name="total"/> bytes of <paramref name="source"/> array starting from 
+        /// Copies <paramref name="total"/> bytes of <paramref name="source"/> array starting from
         /// <paramref name="sourcePosition"/> (included) to <paramref name="target"/> array's
         /// <paramref name="targetPosition"/> (included) and onwards.
         /// <para>
         /// !!!- CALL IT AT YOUR OWN RISK -!!!
         /// </para>
         /// <para>
-        /// This method is UNSAFE version of <see cref="CopyToSafe(byte[], byte[], int, int, int)"/> 
+        /// This method is UNSAFE version of <see cref="CopyToSafe(byte[], byte[], int, int, int)"/>
         /// as no constraint will be check. Caller MUST make sure all required constraints are checked beforehand.
         /// </para>
         /// </summary>
