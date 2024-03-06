@@ -21,6 +21,17 @@ namespace DevFast.Net.Extensions.SystemTypes
         }
 
         /// <summary>
+        /// Tries parsing <paramref name="input"/> character span to <seealso cref="Guid"/> value.
+        /// Returns <see langword="true"/> if parsing is successful else <see langword="false"/>.
+        /// </summary>
+        /// <param name="input">Character span to parse</param>
+        /// <param name="value">parsed value</param>
+        public static bool TryTo(this ReadOnlySpan<char> input, out Guid value)
+        {
+            return Guid.TryParse(input, out value);
+        }
+
+        /// <summary>
         /// Tries parsing <paramref name="input"/> character span to <seealso cref="int"/> value.
         /// Returns <see langword="true"/> if parsing is successful else <see langword="false"/>.
         /// </summary>
@@ -172,6 +183,138 @@ namespace DevFast.Net.Extensions.SystemTypes
             IFormatProvider? formatProvider = null)
         {
             return decimal.TryParse(input, style, formatProvider, out value);
+        }
+
+        /// <summary>
+        /// Tries parsing <paramref name="input"/> character span to <seealso cref="DateOnly"/> value.
+        /// Returns <see langword="true"/> if parsing is successful else <see langword="false"/>.
+        /// </summary>
+        /// <param name="input">string to parse</param>
+        /// <param name="value">parsed value</param>
+        /// <param name="style">style to use during parsing</param>
+        /// <param name="formatProvider">format provider</param>
+        public static bool TryTo(this ReadOnlySpan<char> input, out DateOnly value, DateTimeStyles style = DateTimeStyles.None,
+            IFormatProvider? formatProvider = null)
+        {
+            return DateOnly.TryParse(input, formatProvider, style, out value);
+        }
+
+        /// <summary>
+        /// Tries parsing <paramref name="input"/> character span to <seealso cref="DateOnly"/> value.
+        /// Returns <see langword="true"/> if parsing is successful else <see langword="false"/>.
+        /// </summary>
+        /// <param name="input">string to parse</param>
+        /// <param name="value">parsed value</param>
+        /// <param name="format">Date-only format to use.</param>
+        /// <param name="style">style to use during parsing</param>
+        /// <param name="formatProvider">format provider</param>
+        public static bool TryTo(this ReadOnlySpan<char> input, out DateOnly value, string format,
+            DateTimeStyles style = DateTimeStyles.None, IFormatProvider? formatProvider = null)
+        {
+            return DateOnly.TryParseExact(input, format, formatProvider, style, out value);
+        }
+
+        /// <summary>
+        /// Tries parsing <paramref name="input"/> character span to <seealso cref="DateOnly"/> value.
+        /// Returns <see langword="true"/> if parsing is successful else <see langword="false"/>.
+        /// </summary>
+        /// <param name="input">string to parse</param>
+        /// <param name="value">parsed value</param>
+        /// <param name="formats">Date-only formats to use.</param>
+        /// <param name="style">style to use during parsing</param>
+        /// <param name="formatProvider">format provider</param>
+        public static bool TryTo(this ReadOnlySpan<char> input, out DateOnly value, string[] formats,
+            DateTimeStyles style = DateTimeStyles.None, IFormatProvider? formatProvider = null)
+        {
+            return DateOnly.TryParseExact(input, formats, formatProvider, style, out value);
+        }
+
+        /// <summary>
+        /// Tries parsing <paramref name="input"/> character span to <seealso cref="TimeOnly"/> value.
+        /// Returns <see langword="true"/> if parsing is successful else <see langword="false"/>.
+        /// </summary>
+        /// <param name="input">string to parse</param>
+        /// <param name="value">parsed value</param>
+        /// <param name="style">style to use during parsing</param>
+        /// <param name="formatProvider">format provider</param>
+        public static bool TryTo(this ReadOnlySpan<char> input, out TimeOnly value, DateTimeStyles style = DateTimeStyles.None,
+            IFormatProvider? formatProvider = null)
+        {
+            return TimeOnly.TryParse(input, formatProvider, style, out value);
+        }
+
+        /// <summary>
+        /// Tries parsing <paramref name="input"/> character span to <seealso cref="TimeOnly"/> value.
+        /// Returns <see langword="true"/> if parsing is successful else <see langword="false"/>.
+        /// </summary>
+        /// <param name="input">string to parse</param>
+        /// <param name="value">parsed value</param>
+        /// <param name="format">Time-only format to use.</param>
+        /// <param name="style">style to use during parsing</param>
+        /// <param name="formatProvider">format provider</param>
+        public static bool TryTo(this ReadOnlySpan<char> input, out TimeOnly value, string format,
+            DateTimeStyles style = DateTimeStyles.None, IFormatProvider? formatProvider = null)
+        {
+            return TimeOnly.TryParseExact(input, format, formatProvider, style, out value);
+        }
+
+        /// <summary>
+        /// Tries parsing <paramref name="input"/> character span to <seealso cref="TimeOnly"/> value.
+        /// Returns <see langword="true"/> if parsing is successful else <see langword="false"/>.
+        /// </summary>
+        /// <param name="input">string to parse</param>
+        /// <param name="value">parsed value</param>
+        /// <param name="formats">Time-only formats to use.</param>
+        /// <param name="style">style to use during parsing</param>
+        /// <param name="formatProvider">format provider</param>
+        public static bool TryTo(this ReadOnlySpan<char> input, out TimeOnly value, string[] formats,
+            DateTimeStyles style = DateTimeStyles.None, IFormatProvider? formatProvider = null)
+        {
+            return TimeOnly.TryParseExact(input, formats, formatProvider, style, out value);
+        }
+
+        /// <summary>
+        /// Tries parsing <paramref name="input"/> character span to <seealso cref="DateTime"/> value.
+        /// Returns <see langword="true"/> if parsing is successful else <see langword="false"/>.
+        /// </summary>
+        /// <param name="input">string to parse</param>
+        /// <param name="value">parsed value</param>
+        /// <param name="style">style to use during parsing</param>
+        /// <param name="formatProvider">format provider</param>
+        public static bool TryTo(this ReadOnlySpan<char> input, out DateTime value, DateTimeStyles style = DateTimeStyles.None,
+            IFormatProvider? formatProvider = null)
+        {
+            return DateTime.TryParse(input, formatProvider, style, out value);
+        }
+
+        /// <summary>
+        /// Tries parsing <paramref name="input"/> character span to <seealso cref="DateTime"/> value.
+        /// Returns <see langword="true"/> if parsing is successful else <see langword="false"/>.
+        /// </summary>
+        /// <param name="input">string to parse</param>
+        /// <param name="value">parsed value</param>
+        /// <param name="format">DateTime format to use.</param>
+        /// <param name="style">style to use during parsing</param>
+        /// <param name="formatProvider">format provider</param>
+        public static bool TryTo(this ReadOnlySpan<char> input, out DateTime value, string format,
+            DateTimeStyles style = DateTimeStyles.None, IFormatProvider? formatProvider = null)
+        {
+            return DateTime.TryParseExact(input, format, formatProvider, style, out value);
+        }
+
+        /// <summary>
+        /// Tries parsing <paramref name="input"/> character span to <seealso cref="DateTime"/> value.
+        /// Returns <see langword="true"/> if parsing is successful else <see langword="false"/>.
+        /// </summary>
+        /// <param name="input">string to parse</param>
+        /// <param name="value">parsed value</param>
+        /// <param name="formats">DateTime formats to use.</param>
+        /// <param name="style">style to use during parsing</param>
+        /// <param name="formatProvider">format provider</param>
+        public static bool TryTo(this ReadOnlySpan<char> input, out DateTime value, string[] formats,
+            DateTimeStyles style = DateTimeStyles.None, IFormatProvider? formatProvider = null)
+        {
+            return DateTime.TryParseExact(input, formats, formatProvider, style, out value);
         }
 
         #endregion TryTo on ReadOnlySpan<char>
