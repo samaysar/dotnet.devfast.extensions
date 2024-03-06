@@ -157,5 +157,103 @@ namespace DevFast.Net.Extensions.SystemTypes
         {
             return sbyte.TryParse(input, style, formatProvider, out value);
         }
+
+        /// <summary>
+        /// Tries parsing <seealso cref="string"/> to <seealso cref="short"/> value.
+        /// Returns <see langword="true"/> if parsing is successful else <see langword="false"/>.
+        /// </summary>
+        /// <param name="input">string to parse</param>
+        /// <param name="value">parsed value</param>
+        /// <param name="style">style to use during parsing</param>
+        /// <param name="formatProvider">format provider</param>
+        public static bool TryTo([NotNullWhen(true)] this string? input, out short value, NumberStyles style = NumberStyles.Any,
+            IFormatProvider? formatProvider = null)
+        {
+            return short.TryParse(input, style, formatProvider, out value);
+        }
+
+        /// <summary>
+        /// Tries parsing <seealso cref="string"/> to <seealso cref="ushort"/> value.
+        /// Returns <see langword="true"/> if parsing is successful else <see langword="false"/>.
+        /// </summary>
+        /// <param name="input">string to parse</param>
+        /// <param name="value">parsed value</param>
+        /// <param name="style">style to use during parsing</param>
+        /// <param name="formatProvider">format provider</param>
+        public static bool TryTo([NotNullWhen(true)] this string? input, out ushort value, NumberStyles style = NumberStyles.Any,
+            IFormatProvider? formatProvider = null)
+        {
+            return ushort.TryParse(input, style, formatProvider, out value);
+        }
+
+        /// <summary>
+        /// Tries parsing <seealso cref="string"/> to <seealso cref="uint"/> value.
+        /// Returns <see langword="true"/> if parsing is successful else <see langword="false"/>.
+        /// </summary>
+        /// <param name="input">string to parse</param>
+        /// <param name="value">parsed value</param>
+        /// <param name="style">style to use during parsing</param>
+        /// <param name="formatProvider">format provider</param>
+        public static bool TryTo([NotNullWhen(true)] this string? input, out uint value, NumberStyles style = NumberStyles.Any,
+            IFormatProvider? formatProvider = null)
+        {
+            return uint.TryParse(input, style, formatProvider, out value);
+        }
+
+        /// <summary>
+        /// Tries parsing <seealso cref="string"/> to <seealso cref="ulong"/> value.
+        /// Returns <see langword="true"/> if parsing is successful else <see langword="false"/>.
+        /// </summary>
+        /// <param name="input">string to parse</param>
+        /// <param name="value">parsed value</param>
+        /// <param name="style">style to use during parsing</param>
+        /// <param name="formatProvider">format provider</param>
+        public static bool TryTo([NotNullWhen(true)] this string? input, out ulong value, NumberStyles style = NumberStyles.Any,
+            IFormatProvider? formatProvider = null)
+        {
+            return ulong.TryParse(input, style, formatProvider, out value);
+        }
+
+        /// <summary>
+        /// Tries parsing <seealso cref="string"/> to <seealso cref="float"/> value.
+        /// Returns <see langword="true"/> if parsing is successful else <see langword="false"/>.
+        /// </summary>
+        /// <param name="input">string to parse</param>
+        /// <param name="value">parsed value</param>
+        /// <param name="style">style to use during parsing</param>
+        /// <param name="formatProvider">format provider</param>
+        public static bool TryTo([NotNullWhen(true)] this string? input, out float value, NumberStyles style = NumberStyles.Any,
+            IFormatProvider? formatProvider = null)
+        {
+            return float.TryParse(input, style, formatProvider, out value);
+        }
+
+        /// <summary>
+        /// Tries parsing <seealso cref="string"/> to <seealso cref="double"/> value.
+        /// Returns <see langword="true"/> if parsing is successful else <see langword="false"/>.
+        /// </summary>
+        /// <param name="input">string to parse</param>
+        /// <param name="value">parsed value</param>
+        /// <param name="style">style to use during parsing</param>
+        /// <param name="formatProvider">format provider</param>
+        public static bool TryTo([NotNullWhen(true)] this string? input, out double value, NumberStyles style = NumberStyles.Any,
+            IFormatProvider? formatProvider = null)
+        {
+            return double.TryParse(input, style, formatProvider, out value);
+        }
+
+        /// <summary>
+        /// Tries parsing <seealso cref="string"/> to <seealso cref="decimal"/> value.
+        /// Returns <see langword="true"/> if parsing is successful else <see langword="false"/>.
+        /// </summary>
+        /// <param name="input">string to parse</param>
+        /// <param name="value">parsed value</param>
+        /// <param name="style">style to use during parsing</param>
+        /// <param name="formatProvider">format provider</param>
+        public static bool TryTo([NotNullWhen(true)] this string? input, out decimal value, NumberStyles style = NumberStyles.Any,
+            IFormatProvider? formatProvider = null)
+        {
+            return decimal.TryParse(input, style, formatProvider, out value);
+        }
     }
 }
