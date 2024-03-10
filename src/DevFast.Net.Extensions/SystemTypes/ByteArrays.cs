@@ -20,9 +20,15 @@
         public static void LiftNCopySafe(this byte[] bytes, int sourcePosition, int total, int targetPosition)
         {
             if (sourcePosition + total > bytes.Length)
+            {
                 throw new ArgumentException($"Source position breaches length {bytes.Length}");
+            }
+
             if (targetPosition + total > bytes.Length)
+            {
                 throw new ArgumentException($"Target position breaches length {bytes.Length}");
+            }
+
             bytes.LiftNCopyUnSafe(sourcePosition, total, targetPosition);
         }
 
@@ -75,8 +81,12 @@
         /// <param name="capacity">Minimum length of the array</param>
         public static void EnsureByteCapacity(ref byte[] source, int capacity)
         {
-            if (capacity <= source.Length) return;
-            var target = new byte[capacity];
+            if (capacity <= source.Length)
+            {
+                return;
+            }
+
+            byte[] target = new byte[capacity];
             source.LiftNShiftInternal(target, 0, source.Length, 0);
             source = target;
         }
@@ -98,9 +108,15 @@
         public static void CopyToSafe(this byte[] source, byte[] target, int sourcePosition, int total, int targetPosition)
         {
             if (sourcePosition + total > source.Length)
+            {
                 throw new ArgumentException($"Source position breaches length {source.Length}");
+            }
+
             if (targetPosition + total > target.Length)
+            {
                 throw new ArgumentException($"Target position breaches length {target.Length}");
+            }
+
             source.CopyToUnSafe(target, sourcePosition, total, targetPosition);
         }
 
@@ -131,9 +147,11 @@
             unsafe
             {
                 fixed (byte* s = &source[sourcePosition])
-                fixed (byte* d = &target[targetPosition])
                 {
-                    Buffer.MemoryCopy(s, d, target.Length - targetPosition, total);
+                    fixed (byte* d = &target[targetPosition])
+                    {
+                        Buffer.MemoryCopy(s, d, target.Length - targetPosition, total);
+                    }
                 }
             }
         }
