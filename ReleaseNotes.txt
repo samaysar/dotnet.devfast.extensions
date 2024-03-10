@@ -1,6 +1,9 @@
 DevFast.Net.Extensions 0.3.0
 
- 1. New feature - Adding following new extension methods in DevFast.Net.Extensions.SystemTypes.Strings:
+ 1. New feature - Adding following new extension methods in DevFast.Net.Extensions.SystemTypes.Enumerables:
+			- ToBlockingEnumerable(this IAsyncEnumerable<T>, CancellationToken, bool)
+
+ 2. New feature - Adding following new extension methods in DevFast.Net.Extensions.SystemTypes.Strings:
 			- IsNows(this string?)
 			- IsNotNows(this string?)
 			- ToTrimmedUpperSafe(this string?, string, CultureInfo?)
@@ -31,7 +34,7 @@ DevFast.Net.Extensions 0.3.0
 			- TryTo(this string?, out DateTimeOnly, string, DateTimeStyles, IFormatProvider?)
 			- TryTo(this string?, out DateTimeOnly, string[], DateTimeStyles, IFormatProvider?)
 			
- 2. New feature - Adding following new extension methods in DevFast.Net.Extensions.SystemTypes.ReadOnlySpan:
+ 3. New feature - Adding following new extension methods in DevFast.Net.Extensions.SystemTypes.ReadOnlySpan:
 	A. .Net 6 onwards:
 			- TryTo(this ReadOnlySpan<char>, out bool)
 			- TryTo(this ReadOnlySpan<char>, out Guid)

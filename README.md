@@ -22,5 +22,5 @@ Similar ".TryTo" also exists on ReadOnlySpan&lt;char&gt; and ReadOnlySpan&lt;byt
  - myByteArray.CopyToSafe(...) copies bytes to targeted array
  
 #### IEnumerable &amp; IAsyncEnumerable with CancellationToken All the Way
- - ForEach, ForEachAsync with CancellationToken
+ - ForEach, ForEachAsync, ToBlockingEnumerable with CancellationToken
  - CancellationToken support for SelectAsync, SkipAsync, TakeAsync, WhereAsync, CountAsync, ToChunksAsync etc.
