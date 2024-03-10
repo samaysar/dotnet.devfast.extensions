@@ -6,4 +6,21 @@
 This project contains well-tested, self-explained &amp; easy to use extension methods to achieve optimized runtime performance with improved readability of the code.
 
 ### Examples
-TBD
+#### String Parsing
+String parsing becomes as easy as stringValue.TryTo(out &lt;T&gt; ...) (where T can be bool, Guid, int, double, decimal, DateOnly, DateTime, TimeOnly etc...):
+ - "123".TryTo(out int parsedInt) should return true with parsedInt as 123.
+
+Similar ".TryTo" also exists on ReadOnlySpan&lt;char&gt; and ReadOnlySpan&lt;byte&gt;
+
+#### Avoid NullReferenceException on String
+ - possibleNullString?.Trim() ?? string.Empty Becomes possibleNullString.TrimSafeOrEmpty()
+ - possibleNullString?.Trim().ToUpper() ?? string.Empty Becomes possibleNullString.TrimSafeAndUpper() (same for Upper and more...)
+
+#### Working on Byte Arrays (byte[])
+ - myByteArray.LiftNCopySafe(...) moves bytes with-in Arrays
+ - myByteArray.DoubleByteCapacity() returns new array with initial bytes but twice the capacity
+ - myByteArray.CopyToSafe(...) copies bytes to targeted array
+ 
+#### IEnumerable &amp; IAsyncEnumerable with CancellationToken All the Way
+ - ForEach, ForEachAsync, ToBlockingEnumerable with CancellationToken
+ - CancellationToken support for SelectAsync, SkipAsync, TakeAsync, WhereAsync, CountAsync, ToChunksAsync etc.

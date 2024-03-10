@@ -8,14 +8,14 @@ namespace DevFast.Net.Extensions.Tests.SystemTypes
         [Test]
         public void ForEach_Calls_The_Lambda_With_Given_Token()
         {
-            var val = 0;
-            var cts = new CancellationTokenSource();
-            var token = cts.Token;
-            Action<int, CancellationToken> lambda = (x, t) =>
+            int val = 0;
+            CancellationTokenSource cts = new();
+            CancellationToken token = cts.Token;
+            void lambda(int x, CancellationToken t)
             {
                 val = x;
                 That(t, Is.EqualTo(token));
-            };
+            }
             new[] { 1 }.ForEach(lambda, token);
             That(val, Is.EqualTo(1));
         }
@@ -23,15 +23,15 @@ namespace DevFast.Net.Extensions.Tests.SystemTypes
         [Test]
         public async Task ForEachAsync_On_Enumerable_Calls_The_Lambda_With_Given_Token()
         {
-            var val = 0;
-            var cts = new CancellationTokenSource();
-            var token = cts.Token;
-            Func<int, CancellationToken, ValueTask> lambda = (x, t) =>
+            int val = 0;
+            CancellationTokenSource cts = new();
+            CancellationToken token = cts.Token;
+            ValueTask lambda(int x, CancellationToken t)
             {
                 val = x;
                 That(t, Is.EqualTo(token));
                 return ValueTask.CompletedTask;
-            };
+            }
             await new[] { 1 }.ForEachAsync(lambda, token).ConfigureAwait(false);
             That(val, Is.EqualTo(1));
         }
@@ -39,30 +39,30 @@ namespace DevFast.Net.Extensions.Tests.SystemTypes
         [Test]
         public async Task ForEachAsync_On_AsyncEnumerable_Calls_The_Lambda_With_Given_Token()
         {
-            var val = 1;
-            var cts = new CancellationTokenSource();
-            var token = cts.Token;
-            Func<int, CancellationToken, ValueTask> lambda = (x, t) =>
+            int val = 1;
+            CancellationTokenSource cts = new();
+            CancellationToken token = cts.Token;
+            ValueTask lambda(int x, CancellationToken t)
             {
                 val = x;
                 That(t, Is.EqualTo(token));
                 return ValueTask.CompletedTask;
-            };
-            await new[] { 1, 2, 3, 4 }.SelectAsync((x,_) => ValueTask.FromResult(x), token).ForEachAsync(lambda, token).ConfigureAwait(false);
+            }
+            await new[] { 1, 2, 3, 4 }.SelectAsync((x, _) => ValueTask.FromResult(x), token).ForEachAsync(lambda, token).ConfigureAwait(false);
             That(val, Is.EqualTo(4));
         }
 
         [Test]
         public async Task SelectAsync_On_Enumerable_Calls_The_Lambda_With_Given_Token()
         {
-            var val = 1;
-            var cts = new CancellationTokenSource();
-            var token = cts.Token;
-            Func<int, CancellationToken, ValueTask> lambda = (x, _) =>
+            int val = 1;
+            CancellationTokenSource cts = new();
+            CancellationToken token = cts.Token;
+            ValueTask lambda(int x, CancellationToken _)
             {
                 That(x, Is.EqualTo(val++));
                 return ValueTask.CompletedTask;
-            };
+            }
             await new[] { 0, 1, 2, 3, 4 }.SelectAsync(async (x, t) =>
             {
                 await Task.CompletedTask;
@@ -75,14 +75,14 @@ namespace DevFast.Net.Extensions.Tests.SystemTypes
         [Test]
         public async Task SelectAsync_On_AsyncEnumerable_Calls_The_Lambda_With_Given_Token()
         {
-            var val = 2;
-            var cts = new CancellationTokenSource();
-            var token = cts.Token;
-            Func<int, CancellationToken, ValueTask> lambda = (x, _) =>
+            int val = 2;
+            CancellationTokenSource cts = new();
+            CancellationToken token = cts.Token;
+            ValueTask lambda(int x, CancellationToken _)
             {
                 That(x, Is.EqualTo(val++));
                 return ValueTask.CompletedTask;
-            };
+            }
             await new[] { 0, 1, 2, 3, 4 }.SelectAsync(async (x, _) =>
             {
                 await Task.CompletedTask;
@@ -111,7 +111,7 @@ namespace DevFast.Net.Extensions.Tests.SystemTypes
         [Test]
         public async Task SkipAsync_Does_What_It_Says()
         {
-            var l = await new[] { 0, 1, 2, 3, 4 }.SelectAsync(async (x, _) =>
+            List<int> l = await new[] { 0, 1, 2, 3, 4 }.SelectAsync(async (x, _) =>
             {
                 await Task.CompletedTask;
                 return x;
@@ -131,7 +131,7 @@ namespace DevFast.Net.Extensions.Tests.SystemTypes
         [Test]
         public async Task TakeAsync_Does_What_It_Says()
         {
-            var l = await new[] { 0, 1, 2, 3, 4 }.SelectAsync(async (x, _) =>
+            List<int> l = await new[] { 0, 1, 2, 3, 4 }.SelectAsync(async (x, _) =>
             {
                 await Task.CompletedTask;
                 return x;
@@ -161,9 +161,9 @@ namespace DevFast.Net.Extensions.Tests.SystemTypes
         [Test]
         public async Task WhereAsync_Uses_Predicate_With_Given_Token_For_Item_Selection()
         {
-            var cts = new CancellationTokenSource();
-            var token = cts.Token;
-            var l = await new[] { 0, 1, 2, 3, 4 }.SelectAsync(async (x, _) =>
+            CancellationTokenSource cts = new();
+            CancellationToken token = cts.Token;
+            List<int> l = await new[] { 0, 1, 2, 3, 4 }.SelectAsync(async (x, _) =>
             {
                 await Task.CompletedTask;
                 return x;
@@ -196,14 +196,14 @@ namespace DevFast.Net.Extensions.Tests.SystemTypes
         [Test]
         public async Task CountAsync_N_CountLongAsync_Properly_Counts_Elements()
         {
-            var cts = new CancellationTokenSource();
-            var token = cts.Token;
-            var l = await new[] { 0, 1, 2, 3, 4 }.SelectAsync(async (x, _) =>
+            CancellationTokenSource cts = new();
+            CancellationToken token = cts.Token;
+            int l = await new[] { 0, 1, 2, 3, 4 }.SelectAsync(async (x, _) =>
             {
                 await Task.CompletedTask;
                 return x;
             }, token).CountAsync(token).ConfigureAwait(false);
-            var ul = await new[] { 0, 1, 2, 3, 4 }.SelectAsync(async (x, _) =>
+            ulong ul = await new[] { 0, 1, 2, 3, 4 }.SelectAsync(async (x, _) =>
             {
                 await Task.CompletedTask;
                 return x;
@@ -233,9 +233,9 @@ namespace DevFast.Net.Extensions.Tests.SystemTypes
         [Test]
         public async Task ToListAsync_Returns_All_The_Elements_As_List()
         {
-            var cts = new CancellationTokenSource();
-            var token = cts.Token;
-            var l = await new[] { 0, 1, 2, 3, 4 }.SelectAsync(async (x, _) =>
+            CancellationTokenSource cts = new();
+            CancellationToken token = cts.Token;
+            List<int> l = await new[] { 0, 1, 2, 3, 4 }.SelectAsync(async (x, _) =>
             {
                 await Task.CompletedTask;
                 return x;
@@ -251,7 +251,7 @@ namespace DevFast.Net.Extensions.Tests.SystemTypes
             });
 
             cts.Cancel();
-            ThrowsAsync<OperationCanceledException>(async () => await new[] { 0 }.SelectAsync(
+            _ = ThrowsAsync<OperationCanceledException>(async () => await new[] { 0 }.SelectAsync(
                 async (x, t) =>
                 {
                     await Task.CompletedTask;
@@ -260,12 +260,44 @@ namespace DevFast.Net.Extensions.Tests.SystemTypes
                 }, CancellationToken.None).ToListAsync(token).ConfigureAwait(false));
         }
 
+#if NET6_0
+        [Test]
+        public void ToBlockingEnumerable_Returns_All_The_Elements_As_Enumerable()
+        {
+            CancellationTokenSource cts = new();
+            CancellationToken token = cts.Token;
+            List<int> l = new[] { 0, 1, 2, 3, 4 }.SelectAsync(async (x, _) =>
+            {
+                await Task.CompletedTask;
+                return x;
+            }, token).ToBlockingEnumerable(token).ToList();
+            Multiple(() =>
+            {
+                That(l, Has.Count.EqualTo(5));
+                That(l, Has.Member(0));
+                That(l, Has.Member(1));
+                That(l, Has.Member(2));
+                That(l, Has.Member(3));
+                That(l, Has.Member(4));
+            });
+
+            cts.Cancel();
+            _ = Throws<OperationCanceledException>(() => new[] { 0 }.SelectAsync(
+                async (x, t) =>
+                {
+                    await Task.CompletedTask;
+                    t.ThrowIfCancellationRequested();
+                    return x;
+                }, CancellationToken.None).ToBlockingEnumerable(token).ToList());
+        }
+#endif
+
         [Test]
         public async Task ToChunksAsync_Returns_Several_Chunks_When_AsyncEnumerable_Has_More_Elements_Than_Chunk_Size()
         {
-            var cnt = 2;
-            var starting = 0;
-            await foreach (var c in new[] { 0, 1, 2, 3, 4 }.SelectAsync(async (x, _) =>
+            int cnt = 2;
+            int starting = 0;
+            await foreach (List<int>? c in new[] { 0, 1, 2, 3, 4 }.SelectAsync(async (x, _) =>
                            {
                                await Task.CompletedTask;
                                return x;
@@ -286,7 +318,7 @@ namespace DevFast.Net.Extensions.Tests.SystemTypes
             cnt = 2;
             starting = 0;
             List<int>? l = null;
-            await foreach (var c in new[] { 0, 1, 2, 3, 4 }.SelectAsync(async (x, _) =>
+            await foreach (List<int>? c in new[] { 0, 1, 2, 3, 4 }.SelectAsync(async (x, _) =>
                            {
                                await Task.CompletedTask;
                                return x;
@@ -319,8 +351,8 @@ namespace DevFast.Net.Extensions.Tests.SystemTypes
         [Test]
         public async Task ToChunksAsync_Returns_All_Elements_When_Chunk_Size_IsGreater_Than_Elements_In_AsyncEnumerable()
         {
-            var starting = 0;
-            await foreach (var c in new[] { 0, 1, 2, 3, 4 }.SelectAsync(async (x, _) =>
+            int starting = 0;
+            await foreach (List<int>? c in new[] { 0, 1, 2, 3, 4 }.SelectAsync(async (x, _) =>
                            {
                                await Task.CompletedTask;
                                return x;

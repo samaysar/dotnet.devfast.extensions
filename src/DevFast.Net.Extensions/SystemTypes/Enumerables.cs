@@ -10,14 +10,13 @@ namespace DevFast.Net.Extensions.SystemTypes
         /// <summary>
         /// Calls <paramref name="lambda"/> for every item in <paramref name="collection"/> with given <paramref name="token"/>.
         /// </summary>
-        /// <typeparam name="T"></typeparam>
         /// <param name="collection">Enumerable items</param>
         /// <param name="lambda">predicate to apply</param>
         /// <param name="token">Cancellation token to pass on to the supplied <paramref name="lambda"/></param>
         public static void ForEach<T>(this IEnumerable<T> collection, Action<T, CancellationToken> lambda,
             CancellationToken token = default)
         {
-            foreach (var item in collection)
+            foreach (T item in collection)
             {
                 lambda(item, token);
             }
@@ -26,7 +25,6 @@ namespace DevFast.Net.Extensions.SystemTypes
         /// <summary>
         /// Calls <paramref name="lambda"/> for every item in <paramref name="collection"/> with given <paramref name="token"/>, asynchronously.
         /// </summary>
-        /// <typeparam name="T"></typeparam>
         /// <param name="collection">Enumerable items</param>
         /// <param name="lambda">Lambda to apply</param>
         /// <param name="token">Cancellation token to pass on to the supplied <paramref name="lambda"/></param>
@@ -36,7 +34,7 @@ namespace DevFast.Net.Extensions.SystemTypes
             CancellationToken token = default,
             bool continueOnCapturedContext = false)
         {
-            foreach (var item in collection)
+            foreach (T item in collection)
             {
                 await lambda(item, token).ConfigureAwait(continueOnCapturedContext);
             }
@@ -45,7 +43,6 @@ namespace DevFast.Net.Extensions.SystemTypes
         /// <summary>
         /// Calls <paramref name="lambda"/> for every item in <paramref name="asyncCollection"/> with given <paramref name="token"/>, asynchronously.
         /// </summary>
-        /// <typeparam name="T"></typeparam>
         /// <param name="asyncCollection">Asynchronously Enumerable items</param>
         /// <param name="lambda">Lambda to apply</param>
         /// <param name="token">Cancellation token to pass on to the supplied <paramref name="lambda"/> and enumerator of <paramref name="asyncCollection"/></param>
@@ -55,7 +52,7 @@ namespace DevFast.Net.Extensions.SystemTypes
             CancellationToken token = default,
             bool continueOnCapturedContext = false)
         {
-            await foreach (var item in asyncCollection.WithCancellation(token).ConfigureAwait(continueOnCapturedContext))
+            await foreach (T item in asyncCollection.WithCancellation(token).ConfigureAwait(continueOnCapturedContext))
             {
                 await lambda(item, token).ConfigureAwait(continueOnCapturedContext);
             }
@@ -76,7 +73,7 @@ namespace DevFast.Net.Extensions.SystemTypes
             [EnumeratorCancellation] CancellationToken token = default,
             bool continueOnCapturedContext = false)
         {
-            foreach (var item in collection)
+            foreach (TIn item in collection)
             {
                 yield return await lambda(item, token).ConfigureAwait(continueOnCapturedContext);
             }
@@ -97,7 +94,7 @@ namespace DevFast.Net.Extensions.SystemTypes
             [EnumeratorCancellation] CancellationToken token = default,
             bool continueOnCapturedContext = false)
         {
-            await foreach (var item in asyncCollection.WithCancellation(token).ConfigureAwait(continueOnCapturedContext))
+            await foreach (TIn item in asyncCollection.WithCancellation(token).ConfigureAwait(continueOnCapturedContext))
             {
                 yield return lambda(item, token);
             }
@@ -118,7 +115,7 @@ namespace DevFast.Net.Extensions.SystemTypes
             [EnumeratorCancellation] CancellationToken token = default,
             bool continueOnCapturedContext = false)
         {
-            await foreach (var item in asyncCollection.WithCancellation(token).ConfigureAwait(continueOnCapturedContext))
+            await foreach (TIn item in asyncCollection.WithCancellation(token).ConfigureAwait(continueOnCapturedContext))
             {
                 yield return await lambda(item, token).ConfigureAwait(continueOnCapturedContext);
             }
@@ -127,7 +124,7 @@ namespace DevFast.Net.Extensions.SystemTypes
         /// <summary>
         /// While iterating on supplied <paramref name="asyncCollection"/> total of <paramref name="count"/>
         /// elements are bypassed and remaining (if any) items are returned as a part of iteration.
-        /// No exception is thrown it <paramref name="asyncCollection"/> contains lesser number of items. 
+        /// No exception is thrown it <paramref name="asyncCollection"/> contains lesser number of items.
         /// </summary>
         /// <typeparam name="TIn">Input Type</typeparam>
         /// <param name="asyncCollection">Asynchronously Enumerable items</param>
@@ -139,11 +136,18 @@ namespace DevFast.Net.Extensions.SystemTypes
             [EnumeratorCancellation] CancellationToken token = default,
             bool continueOnCapturedContext = false)
         {
-            var ae = asyncCollection.WithCancellation(token).ConfigureAwait(continueOnCapturedContext).GetAsyncEnumerator();
+            ConfiguredCancelableAsyncEnumerable<TIn>.Enumerator ae = asyncCollection.WithCancellation(token).ConfigureAwait(continueOnCapturedContext).GetAsyncEnumerator();
             try
             {
-                while (count > 0 && await ae.MoveNextAsync()) count--;
-                while (await ae.MoveNextAsync()) yield return ae.Current;
+                while (count > 0 && await ae.MoveNextAsync())
+                {
+                    count--;
+                }
+
+                while (await ae.MoveNextAsync())
+                {
+                    yield return ae.Current;
+                }
             }
             finally
             {
@@ -155,7 +159,7 @@ namespace DevFast.Net.Extensions.SystemTypes
         /// While iterating on supplied <paramref name="asyncCollection"/> maximum of <paramref name="count"/>
         /// elements are returned as a part of iteration.
         /// If <paramref name="asyncCollection"/> contains lesser number of items, all iterated items
-        /// are returned. 
+        /// are returned.
         /// </summary>
         /// <typeparam name="TIn">Input Type</typeparam>
         /// <param name="asyncCollection">Asynchronously Enumerable items</param>
@@ -167,7 +171,7 @@ namespace DevFast.Net.Extensions.SystemTypes
             [EnumeratorCancellation] CancellationToken token = default,
             bool continueOnCapturedContext = false)
         {
-            var ae = asyncCollection.WithCancellation(token).ConfigureAwait(continueOnCapturedContext).GetAsyncEnumerator();
+            ConfiguredCancelableAsyncEnumerable<TIn>.Enumerator ae = asyncCollection.WithCancellation(token).ConfigureAwait(continueOnCapturedContext).GetAsyncEnumerator();
             try
             {
                 while (count > 0 && await ae.MoveNextAsync())
@@ -196,12 +200,15 @@ namespace DevFast.Net.Extensions.SystemTypes
             [EnumeratorCancellation] CancellationToken token = default,
             bool continueOnCapturedContext = false)
         {
-            var ae = asyncCollection.WithCancellation(token).ConfigureAwait(continueOnCapturedContext).GetAsyncEnumerator();
+            ConfiguredCancelableAsyncEnumerable<T>.Enumerator ae = asyncCollection.WithCancellation(token).ConfigureAwait(continueOnCapturedContext).GetAsyncEnumerator();
             try
             {
                 while (await ae.MoveNextAsync())
                 {
-                    if (predicate(ae.Current, token)) yield return ae.Current;
+                    if (predicate(ae.Current, token))
+                    {
+                        yield return ae.Current;
+                    }
                 }
             }
             finally
@@ -224,12 +231,15 @@ namespace DevFast.Net.Extensions.SystemTypes
             [EnumeratorCancellation] CancellationToken token = default,
             bool continueOnCapturedContext = false)
         {
-            var ae = asyncCollection.WithCancellation(token).ConfigureAwait(continueOnCapturedContext).GetAsyncEnumerator();
+            ConfiguredCancelableAsyncEnumerable<T>.Enumerator ae = asyncCollection.WithCancellation(token).ConfigureAwait(continueOnCapturedContext).GetAsyncEnumerator();
             try
             {
                 while (await ae.MoveNextAsync())
                 {
-                    if (await predicate(ae.Current, token).ConfigureAwait(continueOnCapturedContext)) yield return ae.Current;
+                    if (await predicate(ae.Current, token).ConfigureAwait(continueOnCapturedContext))
+                    {
+                        yield return ae.Current;
+                    }
                 }
             }
             finally
@@ -249,11 +259,15 @@ namespace DevFast.Net.Extensions.SystemTypes
             CancellationToken token = default,
             bool continueOnCapturedContext = false)
         {
-            var ae = asyncCollection.WithCancellation(token).ConfigureAwait(continueOnCapturedContext).GetAsyncEnumerator();
+            ConfiguredCancelableAsyncEnumerable<T>.Enumerator ae = asyncCollection.WithCancellation(token).ConfigureAwait(continueOnCapturedContext).GetAsyncEnumerator();
             try
             {
-                var i = 0;
-                while (await ae.MoveNextAsync()) i++;
+                int i = 0;
+                while (await ae.MoveNextAsync())
+                {
+                    i++;
+                }
+
                 return i;
             }
             finally
@@ -273,11 +287,15 @@ namespace DevFast.Net.Extensions.SystemTypes
             CancellationToken token = default,
             bool continueOnCapturedContext = false)
         {
-            var ae = asyncCollection.WithCancellation(token).ConfigureAwait(continueOnCapturedContext).GetAsyncEnumerator();
+            ConfiguredCancelableAsyncEnumerable<T>.Enumerator ae = asyncCollection.WithCancellation(token).ConfigureAwait(continueOnCapturedContext).GetAsyncEnumerator();
             try
             {
                 ulong i = 0;
-                while (await ae.MoveNextAsync()) i++;
+                while (await ae.MoveNextAsync())
+                {
+                    i++;
+                }
+
                 return i;
             }
             finally
@@ -297,13 +315,48 @@ namespace DevFast.Net.Extensions.SystemTypes
             CancellationToken token = default,
             bool continueOnCapturedContext = false)
         {
-            var l = new List<T>();
-            await foreach (var item in asyncCollection.WithCancellation(token).ConfigureAwait(continueOnCapturedContext))
+            List<T> l = [];
+            ConfiguredCancelableAsyncEnumerable<T>.Enumerator ae = asyncCollection.WithCancellation(token).ConfigureAwait(continueOnCapturedContext).GetAsyncEnumerator();
+            try
             {
-                l.Add(item);
+                while (await ae.MoveNextAsync())
+                {
+                    l.Add(ae.Current);
+                }
+            }
+            finally
+            {
+                await ae.DisposeAsync();
             }
             return l;
         }
+
+#if NET6_0
+        /// <summary>
+        /// Converts provided <paramref name="asyncCollection"/> instance into an <see cref="IEnumerable{T}"/> that enumerates elements in a blocking manner..
+        /// </summary>
+        /// <typeparam name="T">Input Type</typeparam>
+        /// <param name="asyncCollection">Asynchronously Enumerable items</param>
+        /// <param name="token">Cancellation token to pass to enumerator of <paramref name="asyncCollection"/></param>
+        /// <param name="continueOnCapturedContext"><see langword="true"/> to attempt to marshal the continuation back to the original context captured; otherwise, <see langword="false"/>.</param>
+        public static IEnumerable<T> ToBlockingEnumerable<T>(this IAsyncEnumerable<T> asyncCollection,
+            CancellationToken token = default,
+            bool continueOnCapturedContext = false)
+        {
+            ConfiguredCancelableAsyncEnumerable<T>.Enumerator ae = asyncCollection.WithCancellation(token).ConfigureAwait(continueOnCapturedContext).GetAsyncEnumerator();
+            try
+            {
+                while (ae.MoveNextAsync().GetAwaiter().GetResult())
+                {
+                    yield return ae.Current;
+                }
+            }
+            finally
+            {
+                ae.DisposeAsync().GetAwaiter().GetResult();
+            }
+        }
+#endif
 
         /// <summary>
         /// Collects maximum possible (controlled by <paramref name="maxChunkSize"/>) items in the provided <paramref name="asyncCollection"/>, puts it
@@ -336,23 +389,38 @@ namespace DevFast.Net.Extensions.SystemTypes
             bool reUseList = false,
             bool continueOnCapturedContext = false)
         {
-            var l = new List<T>(maxChunkSize);
-            await foreach (var item in asyncCollection.WithCancellation(token).ConfigureAwait(continueOnCapturedContext))
+            ConfiguredCancelableAsyncEnumerable<T>.Enumerator ae = asyncCollection.WithCancellation(token).ConfigureAwait(continueOnCapturedContext).GetAsyncEnumerator();
+            List<T> l = new(maxChunkSize);
+            try
             {
-                l.Add(item);
-                if (l.Count < maxChunkSize) continue;
-                yield return l;
-                if (reUseList)
+                while (await ae.MoveNextAsync())
                 {
-                    l.Clear();
-                }
-                else
-                {
-                    l = new List<T>(maxChunkSize);
+                    l.Add(ae.Current);
+                    if (l.Count < maxChunkSize)
+                    {
+                        continue;
+                    }
+
+                    yield return l;
+                    if (reUseList)
+                    {
+                        l.Clear();
+                    }
+                    else
+                    {
+                        l = new List<T>(maxChunkSize);
+                    }
                 }
             }
+            finally
+            {
+                await ae.DisposeAsync();
+            }
 
-            if (l.Count > 0) yield return l;
+            if (l.Count > 0)
+            {
+                yield return l;
+            }
         }
     }
 }
