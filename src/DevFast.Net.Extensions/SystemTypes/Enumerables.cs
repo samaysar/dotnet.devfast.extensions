@@ -318,10 +318,18 @@ namespace DevFast.Net.Extensions.SystemTypes
             CancellationToken token = default,
             bool continueOnCapturedContext = false)
         {
-            List<T> l = new();
-            await foreach (T? item in asyncCollection.WithCancellation(token).ConfigureAwait(continueOnCapturedContext))
+            List<T> l = [];
+            ConfiguredCancelableAsyncEnumerable<T>.Enumerator ae = asyncCollection.WithCancellation(token).ConfigureAwait(continueOnCapturedContext).GetAsyncEnumerator();
+            try
             {
-                l.Add(item);
+                while (await ae.MoveNextAsync())
+                {
+                    l.Add(ae.Current);
+                }
+            }
+            finally
+            {
+                await ae.DisposeAsync();
             }
             return l;
         }

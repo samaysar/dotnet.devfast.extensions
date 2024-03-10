@@ -11,3 +11,16 @@ String parsing becomes as easy as stringValue.TryTo(out <T> ...) (where T can be
  - "123".TryTo(out int parsedInt) should return true with parsedInt as 123.
 
 Similar ".TryTo" also exists on ReadOnlySpan<char> and ReadOnlySpan<byte>
+
+#### Avoid NullReferenceException on String
+ - possibleNullString?.Trim() ?? string.Empty Becomes possibleNullString.TrimSafeOrEmpty()
+ - possibleNullString?.Trim().ToUpper() ?? string.Empty Becomes possibleNullString.TrimSafeAndUpper() (same for Upper and more...)
+
+#### Working on Byte Arrays (byte[])
+ - myByteArray.LiftNCopySafe(...) moves bytes with-in Arrays
+ - myByteArray.DoubleByteCapacity() returns new array with initial bytes but twice the capacity
+ - myByteArray.CopyToSafe(...) copies bytes to targeted array
+ 
+#### IEnumerable &amp; IAsyncEnumerable with CancellationToken All the Way
+ - ForEach, ForEachAsync with CancellationToken
+ - CancellationToken support for SelectAsync, SkipAsync, TakeAsync, WhereAsync, CountAsync, ToChunksAsync etc.

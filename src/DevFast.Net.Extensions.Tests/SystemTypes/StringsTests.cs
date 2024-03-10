@@ -32,10 +32,10 @@ namespace DevFast.Net.Extensions.Tests.SystemTypes
         [TestCase(null, "  ", "  ")]
         [TestCase("", "  ", "")]
         [TestCase("   abc   ", "", "ABC")]
-        public void ToTrimmedUpperSafe_Safely_Converts_String_To_Upper(string? input, string defaultVal, string expected)
+        public void TrimSafeAndUpper_Safely_Converts_String_To_Upper(string? input, string defaultVal, string expected)
         {
             CultureInfo english = new("en-US");
-            That(input.ToTrimmedUpperSafe(defaultVal!, english), Is.EqualTo(expected));
+            That(input.TrimSafeAndUpper(defaultVal!, english), Is.EqualTo(expected));
         }
 
         [Test]
@@ -49,10 +49,10 @@ namespace DevFast.Net.Extensions.Tests.SystemTypes
         [TestCase(null, "  ", "  ")]
         [TestCase("", "  ", "")]
         [TestCase("   A B C   ", "", "a b c")]
-        public void ToTrimmedLowerSafe_Safely_Converts_String_To_Lower(string? input, string defaultVal, string expected)
+        public void TrimSafeAndUpper_Safely_Converts_String_To_Lower(string? input, string defaultVal, string expected)
         {
             CultureInfo english = new("en-US");
-            That(input.ToTrimmedLowerSafe(defaultVal, english), Is.EqualTo(expected));
+            That(input.TrimSafeAndLower(defaultVal, english), Is.EqualTo(expected));
         }
 
         [Test]

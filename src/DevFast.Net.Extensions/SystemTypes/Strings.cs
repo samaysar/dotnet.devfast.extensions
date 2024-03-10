@@ -35,7 +35,7 @@ namespace DevFast.Net.Extensions.SystemTypes
         /// <param name="input">value to operate on</param>
         /// <param name="defaultValue">return value in case, supplied value is <see langword="null"/></param>
         /// <param name="culture">Culture to use, if null or not supplied, then <seealso cref="CultureInfo.InvariantCulture"/> is used.</param>
-        public static string ToTrimmedUpperSafe(this string? input, string defaultValue = "", CultureInfo? culture = null)
+        public static string TrimSafeAndUpper(this string? input, string defaultValue = "", CultureInfo? culture = null)
         {
             return input?.Trim().ToUpper(culture ?? CultureInfo.InvariantCulture) ?? defaultValue;
         }
@@ -49,7 +49,7 @@ namespace DevFast.Net.Extensions.SystemTypes
         /// <param name="input">value to operate on</param>
         /// <param name="defaultValue">return value in case, supplied value is <see langword="null"/></param>
         /// <param name="culture">Culture to use, if <see langword="null"/> or not supplied, then <seealso cref="CultureInfo.InvariantCulture"/> is used.</param>
-        public static string ToTrimmedLowerSafe(this string? input, string defaultValue = "", CultureInfo? culture = null)
+        public static string TrimSafeAndLower(this string? input, string defaultValue = "", CultureInfo? culture = null)
         {
             return input?.Trim().ToLower(culture ?? CultureInfo.InvariantCulture) ?? defaultValue;
         }
