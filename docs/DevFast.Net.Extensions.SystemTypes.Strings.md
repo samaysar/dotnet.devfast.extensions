@@ -11,8 +11,8 @@ public static class Strings
 - *Methods*
   - **[IsNotNows(this string)](DevFast.Net.Extensions.SystemTypes.Strings.md#DevFast.Net.Extensions.SystemTypes.Strings.IsNotNows(thisstring) 'DevFast.Net.Extensions.SystemTypes.Strings.IsNotNows(this string)')**
   - **[IsNows(this string)](DevFast.Net.Extensions.SystemTypes.Strings.md#DevFast.Net.Extensions.SystemTypes.Strings.IsNows(thisstring) 'DevFast.Net.Extensions.SystemTypes.Strings.IsNows(this string)')**
-  - **[ToTrimmedLowerSafe(this string, string, CultureInfo)](DevFast.Net.Extensions.SystemTypes.Strings.md#DevFast.Net.Extensions.SystemTypes.Strings.ToTrimmedLowerSafe(thisstring,string,System.Globalization.CultureInfo) 'DevFast.Net.Extensions.SystemTypes.Strings.ToTrimmedLowerSafe(this string, string, System.Globalization.CultureInfo)')**
-  - **[ToTrimmedUpperSafe(this string, string, CultureInfo)](DevFast.Net.Extensions.SystemTypes.Strings.md#DevFast.Net.Extensions.SystemTypes.Strings.ToTrimmedUpperSafe(thisstring,string,System.Globalization.CultureInfo) 'DevFast.Net.Extensions.SystemTypes.Strings.ToTrimmedUpperSafe(this string, string, System.Globalization.CultureInfo)')**
+  - **[TrimSafeAndLower(this string, string, CultureInfo)](DevFast.Net.Extensions.SystemTypes.Strings.md#DevFast.Net.Extensions.SystemTypes.Strings.TrimSafeAndLower(thisstring,string,System.Globalization.CultureInfo) 'DevFast.Net.Extensions.SystemTypes.Strings.TrimSafeAndLower(this string, string, System.Globalization.CultureInfo)')**
+  - **[TrimSafeAndUpper(this string, string, CultureInfo)](DevFast.Net.Extensions.SystemTypes.Strings.md#DevFast.Net.Extensions.SystemTypes.Strings.TrimSafeAndUpper(thisstring,string,System.Globalization.CultureInfo) 'DevFast.Net.Extensions.SystemTypes.Strings.TrimSafeAndUpper(this string, string, System.Globalization.CultureInfo)')**
   - **[TrimSafeOrDefault(this string, string, char[])](DevFast.Net.Extensions.SystemTypes.Strings.md#DevFast.Net.Extensions.SystemTypes.Strings.TrimSafeOrDefault(thisstring,string,char[]) 'DevFast.Net.Extensions.SystemTypes.Strings.TrimSafeOrDefault(this string, string, char[])')**
   - **[TrimSafeOrEmpty(this string, char[])](DevFast.Net.Extensions.SystemTypes.Strings.md#DevFast.Net.Extensions.SystemTypes.Strings.TrimSafeOrEmpty(thisstring,char[]) 'DevFast.Net.Extensions.SystemTypes.Strings.TrimSafeOrEmpty(this string, char[])')**
   - **[TrimSafeOrNull(this string, char[])](DevFast.Net.Extensions.SystemTypes.Strings.md#DevFast.Net.Extensions.SystemTypes.Strings.TrimSafeOrNull(thisstring,char[]) 'DevFast.Net.Extensions.SystemTypes.Strings.TrimSafeOrNull(this string, char[])')**
@@ -90,33 +90,33 @@ string to check
 #### Returns
 [System.Boolean](https://docs.microsoft.com/en-us/dotnet/api/System.Boolean 'System.Boolean')
 
-<a name='DevFast.Net.Extensions.SystemTypes.Strings.ToTrimmedLowerSafe(thisstring,string,System.Globalization.CultureInfo)'></a>
+<a name='DevFast.Net.Extensions.SystemTypes.Strings.TrimSafeAndLower(thisstring,string,System.Globalization.CultureInfo)'></a>
 
-## Strings.ToTrimmedLowerSafe(this string, string, CultureInfo) Method
+## Strings.TrimSafeAndLower(this string, string, CultureInfo) Method
 
-Trims and converts the [input](DevFast.Net.Extensions.SystemTypes.Strings.md#DevFast.Net.Extensions.SystemTypes.Strings.ToTrimmedLowerSafe(thisstring,string,System.Globalization.CultureInfo).input 'DevFast.Net.Extensions.SystemTypes.Strings.ToTrimmedLowerSafe(this string, string, System.Globalization.CultureInfo).input') string based on given culture
+Trims and converts the [input](DevFast.Net.Extensions.SystemTypes.Strings.md#DevFast.Net.Extensions.SystemTypes.Strings.TrimSafeAndLower(thisstring,string,System.Globalization.CultureInfo).input 'DevFast.Net.Extensions.SystemTypes.Strings.TrimSafeAndLower(this string, string, System.Globalization.CultureInfo).input') string based on given culture
 (if not supplied then <seealso cref="P:System.Globalization.CultureInfo.InvariantCulture"/> is used).
-If [input](DevFast.Net.Extensions.SystemTypes.Strings.md#DevFast.Net.Extensions.SystemTypes.Strings.ToTrimmedLowerSafe(thisstring,string,System.Globalization.CultureInfo).input 'DevFast.Net.Extensions.SystemTypes.Strings.ToTrimmedLowerSafe(this string, string, System.Globalization.CultureInfo).input') is [null](https://docs.microsoft.com/en-us/dotnet/csharp/language-reference/keywords/null 'https://docs.microsoft.com/en-us/dotnet/csharp/language-reference/keywords/null'), returns the provided
-[defaultValue](DevFast.Net.Extensions.SystemTypes.Strings.md#DevFast.Net.Extensions.SystemTypes.Strings.ToTrimmedLowerSafe(thisstring,string,System.Globalization.CultureInfo).defaultValue 'DevFast.Net.Extensions.SystemTypes.Strings.ToTrimmedLowerSafe(this string, string, System.Globalization.CultureInfo).defaultValue') (without trimming and case-conversion!).
+If [input](DevFast.Net.Extensions.SystemTypes.Strings.md#DevFast.Net.Extensions.SystemTypes.Strings.TrimSafeAndLower(thisstring,string,System.Globalization.CultureInfo).input 'DevFast.Net.Extensions.SystemTypes.Strings.TrimSafeAndLower(this string, string, System.Globalization.CultureInfo).input') is [null](https://docs.microsoft.com/en-us/dotnet/csharp/language-reference/keywords/null 'https://docs.microsoft.com/en-us/dotnet/csharp/language-reference/keywords/null'), returns the provided
+[defaultValue](DevFast.Net.Extensions.SystemTypes.Strings.md#DevFast.Net.Extensions.SystemTypes.Strings.TrimSafeAndLower(thisstring,string,System.Globalization.CultureInfo).defaultValue 'DevFast.Net.Extensions.SystemTypes.Strings.TrimSafeAndLower(this string, string, System.Globalization.CultureInfo).defaultValue') (without trimming and case-conversion!).
 
 ```csharp
-public static string ToTrimmedLowerSafe(this string? input, string defaultValue="", System.Globalization.CultureInfo? culture=null);
+public static string TrimSafeAndLower(this string? input, string defaultValue="", System.Globalization.CultureInfo? culture=null);
 ```
 #### Parameters
 
-<a name='DevFast.Net.Extensions.SystemTypes.Strings.ToTrimmedLowerSafe(thisstring,string,System.Globalization.CultureInfo).input'></a>
+<a name='DevFast.Net.Extensions.SystemTypes.Strings.TrimSafeAndLower(thisstring,string,System.Globalization.CultureInfo).input'></a>
 
 `input` [System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')
 
 value to operate on
 
-<a name='DevFast.Net.Extensions.SystemTypes.Strings.ToTrimmedLowerSafe(thisstring,string,System.Globalization.CultureInfo).defaultValue'></a>
+<a name='DevFast.Net.Extensions.SystemTypes.Strings.TrimSafeAndLower(thisstring,string,System.Globalization.CultureInfo).defaultValue'></a>
 
 `defaultValue` [System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')
 
 return value in case, supplied value is [null](https://docs.microsoft.com/en-us/dotnet/csharp/language-reference/keywords/null 'https://docs.microsoft.com/en-us/dotnet/csharp/language-reference/keywords/null')
 
-<a name='DevFast.Net.Extensions.SystemTypes.Strings.ToTrimmedLowerSafe(thisstring,string,System.Globalization.CultureInfo).culture'></a>
+<a name='DevFast.Net.Extensions.SystemTypes.Strings.TrimSafeAndLower(thisstring,string,System.Globalization.CultureInfo).culture'></a>
 
 `culture` [System.Globalization.CultureInfo](https://docs.microsoft.com/en-us/dotnet/api/System.Globalization.CultureInfo 'System.Globalization.CultureInfo')
 
@@ -128,33 +128,33 @@ Culture to use, if [null](https://docs.microsoft.com/en-us/dotnet/csharp/languag
 #### Returns
 [System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')
 
-<a name='DevFast.Net.Extensions.SystemTypes.Strings.ToTrimmedUpperSafe(thisstring,string,System.Globalization.CultureInfo)'></a>
+<a name='DevFast.Net.Extensions.SystemTypes.Strings.TrimSafeAndUpper(thisstring,string,System.Globalization.CultureInfo)'></a>
 
-## Strings.ToTrimmedUpperSafe(this string, string, CultureInfo) Method
+## Strings.TrimSafeAndUpper(this string, string, CultureInfo) Method
 
-Trims and converts the [input](DevFast.Net.Extensions.SystemTypes.Strings.md#DevFast.Net.Extensions.SystemTypes.Strings.ToTrimmedUpperSafe(thisstring,string,System.Globalization.CultureInfo).input 'DevFast.Net.Extensions.SystemTypes.Strings.ToTrimmedUpperSafe(this string, string, System.Globalization.CultureInfo).input') string based on given culture
+Trims and converts the [input](DevFast.Net.Extensions.SystemTypes.Strings.md#DevFast.Net.Extensions.SystemTypes.Strings.TrimSafeAndUpper(thisstring,string,System.Globalization.CultureInfo).input 'DevFast.Net.Extensions.SystemTypes.Strings.TrimSafeAndUpper(this string, string, System.Globalization.CultureInfo).input') string based on given culture
 (if not supplied then <seealso cref="P:System.Globalization.CultureInfo.InvariantCulture"/> is used).
-If [input](DevFast.Net.Extensions.SystemTypes.Strings.md#DevFast.Net.Extensions.SystemTypes.Strings.ToTrimmedUpperSafe(thisstring,string,System.Globalization.CultureInfo).input 'DevFast.Net.Extensions.SystemTypes.Strings.ToTrimmedUpperSafe(this string, string, System.Globalization.CultureInfo).input') is [null](https://docs.microsoft.com/en-us/dotnet/csharp/language-reference/keywords/null 'https://docs.microsoft.com/en-us/dotnet/csharp/language-reference/keywords/null'), returns the provided
-[defaultValue](DevFast.Net.Extensions.SystemTypes.Strings.md#DevFast.Net.Extensions.SystemTypes.Strings.ToTrimmedUpperSafe(thisstring,string,System.Globalization.CultureInfo).defaultValue 'DevFast.Net.Extensions.SystemTypes.Strings.ToTrimmedUpperSafe(this string, string, System.Globalization.CultureInfo).defaultValue') (without trimming and case-conversion!).
+If [input](DevFast.Net.Extensions.SystemTypes.Strings.md#DevFast.Net.Extensions.SystemTypes.Strings.TrimSafeAndUpper(thisstring,string,System.Globalization.CultureInfo).input 'DevFast.Net.Extensions.SystemTypes.Strings.TrimSafeAndUpper(this string, string, System.Globalization.CultureInfo).input') is [null](https://docs.microsoft.com/en-us/dotnet/csharp/language-reference/keywords/null 'https://docs.microsoft.com/en-us/dotnet/csharp/language-reference/keywords/null'), returns the provided
+[defaultValue](DevFast.Net.Extensions.SystemTypes.Strings.md#DevFast.Net.Extensions.SystemTypes.Strings.TrimSafeAndUpper(thisstring,string,System.Globalization.CultureInfo).defaultValue 'DevFast.Net.Extensions.SystemTypes.Strings.TrimSafeAndUpper(this string, string, System.Globalization.CultureInfo).defaultValue') (without trimming and case-conversion!).
 
 ```csharp
-public static string ToTrimmedUpperSafe(this string? input, string defaultValue="", System.Globalization.CultureInfo? culture=null);
+public static string TrimSafeAndUpper(this string? input, string defaultValue="", System.Globalization.CultureInfo? culture=null);
 ```
 #### Parameters
 
-<a name='DevFast.Net.Extensions.SystemTypes.Strings.ToTrimmedUpperSafe(thisstring,string,System.Globalization.CultureInfo).input'></a>
+<a name='DevFast.Net.Extensions.SystemTypes.Strings.TrimSafeAndUpper(thisstring,string,System.Globalization.CultureInfo).input'></a>
 
 `input` [System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')
 
 value to operate on
 
-<a name='DevFast.Net.Extensions.SystemTypes.Strings.ToTrimmedUpperSafe(thisstring,string,System.Globalization.CultureInfo).defaultValue'></a>
+<a name='DevFast.Net.Extensions.SystemTypes.Strings.TrimSafeAndUpper(thisstring,string,System.Globalization.CultureInfo).defaultValue'></a>
 
 `defaultValue` [System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')
 
 return value in case, supplied value is [null](https://docs.microsoft.com/en-us/dotnet/csharp/language-reference/keywords/null 'https://docs.microsoft.com/en-us/dotnet/csharp/language-reference/keywords/null')
 
-<a name='DevFast.Net.Extensions.SystemTypes.Strings.ToTrimmedUpperSafe(thisstring,string,System.Globalization.CultureInfo).culture'></a>
+<a name='DevFast.Net.Extensions.SystemTypes.Strings.TrimSafeAndUpper(thisstring,string,System.Globalization.CultureInfo).culture'></a>
 
 `culture` [System.Globalization.CultureInfo](https://docs.microsoft.com/en-us/dotnet/api/System.Globalization.CultureInfo 'System.Globalization.CultureInfo')
 

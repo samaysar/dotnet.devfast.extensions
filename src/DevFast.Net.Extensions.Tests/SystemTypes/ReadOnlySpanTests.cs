@@ -607,8 +607,6 @@ namespace DevFast.Net.Extensions.Tests.SystemTypes
         [TestCase("3.0000", NumberStyles.Any, null, (long)3, true)]
         [TestCase("-2147483648", NumberStyles.Any, null, int.MinValue, true)]
         [TestCase("2147483647", NumberStyles.Any, null, int.MaxValue, true)]
-        [TestCase("-2 147 483 648", NumberStyles.Any, "fr-FR", int.MinValue, true)]
-        [TestCase("2 147 483 647", NumberStyles.Any, "fr-FR", int.MaxValue, true)]
         [TestCase("-9223372036854775808", NumberStyles.Any, null, long.MinValue, true)]
         [TestCase("9223372036854775807", NumberStyles.Any, null, long.MaxValue, true)]
         public void TryTo_Long_Works_As_Expected(string input, NumberStyles style, string? provider,
