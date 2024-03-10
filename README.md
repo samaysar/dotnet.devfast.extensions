@@ -7,10 +7,10 @@ This project contains well-tested, self-explained &amp; easy to use extension me
 
 ### Examples
 #### String Parsing
-String parsing becomes as easy as stringValue.TryTo(out <T> ...) (where T can be bool, Guid, int, double, decimal, DateOnly, DateTime, TimeOnly etc...):
+String parsing becomes as easy as stringValue.TryTo(out &lt;T&gt; ...) (where T can be bool, Guid, int, double, decimal, DateOnly, DateTime, TimeOnly etc...):
  - "123".TryTo(out int parsedInt) should return true with parsedInt as 123.
 
-Similar ".TryTo" also exists on ReadOnlySpan<char> and ReadOnlySpan<byte>
+Similar ".TryTo" also exists on ReadOnlySpan&lt;char&gt; and ReadOnlySpan&lt;byte&gt;
 
 #### Avoid NullReferenceException on String
  - possibleNullString?.Trim() ?? string.Empty Becomes possibleNullString.TrimSafeOrEmpty()
