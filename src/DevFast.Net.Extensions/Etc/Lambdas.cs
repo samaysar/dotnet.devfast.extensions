@@ -360,33 +360,4 @@ public static class Lambdas
             return await task.StartIfNeeded().ConfigureAwait(false);
         };
     }
-
-    /// <summary>
-    /// Creates a <see cref="Func{CancellationToken, T}"/> based lambda.
-    /// Such lambda would throw <see cref="OperationCanceledException"/> when
-    /// supplied <see cref="CancellationToken.IsCancellationRequested"/> evaluates to
-    /// <see langword="true"/>; otherwise, first start the <paramref name="valueTask"/>
-    /// if not already running), and, then asynchronously execute the task and return its value.
-    /// <para>
-    /// Normally, once should just create a Task without actually running it,
-    /// so that the actual run takes place upon the lambda execution.
-    /// </para>
-    /// <para>
-    /// NOTE: <see cref="CancellationToken"/> injected to the lambda would be
-    /// checked for cancellation only once before executing the <paramref name="valueTask"/>;
-    /// currently, it is NOT possible to inject the token into the task.
-    /// Thus, if the provided <paramref name="valueTask"/> itself is cancellable, one must
-    /// provide the token to such <paramref name="valueTask"/> by other means.
-    /// </para>
-    /// </summary>
-    /// <typeparam name="T">Type of task</typeparam>
-    /// <param name="valueTask">Task to await when lambda is executed</param>
-    public static Func<CancellationToken, ValueTask<T>> AsCancellableLambda<T>(this ValueTask<T> valueTask)
-    {
-        return async t =>
-        {
-            t.ThrowIfCancellationRequested();
-            return await valueTask.ConfigureAwait(false);
-        };
-    }
 }

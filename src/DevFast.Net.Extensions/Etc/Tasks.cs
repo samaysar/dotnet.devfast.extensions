@@ -1,7 +1,7 @@
 ﻿namespace DevFast.Net.Extensions.Etc;
 
 /// <summary>
-/// 
+/// Extension methods on the <see cref="Task"/>, <see cref="ValueTask"/>.
 /// </summary>
 public static class Tasks
 {
