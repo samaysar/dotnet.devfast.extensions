@@ -331,33 +331,6 @@ namespace DevFast.Net.Extensions.SystemTypes
             return l;
         }
 
-#if NET6_0
-        /// <summary>
-        /// Converts provided <paramref name="asyncCollection"/> instance into an <see cref="IEnumerable{T}"/> that enumerates elements in a blocking manner..
-        /// </summary>
-        /// <typeparam name="T">Input Type</typeparam>
-        /// <param name="asyncCollection">Asynchronously Enumerable items</param>
-        /// <param name="token">Cancellation token to pass to enumerator of <paramref name="asyncCollection"/></param>
-        /// <param name="continueOnCapturedContext"><see langword="true"/> to attempt to marshal the continuation back to the original context captured; otherwise, <see langword="false"/>.</param>
-        public static IEnumerable<T> ToBlockingEnumerable<T>(this IAsyncEnumerable<T> asyncCollection,
-            CancellationToken token = default,
-            bool continueOnCapturedContext = false)
-        {
-            ConfiguredCancelableAsyncEnumerable<T>.Enumerator ae = asyncCollection.WithCancellation(token).ConfigureAwait(continueOnCapturedContext).GetAsyncEnumerator();
-            try
-            {
-                while (ae.MoveNextAsync().GetAwaiter().GetResult())
-                {
-                    yield return ae.Current;
-                }
-            }
-            finally
-            {
-                ae.DisposeAsync().GetAwaiter().GetResult();
-            }
-        }
-#endif
-
         /// <summary>
         /// Collects maximum possible (controlled by <paramref name="maxChunkSize"/>) items in the provided <paramref name="asyncCollection"/>, puts it
         /// in a list and returns such lists as a part of newly created asynchronous enumerable.
