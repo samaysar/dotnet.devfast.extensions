@@ -1,12 +1,85 @@
-﻿using DevFast.Net.Extensions.SystemTypes;
-
-namespace DevFast.Net.Extensions.Etc;
+﻿namespace DevFast.Net.Extensions.Etc;
 
 /// <summary>
 /// Extension methods on the lambdas.
 /// </summary>
 public static class Lambdas
 {
+    /// <summary>
+    /// Creates a <see cref="Func{T}"/> based lambda that returns the <paramref name="value"/> upon execution.
+    /// </summary>
+    /// <typeparam name="T">Type of value</typeparam>
+    /// <param name="value">Value to return when lambda is executed</param>
+    public static Func<T> AsLambda<T>(this T value)
+    {
+        return () => value;
+    }
+
+    /// <summary>
+    /// Creates a <see cref="Func{CancellationToken, T}"/> based lambda.
+    /// Such lambda would throw <see cref="OperationCanceledException"/> when
+    /// supplied <see cref="CancellationToken.IsCancellationRequested"/> evaluates to
+    /// <see langword="true"/>; otherwise, returns the <paramref name="value"/>.
+    /// </summary>
+    /// <typeparam name="T">Type of value</typeparam>
+    /// <param name="value">Value to return when lambda is executed</param>
+    public static Func<CancellationToken, T> AsLambdaWithCancellation<T>(this T value)
+    {
+        return t =>
+        {
+            t.ThrowIfCancellationRequested();
+            return value;
+        };
+    }
+
+    /// <summary>
+    /// Creates a <see cref="Func{CancellationToken, T}"/> based lambda.
+    /// Such lambda would throw <see cref="OperationCanceledException"/> when
+    /// supplied <see cref="CancellationToken.IsCancellationRequested"/> evaluates to
+    /// <see langword="true"/>; otherwise, it starts the task (if not already running) and
+    /// returns the value of the <paramref name="task"/>.
+    /// <para>
+    /// NOTE: <see cref="CancellationToken"/> is checked once before awaiting on the <paramref name="task"/>.
+    /// If the task itself can be canceled, one should find a way to pass
+    /// the <see cref="CancellationToken"/> to such <paramref name="task"/>.
+    /// </para>
+    /// Purpose of such method is to lazily start the <paramref name="task"/>,
+    /// thus, one should avoid (though possible) passing already running <paramref name="task"/>
+    /// created using <see cref="TaskFactory"/> or by other means.
+    /// </summary>
+    /// <typeparam name="T">Type of value</typeparam>
+    /// <param name="task">Value to return when lambda is executed</param>
+    public static Func<CancellationToken, Task<T>> AsAsyncLambda<T>(this Task<T> task)
+    {
+        return async t =>
+        {
+            t.ThrowIfCancellationRequested();
+            return await task.StartIfNeeded().ConfigureAwait(false);
+        };
+    }
+
+    /// <summary>
+    /// Creates a <see cref="Func{CancellationToken, T}"/> based lambda.
+    /// Such lambda would throw <see cref="OperationCanceledException"/> when
+    /// supplied <see cref="CancellationToken.IsCancellationRequested"/> evaluates to
+    /// <see langword="true"/>; otherwise, it returns the value of the <paramref name="valueTask"/>.
+    /// <para>
+    /// NOTE: <see cref="CancellationToken"/> is checked once before awaiting on the <paramref name="valueTask"/>.
+    /// If the task itself can be canceled, one should find a way to pass
+    /// the <see cref="CancellationToken"/> to such <paramref name="valueTask"/>.
+    /// </para>
+    /// </summary>
+    /// <typeparam name="T">Type of value</typeparam>
+    /// <param name="valueTask">Value to return when lambda is executed</param>
+    public static Func<CancellationToken, ValueTask<T>> AsAsyncLambda<T>(this ValueTask<T> valueTask)
+    {
+        return async t =>
+        {
+            t.ThrowIfCancellationRequested();
+            return await valueTask.ConfigureAwait(false);
+        };
+    }
+
     /// <summary>
     /// Applies <paramref name="transformation"/> on the <paramref name="sourceLambda"/>.
     /// </summary>
@@ -17,7 +90,7 @@ public static class Lambdas
     public static Func<TTransformed> Apply<TSource, TTransformed>(this Func<TSource> sourceLambda,
         Func<Func<TSource>, Func<TTransformed>> transformation)
     {
-        return transformation.ThrowArgumentExceptionForNull($"Inside {nameof(Apply)}, {nameof(transformation)}")(sourceLambda.ThrowArgumentExceptionForNull($"Inside {nameof(Apply)}, {nameof(sourceLambda)}"));
+        return transformation(sourceLambda);
     }
 
     /// <summary>
@@ -30,7 +103,7 @@ public static class Lambdas
     public static Func<CancellationToken, TTransformed> Apply<TSource, TTransformed>(this Func<CancellationToken, TSource> sourceLambda,
         Func<Func<CancellationToken, TSource>, Func<CancellationToken, TTransformed>> transformation)
     {
-        return transformation.ThrowArgumentExceptionForNull($"Inside {nameof(Apply)}, {nameof(transformation)}")(sourceLambda.ThrowArgumentExceptionForNull($"Inside {nameof(Apply)}, {nameof(sourceLambda)}"));
+        return transformation(sourceLambda);
     }
 
     /// <summary>
@@ -79,7 +152,6 @@ public static class Lambdas
         Func<T, T> tandemLambda,
         bool iff)
     {
-        _ = tandemLambda.ThrowArgumentExceptionForNull($"Inside {nameof(Pipe)}, {nameof(tandemLambda)}");
         return sourceLambda.Apply(src => () => tandemLambda(src()), iff);
     }
 
@@ -97,7 +169,6 @@ public static class Lambdas
         Func<T, CancellationToken, T> tandemLambda,
         bool iff)
     {
-        _ = tandemLambda.ThrowArgumentExceptionForNull($"Inside {nameof(Pipe)}, {nameof(tandemLambda)}");
         return sourceLambda.Apply(src => t => tandemLambda(src(t), t), iff);
     }
 
@@ -115,7 +186,6 @@ public static class Lambdas
         Func<T, CancellationToken, Task<T>> tandemLambda,
         bool iff)
     {
-        _ = tandemLambda.ThrowArgumentExceptionForNull($"Inside {nameof(Pipe)}, {nameof(tandemLambda)}");
         return sourceLambda.Apply(src => async t => await tandemLambda(await src(t).StartIfNeeded().ConfigureAwait(false), t).StartIfNeeded().ConfigureAwait(false), iff);
     }
 
@@ -133,7 +203,6 @@ public static class Lambdas
         Func<T, CancellationToken, ValueTask<T>> tandemLambda,
         bool iff)
     {
-        _ = tandemLambda.ThrowArgumentExceptionForNull($"Inside {nameof(Pipe)}, {nameof(tandemLambda)}");
         return sourceLambda.Apply(src => async t => await tandemLambda(await src(t).ConfigureAwait(false), t).ConfigureAwait(false), iff);
     }
 
@@ -150,7 +219,6 @@ public static class Lambdas
     public static Func<TTandem> Pipe<TSource, TTandem>(this Func<TSource> sourceLambda,
         Func<TSource, TTandem> tandemLambda)
     {
-        _ = tandemLambda.ThrowArgumentExceptionForNull($"Inside {nameof(Pipe)}, {nameof(tandemLambda)}");
         return sourceLambda.Apply<TSource, TTandem>(src => () => tandemLambda(src()));
     }
 
@@ -167,7 +235,6 @@ public static class Lambdas
     public static Func<CancellationToken, TTandem> Pipe<TSource, TTandem>(this Func<CancellationToken, TSource> sourceLambda,
         Func<TSource, CancellationToken, TTandem> tandemLambda)
     {
-        _ = tandemLambda.ThrowArgumentExceptionForNull($"Inside {nameof(Pipe)}, {nameof(tandemLambda)}");
         return sourceLambda.Apply<TSource, TTandem>(src => t => tandemLambda(src(t), t));
     }
 
@@ -184,7 +251,6 @@ public static class Lambdas
     public static Func<CancellationToken, Task<TTandem>> Pipe<TSource, TTandem>(this Func<CancellationToken, Task<TSource>> sourceLambda,
         Func<TSource, CancellationToken, Task<TTandem>> tandemLambda)
     {
-        _ = tandemLambda.ThrowArgumentExceptionForNull($"Inside {nameof(Pipe)}, {nameof(tandemLambda)}");
         return sourceLambda.Apply<Task<TSource>, Task<TTandem>>(src => async t => await tandemLambda(await src(t).StartIfNeeded().ConfigureAwait(false), t).StartIfNeeded().ConfigureAwait(false));
     }
 
@@ -201,7 +267,6 @@ public static class Lambdas
     public static Func<CancellationToken, ValueTask<TTandem>> Pipe<TSource, TTandem>(this Func<CancellationToken, ValueTask<TSource>> sourceLambda,
         Func<TSource, CancellationToken, ValueTask<TTandem>> tandemLambda)
     {
-        _ = tandemLambda.ThrowArgumentExceptionForNull($"Inside {nameof(Pipe)}, {nameof(tandemLambda)}");
         return sourceLambda.Apply<ValueTask<TSource>, ValueTask<TTandem>>(src => async t => await tandemLambda(await src(t).ConfigureAwait(false), t).ConfigureAwait(false));
     }
 
@@ -271,93 +336,5 @@ public static class Lambdas
         CancellationToken token)
     {
         return await lambda(token).ConfigureAwait(false);
-    }
-
-    /// <summary>
-    /// Creates a <see cref="Func{T}"/> based lambda that returns the <paramref name="value"/> upon execution.
-    /// </summary>
-    /// <typeparam name="T">Type of value</typeparam>
-    /// <param name="value">Value to return when lambda is executed</param>
-    public static Func<T> AsLambda<T>(this T value)
-    {
-        return () => value;
-    }
-
-    /// <summary>
-    /// Creates a <see cref="Func{CancellationToken, T}"/> based lambda.
-    /// Such lambda would throw <see cref="OperationCanceledException"/> when
-    /// supplied <see cref="CancellationToken.IsCancellationRequested"/> evaluates to
-    /// <see langword="true"/>; otherwise, returns the <paramref name="value"/>.
-    /// </summary>
-    /// <typeparam name="T">Type of value</typeparam>
-    /// <param name="value">Value to return when lambda is executed</param>
-    public static Func<CancellationToken, T> AsCancellableLambda<T>(this T value)
-    {
-        return t =>
-        {
-            t.ThrowIfCancellationRequested();
-            return value;
-        };
-    }
-
-    /// <summary>
-    /// Creates a <see cref="Func{Task}"/> based lambda. Such a lambda upon execution
-    /// will first start the <paramref name="task"/> (if not already running),
-    /// and, then asynchronously execute the task and return its value.
-    /// <para>
-    /// Normally, once should just create a Task without actually running it,
-    /// so that the actual run takes place upon the lambda execution.
-    /// </para>
-    /// </summary>
-    /// <typeparam name="T">Type of task</typeparam>
-    /// <param name="task">Task to await when lambda is executed</param>
-    public static Func<Task<T>> AsAsyncLambda<T>(this Task<T> task)
-    {
-        return async () => await task.StartIfNeeded().ConfigureAwait(false);
-    }
-
-    /// <summary>
-    /// Creates a <see cref="Func{Task}"/> based lambda. Such a lambda upon execution
-    /// will first start the <paramref name="valueTask"/> (if not already running),
-    /// and, then asynchronously execute the task and return its value.
-    /// <para>
-    /// Normally, once should just create a Task without actually running it,
-    /// so that the actual run takes place upon the lambda execution.
-    /// </para>
-    /// </summary>
-    /// <typeparam name="T">Type of task</typeparam>
-    /// <param name="valueTask">Task to await when lambda is executed</param>
-    public static Func<ValueTask<T>> AsAsyncLambda<T>(this ValueTask<T> valueTask)
-    {
-        return async () => await valueTask.ConfigureAwait(false);
-    }
-
-    /// <summary>
-    /// Creates a <see cref="Func{CancellationToken, T}"/> based lambda.
-    /// Such lambda would throw <see cref="OperationCanceledException"/> when
-    /// supplied <see cref="CancellationToken.IsCancellationRequested"/> evaluates to
-    /// <see langword="true"/>; otherwise, first start the <paramref name="task"/>
-    /// if not already running), and, then asynchronously execute the task and return its value.
-    /// <para>
-    /// Normally, once should just create a Task without actually running it,
-    /// so that the actual run takes place upon the lambda execution.
-    /// </para>
-    /// <para>
-    /// NOTE: <see cref="CancellationToken"/> injected to the lambda would be
-    /// checked for cancellation only once before executing the <paramref name="task"/>;
-    /// currently, it is NOT possible to inject the token into the task.
-    /// Thus, if the provided <paramref name="task"/> itself is cancellable, one must
-    /// provide the token to such <paramref name="task"/> by other means.
-    /// </para>
-    /// </summary>
-    /// <typeparam name="T">Type of task</typeparam>
-    /// <param name="task">Task to await when lambda is executed</param>
-    public static Func<CancellationToken, Task<T>> AsCancellableAsyncLambda<T>(this Task<T> task)
-    {
-        return async t =>
-        {
-            t.ThrowIfCancellationRequested();
-            return await task.StartIfNeeded().ConfigureAwait(false);
-        };
     }
 }

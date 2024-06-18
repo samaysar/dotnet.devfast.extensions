@@ -3,7 +3,7 @@
 /// <summary>
 /// Extension methods on the <see cref="Task"/>, <see cref="ValueTask"/>.
 /// </summary>
-public static class Tasks
+public static class Asynchro
 {
     /// <summary>
     /// Starts the given task if not already started. Returns it back after starting for chaining or awaiting.
