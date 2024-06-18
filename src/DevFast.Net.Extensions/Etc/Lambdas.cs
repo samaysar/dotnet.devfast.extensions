@@ -275,9 +275,11 @@ public static class Lambdas
     /// </summary>
     /// <typeparam name="T">Output type of the lambda</typeparam>
     /// <param name="lambda">Lambda to execute.</param>
-    public static T Execute<T>(this Func<T> lambda)
+    /// <param name="finallyClause">Code to execute in finally block of try-finally (if any)</param>
+    public static T Execute<T>(this Func<T> lambda,
+        Action? finallyClause = null)
     {
-        return lambda();
+        return finallyClause == null ? lambda() : lambda.Finally(finallyClause);
     }
 
     /// <summary>
@@ -286,10 +288,12 @@ public static class Lambdas
     /// <typeparam name="T">Output type of the lambda</typeparam>
     /// <param name="lambda">Lambda to execute.</param>
     /// <param name="token">Cancellation token</param>
+    /// <param name="finallyClause">Code to execute in finally block of try-finally (if any)</param>
     public static T Execute<T>(this Func<CancellationToken, T> lambda,
-        CancellationToken token)
+        CancellationToken token,
+        Action? finallyClause = null)
     {
-        return lambda(token);
+        return finallyClause == null ? lambda(token) : lambda.Finally(token, finallyClause);
     }
 
     /// <summary>

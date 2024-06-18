@@ -245,7 +245,7 @@ public static class Errors
     {
         try
         {
-            return await asyncLambda().ConfigureAwait(false);
+            return await asyncLambda().StartIfNeeded().ConfigureAwait(false);
         }
         catch (TError e)
         {
@@ -353,7 +353,7 @@ public static class Errors
     {
         try
         {
-            return await asyncLambda().ConfigureAwait(false);
+            return await asyncLambda().StartIfNeeded().ConfigureAwait(false);
         }
         finally
         {
@@ -381,6 +381,323 @@ public static class Errors
         finally
         {
             finallyClause();
+        }
+    }
+
+    /// <summary>
+    /// Executes <paramref name="lambda"/> inside try block and
+    /// excutes <paramref name="finallyClause"/> inside finally.
+    /// <para>
+    /// NOTE: The code itself will NOT catch any <see cref="Exception"/>.
+    /// </para>
+    /// </summary>
+    /// <param name="lambda">Lambda to execute inside try clause</param>
+    /// <param name="state">Lambda state</param>
+    /// <param name="finallyClause">Code to run inside finally clause</param>
+    public static void Finally<T>(this Action<T> lambda,
+        T state,
+        Action finallyClause)
+    {
+        try
+        {
+            lambda(state);
+        }
+        finally
+        {
+            finallyClause();
+        }
+    }
+
+    /// <summary>
+    /// Executes <paramref name="lambda"/> inside try block and
+    /// excutes <paramref name="finallyClause"/> inside finally.
+    /// <para>
+    /// NOTE: The code itself will NOT catch any <see cref="Exception"/>.
+    /// </para>
+    /// </summary>
+    /// <param name="lambda">Lambda to execute inside try clause</param>
+    /// <param name="finallyClause">Code to run inside finally clause</param>
+    /// <param name="state">Lambda as well as final clause state</param>
+    public static void Finally<T>(this Action<T> lambda,
+        Action<T> finallyClause,
+        T state)
+    {
+        try
+        {
+            lambda(state);
+        }
+        finally
+        {
+            finallyClause(state);
+        }
+    }
+
+    /// <summary>
+    /// Executes <paramref name="lambda"/> inside try block and
+    /// excutes <paramref name="finallyClause"/> inside finally.
+    /// <para>
+    /// NOTE: The code itself will NOT catch any <see cref="Exception"/>.
+    /// </para>
+    /// </summary>
+    /// <param name="lambda">Lambda to execute inside try clause</param>
+    /// <param name="state">Lambda state</param>
+    /// <param name="finallyClause">Code to run inside finally clause</param>
+    /// <param name="finallyState">Finally clause state</param>
+    public static void Finally<T, TFinal>(this Action<T> lambda,
+        T state,
+        Action<TFinal> finallyClause,
+        TFinal finallyState)
+    {
+        try
+        {
+            lambda(state);
+        }
+        finally
+        {
+            finallyClause(finallyState);
+        }
+    }
+
+    /// <summary>
+    /// Executes <paramref name="lambda"/> inside try block and returns its value
+    /// after excuting <paramref name="finallyClause"/> inside finally.
+    /// <para>
+    /// NOTE: The code itself will NOT catch any <see cref="Exception"/>.
+    /// </para>
+    /// </summary>
+    /// <typeparam name="T">Return type</typeparam>
+    /// <typeparam name="TState">State type</typeparam>
+    /// <param name="lambda">Lambda to execute inside try clause</param>
+    /// <param name="state">Lambda state</param>
+    /// <param name="finallyClause">Code to run inside finally clause</param>
+    public static T Finally<T, TState>(this Func<TState, T> lambda,
+        TState state,
+        Action finallyClause)
+    {
+        try
+        {
+            return lambda(state);
+        }
+        finally
+        {
+            finallyClause();
+        }
+    }
+
+    /// <summary>
+    /// Executes <paramref name="lambda"/> inside try block and returns its value
+    /// after excuting <paramref name="finallyClause"/> inside finally.
+    /// <para>
+    /// NOTE: The code itself will NOT catch any <see cref="Exception"/>.
+    /// </para>
+    /// </summary>
+    /// <typeparam name="T">Return type</typeparam>
+    /// <typeparam name="TState">State type</typeparam>
+    /// <param name="lambda">Lambda to execute inside try clause</param>
+    /// <param name="finallyClause">Code to run inside finally clause</param>
+    /// <param name="state">Lambda as well as finally clause state</param>
+    public static T Finally<T, TState>(this Func<TState, T> lambda,
+        Action<TState> finallyClause,
+        TState state)
+    {
+        try
+        {
+            return lambda(state);
+        }
+        finally
+        {
+            finallyClause(state);
+        }
+    }
+
+    /// <summary>
+    /// Executes <paramref name="lambda"/> inside try block and returns its value
+    /// after excuting <paramref name="finallyClause"/> inside finally.
+    /// <para>
+    /// NOTE: The code itself will NOT catch any <see cref="Exception"/>.
+    /// </para>
+    /// </summary>
+    /// <typeparam name="T">Return type</typeparam>
+    /// <typeparam name="TState">Lambda State type</typeparam>
+    /// <typeparam name="TFinal">Finally clause state type</typeparam>
+    /// <param name="lambda">Lambda to execute inside try clause</param>
+    /// <param name="state">Lambda state</param>
+    /// <param name="finallyClause">Code to run inside finally clause</param>
+    /// <param name="finallyState">finally clause state</param>
+    public static T Finally<T, TState, TFinal>(this Func<TState, T> lambda,
+        TState state,
+        Action<TFinal> finallyClause,
+        TFinal finallyState)
+    {
+        try
+        {
+            return lambda(state);
+        }
+        finally
+        {
+            finallyClause(finallyState);
+        }
+    }
+
+    /// <summary>
+    /// Asynchronously executes <paramref name="asyncLambda"/> inside try block and returns its value
+    /// after excuting <paramref name="finallyClause"/> inside finally.
+    /// <para>
+    /// NOTE: The code itself will NOT catch any <see cref="Exception"/>.
+    /// </para>
+    /// </summary>
+    /// <typeparam name="T">Return type</typeparam>
+    /// <typeparam name="TState">State type</typeparam>
+    /// <param name="asyncLambda">Lambda to execute inside try clause</param>
+    /// <param name="state">Lambda state</param>
+    /// <param name="finallyClause">Code to run inside finally clause</param>
+    public static async Task<T> Finally<T, TState>(this Func<TState, Task<T>> asyncLambda,
+        TState state,
+        Action finallyClause)
+    {
+        try
+        {
+            return await asyncLambda(state).StartIfNeeded().ConfigureAwait(false);
+        }
+        finally
+        {
+            finallyClause();
+        }
+    }
+
+    /// <summary>
+    /// Asynchronously executes <paramref name="asyncLambda"/> inside try block and returns its value
+    /// after excuting <paramref name="finallyClause"/> inside finally.
+    /// <para>
+    /// NOTE: The code itself will NOT catch any <see cref="Exception"/>.
+    /// </para>
+    /// </summary>
+    /// <typeparam name="T">Return type</typeparam>
+    /// <typeparam name="TState">State type</typeparam>
+    /// <param name="asyncLambda">Lambda to execute inside try clause</param>
+    /// <param name="finallyClause">Code to run inside finally clause</param>
+    /// <param name="state">Lambda as well as finally clause state</param>
+    public static async Task<T> Finally<T, TState>(this Func<TState, Task<T>> asyncLambda,
+        Action<TState> finallyClause,
+        TState state)
+    {
+        try
+        {
+            return await asyncLambda(state).StartIfNeeded().ConfigureAwait(false);
+        }
+        finally
+        {
+            finallyClause(state);
+        }
+    }
+
+    /// <summary>
+    /// Asynchronously executes <paramref name="asyncLambda"/> inside try block and returns its value
+    /// after excuting <paramref name="finallyClause"/> inside finally.
+    /// <para>
+    /// NOTE: The code itself will NOT catch any <see cref="Exception"/>.
+    /// </para>
+    /// </summary>
+    /// <typeparam name="T">Return type</typeparam>
+    /// <typeparam name="TState">State type</typeparam>
+    /// <typeparam name="TFinal">Finally clause state type</typeparam>
+    /// <param name="asyncLambda">Lambda to execute inside try clause</param>
+    /// <param name="state">Lambda as well as finally clause state</param>
+    /// <param name="finallyClause">Code to run inside finally clause</param>
+    /// <param name="finallyState">finally clause state</param>
+    public static async Task<T> Finally<T, TState, TFinal>(this Func<TState, Task<T>> asyncLambda,
+        TState state,
+        Action<TFinal> finallyClause,
+        TFinal finallyState)
+    {
+        try
+        {
+            return await asyncLambda(state).StartIfNeeded().ConfigureAwait(false);
+        }
+        finally
+        {
+            finallyClause(finallyState);
+        }
+    }
+
+    /// <summary>
+    /// Asynchronously executes <paramref name="asyncLambda"/> inside try block and returns its value
+    /// after excuting <paramref name="finallyClause"/> inside finally.
+    /// <para>
+    /// NOTE: The code itself will NOT catch any <see cref="Exception"/>.
+    /// </para>
+    /// </summary>
+    /// <typeparam name="T">Return type</typeparam>
+    /// <typeparam name="TState">State type</typeparam>
+    /// <param name="asyncLambda">Lambda to execute inside try clause</param>
+    /// <param name="state">Lambda state</param>
+    /// <param name="finallyClause">Code to run inside finally clause</param>
+    public static async ValueTask<T> Finally<T, TState>(this Func<TState, ValueTask<T>> asyncLambda,
+        TState state,
+        Action finallyClause)
+    {
+        try
+        {
+            return await asyncLambda(state).ConfigureAwait(false);
+        }
+        finally
+        {
+            finallyClause();
+        }
+    }
+
+    /// <summary>
+    /// Asynchronously executes <paramref name="asyncLambda"/> inside try block and returns its value
+    /// after excuting <paramref name="finallyClause"/> inside finally.
+    /// <para>
+    /// NOTE: The code itself will NOT catch any <see cref="Exception"/>.
+    /// </para>
+    /// </summary>
+    /// <typeparam name="T">Return type</typeparam>
+    /// <typeparam name="TState">State type</typeparam>
+    /// <param name="asyncLambda">Lambda to execute inside try clause</param>
+    /// <param name="finallyClause">Code to run inside finally clause</param>
+    /// <param name="state">Lambda as well as finally clause state</param>
+    public static async ValueTask<T> Finally<T, TState>(this Func<TState, ValueTask<T>> asyncLambda,
+        Action<TState> finallyClause,
+        TState state)
+    {
+        try
+        {
+            return await asyncLambda(state).ConfigureAwait(false);
+        }
+        finally
+        {
+            finallyClause(state);
+        }
+    }
+
+    /// <summary>
+    /// Asynchronously executes <paramref name="asyncLambda"/> inside try block and returns its value
+    /// after excuting <paramref name="finallyClause"/> inside finally.
+    /// <para>
+    /// NOTE: The code itself will NOT catch any <see cref="Exception"/>.
+    /// </para>
+    /// </summary>
+    /// <typeparam name="T">Return type</typeparam>
+    /// <typeparam name="TState">State type</typeparam>
+    /// <typeparam name="TFinal">Finally clause state type</typeparam>
+    /// <param name="asyncLambda">Lambda to execute inside try clause</param>
+    /// <param name="state">Lambda as well as finally clause state</param>
+    /// <param name="finallyClause">Code to run inside finally clause</param>
+    /// <param name="finallyState">finally clause state</param>
+    public static async ValueTask<T> Finally<T, TState, TFinal>(this Func<TState, ValueTask<T>> asyncLambda,
+        TState state,
+        Action<TFinal> finallyClause,
+        TFinal finallyState)
+    {
+        try
+        {
+            return await asyncLambda(state).ConfigureAwait(false);
+        }
+        finally
+        {
+            finallyClause(finallyState);
         }
     }
 }
