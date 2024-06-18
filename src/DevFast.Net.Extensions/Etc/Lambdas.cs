@@ -5,14 +5,14 @@
 /// </summary>
 public static class Lambdas
 {
-    private static Func<Func<TState, Task<TIn>>, Func<TState, Task<TOut>>> Adapter<TIn, TOut, TState>(
-        this Func<TIn, TState, Task<TOut>> tandem)
+    private static Func<Func<Token, Task<TIn>>, Func<Token, Task<TOut>>> Adapter<TIn, TOut>(
+        this Func<TIn, Token, Task<TOut>> tandem)
     {
         return src => async state => await tandem(await src(state).Run().ConfigureAwait(false), state).Run().ConfigureAwait(false);
     }
 
-    private static Func<Func<TState, ValueTask<TIn>>, Func<TState, ValueTask<TOut>>> Adapter<TIn, TOut, TState>(
-        this Func<TIn, TState, ValueTask<TOut>> tandem)
+    private static Func<Func<Token, ValueTask<TIn>>, Func<Token, ValueTask<TOut>>> Adapter<TIn, TOut>(
+        this Func<TIn, Token, ValueTask<TOut>> tandem)
     {
         return src => async state => await tandem(await src(state).ConfigureAwait(false), state).ConfigureAwait(false);
     }
@@ -146,12 +146,11 @@ public static class Lambdas
     /// would return the output of the <paramref name="tandemLambda"/>.
     /// </summary>
     /// <typeparam name="T">Lambda output type</typeparam>
-    /// <typeparam name="TState">State type</typeparam>
     /// <param name="sourceLambda">Source lambda to which the tandem operation would be applied.</param>
     /// <param name="tandemLambda">Tandem lambda that would consume the output of the input lambda.</param>
     /// <param name="iff">Conditional flag dictating where the adapter should be applied or not</param>
-    public static Func<TState, T> Pipe<T, TState>(this Func<TState, T> sourceLambda,
-        Func<T, TState, T> tandemLambda,
+    public static Func<Token, T> Pipe<T>(this Func<Token, T> sourceLambda,
+        Func<T, Token, T> tandemLambda,
         bool iff)
     {
         return sourceLambda.Adapt(src => t => tandemLambda(src(t), t), iff);
@@ -164,12 +163,11 @@ public static class Lambdas
     /// would return the output of the <paramref name="tandemLambda"/>.
     /// </summary>
     /// <typeparam name="T">Lambda output type</typeparam>
-    /// <typeparam name="TState">State type</typeparam>
     /// <param name="sourceLambda">Source lambda to which the tandem operation would be applied.</param>
     /// <param name="tandemLambda">Tandem lambda that would consume the output of the input lambda.</param>
     /// <param name="iff">Conditional flag dictating where the adapter should be applied or not</param>
-    public static Func<TState, Task<T>> Pipe<T, TState>(this Func<TState, Task<T>> sourceLambda,
-        Func<T, TState, Task<T>> tandemLambda,
+    public static Func<Token, Task<T>> Pipe<T>(this Func<Token, Task<T>> sourceLambda,
+        Func<T, Token, Task<T>> tandemLambda,
         bool iff)
     {
         return sourceLambda.Adapt(tandemLambda.Adapter(), iff);
@@ -182,12 +180,11 @@ public static class Lambdas
     /// would return the output of the <paramref name="tandemLambda"/>.
     /// </summary>
     /// <typeparam name="T">Lambda output type</typeparam>
-    /// <typeparam name="TState">State type</typeparam>
     /// <param name="sourceLambda">Source lambda to which the tandem operation would be applied.</param>
     /// <param name="tandemLambda">Tandem lambda that would consume the output of the input lambda.</param>
     /// <param name="iff">Conditional flag dictating where the adapter should be applied or not</param>
-    public static Func<TState, ValueTask<T>> Pipe<T, TState>(this Func<TState, ValueTask<T>> sourceLambda,
-        Func<T, TState, ValueTask<T>> tandemLambda,
+    public static Func<Token, ValueTask<T>> Pipe<T>(this Func<Token, ValueTask<T>> sourceLambda,
+        Func<T, Token, ValueTask<T>> tandemLambda,
         bool iff)
     {
         return sourceLambda.Adapt(tandemLambda.Adapter(), iff);
@@ -217,11 +214,10 @@ public static class Lambdas
     /// </summary>
     /// <typeparam name="TIn">Source lambda output type</typeparam>
     /// <typeparam name="TTandem">Tandem lambda output type</typeparam>
-    /// <typeparam name="TState">State type</typeparam>
     /// <param name="sourceLambda">Source lambda to which the tandem operation would be applied.</param>
     /// <param name="tandemLambda">Tandem lambda that would consume the output of the input lambda.</param>
-    public static Func<TState, TTandem> Pipe<TIn, TTandem, TState>(this Func<TState, TIn> sourceLambda,
-        Func<TIn, TState, TTandem> tandemLambda)
+    public static Func<Token, TTandem> Pipe<TIn, TTandem>(this Func<Token, TIn> sourceLambda,
+        Func<TIn, Token, TTandem> tandemLambda)
     {
         return sourceLambda.Adapt<Func<Token, TIn>, Func<Token, TTandem>>(src => t => tandemLambda(src(t), t));
     }
@@ -234,11 +230,10 @@ public static class Lambdas
     /// </summary>
     /// <typeparam name="TIn">Source lambda output type</typeparam>
     /// <typeparam name="TTandem">Tandem lambda output type</typeparam>
-    /// <typeparam name="TState">State type</typeparam>
     /// <param name="sourceLambda">Source lambda to which the tandem operation would be applied.</param>
     /// <param name="tandemLambda">Tandem lambda that would consume the output of the input lambda.</param>
-    public static Func<TState, Task<TTandem>> Pipe<TIn, TTandem, TState>(this Func<TState, Task<TIn>> sourceLambda,
-        Func<TIn, TState, Task<TTandem>> tandemLambda)
+    public static Func<Token, Task<TTandem>> Pipe<TIn, TTandem>(this Func<Token, Task<TIn>> sourceLambda,
+        Func<TIn, Token, Task<TTandem>> tandemLambda)
     {
         return sourceLambda.Adapt(tandemLambda.Adapter());
     }
@@ -251,11 +246,10 @@ public static class Lambdas
     /// </summary>
     /// <typeparam name="TIn">Source lambda output type</typeparam>
     /// <typeparam name="TTandem">Tandem lambda output type</typeparam>
-    /// <typeparam name="TState">State type</typeparam>
     /// <param name="sourceLambda">Source lambda to which the tandem operation would be applied.</param>
     /// <param name="tandemLambda">Tandem lambda that would consume the output of the input lambda.</param>
-    public static Func<TState, ValueTask<TTandem>> Pipe<TIn, TTandem, TState>(this Func<TState, ValueTask<TIn>> sourceLambda,
-        Func<TIn, TState, ValueTask<TTandem>> tandemLambda)
+    public static Func<Token, ValueTask<TTandem>> Pipe<TIn, TTandem>(this Func<Token, ValueTask<TIn>> sourceLambda,
+        Func<TIn, Token, ValueTask<TTandem>> tandemLambda)
     {
         return sourceLambda.Adapt(tandemLambda.Adapter());
     }

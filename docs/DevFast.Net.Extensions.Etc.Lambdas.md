@@ -9,17 +9,14 @@ Extension methods on the lambdas.
 public static class Lambdas
 ```
 - *Methods*
-  - **[Apply&lt;T&gt;(this Func&lt;CancellationToken,T&gt;, Func&lt;Func&lt;CancellationToken,T&gt;,Func&lt;CancellationToken,T&gt;&gt;, bool)](DevFast.Net.Extensions.Etc.Lambdas.md#DevFast.Net.Extensions.Etc.Lambdas.Apply_T_(thisSystem.Func_System.Threading.CancellationToken,T_,System.Func_System.Func_System.Threading.CancellationToken,T_,System.Func_System.Threading.CancellationToken,T__,bool) 'DevFast.Net.Extensions.Etc.Lambdas.Apply<T>(this System.Func<System.Threading.CancellationToken,T>, System.Func<System.Func<System.Threading.CancellationToken,T>,System.Func<System.Threading.CancellationToken,T>>, bool)')**
-  - **[Apply&lt;T&gt;(this Func&lt;T&gt;, Func&lt;Func&lt;T&gt;,Func&lt;T&gt;&gt;, bool)](DevFast.Net.Extensions.Etc.Lambdas.md#DevFast.Net.Extensions.Etc.Lambdas.Apply_T_(thisSystem.Func_T_,System.Func_System.Func_T_,System.Func_T__,bool) 'DevFast.Net.Extensions.Etc.Lambdas.Apply<T>(this System.Func<T>, System.Func<System.Func<T>,System.Func<T>>, bool)')**
-  - **[Apply&lt;TSource,TTransformed&gt;(this Func&lt;CancellationToken,TSource&gt;, Func&lt;Func&lt;CancellationToken,TSource&gt;,Func&lt;CancellationToken,TTransformed&gt;&gt;)](DevFast.Net.Extensions.Etc.Lambdas.md#DevFast.Net.Extensions.Etc.Lambdas.Apply_TSource,TTransformed_(thisSystem.Func_System.Threading.CancellationToken,TSource_,System.Func_System.Func_System.Threading.CancellationToken,TSource_,System.Func_System.Threading.CancellationToken,TTransformed__) 'DevFast.Net.Extensions.Etc.Lambdas.Apply<TSource,TTransformed>(this System.Func<System.Threading.CancellationToken,TSource>, System.Func<System.Func<System.Threading.CancellationToken,TSource>,System.Func<System.Threading.CancellationToken,TTransformed>>)')**
-  - **[Apply&lt;TSource,TTransformed&gt;(this Func&lt;TSource&gt;, Func&lt;Func&lt;TSource&gt;,Func&lt;TTransformed&gt;&gt;)](DevFast.Net.Extensions.Etc.Lambdas.md#DevFast.Net.Extensions.Etc.Lambdas.Apply_TSource,TTransformed_(thisSystem.Func_TSource_,System.Func_System.Func_TSource_,System.Func_TTransformed__) 'DevFast.Net.Extensions.Etc.Lambdas.Apply<TSource,TTransformed>(this System.Func<TSource>, System.Func<System.Func<TSource>,System.Func<TTransformed>>)')**
+  - **[Adapt&lt;T&gt;(this T, Func&lt;T,T&gt;, bool)](DevFast.Net.Extensions.Etc.Lambdas.md#DevFast.Net.Extensions.Etc.Lambdas.Adapt_T_(thisT,System.Func_T,T_,bool) 'DevFast.Net.Extensions.Etc.Lambdas.Adapt<T>(this T, System.Func<T,T>, bool)')**
+  - **[Adapt&lt;TIn,TOut&gt;(this TIn, Func&lt;TIn,TOut&gt;)](DevFast.Net.Extensions.Etc.Lambdas.md#DevFast.Net.Extensions.Etc.Lambdas.Adapt_TIn,TOut_(thisTIn,System.Func_TIn,TOut_) 'DevFast.Net.Extensions.Etc.Lambdas.Adapt<TIn,TOut>(this TIn, System.Func<TIn,TOut>)')**
   - **[AsAsyncLambda&lt;T&gt;(this Task&lt;T&gt;)](DevFast.Net.Extensions.Etc.Lambdas.md#DevFast.Net.Extensions.Etc.Lambdas.AsAsyncLambda_T_(thisSystem.Threading.Tasks.Task_T_) 'DevFast.Net.Extensions.Etc.Lambdas.AsAsyncLambda<T>(this System.Threading.Tasks.Task<T>)')**
   - **[AsAsyncLambda&lt;T&gt;(this ValueTask&lt;T&gt;)](DevFast.Net.Extensions.Etc.Lambdas.md#DevFast.Net.Extensions.Etc.Lambdas.AsAsyncLambda_T_(thisSystem.Threading.Tasks.ValueTask_T_) 'DevFast.Net.Extensions.Etc.Lambdas.AsAsyncLambda<T>(this System.Threading.Tasks.ValueTask<T>)')**
-  - **[AsCancellableAsyncLambda&lt;T&gt;(this Task&lt;T&gt;)](DevFast.Net.Extensions.Etc.Lambdas.md#DevFast.Net.Extensions.Etc.Lambdas.AsCancellableAsyncLambda_T_(thisSystem.Threading.Tasks.Task_T_) 'DevFast.Net.Extensions.Etc.Lambdas.AsCancellableAsyncLambda<T>(this System.Threading.Tasks.Task<T>)')**
-  - **[AsCancellableLambda&lt;T&gt;(this T)](DevFast.Net.Extensions.Etc.Lambdas.md#DevFast.Net.Extensions.Etc.Lambdas.AsCancellableLambda_T_(thisT) 'DevFast.Net.Extensions.Etc.Lambdas.AsCancellableLambda<T>(this T)')**
   - **[AsLambda&lt;T&gt;(this T)](DevFast.Net.Extensions.Etc.Lambdas.md#DevFast.Net.Extensions.Etc.Lambdas.AsLambda_T_(thisT) 'DevFast.Net.Extensions.Etc.Lambdas.AsLambda<T>(this T)')**
-  - **[Execute&lt;T&gt;(this Func&lt;CancellationToken,T&gt;, CancellationToken)](DevFast.Net.Extensions.Etc.Lambdas.md#DevFast.Net.Extensions.Etc.Lambdas.Execute_T_(thisSystem.Func_System.Threading.CancellationToken,T_,System.Threading.CancellationToken) 'DevFast.Net.Extensions.Etc.Lambdas.Execute<T>(this System.Func<System.Threading.CancellationToken,T>, System.Threading.CancellationToken)')**
-  - **[Execute&lt;T&gt;(this Func&lt;T&gt;)](DevFast.Net.Extensions.Etc.Lambdas.md#DevFast.Net.Extensions.Etc.Lambdas.Execute_T_(thisSystem.Func_T_) 'DevFast.Net.Extensions.Etc.Lambdas.Execute<T>(this System.Func<T>)')**
+  - **[AsLambdaWithCancellation&lt;T&gt;(this T)](DevFast.Net.Extensions.Etc.Lambdas.md#DevFast.Net.Extensions.Etc.Lambdas.AsLambdaWithCancellation_T_(thisT) 'DevFast.Net.Extensions.Etc.Lambdas.AsLambdaWithCancellation<T>(this T)')**
+  - **[Execute&lt;T&gt;(this Func&lt;CancellationToken,T&gt;, CancellationToken, Action)](DevFast.Net.Extensions.Etc.Lambdas.md#DevFast.Net.Extensions.Etc.Lambdas.Execute_T_(thisSystem.Func_System.Threading.CancellationToken,T_,System.Threading.CancellationToken,System.Action) 'DevFast.Net.Extensions.Etc.Lambdas.Execute<T>(this System.Func<System.Threading.CancellationToken,T>, System.Threading.CancellationToken, System.Action)')**
+  - **[Execute&lt;T&gt;(this Func&lt;T&gt;, Action)](DevFast.Net.Extensions.Etc.Lambdas.md#DevFast.Net.Extensions.Etc.Lambdas.Execute_T_(thisSystem.Func_T_,System.Action) 'DevFast.Net.Extensions.Etc.Lambdas.Execute<T>(this System.Func<T>, System.Action)')**
   - **[ExecuteAsync(this Func&lt;CancellationToken,Task&gt;, CancellationToken)](DevFast.Net.Extensions.Etc.Lambdas.md#DevFast.Net.Extensions.Etc.Lambdas.ExecuteAsync(thisSystem.Func_System.Threading.CancellationToken,System.Threading.Tasks.Task_,System.Threading.CancellationToken) 'DevFast.Net.Extensions.Etc.Lambdas.ExecuteAsync(this System.Func<System.Threading.CancellationToken,System.Threading.Tasks.Task>, System.Threading.CancellationToken)')**
   - **[ExecuteAsync(this Func&lt;CancellationToken,ValueTask&gt;, CancellationToken)](DevFast.Net.Extensions.Etc.Lambdas.md#DevFast.Net.Extensions.Etc.Lambdas.ExecuteAsync(thisSystem.Func_System.Threading.CancellationToken,System.Threading.Tasks.ValueTask_,System.Threading.CancellationToken) 'DevFast.Net.Extensions.Etc.Lambdas.ExecuteAsync(this System.Func<System.Threading.CancellationToken,System.Threading.Tasks.ValueTask>, System.Threading.CancellationToken)')**
   - **[ExecuteAsync&lt;T&gt;(this Func&lt;CancellationToken,Task&lt;T&gt;&gt;, CancellationToken)](DevFast.Net.Extensions.Etc.Lambdas.md#DevFast.Net.Extensions.Etc.Lambdas.ExecuteAsync_T_(thisSystem.Func_System.Threading.CancellationToken,System.Threading.Tasks.Task_T__,System.Threading.CancellationToken) 'DevFast.Net.Extensions.Etc.Lambdas.ExecuteAsync<T>(this System.Func<System.Threading.CancellationToken,System.Threading.Tasks.Task<T>>, System.Threading.CancellationToken)')**
@@ -28,10 +25,10 @@ public static class Lambdas
   - **[Pipe&lt;T&gt;(this Func&lt;CancellationToken,ValueTask&lt;T&gt;&gt;, Func&lt;T,CancellationToken,ValueTask&lt;T&gt;&gt;, bool)](DevFast.Net.Extensions.Etc.Lambdas.md#DevFast.Net.Extensions.Etc.Lambdas.Pipe_T_(thisSystem.Func_System.Threading.CancellationToken,System.Threading.Tasks.ValueTask_T__,System.Func_T,System.Threading.CancellationToken,System.Threading.Tasks.ValueTask_T__,bool) 'DevFast.Net.Extensions.Etc.Lambdas.Pipe<T>(this System.Func<System.Threading.CancellationToken,System.Threading.Tasks.ValueTask<T>>, System.Func<T,System.Threading.CancellationToken,System.Threading.Tasks.ValueTask<T>>, bool)')**
   - **[Pipe&lt;T&gt;(this Func&lt;CancellationToken,T&gt;, Func&lt;T,CancellationToken,T&gt;, bool)](DevFast.Net.Extensions.Etc.Lambdas.md#DevFast.Net.Extensions.Etc.Lambdas.Pipe_T_(thisSystem.Func_System.Threading.CancellationToken,T_,System.Func_T,System.Threading.CancellationToken,T_,bool) 'DevFast.Net.Extensions.Etc.Lambdas.Pipe<T>(this System.Func<System.Threading.CancellationToken,T>, System.Func<T,System.Threading.CancellationToken,T>, bool)')**
   - **[Pipe&lt;T&gt;(this Func&lt;T&gt;, Func&lt;T,T&gt;, bool)](DevFast.Net.Extensions.Etc.Lambdas.md#DevFast.Net.Extensions.Etc.Lambdas.Pipe_T_(thisSystem.Func_T_,System.Func_T,T_,bool) 'DevFast.Net.Extensions.Etc.Lambdas.Pipe<T>(this System.Func<T>, System.Func<T,T>, bool)')**
-  - **[Pipe&lt;TSource,TTandem&gt;(this Func&lt;CancellationToken,Task&lt;TSource&gt;&gt;, Func&lt;TSource,CancellationToken,Task&lt;TTandem&gt;&gt;)](DevFast.Net.Extensions.Etc.Lambdas.md#DevFast.Net.Extensions.Etc.Lambdas.Pipe_TSource,TTandem_(thisSystem.Func_System.Threading.CancellationToken,System.Threading.Tasks.Task_TSource__,System.Func_TSource,System.Threading.CancellationToken,System.Threading.Tasks.Task_TTandem__) 'DevFast.Net.Extensions.Etc.Lambdas.Pipe<TSource,TTandem>(this System.Func<System.Threading.CancellationToken,System.Threading.Tasks.Task<TSource>>, System.Func<TSource,System.Threading.CancellationToken,System.Threading.Tasks.Task<TTandem>>)')**
-  - **[Pipe&lt;TSource,TTandem&gt;(this Func&lt;CancellationToken,ValueTask&lt;TSource&gt;&gt;, Func&lt;TSource,CancellationToken,ValueTask&lt;TTandem&gt;&gt;)](DevFast.Net.Extensions.Etc.Lambdas.md#DevFast.Net.Extensions.Etc.Lambdas.Pipe_TSource,TTandem_(thisSystem.Func_System.Threading.CancellationToken,System.Threading.Tasks.ValueTask_TSource__,System.Func_TSource,System.Threading.CancellationToken,System.Threading.Tasks.ValueTask_TTandem__) 'DevFast.Net.Extensions.Etc.Lambdas.Pipe<TSource,TTandem>(this System.Func<System.Threading.CancellationToken,System.Threading.Tasks.ValueTask<TSource>>, System.Func<TSource,System.Threading.CancellationToken,System.Threading.Tasks.ValueTask<TTandem>>)')**
-  - **[Pipe&lt;TSource,TTandem&gt;(this Func&lt;CancellationToken,TSource&gt;, Func&lt;TSource,CancellationToken,TTandem&gt;)](DevFast.Net.Extensions.Etc.Lambdas.md#DevFast.Net.Extensions.Etc.Lambdas.Pipe_TSource,TTandem_(thisSystem.Func_System.Threading.CancellationToken,TSource_,System.Func_TSource,System.Threading.CancellationToken,TTandem_) 'DevFast.Net.Extensions.Etc.Lambdas.Pipe<TSource,TTandem>(this System.Func<System.Threading.CancellationToken,TSource>, System.Func<TSource,System.Threading.CancellationToken,TTandem>)')**
-  - **[Pipe&lt;TSource,TTandem&gt;(this Func&lt;TSource&gt;, Func&lt;TSource,TTandem&gt;)](DevFast.Net.Extensions.Etc.Lambdas.md#DevFast.Net.Extensions.Etc.Lambdas.Pipe_TSource,TTandem_(thisSystem.Func_TSource_,System.Func_TSource,TTandem_) 'DevFast.Net.Extensions.Etc.Lambdas.Pipe<TSource,TTandem>(this System.Func<TSource>, System.Func<TSource,TTandem>)')**
+  - **[Pipe&lt;TIn,TTandem&gt;(this Func&lt;CancellationToken,Task&lt;TIn&gt;&gt;, Func&lt;TIn,CancellationToken,Task&lt;TTandem&gt;&gt;)](DevFast.Net.Extensions.Etc.Lambdas.md#DevFast.Net.Extensions.Etc.Lambdas.Pipe_TIn,TTandem_(thisSystem.Func_System.Threading.CancellationToken,System.Threading.Tasks.Task_TIn__,System.Func_TIn,System.Threading.CancellationToken,System.Threading.Tasks.Task_TTandem__) 'DevFast.Net.Extensions.Etc.Lambdas.Pipe<TIn,TTandem>(this System.Func<System.Threading.CancellationToken,System.Threading.Tasks.Task<TIn>>, System.Func<TIn,System.Threading.CancellationToken,System.Threading.Tasks.Task<TTandem>>)')**
+  - **[Pipe&lt;TIn,TTandem&gt;(this Func&lt;CancellationToken,ValueTask&lt;TIn&gt;&gt;, Func&lt;TIn,CancellationToken,ValueTask&lt;TTandem&gt;&gt;)](DevFast.Net.Extensions.Etc.Lambdas.md#DevFast.Net.Extensions.Etc.Lambdas.Pipe_TIn,TTandem_(thisSystem.Func_System.Threading.CancellationToken,System.Threading.Tasks.ValueTask_TIn__,System.Func_TIn,System.Threading.CancellationToken,System.Threading.Tasks.ValueTask_TTandem__) 'DevFast.Net.Extensions.Etc.Lambdas.Pipe<TIn,TTandem>(this System.Func<System.Threading.CancellationToken,System.Threading.Tasks.ValueTask<TIn>>, System.Func<TIn,System.Threading.CancellationToken,System.Threading.Tasks.ValueTask<TTandem>>)')**
+  - **[Pipe&lt;TIn,TTandem&gt;(this Func&lt;CancellationToken,TIn&gt;, Func&lt;TIn,CancellationToken,TTandem&gt;)](DevFast.Net.Extensions.Etc.Lambdas.md#DevFast.Net.Extensions.Etc.Lambdas.Pipe_TIn,TTandem_(thisSystem.Func_System.Threading.CancellationToken,TIn_,System.Func_TIn,System.Threading.CancellationToken,TTandem_) 'DevFast.Net.Extensions.Etc.Lambdas.Pipe<TIn,TTandem>(this System.Func<System.Threading.CancellationToken,TIn>, System.Func<TIn,System.Threading.CancellationToken,TTandem>)')**
+  - **[Pipe&lt;TIn,TTandem&gt;(this Func&lt;TIn&gt;, Func&lt;TIn,TTandem&gt;)](DevFast.Net.Extensions.Etc.Lambdas.md#DevFast.Net.Extensions.Etc.Lambdas.Pipe_TIn,TTandem_(thisSystem.Func_TIn_,System.Func_TIn,TTandem_) 'DevFast.Net.Extensions.Etc.Lambdas.Pipe<TIn,TTandem>(this System.Func<TIn>, System.Func<TIn,TTandem>)')**
 
 ## Lambdas Class
 
@@ -44,179 +41,106 @@ public static class Lambdas
 Inheritance [System.Object](https://docs.microsoft.com/en-us/dotnet/api/System.Object 'System.Object') &#129106; Lambdas
 ### Methods
 
-<a name='DevFast.Net.Extensions.Etc.Lambdas.Apply_T_(thisSystem.Func_System.Threading.CancellationToken,T_,System.Func_System.Func_System.Threading.CancellationToken,T_,System.Func_System.Threading.CancellationToken,T__,bool)'></a>
+<a name='DevFast.Net.Extensions.Etc.Lambdas.Adapt_T_(thisT,System.Func_T,T_,bool)'></a>
 
-## Lambdas.Apply<T>(this Func<CancellationToken,T>, Func<Func<CancellationToken,T>,Func<CancellationToken,T>>, bool) Method
+## Lambdas.Adapt<T>(this T, Func<T,T>, bool) Method
 
-Conditionally applies [transformation](DevFast.Net.Extensions.Etc.Lambdas.md#DevFast.Net.Extensions.Etc.Lambdas.Apply_T_(thisSystem.Func_System.Threading.CancellationToken,T_,System.Func_System.Func_System.Threading.CancellationToken,T_,System.Func_System.Threading.CancellationToken,T__,bool).transformation 'DevFast.Net.Extensions.Etc.Lambdas.Apply<T>(this System.Func<System.Threading.CancellationToken,T>, System.Func<System.Func<System.Threading.CancellationToken,T>,System.Func<System.Threading.CancellationToken,T>>, bool).transformation') on the [sourceLambda](DevFast.Net.Extensions.Etc.Lambdas.md#DevFast.Net.Extensions.Etc.Lambdas.Apply_T_(thisSystem.Func_System.Threading.CancellationToken,T_,System.Func_System.Func_System.Threading.CancellationToken,T_,System.Func_System.Threading.CancellationToken,T__,bool).sourceLambda 'DevFast.Net.Extensions.Etc.Lambdas.Apply<T>(this System.Func<System.Threading.CancellationToken,T>, System.Func<System.Func<System.Threading.CancellationToken,T>,System.Func<System.Threading.CancellationToken,T>>, bool).sourceLambda').
-Returns transformed lambda (when [iff](DevFast.Net.Extensions.Etc.Lambdas.md#DevFast.Net.Extensions.Etc.Lambdas.Apply_T_(thisSystem.Func_System.Threading.CancellationToken,T_,System.Func_System.Func_System.Threading.CancellationToken,T_,System.Func_System.Threading.CancellationToken,T__,bool).iff 'DevFast.Net.Extensions.Etc.Lambdas.Apply<T>(this System.Func<System.Threading.CancellationToken,T>, System.Func<System.Func<System.Threading.CancellationToken,T>,System.Func<System.Threading.CancellationToken,T>>, bool).iff') is [true](https://docs.microsoft.com/en-us/dotnet/csharp/language-reference/builtin-types/bool 'https://docs.microsoft.com/en-us/dotnet/csharp/language-reference/builtin-types/bool'));
-otherwise, returns back the origin [sourceLambda](DevFast.Net.Extensions.Etc.Lambdas.md#DevFast.Net.Extensions.Etc.Lambdas.Apply_T_(thisSystem.Func_System.Threading.CancellationToken,T_,System.Func_System.Func_System.Threading.CancellationToken,T_,System.Func_System.Threading.CancellationToken,T__,bool).sourceLambda 'DevFast.Net.Extensions.Etc.Lambdas.Apply<T>(this System.Func<System.Threading.CancellationToken,T>, System.Func<System.Func<System.Threading.CancellationToken,T>,System.Func<System.Threading.CancellationToken,T>>, bool).sourceLambda').
+Applies [adapter](DevFast.Net.Extensions.Etc.Lambdas.md#DevFast.Net.Extensions.Etc.Lambdas.Adapt_T_(thisT,System.Func_T,T_,bool).adapter 'DevFast.Net.Extensions.Etc.Lambdas.Adapt<T>(this T, System.Func<T,T>, bool).adapter') on the [input](DevFast.Net.Extensions.Etc.Lambdas.md#DevFast.Net.Extensions.Etc.Lambdas.Adapt_T_(thisT,System.Func_T,T_,bool).input 'DevFast.Net.Extensions.Etc.Lambdas.Adapt<T>(this T, System.Func<T,T>, bool).input')
+when [iff](DevFast.Net.Extensions.Etc.Lambdas.md#DevFast.Net.Extensions.Etc.Lambdas.Adapt_T_(thisT,System.Func_T,T_,bool).iff 'DevFast.Net.Extensions.Etc.Lambdas.Adapt<T>(this T, System.Func<T,T>, bool).iff') is [true](https://docs.microsoft.com/en-us/dotnet/csharp/language-reference/builtin-types/bool 'https://docs.microsoft.com/en-us/dotnet/csharp/language-reference/builtin-types/bool') and returns the result;
+otherwise, returns back the original [input](DevFast.Net.Extensions.Etc.Lambdas.md#DevFast.Net.Extensions.Etc.Lambdas.Adapt_T_(thisT,System.Func_T,T_,bool).input 'DevFast.Net.Extensions.Etc.Lambdas.Adapt<T>(this T, System.Func<T,T>, bool).input').
 
 ```csharp
-public static System.Func<System.Threading.CancellationToken,T> Apply<T>(this System.Func<System.Threading.CancellationToken,T> sourceLambda, System.Func<System.Func<System.Threading.CancellationToken,T>,System.Func<System.Threading.CancellationToken,T>> transformation, bool iff);
+public static T Adapt<T>(this T input, System.Func<T,T> adapter, bool iff);
 ```
 #### Type parameters
 
-<a name='DevFast.Net.Extensions.Etc.Lambdas.Apply_T_(thisSystem.Func_System.Threading.CancellationToken,T_,System.Func_System.Func_System.Threading.CancellationToken,T_,System.Func_System.Threading.CancellationToken,T__,bool).T'></a>
+<a name='DevFast.Net.Extensions.Etc.Lambdas.Adapt_T_(thisT,System.Func_T,T_,bool).T'></a>
 
 `T`
 
-Lambda output type
+Adapter type
 #### Parameters
 
-<a name='DevFast.Net.Extensions.Etc.Lambdas.Apply_T_(thisSystem.Func_System.Threading.CancellationToken,T_,System.Func_System.Func_System.Threading.CancellationToken,T_,System.Func_System.Threading.CancellationToken,T__,bool).sourceLambda'></a>
+<a name='DevFast.Net.Extensions.Etc.Lambdas.Adapt_T_(thisT,System.Func_T,T_,bool).input'></a>
 
-`sourceLambda` [System.Func&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Func-2 'System.Func`2')[System.Threading.CancellationToken](https://docs.microsoft.com/en-us/dotnet/api/System.Threading.CancellationToken 'System.Threading.CancellationToken')[,](https://docs.microsoft.com/en-us/dotnet/api/System.Func-2 'System.Func`2')[T](DevFast.Net.Extensions.Etc.Lambdas.md#DevFast.Net.Extensions.Etc.Lambdas.Apply_T_(thisSystem.Func_System.Threading.CancellationToken,T_,System.Func_System.Func_System.Threading.CancellationToken,T_,System.Func_System.Threading.CancellationToken,T__,bool).T 'DevFast.Net.Extensions.Etc.Lambdas.Apply<T>(this System.Func<System.Threading.CancellationToken,T>, System.Func<System.Func<System.Threading.CancellationToken,T>,System.Func<System.Threading.CancellationToken,T>>, bool).T')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Func-2 'System.Func`2')
+`input` [T](DevFast.Net.Extensions.Etc.Lambdas.md#DevFast.Net.Extensions.Etc.Lambdas.Adapt_T_(thisT,System.Func_T,T_,bool).T 'DevFast.Net.Extensions.Etc.Lambdas.Adapt<T>(this T, System.Func<T,T>, bool).T')
 
-Source lambda on which the transformation is applied.
+Source on which the adapter is applied.
 
-<a name='DevFast.Net.Extensions.Etc.Lambdas.Apply_T_(thisSystem.Func_System.Threading.CancellationToken,T_,System.Func_System.Func_System.Threading.CancellationToken,T_,System.Func_System.Threading.CancellationToken,T__,bool).transformation'></a>
+<a name='DevFast.Net.Extensions.Etc.Lambdas.Adapt_T_(thisT,System.Func_T,T_,bool).adapter'></a>
 
-`transformation` [System.Func&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Func-2 'System.Func`2')[System.Func&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Func-2 'System.Func`2')[System.Threading.CancellationToken](https://docs.microsoft.com/en-us/dotnet/api/System.Threading.CancellationToken 'System.Threading.CancellationToken')[,](https://docs.microsoft.com/en-us/dotnet/api/System.Func-2 'System.Func`2')[T](DevFast.Net.Extensions.Etc.Lambdas.md#DevFast.Net.Extensions.Etc.Lambdas.Apply_T_(thisSystem.Func_System.Threading.CancellationToken,T_,System.Func_System.Func_System.Threading.CancellationToken,T_,System.Func_System.Threading.CancellationToken,T__,bool).T 'DevFast.Net.Extensions.Etc.Lambdas.Apply<T>(this System.Func<System.Threading.CancellationToken,T>, System.Func<System.Func<System.Threading.CancellationToken,T>,System.Func<System.Threading.CancellationToken,T>>, bool).T')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Func-2 'System.Func`2')[,](https://docs.microsoft.com/en-us/dotnet/api/System.Func-2 'System.Func`2')[System.Func&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Func-2 'System.Func`2')[System.Threading.CancellationToken](https://docs.microsoft.com/en-us/dotnet/api/System.Threading.CancellationToken 'System.Threading.CancellationToken')[,](https://docs.microsoft.com/en-us/dotnet/api/System.Func-2 'System.Func`2')[T](DevFast.Net.Extensions.Etc.Lambdas.md#DevFast.Net.Extensions.Etc.Lambdas.Apply_T_(thisSystem.Func_System.Threading.CancellationToken,T_,System.Func_System.Func_System.Threading.CancellationToken,T_,System.Func_System.Threading.CancellationToken,T__,bool).T 'DevFast.Net.Extensions.Etc.Lambdas.Apply<T>(this System.Func<System.Threading.CancellationToken,T>, System.Func<System.Func<System.Threading.CancellationToken,T>,System.Func<System.Threading.CancellationToken,T>>, bool).T')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Func-2 'System.Func`2')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Func-2 'System.Func`2')
+`adapter` [System.Func&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Func-2 'System.Func`2')[T](DevFast.Net.Extensions.Etc.Lambdas.md#DevFast.Net.Extensions.Etc.Lambdas.Adapt_T_(thisT,System.Func_T,T_,bool).T 'DevFast.Net.Extensions.Etc.Lambdas.Adapt<T>(this T, System.Func<T,T>, bool).T')[,](https://docs.microsoft.com/en-us/dotnet/api/System.Func-2 'System.Func`2')[T](DevFast.Net.Extensions.Etc.Lambdas.md#DevFast.Net.Extensions.Etc.Lambdas.Adapt_T_(thisT,System.Func_T,T_,bool).T 'DevFast.Net.Extensions.Etc.Lambdas.Adapt<T>(this T, System.Func<T,T>, bool).T')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Func-2 'System.Func`2')
 
-Transformation lambda
+Adapter lambda
 
-<a name='DevFast.Net.Extensions.Etc.Lambdas.Apply_T_(thisSystem.Func_System.Threading.CancellationToken,T_,System.Func_System.Func_System.Threading.CancellationToken,T_,System.Func_System.Threading.CancellationToken,T__,bool).iff'></a>
+<a name='DevFast.Net.Extensions.Etc.Lambdas.Adapt_T_(thisT,System.Func_T,T_,bool).iff'></a>
 
 `iff` [System.Boolean](https://docs.microsoft.com/en-us/dotnet/api/System.Boolean 'System.Boolean')
 
-Conditional flag dictating where the transformation should be applied or not
+Conditional flag dictating where the adapter should be applied or not
 
 #### Returns
-[System.Func&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Func-2 'System.Func`2')[System.Threading.CancellationToken](https://docs.microsoft.com/en-us/dotnet/api/System.Threading.CancellationToken 'System.Threading.CancellationToken')[,](https://docs.microsoft.com/en-us/dotnet/api/System.Func-2 'System.Func`2')[T](DevFast.Net.Extensions.Etc.Lambdas.md#DevFast.Net.Extensions.Etc.Lambdas.Apply_T_(thisSystem.Func_System.Threading.CancellationToken,T_,System.Func_System.Func_System.Threading.CancellationToken,T_,System.Func_System.Threading.CancellationToken,T__,bool).T 'DevFast.Net.Extensions.Etc.Lambdas.Apply<T>(this System.Func<System.Threading.CancellationToken,T>, System.Func<System.Func<System.Threading.CancellationToken,T>,System.Func<System.Threading.CancellationToken,T>>, bool).T')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Func-2 'System.Func`2')
+[T](DevFast.Net.Extensions.Etc.Lambdas.md#DevFast.Net.Extensions.Etc.Lambdas.Adapt_T_(thisT,System.Func_T,T_,bool).T 'DevFast.Net.Extensions.Etc.Lambdas.Adapt<T>(this T, System.Func<T,T>, bool).T')
 
-<a name='DevFast.Net.Extensions.Etc.Lambdas.Apply_T_(thisSystem.Func_T_,System.Func_System.Func_T_,System.Func_T__,bool)'></a>
+<a name='DevFast.Net.Extensions.Etc.Lambdas.Adapt_TIn,TOut_(thisTIn,System.Func_TIn,TOut_)'></a>
 
-## Lambdas.Apply<T>(this Func<T>, Func<Func<T>,Func<T>>, bool) Method
+## Lambdas.Adapt<TIn,TOut>(this TIn, Func<TIn,TOut>) Method
 
-Conditionally applies [transformation](DevFast.Net.Extensions.Etc.Lambdas.md#DevFast.Net.Extensions.Etc.Lambdas.Apply_T_(thisSystem.Func_T_,System.Func_System.Func_T_,System.Func_T__,bool).transformation 'DevFast.Net.Extensions.Etc.Lambdas.Apply<T>(this System.Func<T>, System.Func<System.Func<T>,System.Func<T>>, bool).transformation') on the [sourceLambda](DevFast.Net.Extensions.Etc.Lambdas.md#DevFast.Net.Extensions.Etc.Lambdas.Apply_T_(thisSystem.Func_T_,System.Func_System.Func_T_,System.Func_T__,bool).sourceLambda 'DevFast.Net.Extensions.Etc.Lambdas.Apply<T>(this System.Func<T>, System.Func<System.Func<T>,System.Func<T>>, bool).sourceLambda').
-Returns transformed lambda (when [iff](DevFast.Net.Extensions.Etc.Lambdas.md#DevFast.Net.Extensions.Etc.Lambdas.Apply_T_(thisSystem.Func_T_,System.Func_System.Func_T_,System.Func_T__,bool).iff 'DevFast.Net.Extensions.Etc.Lambdas.Apply<T>(this System.Func<T>, System.Func<System.Func<T>,System.Func<T>>, bool).iff') is [true](https://docs.microsoft.com/en-us/dotnet/csharp/language-reference/builtin-types/bool 'https://docs.microsoft.com/en-us/dotnet/csharp/language-reference/builtin-types/bool'));
-otherwise, returns back the origin [sourceLambda](DevFast.Net.Extensions.Etc.Lambdas.md#DevFast.Net.Extensions.Etc.Lambdas.Apply_T_(thisSystem.Func_T_,System.Func_System.Func_T_,System.Func_T__,bool).sourceLambda 'DevFast.Net.Extensions.Etc.Lambdas.Apply<T>(this System.Func<T>, System.Func<System.Func<T>,System.Func<T>>, bool).sourceLambda').
+Applies [adapter](DevFast.Net.Extensions.Etc.Lambdas.md#DevFast.Net.Extensions.Etc.Lambdas.Adapt_TIn,TOut_(thisTIn,System.Func_TIn,TOut_).adapter 'DevFast.Net.Extensions.Etc.Lambdas.Adapt<TIn,TOut>(this TIn, System.Func<TIn,TOut>).adapter') on the [input](DevFast.Net.Extensions.Etc.Lambdas.md#DevFast.Net.Extensions.Etc.Lambdas.Adapt_TIn,TOut_(thisTIn,System.Func_TIn,TOut_).input 'DevFast.Net.Extensions.Etc.Lambdas.Adapt<TIn,TOut>(this TIn, System.Func<TIn,TOut>).input')
+and returns the results.
 
 ```csharp
-public static System.Func<T> Apply<T>(this System.Func<T> sourceLambda, System.Func<System.Func<T>,System.Func<T>> transformation, bool iff);
+public static TOut Adapt<TIn,TOut>(this TIn input, System.Func<TIn,TOut> adapter);
 ```
 #### Type parameters
 
-<a name='DevFast.Net.Extensions.Etc.Lambdas.Apply_T_(thisSystem.Func_T_,System.Func_System.Func_T_,System.Func_T__,bool).T'></a>
+<a name='DevFast.Net.Extensions.Etc.Lambdas.Adapt_TIn,TOut_(thisTIn,System.Func_TIn,TOut_).TIn'></a>
 
-`T`
+`TIn`
 
-Lambda output type
+Input type
+
+<a name='DevFast.Net.Extensions.Etc.Lambdas.Adapt_TIn,TOut_(thisTIn,System.Func_TIn,TOut_).TOut'></a>
+
+`TOut`
+
+Output type
 #### Parameters
 
-<a name='DevFast.Net.Extensions.Etc.Lambdas.Apply_T_(thisSystem.Func_T_,System.Func_System.Func_T_,System.Func_T__,bool).sourceLambda'></a>
+<a name='DevFast.Net.Extensions.Etc.Lambdas.Adapt_TIn,TOut_(thisTIn,System.Func_TIn,TOut_).input'></a>
 
-`sourceLambda` [System.Func&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Func-1 'System.Func`1')[T](DevFast.Net.Extensions.Etc.Lambdas.md#DevFast.Net.Extensions.Etc.Lambdas.Apply_T_(thisSystem.Func_T_,System.Func_System.Func_T_,System.Func_T__,bool).T 'DevFast.Net.Extensions.Etc.Lambdas.Apply<T>(this System.Func<T>, System.Func<System.Func<T>,System.Func<T>>, bool).T')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Func-1 'System.Func`1')
+`input` [TIn](DevFast.Net.Extensions.Etc.Lambdas.md#DevFast.Net.Extensions.Etc.Lambdas.Adapt_TIn,TOut_(thisTIn,System.Func_TIn,TOut_).TIn 'DevFast.Net.Extensions.Etc.Lambdas.Adapt<TIn,TOut>(this TIn, System.Func<TIn,TOut>).TIn')
 
-Source lambda on which the transformation is applied.
+Source on which the adapter is applied.
 
-<a name='DevFast.Net.Extensions.Etc.Lambdas.Apply_T_(thisSystem.Func_T_,System.Func_System.Func_T_,System.Func_T__,bool).transformation'></a>
+<a name='DevFast.Net.Extensions.Etc.Lambdas.Adapt_TIn,TOut_(thisTIn,System.Func_TIn,TOut_).adapter'></a>
 
-`transformation` [System.Func&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Func-2 'System.Func`2')[System.Func&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Func-1 'System.Func`1')[T](DevFast.Net.Extensions.Etc.Lambdas.md#DevFast.Net.Extensions.Etc.Lambdas.Apply_T_(thisSystem.Func_T_,System.Func_System.Func_T_,System.Func_T__,bool).T 'DevFast.Net.Extensions.Etc.Lambdas.Apply<T>(this System.Func<T>, System.Func<System.Func<T>,System.Func<T>>, bool).T')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Func-1 'System.Func`1')[,](https://docs.microsoft.com/en-us/dotnet/api/System.Func-2 'System.Func`2')[System.Func&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Func-1 'System.Func`1')[T](DevFast.Net.Extensions.Etc.Lambdas.md#DevFast.Net.Extensions.Etc.Lambdas.Apply_T_(thisSystem.Func_T_,System.Func_System.Func_T_,System.Func_T__,bool).T 'DevFast.Net.Extensions.Etc.Lambdas.Apply<T>(this System.Func<T>, System.Func<System.Func<T>,System.Func<T>>, bool).T')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Func-1 'System.Func`1')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Func-2 'System.Func`2')
+`adapter` [System.Func&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Func-2 'System.Func`2')[TIn](DevFast.Net.Extensions.Etc.Lambdas.md#DevFast.Net.Extensions.Etc.Lambdas.Adapt_TIn,TOut_(thisTIn,System.Func_TIn,TOut_).TIn 'DevFast.Net.Extensions.Etc.Lambdas.Adapt<TIn,TOut>(this TIn, System.Func<TIn,TOut>).TIn')[,](https://docs.microsoft.com/en-us/dotnet/api/System.Func-2 'System.Func`2')[TOut](DevFast.Net.Extensions.Etc.Lambdas.md#DevFast.Net.Extensions.Etc.Lambdas.Adapt_TIn,TOut_(thisTIn,System.Func_TIn,TOut_).TOut 'DevFast.Net.Extensions.Etc.Lambdas.Adapt<TIn,TOut>(this TIn, System.Func<TIn,TOut>).TOut')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Func-2 'System.Func`2')
 
-Transformation lambda
-
-<a name='DevFast.Net.Extensions.Etc.Lambdas.Apply_T_(thisSystem.Func_T_,System.Func_System.Func_T_,System.Func_T__,bool).iff'></a>
-
-`iff` [System.Boolean](https://docs.microsoft.com/en-us/dotnet/api/System.Boolean 'System.Boolean')
-
-Conditional flag dictating where the transformation should be applied or not
+Adapter lambda
 
 #### Returns
-[System.Func&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Func-1 'System.Func`1')[T](DevFast.Net.Extensions.Etc.Lambdas.md#DevFast.Net.Extensions.Etc.Lambdas.Apply_T_(thisSystem.Func_T_,System.Func_System.Func_T_,System.Func_T__,bool).T 'DevFast.Net.Extensions.Etc.Lambdas.Apply<T>(this System.Func<T>, System.Func<System.Func<T>,System.Func<T>>, bool).T')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Func-1 'System.Func`1')
-
-<a name='DevFast.Net.Extensions.Etc.Lambdas.Apply_TSource,TTransformed_(thisSystem.Func_System.Threading.CancellationToken,TSource_,System.Func_System.Func_System.Threading.CancellationToken,TSource_,System.Func_System.Threading.CancellationToken,TTransformed__)'></a>
-
-## Lambdas.Apply<TSource,TTransformed>(this Func<CancellationToken,TSource>, Func<Func<CancellationToken,TSource>,Func<CancellationToken,TTransformed>>) Method
-
-Applies [transformation](DevFast.Net.Extensions.Etc.Lambdas.md#DevFast.Net.Extensions.Etc.Lambdas.Apply_TSource,TTransformed_(thisSystem.Func_System.Threading.CancellationToken,TSource_,System.Func_System.Func_System.Threading.CancellationToken,TSource_,System.Func_System.Threading.CancellationToken,TTransformed__).transformation 'DevFast.Net.Extensions.Etc.Lambdas.Apply<TSource,TTransformed>(this System.Func<System.Threading.CancellationToken,TSource>, System.Func<System.Func<System.Threading.CancellationToken,TSource>,System.Func<System.Threading.CancellationToken,TTransformed>>).transformation') on the [sourceLambda](DevFast.Net.Extensions.Etc.Lambdas.md#DevFast.Net.Extensions.Etc.Lambdas.Apply_TSource,TTransformed_(thisSystem.Func_System.Threading.CancellationToken,TSource_,System.Func_System.Func_System.Threading.CancellationToken,TSource_,System.Func_System.Threading.CancellationToken,TTransformed__).sourceLambda 'DevFast.Net.Extensions.Etc.Lambdas.Apply<TSource,TTransformed>(this System.Func<System.Threading.CancellationToken,TSource>, System.Func<System.Func<System.Threading.CancellationToken,TSource>,System.Func<System.Threading.CancellationToken,TTransformed>>).sourceLambda').
-
-```csharp
-public static System.Func<System.Threading.CancellationToken,TTransformed> Apply<TSource,TTransformed>(this System.Func<System.Threading.CancellationToken,TSource> sourceLambda, System.Func<System.Func<System.Threading.CancellationToken,TSource>,System.Func<System.Threading.CancellationToken,TTransformed>> transformation);
-```
-#### Type parameters
-
-<a name='DevFast.Net.Extensions.Etc.Lambdas.Apply_TSource,TTransformed_(thisSystem.Func_System.Threading.CancellationToken,TSource_,System.Func_System.Func_System.Threading.CancellationToken,TSource_,System.Func_System.Threading.CancellationToken,TTransformed__).TSource'></a>
-
-`TSource`
-
-Source lambda output type
-
-<a name='DevFast.Net.Extensions.Etc.Lambdas.Apply_TSource,TTransformed_(thisSystem.Func_System.Threading.CancellationToken,TSource_,System.Func_System.Func_System.Threading.CancellationToken,TSource_,System.Func_System.Threading.CancellationToken,TTransformed__).TTransformed'></a>
-
-`TTransformed`
-
-Transformed lambda output type
-#### Parameters
-
-<a name='DevFast.Net.Extensions.Etc.Lambdas.Apply_TSource,TTransformed_(thisSystem.Func_System.Threading.CancellationToken,TSource_,System.Func_System.Func_System.Threading.CancellationToken,TSource_,System.Func_System.Threading.CancellationToken,TTransformed__).sourceLambda'></a>
-
-`sourceLambda` [System.Func&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Func-2 'System.Func`2')[System.Threading.CancellationToken](https://docs.microsoft.com/en-us/dotnet/api/System.Threading.CancellationToken 'System.Threading.CancellationToken')[,](https://docs.microsoft.com/en-us/dotnet/api/System.Func-2 'System.Func`2')[TSource](DevFast.Net.Extensions.Etc.Lambdas.md#DevFast.Net.Extensions.Etc.Lambdas.Apply_TSource,TTransformed_(thisSystem.Func_System.Threading.CancellationToken,TSource_,System.Func_System.Func_System.Threading.CancellationToken,TSource_,System.Func_System.Threading.CancellationToken,TTransformed__).TSource 'DevFast.Net.Extensions.Etc.Lambdas.Apply<TSource,TTransformed>(this System.Func<System.Threading.CancellationToken,TSource>, System.Func<System.Func<System.Threading.CancellationToken,TSource>,System.Func<System.Threading.CancellationToken,TTransformed>>).TSource')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Func-2 'System.Func`2')
-
-Source lambda on which the transformation is applied.
-
-<a name='DevFast.Net.Extensions.Etc.Lambdas.Apply_TSource,TTransformed_(thisSystem.Func_System.Threading.CancellationToken,TSource_,System.Func_System.Func_System.Threading.CancellationToken,TSource_,System.Func_System.Threading.CancellationToken,TTransformed__).transformation'></a>
-
-`transformation` [System.Func&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Func-2 'System.Func`2')[System.Func&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Func-2 'System.Func`2')[System.Threading.CancellationToken](https://docs.microsoft.com/en-us/dotnet/api/System.Threading.CancellationToken 'System.Threading.CancellationToken')[,](https://docs.microsoft.com/en-us/dotnet/api/System.Func-2 'System.Func`2')[TSource](DevFast.Net.Extensions.Etc.Lambdas.md#DevFast.Net.Extensions.Etc.Lambdas.Apply_TSource,TTransformed_(thisSystem.Func_System.Threading.CancellationToken,TSource_,System.Func_System.Func_System.Threading.CancellationToken,TSource_,System.Func_System.Threading.CancellationToken,TTransformed__).TSource 'DevFast.Net.Extensions.Etc.Lambdas.Apply<TSource,TTransformed>(this System.Func<System.Threading.CancellationToken,TSource>, System.Func<System.Func<System.Threading.CancellationToken,TSource>,System.Func<System.Threading.CancellationToken,TTransformed>>).TSource')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Func-2 'System.Func`2')[,](https://docs.microsoft.com/en-us/dotnet/api/System.Func-2 'System.Func`2')[System.Func&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Func-2 'System.Func`2')[System.Threading.CancellationToken](https://docs.microsoft.com/en-us/dotnet/api/System.Threading.CancellationToken 'System.Threading.CancellationToken')[,](https://docs.microsoft.com/en-us/dotnet/api/System.Func-2 'System.Func`2')[TTransformed](DevFast.Net.Extensions.Etc.Lambdas.md#DevFast.Net.Extensions.Etc.Lambdas.Apply_TSource,TTransformed_(thisSystem.Func_System.Threading.CancellationToken,TSource_,System.Func_System.Func_System.Threading.CancellationToken,TSource_,System.Func_System.Threading.CancellationToken,TTransformed__).TTransformed 'DevFast.Net.Extensions.Etc.Lambdas.Apply<TSource,TTransformed>(this System.Func<System.Threading.CancellationToken,TSource>, System.Func<System.Func<System.Threading.CancellationToken,TSource>,System.Func<System.Threading.CancellationToken,TTransformed>>).TTransformed')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Func-2 'System.Func`2')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Func-2 'System.Func`2')
-
-Transformation lambda
-
-#### Returns
-[System.Func&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Func-2 'System.Func`2')[System.Threading.CancellationToken](https://docs.microsoft.com/en-us/dotnet/api/System.Threading.CancellationToken 'System.Threading.CancellationToken')[,](https://docs.microsoft.com/en-us/dotnet/api/System.Func-2 'System.Func`2')[TTransformed](DevFast.Net.Extensions.Etc.Lambdas.md#DevFast.Net.Extensions.Etc.Lambdas.Apply_TSource,TTransformed_(thisSystem.Func_System.Threading.CancellationToken,TSource_,System.Func_System.Func_System.Threading.CancellationToken,TSource_,System.Func_System.Threading.CancellationToken,TTransformed__).TTransformed 'DevFast.Net.Extensions.Etc.Lambdas.Apply<TSource,TTransformed>(this System.Func<System.Threading.CancellationToken,TSource>, System.Func<System.Func<System.Threading.CancellationToken,TSource>,System.Func<System.Threading.CancellationToken,TTransformed>>).TTransformed')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Func-2 'System.Func`2')
-
-<a name='DevFast.Net.Extensions.Etc.Lambdas.Apply_TSource,TTransformed_(thisSystem.Func_TSource_,System.Func_System.Func_TSource_,System.Func_TTransformed__)'></a>
-
-## Lambdas.Apply<TSource,TTransformed>(this Func<TSource>, Func<Func<TSource>,Func<TTransformed>>) Method
-
-Applies [transformation](DevFast.Net.Extensions.Etc.Lambdas.md#DevFast.Net.Extensions.Etc.Lambdas.Apply_TSource,TTransformed_(thisSystem.Func_TSource_,System.Func_System.Func_TSource_,System.Func_TTransformed__).transformation 'DevFast.Net.Extensions.Etc.Lambdas.Apply<TSource,TTransformed>(this System.Func<TSource>, System.Func<System.Func<TSource>,System.Func<TTransformed>>).transformation') on the [sourceLambda](DevFast.Net.Extensions.Etc.Lambdas.md#DevFast.Net.Extensions.Etc.Lambdas.Apply_TSource,TTransformed_(thisSystem.Func_TSource_,System.Func_System.Func_TSource_,System.Func_TTransformed__).sourceLambda 'DevFast.Net.Extensions.Etc.Lambdas.Apply<TSource,TTransformed>(this System.Func<TSource>, System.Func<System.Func<TSource>,System.Func<TTransformed>>).sourceLambda').
-
-```csharp
-public static System.Func<TTransformed> Apply<TSource,TTransformed>(this System.Func<TSource> sourceLambda, System.Func<System.Func<TSource>,System.Func<TTransformed>> transformation);
-```
-#### Type parameters
-
-<a name='DevFast.Net.Extensions.Etc.Lambdas.Apply_TSource,TTransformed_(thisSystem.Func_TSource_,System.Func_System.Func_TSource_,System.Func_TTransformed__).TSource'></a>
-
-`TSource`
-
-Source lambda output type
-
-<a name='DevFast.Net.Extensions.Etc.Lambdas.Apply_TSource,TTransformed_(thisSystem.Func_TSource_,System.Func_System.Func_TSource_,System.Func_TTransformed__).TTransformed'></a>
-
-`TTransformed`
-
-Transformed lambda output type
-#### Parameters
-
-<a name='DevFast.Net.Extensions.Etc.Lambdas.Apply_TSource,TTransformed_(thisSystem.Func_TSource_,System.Func_System.Func_TSource_,System.Func_TTransformed__).sourceLambda'></a>
-
-`sourceLambda` [System.Func&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Func-1 'System.Func`1')[TSource](DevFast.Net.Extensions.Etc.Lambdas.md#DevFast.Net.Extensions.Etc.Lambdas.Apply_TSource,TTransformed_(thisSystem.Func_TSource_,System.Func_System.Func_TSource_,System.Func_TTransformed__).TSource 'DevFast.Net.Extensions.Etc.Lambdas.Apply<TSource,TTransformed>(this System.Func<TSource>, System.Func<System.Func<TSource>,System.Func<TTransformed>>).TSource')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Func-1 'System.Func`1')
-
-Source lambda on which the transformation is applied.
-
-<a name='DevFast.Net.Extensions.Etc.Lambdas.Apply_TSource,TTransformed_(thisSystem.Func_TSource_,System.Func_System.Func_TSource_,System.Func_TTransformed__).transformation'></a>
-
-`transformation` [System.Func&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Func-2 'System.Func`2')[System.Func&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Func-1 'System.Func`1')[TSource](DevFast.Net.Extensions.Etc.Lambdas.md#DevFast.Net.Extensions.Etc.Lambdas.Apply_TSource,TTransformed_(thisSystem.Func_TSource_,System.Func_System.Func_TSource_,System.Func_TTransformed__).TSource 'DevFast.Net.Extensions.Etc.Lambdas.Apply<TSource,TTransformed>(this System.Func<TSource>, System.Func<System.Func<TSource>,System.Func<TTransformed>>).TSource')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Func-1 'System.Func`1')[,](https://docs.microsoft.com/en-us/dotnet/api/System.Func-2 'System.Func`2')[System.Func&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Func-1 'System.Func`1')[TTransformed](DevFast.Net.Extensions.Etc.Lambdas.md#DevFast.Net.Extensions.Etc.Lambdas.Apply_TSource,TTransformed_(thisSystem.Func_TSource_,System.Func_System.Func_TSource_,System.Func_TTransformed__).TTransformed 'DevFast.Net.Extensions.Etc.Lambdas.Apply<TSource,TTransformed>(this System.Func<TSource>, System.Func<System.Func<TSource>,System.Func<TTransformed>>).TTransformed')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Func-1 'System.Func`1')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Func-2 'System.Func`2')
-
-Transformation lambda
-
-#### Returns
-[System.Func&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Func-1 'System.Func`1')[TTransformed](DevFast.Net.Extensions.Etc.Lambdas.md#DevFast.Net.Extensions.Etc.Lambdas.Apply_TSource,TTransformed_(thisSystem.Func_TSource_,System.Func_System.Func_TSource_,System.Func_TTransformed__).TTransformed 'DevFast.Net.Extensions.Etc.Lambdas.Apply<TSource,TTransformed>(this System.Func<TSource>, System.Func<System.Func<TSource>,System.Func<TTransformed>>).TTransformed')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Func-1 'System.Func`1')
+[TOut](DevFast.Net.Extensions.Etc.Lambdas.md#DevFast.Net.Extensions.Etc.Lambdas.Adapt_TIn,TOut_(thisTIn,System.Func_TIn,TOut_).TOut 'DevFast.Net.Extensions.Etc.Lambdas.Adapt<TIn,TOut>(this TIn, System.Func<TIn,TOut>).TOut')
 
 <a name='DevFast.Net.Extensions.Etc.Lambdas.AsAsyncLambda_T_(thisSystem.Threading.Tasks.Task_T_)'></a>
 
 ## Lambdas.AsAsyncLambda<T>(this Task<T>) Method
 
-Creates a [System.Func&lt;&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Func-1 'System.Func`1') based lambda. Such a lambda upon execution
-will first start the [task](DevFast.Net.Extensions.Etc.Lambdas.md#DevFast.Net.Extensions.Etc.Lambdas.AsAsyncLambda_T_(thisSystem.Threading.Tasks.Task_T_).task 'DevFast.Net.Extensions.Etc.Lambdas.AsAsyncLambda<T>(this System.Threading.Tasks.Task<T>).task') (if not already running),
-and, then asynchronously execute the task and return its value.
+Creates a [System.Func&lt;&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Func-2 'System.Func`2') based lambda.
+Such lambda would throw [System.OperationCanceledException](https://docs.microsoft.com/en-us/dotnet/api/System.OperationCanceledException 'System.OperationCanceledException') when
+supplied [System.Threading.CancellationToken.IsCancellationRequested](https://docs.microsoft.com/en-us/dotnet/api/System.Threading.CancellationToken.IsCancellationRequested 'System.Threading.CancellationToken.IsCancellationRequested') evaluates to
+[true](https://docs.microsoft.com/en-us/dotnet/csharp/language-reference/builtin-types/bool 'https://docs.microsoft.com/en-us/dotnet/csharp/language-reference/builtin-types/bool'); otherwise, it starts the task (if not already running) and
+returns the value of the [task](DevFast.Net.Extensions.Etc.Lambdas.md#DevFast.Net.Extensions.Etc.Lambdas.AsAsyncLambda_T_(thisSystem.Threading.Tasks.Task_T_).task 'DevFast.Net.Extensions.Etc.Lambdas.AsAsyncLambda<T>(this System.Threading.Tasks.Task<T>).task').
 
-Normally, once should just create a Task without actually running it,
-so that the actual run takes place upon the lambda execution.
+NOTE: [System.Threading.CancellationToken](https://docs.microsoft.com/en-us/dotnet/api/System.Threading.CancellationToken 'System.Threading.CancellationToken') is checked once before awaiting on the [task](DevFast.Net.Extensions.Etc.Lambdas.md#DevFast.Net.Extensions.Etc.Lambdas.AsAsyncLambda_T_(thisSystem.Threading.Tasks.Task_T_).task 'DevFast.Net.Extensions.Etc.Lambdas.AsAsyncLambda<T>(this System.Threading.Tasks.Task<T>).task').
+If the task itself can be canceled, one should find a way to pass
+the [System.Threading.CancellationToken](https://docs.microsoft.com/en-us/dotnet/api/System.Threading.CancellationToken 'System.Threading.CancellationToken') to such [task](DevFast.Net.Extensions.Etc.Lambdas.md#DevFast.Net.Extensions.Etc.Lambdas.AsAsyncLambda_T_(thisSystem.Threading.Tasks.Task_T_).task 'DevFast.Net.Extensions.Etc.Lambdas.AsAsyncLambda<T>(this System.Threading.Tasks.Task<T>).task').
+Purpose of such method is to lazily start the [task](DevFast.Net.Extensions.Etc.Lambdas.md#DevFast.Net.Extensions.Etc.Lambdas.AsAsyncLambda_T_(thisSystem.Threading.Tasks.Task_T_).task 'DevFast.Net.Extensions.Etc.Lambdas.AsAsyncLambda<T>(this System.Threading.Tasks.Task<T>).task'),
+thus, one should avoid (though possible) passing already running [task](DevFast.Net.Extensions.Etc.Lambdas.md#DevFast.Net.Extensions.Etc.Lambdas.AsAsyncLambda_T_(thisSystem.Threading.Tasks.Task_T_).task 'DevFast.Net.Extensions.Etc.Lambdas.AsAsyncLambda<T>(this System.Threading.Tasks.Task<T>).task')
+created using [System.Threading.Tasks.TaskFactory](https://docs.microsoft.com/en-us/dotnet/api/System.Threading.Tasks.TaskFactory 'System.Threading.Tasks.TaskFactory') or by other means.
 
 ```csharp
-public static System.Func<System.Threading.Tasks.Task<T>> AsAsyncLambda<T>(this System.Threading.Tasks.Task<T> task);
+public static System.Func<System.Threading.CancellationToken,System.Threading.Tasks.Task<T>> AsAsyncLambda<T>(this System.Threading.Tasks.Task<T> task);
 ```
 #### Type parameters
 
@@ -224,31 +148,33 @@ public static System.Func<System.Threading.Tasks.Task<T>> AsAsyncLambda<T>(this 
 
 `T`
 
-Type of task
+Type of value
 #### Parameters
 
 <a name='DevFast.Net.Extensions.Etc.Lambdas.AsAsyncLambda_T_(thisSystem.Threading.Tasks.Task_T_).task'></a>
 
 `task` [System.Threading.Tasks.Task&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Threading.Tasks.Task-1 'System.Threading.Tasks.Task`1')[T](DevFast.Net.Extensions.Etc.Lambdas.md#DevFast.Net.Extensions.Etc.Lambdas.AsAsyncLambda_T_(thisSystem.Threading.Tasks.Task_T_).T 'DevFast.Net.Extensions.Etc.Lambdas.AsAsyncLambda<T>(this System.Threading.Tasks.Task<T>).T')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Threading.Tasks.Task-1 'System.Threading.Tasks.Task`1')
 
-Task to await when lambda is executed
+Value to return when lambda is executed
 
 #### Returns
-[System.Func&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Func-1 'System.Func`1')[System.Threading.Tasks.Task&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Threading.Tasks.Task-1 'System.Threading.Tasks.Task`1')[T](DevFast.Net.Extensions.Etc.Lambdas.md#DevFast.Net.Extensions.Etc.Lambdas.AsAsyncLambda_T_(thisSystem.Threading.Tasks.Task_T_).T 'DevFast.Net.Extensions.Etc.Lambdas.AsAsyncLambda<T>(this System.Threading.Tasks.Task<T>).T')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Threading.Tasks.Task-1 'System.Threading.Tasks.Task`1')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Func-1 'System.Func`1')
+[System.Func&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Func-2 'System.Func`2')[System.Threading.CancellationToken](https://docs.microsoft.com/en-us/dotnet/api/System.Threading.CancellationToken 'System.Threading.CancellationToken')[,](https://docs.microsoft.com/en-us/dotnet/api/System.Func-2 'System.Func`2')[System.Threading.Tasks.Task&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Threading.Tasks.Task-1 'System.Threading.Tasks.Task`1')[T](DevFast.Net.Extensions.Etc.Lambdas.md#DevFast.Net.Extensions.Etc.Lambdas.AsAsyncLambda_T_(thisSystem.Threading.Tasks.Task_T_).T 'DevFast.Net.Extensions.Etc.Lambdas.AsAsyncLambda<T>(this System.Threading.Tasks.Task<T>).T')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Threading.Tasks.Task-1 'System.Threading.Tasks.Task`1')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Func-2 'System.Func`2')
 
 <a name='DevFast.Net.Extensions.Etc.Lambdas.AsAsyncLambda_T_(thisSystem.Threading.Tasks.ValueTask_T_)'></a>
 
 ## Lambdas.AsAsyncLambda<T>(this ValueTask<T>) Method
 
-Creates a [System.Func&lt;&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Func-1 'System.Func`1') based lambda. Such a lambda upon execution
-will first start the [valueTask](DevFast.Net.Extensions.Etc.Lambdas.md#DevFast.Net.Extensions.Etc.Lambdas.AsAsyncLambda_T_(thisSystem.Threading.Tasks.ValueTask_T_).valueTask 'DevFast.Net.Extensions.Etc.Lambdas.AsAsyncLambda<T>(this System.Threading.Tasks.ValueTask<T>).valueTask') (if not already running),
-and, then asynchronously execute the task and return its value.
+Creates a [System.Func&lt;&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Func-2 'System.Func`2') based lambda.
+Such lambda would throw [System.OperationCanceledException](https://docs.microsoft.com/en-us/dotnet/api/System.OperationCanceledException 'System.OperationCanceledException') when
+supplied [System.Threading.CancellationToken.IsCancellationRequested](https://docs.microsoft.com/en-us/dotnet/api/System.Threading.CancellationToken.IsCancellationRequested 'System.Threading.CancellationToken.IsCancellationRequested') evaluates to
+[true](https://docs.microsoft.com/en-us/dotnet/csharp/language-reference/builtin-types/bool 'https://docs.microsoft.com/en-us/dotnet/csharp/language-reference/builtin-types/bool'); otherwise, it returns the value of the [valueTask](DevFast.Net.Extensions.Etc.Lambdas.md#DevFast.Net.Extensions.Etc.Lambdas.AsAsyncLambda_T_(thisSystem.Threading.Tasks.ValueTask_T_).valueTask 'DevFast.Net.Extensions.Etc.Lambdas.AsAsyncLambda<T>(this System.Threading.Tasks.ValueTask<T>).valueTask').
 
-Normally, once should just create a Task without actually running it,
-so that the actual run takes place upon the lambda execution.
+NOTE: [System.Threading.CancellationToken](https://docs.microsoft.com/en-us/dotnet/api/System.Threading.CancellationToken 'System.Threading.CancellationToken') is checked once before awaiting on the [valueTask](DevFast.Net.Extensions.Etc.Lambdas.md#DevFast.Net.Extensions.Etc.Lambdas.AsAsyncLambda_T_(thisSystem.Threading.Tasks.ValueTask_T_).valueTask 'DevFast.Net.Extensions.Etc.Lambdas.AsAsyncLambda<T>(this System.Threading.Tasks.ValueTask<T>).valueTask').
+If the task itself can be canceled, one should find a way to pass
+the [System.Threading.CancellationToken](https://docs.microsoft.com/en-us/dotnet/api/System.Threading.CancellationToken 'System.Threading.CancellationToken') to such [valueTask](DevFast.Net.Extensions.Etc.Lambdas.md#DevFast.Net.Extensions.Etc.Lambdas.AsAsyncLambda_T_(thisSystem.Threading.Tasks.ValueTask_T_).valueTask 'DevFast.Net.Extensions.Etc.Lambdas.AsAsyncLambda<T>(this System.Threading.Tasks.ValueTask<T>).valueTask').
 
 ```csharp
-public static System.Func<System.Threading.Tasks.ValueTask<T>> AsAsyncLambda<T>(this System.Threading.Tasks.ValueTask<T> valueTask);
+public static System.Func<System.Threading.CancellationToken,System.Threading.Tasks.ValueTask<T>> AsAsyncLambda<T>(this System.Threading.Tasks.ValueTask<T> valueTask);
 ```
 #### Type parameters
 
@@ -256,87 +182,17 @@ public static System.Func<System.Threading.Tasks.ValueTask<T>> AsAsyncLambda<T>(
 
 `T`
 
-Type of task
+Type of value
 #### Parameters
 
 <a name='DevFast.Net.Extensions.Etc.Lambdas.AsAsyncLambda_T_(thisSystem.Threading.Tasks.ValueTask_T_).valueTask'></a>
 
 `valueTask` [System.Threading.Tasks.ValueTask&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Threading.Tasks.ValueTask-1 'System.Threading.Tasks.ValueTask`1')[T](DevFast.Net.Extensions.Etc.Lambdas.md#DevFast.Net.Extensions.Etc.Lambdas.AsAsyncLambda_T_(thisSystem.Threading.Tasks.ValueTask_T_).T 'DevFast.Net.Extensions.Etc.Lambdas.AsAsyncLambda<T>(this System.Threading.Tasks.ValueTask<T>).T')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Threading.Tasks.ValueTask-1 'System.Threading.Tasks.ValueTask`1')
 
-Task to await when lambda is executed
-
-#### Returns
-[System.Func&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Func-1 'System.Func`1')[System.Threading.Tasks.ValueTask&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Threading.Tasks.ValueTask-1 'System.Threading.Tasks.ValueTask`1')[T](DevFast.Net.Extensions.Etc.Lambdas.md#DevFast.Net.Extensions.Etc.Lambdas.AsAsyncLambda_T_(thisSystem.Threading.Tasks.ValueTask_T_).T 'DevFast.Net.Extensions.Etc.Lambdas.AsAsyncLambda<T>(this System.Threading.Tasks.ValueTask<T>).T')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Threading.Tasks.ValueTask-1 'System.Threading.Tasks.ValueTask`1')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Func-1 'System.Func`1')
-
-<a name='DevFast.Net.Extensions.Etc.Lambdas.AsCancellableAsyncLambda_T_(thisSystem.Threading.Tasks.Task_T_)'></a>
-
-## Lambdas.AsCancellableAsyncLambda<T>(this Task<T>) Method
-
-Creates a [System.Func&lt;&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Func-2 'System.Func`2') based lambda.
-Such lambda would throw [System.OperationCanceledException](https://docs.microsoft.com/en-us/dotnet/api/System.OperationCanceledException 'System.OperationCanceledException') when
-supplied [System.Threading.CancellationToken.IsCancellationRequested](https://docs.microsoft.com/en-us/dotnet/api/System.Threading.CancellationToken.IsCancellationRequested 'System.Threading.CancellationToken.IsCancellationRequested') evaluates to
-[true](https://docs.microsoft.com/en-us/dotnet/csharp/language-reference/builtin-types/bool 'https://docs.microsoft.com/en-us/dotnet/csharp/language-reference/builtin-types/bool'); otherwise, first start the [task](DevFast.Net.Extensions.Etc.Lambdas.md#DevFast.Net.Extensions.Etc.Lambdas.AsCancellableAsyncLambda_T_(thisSystem.Threading.Tasks.Task_T_).task 'DevFast.Net.Extensions.Etc.Lambdas.AsCancellableAsyncLambda<T>(this System.Threading.Tasks.Task<T>).task')
-if not already running), and, then asynchronously execute the task and return its value.
-
-Normally, once should just create a Task without actually running it,
-so that the actual run takes place upon the lambda execution.
-
-NOTE: [System.Threading.CancellationToken](https://docs.microsoft.com/en-us/dotnet/api/System.Threading.CancellationToken 'System.Threading.CancellationToken') injected to the lambda would be
-checked for cancellation only once before executing the [task](DevFast.Net.Extensions.Etc.Lambdas.md#DevFast.Net.Extensions.Etc.Lambdas.AsCancellableAsyncLambda_T_(thisSystem.Threading.Tasks.Task_T_).task 'DevFast.Net.Extensions.Etc.Lambdas.AsCancellableAsyncLambda<T>(this System.Threading.Tasks.Task<T>).task');
-currently, it is NOT possible to inject the token into the task.
-Thus, if the provided [task](DevFast.Net.Extensions.Etc.Lambdas.md#DevFast.Net.Extensions.Etc.Lambdas.AsCancellableAsyncLambda_T_(thisSystem.Threading.Tasks.Task_T_).task 'DevFast.Net.Extensions.Etc.Lambdas.AsCancellableAsyncLambda<T>(this System.Threading.Tasks.Task<T>).task') itself is cancellable, one must
-provide the token to such [task](DevFast.Net.Extensions.Etc.Lambdas.md#DevFast.Net.Extensions.Etc.Lambdas.AsCancellableAsyncLambda_T_(thisSystem.Threading.Tasks.Task_T_).task 'DevFast.Net.Extensions.Etc.Lambdas.AsCancellableAsyncLambda<T>(this System.Threading.Tasks.Task<T>).task') by other means.
-
-```csharp
-public static System.Func<System.Threading.CancellationToken,System.Threading.Tasks.Task<T>> AsCancellableAsyncLambda<T>(this System.Threading.Tasks.Task<T> task);
-```
-#### Type parameters
-
-<a name='DevFast.Net.Extensions.Etc.Lambdas.AsCancellableAsyncLambda_T_(thisSystem.Threading.Tasks.Task_T_).T'></a>
-
-`T`
-
-Type of task
-#### Parameters
-
-<a name='DevFast.Net.Extensions.Etc.Lambdas.AsCancellableAsyncLambda_T_(thisSystem.Threading.Tasks.Task_T_).task'></a>
-
-`task` [System.Threading.Tasks.Task&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Threading.Tasks.Task-1 'System.Threading.Tasks.Task`1')[T](DevFast.Net.Extensions.Etc.Lambdas.md#DevFast.Net.Extensions.Etc.Lambdas.AsCancellableAsyncLambda_T_(thisSystem.Threading.Tasks.Task_T_).T 'DevFast.Net.Extensions.Etc.Lambdas.AsCancellableAsyncLambda<T>(this System.Threading.Tasks.Task<T>).T')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Threading.Tasks.Task-1 'System.Threading.Tasks.Task`1')
-
-Task to await when lambda is executed
-
-#### Returns
-[System.Func&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Func-2 'System.Func`2')[System.Threading.CancellationToken](https://docs.microsoft.com/en-us/dotnet/api/System.Threading.CancellationToken 'System.Threading.CancellationToken')[,](https://docs.microsoft.com/en-us/dotnet/api/System.Func-2 'System.Func`2')[System.Threading.Tasks.Task&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Threading.Tasks.Task-1 'System.Threading.Tasks.Task`1')[T](DevFast.Net.Extensions.Etc.Lambdas.md#DevFast.Net.Extensions.Etc.Lambdas.AsCancellableAsyncLambda_T_(thisSystem.Threading.Tasks.Task_T_).T 'DevFast.Net.Extensions.Etc.Lambdas.AsCancellableAsyncLambda<T>(this System.Threading.Tasks.Task<T>).T')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Threading.Tasks.Task-1 'System.Threading.Tasks.Task`1')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Func-2 'System.Func`2')
-
-<a name='DevFast.Net.Extensions.Etc.Lambdas.AsCancellableLambda_T_(thisT)'></a>
-
-## Lambdas.AsCancellableLambda<T>(this T) Method
-
-Creates a [System.Func&lt;&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Func-2 'System.Func`2') based lambda.
-Such lambda would throw [System.OperationCanceledException](https://docs.microsoft.com/en-us/dotnet/api/System.OperationCanceledException 'System.OperationCanceledException') when
-supplied [System.Threading.CancellationToken.IsCancellationRequested](https://docs.microsoft.com/en-us/dotnet/api/System.Threading.CancellationToken.IsCancellationRequested 'System.Threading.CancellationToken.IsCancellationRequested') evaluates to
-[true](https://docs.microsoft.com/en-us/dotnet/csharp/language-reference/builtin-types/bool 'https://docs.microsoft.com/en-us/dotnet/csharp/language-reference/builtin-types/bool'); otherwise, returns the [value](DevFast.Net.Extensions.Etc.Lambdas.md#DevFast.Net.Extensions.Etc.Lambdas.AsCancellableLambda_T_(thisT).value 'DevFast.Net.Extensions.Etc.Lambdas.AsCancellableLambda<T>(this T).value').
-
-```csharp
-public static System.Func<System.Threading.CancellationToken,T> AsCancellableLambda<T>(this T value);
-```
-#### Type parameters
-
-<a name='DevFast.Net.Extensions.Etc.Lambdas.AsCancellableLambda_T_(thisT).T'></a>
-
-`T`
-
-Type of value
-#### Parameters
-
-<a name='DevFast.Net.Extensions.Etc.Lambdas.AsCancellableLambda_T_(thisT).value'></a>
-
-`value` [T](DevFast.Net.Extensions.Etc.Lambdas.md#DevFast.Net.Extensions.Etc.Lambdas.AsCancellableLambda_T_(thisT).T 'DevFast.Net.Extensions.Etc.Lambdas.AsCancellableLambda<T>(this T).T')
-
 Value to return when lambda is executed
 
 #### Returns
-[System.Func&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Func-2 'System.Func`2')[System.Threading.CancellationToken](https://docs.microsoft.com/en-us/dotnet/api/System.Threading.CancellationToken 'System.Threading.CancellationToken')[,](https://docs.microsoft.com/en-us/dotnet/api/System.Func-2 'System.Func`2')[T](DevFast.Net.Extensions.Etc.Lambdas.md#DevFast.Net.Extensions.Etc.Lambdas.AsCancellableLambda_T_(thisT).T 'DevFast.Net.Extensions.Etc.Lambdas.AsCancellableLambda<T>(this T).T')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Func-2 'System.Func`2')
+[System.Func&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Func-2 'System.Func`2')[System.Threading.CancellationToken](https://docs.microsoft.com/en-us/dotnet/api/System.Threading.CancellationToken 'System.Threading.CancellationToken')[,](https://docs.microsoft.com/en-us/dotnet/api/System.Func-2 'System.Func`2')[System.Threading.Tasks.ValueTask&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Threading.Tasks.ValueTask-1 'System.Threading.Tasks.ValueTask`1')[T](DevFast.Net.Extensions.Etc.Lambdas.md#DevFast.Net.Extensions.Etc.Lambdas.AsAsyncLambda_T_(thisSystem.Threading.Tasks.ValueTask_T_).T 'DevFast.Net.Extensions.Etc.Lambdas.AsAsyncLambda<T>(this System.Threading.Tasks.ValueTask<T>).T')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Threading.Tasks.ValueTask-1 'System.Threading.Tasks.ValueTask`1')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Func-2 'System.Func`2')
 
 <a name='DevFast.Net.Extensions.Etc.Lambdas.AsLambda_T_(thisT)'></a>
 
@@ -365,65 +221,107 @@ Value to return when lambda is executed
 #### Returns
 [System.Func&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Func-1 'System.Func`1')[T](DevFast.Net.Extensions.Etc.Lambdas.md#DevFast.Net.Extensions.Etc.Lambdas.AsLambda_T_(thisT).T 'DevFast.Net.Extensions.Etc.Lambdas.AsLambda<T>(this T).T')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Func-1 'System.Func`1')
 
-<a name='DevFast.Net.Extensions.Etc.Lambdas.Execute_T_(thisSystem.Func_System.Threading.CancellationToken,T_,System.Threading.CancellationToken)'></a>
+<a name='DevFast.Net.Extensions.Etc.Lambdas.AsLambdaWithCancellation_T_(thisT)'></a>
 
-## Lambdas.Execute<T>(this Func<CancellationToken,T>, CancellationToken) Method
+## Lambdas.AsLambdaWithCancellation<T>(this T) Method
 
-Simply executes the given [lambda](DevFast.Net.Extensions.Etc.Lambdas.md#DevFast.Net.Extensions.Etc.Lambdas.Execute_T_(thisSystem.Func_System.Threading.CancellationToken,T_,System.Threading.CancellationToken).lambda 'DevFast.Net.Extensions.Etc.Lambdas.Execute<T>(this System.Func<System.Threading.CancellationToken,T>, System.Threading.CancellationToken).lambda') and returns its results.
+Creates a [System.Func&lt;&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Func-2 'System.Func`2') based lambda.
+Such lambda would throw [System.OperationCanceledException](https://docs.microsoft.com/en-us/dotnet/api/System.OperationCanceledException 'System.OperationCanceledException') when
+supplied [System.Threading.CancellationToken.IsCancellationRequested](https://docs.microsoft.com/en-us/dotnet/api/System.Threading.CancellationToken.IsCancellationRequested 'System.Threading.CancellationToken.IsCancellationRequested') evaluates to
+[true](https://docs.microsoft.com/en-us/dotnet/csharp/language-reference/builtin-types/bool 'https://docs.microsoft.com/en-us/dotnet/csharp/language-reference/builtin-types/bool'); otherwise, returns the [value](DevFast.Net.Extensions.Etc.Lambdas.md#DevFast.Net.Extensions.Etc.Lambdas.AsLambdaWithCancellation_T_(thisT).value 'DevFast.Net.Extensions.Etc.Lambdas.AsLambdaWithCancellation<T>(this T).value').
 
 ```csharp
-public static T Execute<T>(this System.Func<System.Threading.CancellationToken,T> lambda, System.Threading.CancellationToken token);
+public static System.Func<System.Threading.CancellationToken,T> AsLambdaWithCancellation<T>(this T value);
 ```
 #### Type parameters
 
-<a name='DevFast.Net.Extensions.Etc.Lambdas.Execute_T_(thisSystem.Func_System.Threading.CancellationToken,T_,System.Threading.CancellationToken).T'></a>
+<a name='DevFast.Net.Extensions.Etc.Lambdas.AsLambdaWithCancellation_T_(thisT).T'></a>
+
+`T`
+
+Type of value
+#### Parameters
+
+<a name='DevFast.Net.Extensions.Etc.Lambdas.AsLambdaWithCancellation_T_(thisT).value'></a>
+
+`value` [T](DevFast.Net.Extensions.Etc.Lambdas.md#DevFast.Net.Extensions.Etc.Lambdas.AsLambdaWithCancellation_T_(thisT).T 'DevFast.Net.Extensions.Etc.Lambdas.AsLambdaWithCancellation<T>(this T).T')
+
+Value to return when lambda is executed
+
+#### Returns
+[System.Func&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Func-2 'System.Func`2')[System.Threading.CancellationToken](https://docs.microsoft.com/en-us/dotnet/api/System.Threading.CancellationToken 'System.Threading.CancellationToken')[,](https://docs.microsoft.com/en-us/dotnet/api/System.Func-2 'System.Func`2')[T](DevFast.Net.Extensions.Etc.Lambdas.md#DevFast.Net.Extensions.Etc.Lambdas.AsLambdaWithCancellation_T_(thisT).T 'DevFast.Net.Extensions.Etc.Lambdas.AsLambdaWithCancellation<T>(this T).T')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Func-2 'System.Func`2')
+
+<a name='DevFast.Net.Extensions.Etc.Lambdas.Execute_T_(thisSystem.Func_System.Threading.CancellationToken,T_,System.Threading.CancellationToken,System.Action)'></a>
+
+## Lambdas.Execute<T>(this Func<CancellationToken,T>, CancellationToken, Action) Method
+
+Simply executes the given [lambda](DevFast.Net.Extensions.Etc.Lambdas.md#DevFast.Net.Extensions.Etc.Lambdas.Execute_T_(thisSystem.Func_System.Threading.CancellationToken,T_,System.Threading.CancellationToken,System.Action).lambda 'DevFast.Net.Extensions.Etc.Lambdas.Execute<T>(this System.Func<System.Threading.CancellationToken,T>, System.Threading.CancellationToken, System.Action).lambda') and returns its results.
+
+```csharp
+public static T Execute<T>(this System.Func<System.Threading.CancellationToken,T> lambda, System.Threading.CancellationToken token, System.Action? finallyClause=null);
+```
+#### Type parameters
+
+<a name='DevFast.Net.Extensions.Etc.Lambdas.Execute_T_(thisSystem.Func_System.Threading.CancellationToken,T_,System.Threading.CancellationToken,System.Action).T'></a>
 
 `T`
 
 Output type of the lambda
 #### Parameters
 
-<a name='DevFast.Net.Extensions.Etc.Lambdas.Execute_T_(thisSystem.Func_System.Threading.CancellationToken,T_,System.Threading.CancellationToken).lambda'></a>
+<a name='DevFast.Net.Extensions.Etc.Lambdas.Execute_T_(thisSystem.Func_System.Threading.CancellationToken,T_,System.Threading.CancellationToken,System.Action).lambda'></a>
 
-`lambda` [System.Func&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Func-2 'System.Func`2')[System.Threading.CancellationToken](https://docs.microsoft.com/en-us/dotnet/api/System.Threading.CancellationToken 'System.Threading.CancellationToken')[,](https://docs.microsoft.com/en-us/dotnet/api/System.Func-2 'System.Func`2')[T](DevFast.Net.Extensions.Etc.Lambdas.md#DevFast.Net.Extensions.Etc.Lambdas.Execute_T_(thisSystem.Func_System.Threading.CancellationToken,T_,System.Threading.CancellationToken).T 'DevFast.Net.Extensions.Etc.Lambdas.Execute<T>(this System.Func<System.Threading.CancellationToken,T>, System.Threading.CancellationToken).T')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Func-2 'System.Func`2')
+`lambda` [System.Func&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Func-2 'System.Func`2')[System.Threading.CancellationToken](https://docs.microsoft.com/en-us/dotnet/api/System.Threading.CancellationToken 'System.Threading.CancellationToken')[,](https://docs.microsoft.com/en-us/dotnet/api/System.Func-2 'System.Func`2')[T](DevFast.Net.Extensions.Etc.Lambdas.md#DevFast.Net.Extensions.Etc.Lambdas.Execute_T_(thisSystem.Func_System.Threading.CancellationToken,T_,System.Threading.CancellationToken,System.Action).T 'DevFast.Net.Extensions.Etc.Lambdas.Execute<T>(this System.Func<System.Threading.CancellationToken,T>, System.Threading.CancellationToken, System.Action).T')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Func-2 'System.Func`2')
 
 Lambda to execute.
 
-<a name='DevFast.Net.Extensions.Etc.Lambdas.Execute_T_(thisSystem.Func_System.Threading.CancellationToken,T_,System.Threading.CancellationToken).token'></a>
+<a name='DevFast.Net.Extensions.Etc.Lambdas.Execute_T_(thisSystem.Func_System.Threading.CancellationToken,T_,System.Threading.CancellationToken,System.Action).token'></a>
 
 `token` [System.Threading.CancellationToken](https://docs.microsoft.com/en-us/dotnet/api/System.Threading.CancellationToken 'System.Threading.CancellationToken')
 
 Cancellation token
 
+<a name='DevFast.Net.Extensions.Etc.Lambdas.Execute_T_(thisSystem.Func_System.Threading.CancellationToken,T_,System.Threading.CancellationToken,System.Action).finallyClause'></a>
+
+`finallyClause` [System.Action](https://docs.microsoft.com/en-us/dotnet/api/System.Action 'System.Action')
+
+Code to execute in finally block of try-finally (if any)
+
 #### Returns
-[T](DevFast.Net.Extensions.Etc.Lambdas.md#DevFast.Net.Extensions.Etc.Lambdas.Execute_T_(thisSystem.Func_System.Threading.CancellationToken,T_,System.Threading.CancellationToken).T 'DevFast.Net.Extensions.Etc.Lambdas.Execute<T>(this System.Func<System.Threading.CancellationToken,T>, System.Threading.CancellationToken).T')
+[T](DevFast.Net.Extensions.Etc.Lambdas.md#DevFast.Net.Extensions.Etc.Lambdas.Execute_T_(thisSystem.Func_System.Threading.CancellationToken,T_,System.Threading.CancellationToken,System.Action).T 'DevFast.Net.Extensions.Etc.Lambdas.Execute<T>(this System.Func<System.Threading.CancellationToken,T>, System.Threading.CancellationToken, System.Action).T')
 
-<a name='DevFast.Net.Extensions.Etc.Lambdas.Execute_T_(thisSystem.Func_T_)'></a>
+<a name='DevFast.Net.Extensions.Etc.Lambdas.Execute_T_(thisSystem.Func_T_,System.Action)'></a>
 
-## Lambdas.Execute<T>(this Func<T>) Method
+## Lambdas.Execute<T>(this Func<T>, Action) Method
 
-Simply executes the given [lambda](DevFast.Net.Extensions.Etc.Lambdas.md#DevFast.Net.Extensions.Etc.Lambdas.Execute_T_(thisSystem.Func_T_).lambda 'DevFast.Net.Extensions.Etc.Lambdas.Execute<T>(this System.Func<T>).lambda') and returns its results.
+Simply executes the given [lambda](DevFast.Net.Extensions.Etc.Lambdas.md#DevFast.Net.Extensions.Etc.Lambdas.Execute_T_(thisSystem.Func_T_,System.Action).lambda 'DevFast.Net.Extensions.Etc.Lambdas.Execute<T>(this System.Func<T>, System.Action).lambda') and returns its results.
 
 ```csharp
-public static T Execute<T>(this System.Func<T> lambda);
+public static T Execute<T>(this System.Func<T> lambda, System.Action? finallyClause=null);
 ```
 #### Type parameters
 
-<a name='DevFast.Net.Extensions.Etc.Lambdas.Execute_T_(thisSystem.Func_T_).T'></a>
+<a name='DevFast.Net.Extensions.Etc.Lambdas.Execute_T_(thisSystem.Func_T_,System.Action).T'></a>
 
 `T`
 
 Output type of the lambda
 #### Parameters
 
-<a name='DevFast.Net.Extensions.Etc.Lambdas.Execute_T_(thisSystem.Func_T_).lambda'></a>
+<a name='DevFast.Net.Extensions.Etc.Lambdas.Execute_T_(thisSystem.Func_T_,System.Action).lambda'></a>
 
-`lambda` [System.Func&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Func-1 'System.Func`1')[T](DevFast.Net.Extensions.Etc.Lambdas.md#DevFast.Net.Extensions.Etc.Lambdas.Execute_T_(thisSystem.Func_T_).T 'DevFast.Net.Extensions.Etc.Lambdas.Execute<T>(this System.Func<T>).T')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Func-1 'System.Func`1')
+`lambda` [System.Func&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Func-1 'System.Func`1')[T](DevFast.Net.Extensions.Etc.Lambdas.md#DevFast.Net.Extensions.Etc.Lambdas.Execute_T_(thisSystem.Func_T_,System.Action).T 'DevFast.Net.Extensions.Etc.Lambdas.Execute<T>(this System.Func<T>, System.Action).T')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Func-1 'System.Func`1')
 
 Lambda to execute.
 
+<a name='DevFast.Net.Extensions.Etc.Lambdas.Execute_T_(thisSystem.Func_T_,System.Action).finallyClause'></a>
+
+`finallyClause` [System.Action](https://docs.microsoft.com/en-us/dotnet/api/System.Action 'System.Action')
+
+Code to execute in finally block of try-finally (if any)
+
 #### Returns
-[T](DevFast.Net.Extensions.Etc.Lambdas.md#DevFast.Net.Extensions.Etc.Lambdas.Execute_T_(thisSystem.Func_T_).T 'DevFast.Net.Extensions.Etc.Lambdas.Execute<T>(this System.Func<T>).T')
+[T](DevFast.Net.Extensions.Etc.Lambdas.md#DevFast.Net.Extensions.Etc.Lambdas.Execute_T_(thisSystem.Func_T_,System.Action).T 'DevFast.Net.Extensions.Etc.Lambdas.Execute<T>(this System.Func<T>, System.Action).T')
 
 <a name='DevFast.Net.Extensions.Etc.Lambdas.ExecuteAsync(thisSystem.Func_System.Threading.CancellationToken,System.Threading.Tasks.Task_,System.Threading.CancellationToken)'></a>
 
@@ -549,8 +447,8 @@ Cancellation token
 
 Conditionally merges the [sourceLambda](DevFast.Net.Extensions.Etc.Lambdas.md#DevFast.Net.Extensions.Etc.Lambdas.Pipe_T_(thisSystem.Func_System.Threading.CancellationToken,System.Threading.Tasks.Task_T__,System.Func_T,System.Threading.CancellationToken,System.Threading.Tasks.Task_T__,bool).sourceLambda 'DevFast.Net.Extensions.Etc.Lambdas.Pipe<T>(this System.Func<System.Threading.CancellationToken,System.Threading.Tasks.Task<T>>, System.Func<T,System.Threading.CancellationToken,System.Threading.Tasks.Task<T>>, bool).sourceLambda') with [tandemLambda](DevFast.Net.Extensions.Etc.Lambdas.md#DevFast.Net.Extensions.Etc.Lambdas.Pipe_T_(thisSystem.Func_System.Threading.CancellationToken,System.Threading.Tasks.Task_T__,System.Func_T,System.Threading.CancellationToken,System.Threading.Tasks.Task_T__,bool).tandemLambda 'DevFast.Net.Extensions.Etc.Lambdas.Pipe<T>(this System.Func<System.Threading.CancellationToken,System.Threading.Tasks.Task<T>>, System.Func<T,System.Threading.CancellationToken,System.Threading.Tasks.Task<T>>, bool).tandemLambda').
 Returns a newly formed lambda which will feed the output of [sourceLambda](DevFast.Net.Extensions.Etc.Lambdas.md#DevFast.Net.Extensions.Etc.Lambdas.Pipe_T_(thisSystem.Func_System.Threading.CancellationToken,System.Threading.Tasks.Task_T__,System.Func_T,System.Threading.CancellationToken,System.Threading.Tasks.Task_T__,bool).sourceLambda 'DevFast.Net.Extensions.Etc.Lambdas.Pipe<T>(this System.Func<System.Threading.CancellationToken,System.Threading.Tasks.Task<T>>, System.Func<T,System.Threading.CancellationToken,System.Threading.Tasks.Task<T>>, bool).sourceLambda')
-to the [tandemLambda](DevFast.Net.Extensions.Etc.Lambdas.md#DevFast.Net.Extensions.Etc.Lambdas.Pipe_T_(thisSystem.Func_System.Threading.CancellationToken,System.Threading.Tasks.Task_T__,System.Func_T,System.Threading.CancellationToken,System.Threading.Tasks.Task_T__,bool).tandemLambda 'DevFast.Net.Extensions.Etc.Lambdas.Pipe<T>(this System.Func<System.Threading.CancellationToken,System.Threading.Tasks.Task<T>>, System.Func<T,System.Threading.CancellationToken,System.Threading.Tasks.Task<T>>, bool).tandemLambda') and upon execution it would return the output of
-the [tandemLambda](DevFast.Net.Extensions.Etc.Lambdas.md#DevFast.Net.Extensions.Etc.Lambdas.Pipe_T_(thisSystem.Func_System.Threading.CancellationToken,System.Threading.Tasks.Task_T__,System.Func_T,System.Threading.CancellationToken,System.Threading.Tasks.Task_T__,bool).tandemLambda 'DevFast.Net.Extensions.Etc.Lambdas.Pipe<T>(this System.Func<System.Threading.CancellationToken,System.Threading.Tasks.Task<T>>, System.Func<T,System.Threading.CancellationToken,System.Threading.Tasks.Task<T>>, bool).tandemLambda') lambda.
+to the [tandemLambda](DevFast.Net.Extensions.Etc.Lambdas.md#DevFast.Net.Extensions.Etc.Lambdas.Pipe_T_(thisSystem.Func_System.Threading.CancellationToken,System.Threading.Tasks.Task_T__,System.Func_T,System.Threading.CancellationToken,System.Threading.Tasks.Task_T__,bool).tandemLambda 'DevFast.Net.Extensions.Etc.Lambdas.Pipe<T>(this System.Func<System.Threading.CancellationToken,System.Threading.Tasks.Task<T>>, System.Func<T,System.Threading.CancellationToken,System.Threading.Tasks.Task<T>>, bool).tandemLambda'). Such a resultant lambda, upon execution,
+would return the output of the [tandemLambda](DevFast.Net.Extensions.Etc.Lambdas.md#DevFast.Net.Extensions.Etc.Lambdas.Pipe_T_(thisSystem.Func_System.Threading.CancellationToken,System.Threading.Tasks.Task_T__,System.Func_T,System.Threading.CancellationToken,System.Threading.Tasks.Task_T__,bool).tandemLambda 'DevFast.Net.Extensions.Etc.Lambdas.Pipe<T>(this System.Func<System.Threading.CancellationToken,System.Threading.Tasks.Task<T>>, System.Func<T,System.Threading.CancellationToken,System.Threading.Tasks.Task<T>>, bool).tandemLambda').
 
 ```csharp
 public static System.Func<System.Threading.CancellationToken,System.Threading.Tasks.Task<T>> Pipe<T>(this System.Func<System.Threading.CancellationToken,System.Threading.Tasks.Task<T>> sourceLambda, System.Func<T,System.Threading.CancellationToken,System.Threading.Tasks.Task<T>> tandemLambda, bool iff);
@@ -574,13 +472,13 @@ Source lambda to which the tandem operation would be applied.
 
 `tandemLambda` [System.Func&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Func-3 'System.Func`3')[T](DevFast.Net.Extensions.Etc.Lambdas.md#DevFast.Net.Extensions.Etc.Lambdas.Pipe_T_(thisSystem.Func_System.Threading.CancellationToken,System.Threading.Tasks.Task_T__,System.Func_T,System.Threading.CancellationToken,System.Threading.Tasks.Task_T__,bool).T 'DevFast.Net.Extensions.Etc.Lambdas.Pipe<T>(this System.Func<System.Threading.CancellationToken,System.Threading.Tasks.Task<T>>, System.Func<T,System.Threading.CancellationToken,System.Threading.Tasks.Task<T>>, bool).T')[,](https://docs.microsoft.com/en-us/dotnet/api/System.Func-3 'System.Func`3')[System.Threading.CancellationToken](https://docs.microsoft.com/en-us/dotnet/api/System.Threading.CancellationToken 'System.Threading.CancellationToken')[,](https://docs.microsoft.com/en-us/dotnet/api/System.Func-3 'System.Func`3')[System.Threading.Tasks.Task&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Threading.Tasks.Task-1 'System.Threading.Tasks.Task`1')[T](DevFast.Net.Extensions.Etc.Lambdas.md#DevFast.Net.Extensions.Etc.Lambdas.Pipe_T_(thisSystem.Func_System.Threading.CancellationToken,System.Threading.Tasks.Task_T__,System.Func_T,System.Threading.CancellationToken,System.Threading.Tasks.Task_T__,bool).T 'DevFast.Net.Extensions.Etc.Lambdas.Pipe<T>(this System.Func<System.Threading.CancellationToken,System.Threading.Tasks.Task<T>>, System.Func<T,System.Threading.CancellationToken,System.Threading.Tasks.Task<T>>, bool).T')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Threading.Tasks.Task-1 'System.Threading.Tasks.Task`1')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Func-3 'System.Func`3')
 
-Tandem lambda that would consume the output of the source lambda.
+Tandem lambda that would consume the output of the input lambda.
 
 <a name='DevFast.Net.Extensions.Etc.Lambdas.Pipe_T_(thisSystem.Func_System.Threading.CancellationToken,System.Threading.Tasks.Task_T__,System.Func_T,System.Threading.CancellationToken,System.Threading.Tasks.Task_T__,bool).iff'></a>
 
 `iff` [System.Boolean](https://docs.microsoft.com/en-us/dotnet/api/System.Boolean 'System.Boolean')
 
-Conditional flag dictating where the transformation should be applied or not
+Conditional flag dictating where the adapter should be applied or not
 
 #### Returns
 [System.Func&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Func-2 'System.Func`2')[System.Threading.CancellationToken](https://docs.microsoft.com/en-us/dotnet/api/System.Threading.CancellationToken 'System.Threading.CancellationToken')[,](https://docs.microsoft.com/en-us/dotnet/api/System.Func-2 'System.Func`2')[System.Threading.Tasks.Task&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Threading.Tasks.Task-1 'System.Threading.Tasks.Task`1')[T](DevFast.Net.Extensions.Etc.Lambdas.md#DevFast.Net.Extensions.Etc.Lambdas.Pipe_T_(thisSystem.Func_System.Threading.CancellationToken,System.Threading.Tasks.Task_T__,System.Func_T,System.Threading.CancellationToken,System.Threading.Tasks.Task_T__,bool).T 'DevFast.Net.Extensions.Etc.Lambdas.Pipe<T>(this System.Func<System.Threading.CancellationToken,System.Threading.Tasks.Task<T>>, System.Func<T,System.Threading.CancellationToken,System.Threading.Tasks.Task<T>>, bool).T')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Threading.Tasks.Task-1 'System.Threading.Tasks.Task`1')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Func-2 'System.Func`2')
@@ -591,8 +489,8 @@ Conditional flag dictating where the transformation should be applied or not
 
 Conditionally merges the [sourceLambda](DevFast.Net.Extensions.Etc.Lambdas.md#DevFast.Net.Extensions.Etc.Lambdas.Pipe_T_(thisSystem.Func_System.Threading.CancellationToken,System.Threading.Tasks.ValueTask_T__,System.Func_T,System.Threading.CancellationToken,System.Threading.Tasks.ValueTask_T__,bool).sourceLambda 'DevFast.Net.Extensions.Etc.Lambdas.Pipe<T>(this System.Func<System.Threading.CancellationToken,System.Threading.Tasks.ValueTask<T>>, System.Func<T,System.Threading.CancellationToken,System.Threading.Tasks.ValueTask<T>>, bool).sourceLambda') with [tandemLambda](DevFast.Net.Extensions.Etc.Lambdas.md#DevFast.Net.Extensions.Etc.Lambdas.Pipe_T_(thisSystem.Func_System.Threading.CancellationToken,System.Threading.Tasks.ValueTask_T__,System.Func_T,System.Threading.CancellationToken,System.Threading.Tasks.ValueTask_T__,bool).tandemLambda 'DevFast.Net.Extensions.Etc.Lambdas.Pipe<T>(this System.Func<System.Threading.CancellationToken,System.Threading.Tasks.ValueTask<T>>, System.Func<T,System.Threading.CancellationToken,System.Threading.Tasks.ValueTask<T>>, bool).tandemLambda').
 Returns a newly formed lambda which will feed the output of [sourceLambda](DevFast.Net.Extensions.Etc.Lambdas.md#DevFast.Net.Extensions.Etc.Lambdas.Pipe_T_(thisSystem.Func_System.Threading.CancellationToken,System.Threading.Tasks.ValueTask_T__,System.Func_T,System.Threading.CancellationToken,System.Threading.Tasks.ValueTask_T__,bool).sourceLambda 'DevFast.Net.Extensions.Etc.Lambdas.Pipe<T>(this System.Func<System.Threading.CancellationToken,System.Threading.Tasks.ValueTask<T>>, System.Func<T,System.Threading.CancellationToken,System.Threading.Tasks.ValueTask<T>>, bool).sourceLambda')
-to the [tandemLambda](DevFast.Net.Extensions.Etc.Lambdas.md#DevFast.Net.Extensions.Etc.Lambdas.Pipe_T_(thisSystem.Func_System.Threading.CancellationToken,System.Threading.Tasks.ValueTask_T__,System.Func_T,System.Threading.CancellationToken,System.Threading.Tasks.ValueTask_T__,bool).tandemLambda 'DevFast.Net.Extensions.Etc.Lambdas.Pipe<T>(this System.Func<System.Threading.CancellationToken,System.Threading.Tasks.ValueTask<T>>, System.Func<T,System.Threading.CancellationToken,System.Threading.Tasks.ValueTask<T>>, bool).tandemLambda') and upon execution it would return the output of
-the [tandemLambda](DevFast.Net.Extensions.Etc.Lambdas.md#DevFast.Net.Extensions.Etc.Lambdas.Pipe_T_(thisSystem.Func_System.Threading.CancellationToken,System.Threading.Tasks.ValueTask_T__,System.Func_T,System.Threading.CancellationToken,System.Threading.Tasks.ValueTask_T__,bool).tandemLambda 'DevFast.Net.Extensions.Etc.Lambdas.Pipe<T>(this System.Func<System.Threading.CancellationToken,System.Threading.Tasks.ValueTask<T>>, System.Func<T,System.Threading.CancellationToken,System.Threading.Tasks.ValueTask<T>>, bool).tandemLambda') lambda.
+to the [tandemLambda](DevFast.Net.Extensions.Etc.Lambdas.md#DevFast.Net.Extensions.Etc.Lambdas.Pipe_T_(thisSystem.Func_System.Threading.CancellationToken,System.Threading.Tasks.ValueTask_T__,System.Func_T,System.Threading.CancellationToken,System.Threading.Tasks.ValueTask_T__,bool).tandemLambda 'DevFast.Net.Extensions.Etc.Lambdas.Pipe<T>(this System.Func<System.Threading.CancellationToken,System.Threading.Tasks.ValueTask<T>>, System.Func<T,System.Threading.CancellationToken,System.Threading.Tasks.ValueTask<T>>, bool).tandemLambda'). Such a resultant lambda, upon execution,
+would return the output of the [tandemLambda](DevFast.Net.Extensions.Etc.Lambdas.md#DevFast.Net.Extensions.Etc.Lambdas.Pipe_T_(thisSystem.Func_System.Threading.CancellationToken,System.Threading.Tasks.ValueTask_T__,System.Func_T,System.Threading.CancellationToken,System.Threading.Tasks.ValueTask_T__,bool).tandemLambda 'DevFast.Net.Extensions.Etc.Lambdas.Pipe<T>(this System.Func<System.Threading.CancellationToken,System.Threading.Tasks.ValueTask<T>>, System.Func<T,System.Threading.CancellationToken,System.Threading.Tasks.ValueTask<T>>, bool).tandemLambda').
 
 ```csharp
 public static System.Func<System.Threading.CancellationToken,System.Threading.Tasks.ValueTask<T>> Pipe<T>(this System.Func<System.Threading.CancellationToken,System.Threading.Tasks.ValueTask<T>> sourceLambda, System.Func<T,System.Threading.CancellationToken,System.Threading.Tasks.ValueTask<T>> tandemLambda, bool iff);
@@ -616,13 +514,13 @@ Source lambda to which the tandem operation would be applied.
 
 `tandemLambda` [System.Func&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Func-3 'System.Func`3')[T](DevFast.Net.Extensions.Etc.Lambdas.md#DevFast.Net.Extensions.Etc.Lambdas.Pipe_T_(thisSystem.Func_System.Threading.CancellationToken,System.Threading.Tasks.ValueTask_T__,System.Func_T,System.Threading.CancellationToken,System.Threading.Tasks.ValueTask_T__,bool).T 'DevFast.Net.Extensions.Etc.Lambdas.Pipe<T>(this System.Func<System.Threading.CancellationToken,System.Threading.Tasks.ValueTask<T>>, System.Func<T,System.Threading.CancellationToken,System.Threading.Tasks.ValueTask<T>>, bool).T')[,](https://docs.microsoft.com/en-us/dotnet/api/System.Func-3 'System.Func`3')[System.Threading.CancellationToken](https://docs.microsoft.com/en-us/dotnet/api/System.Threading.CancellationToken 'System.Threading.CancellationToken')[,](https://docs.microsoft.com/en-us/dotnet/api/System.Func-3 'System.Func`3')[System.Threading.Tasks.ValueTask&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Threading.Tasks.ValueTask-1 'System.Threading.Tasks.ValueTask`1')[T](DevFast.Net.Extensions.Etc.Lambdas.md#DevFast.Net.Extensions.Etc.Lambdas.Pipe_T_(thisSystem.Func_System.Threading.CancellationToken,System.Threading.Tasks.ValueTask_T__,System.Func_T,System.Threading.CancellationToken,System.Threading.Tasks.ValueTask_T__,bool).T 'DevFast.Net.Extensions.Etc.Lambdas.Pipe<T>(this System.Func<System.Threading.CancellationToken,System.Threading.Tasks.ValueTask<T>>, System.Func<T,System.Threading.CancellationToken,System.Threading.Tasks.ValueTask<T>>, bool).T')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Threading.Tasks.ValueTask-1 'System.Threading.Tasks.ValueTask`1')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Func-3 'System.Func`3')
 
-Tandem lambda that would consume the output of the source lambda.
+Tandem lambda that would consume the output of the input lambda.
 
 <a name='DevFast.Net.Extensions.Etc.Lambdas.Pipe_T_(thisSystem.Func_System.Threading.CancellationToken,System.Threading.Tasks.ValueTask_T__,System.Func_T,System.Threading.CancellationToken,System.Threading.Tasks.ValueTask_T__,bool).iff'></a>
 
 `iff` [System.Boolean](https://docs.microsoft.com/en-us/dotnet/api/System.Boolean 'System.Boolean')
 
-Conditional flag dictating where the transformation should be applied or not
+Conditional flag dictating where the adapter should be applied or not
 
 #### Returns
 [System.Func&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Func-2 'System.Func`2')[System.Threading.CancellationToken](https://docs.microsoft.com/en-us/dotnet/api/System.Threading.CancellationToken 'System.Threading.CancellationToken')[,](https://docs.microsoft.com/en-us/dotnet/api/System.Func-2 'System.Func`2')[System.Threading.Tasks.ValueTask&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Threading.Tasks.ValueTask-1 'System.Threading.Tasks.ValueTask`1')[T](DevFast.Net.Extensions.Etc.Lambdas.md#DevFast.Net.Extensions.Etc.Lambdas.Pipe_T_(thisSystem.Func_System.Threading.CancellationToken,System.Threading.Tasks.ValueTask_T__,System.Func_T,System.Threading.CancellationToken,System.Threading.Tasks.ValueTask_T__,bool).T 'DevFast.Net.Extensions.Etc.Lambdas.Pipe<T>(this System.Func<System.Threading.CancellationToken,System.Threading.Tasks.ValueTask<T>>, System.Func<T,System.Threading.CancellationToken,System.Threading.Tasks.ValueTask<T>>, bool).T')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Threading.Tasks.ValueTask-1 'System.Threading.Tasks.ValueTask`1')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Func-2 'System.Func`2')
@@ -633,8 +531,8 @@ Conditional flag dictating where the transformation should be applied or not
 
 Conditionally merges the [sourceLambda](DevFast.Net.Extensions.Etc.Lambdas.md#DevFast.Net.Extensions.Etc.Lambdas.Pipe_T_(thisSystem.Func_System.Threading.CancellationToken,T_,System.Func_T,System.Threading.CancellationToken,T_,bool).sourceLambda 'DevFast.Net.Extensions.Etc.Lambdas.Pipe<T>(this System.Func<System.Threading.CancellationToken,T>, System.Func<T,System.Threading.CancellationToken,T>, bool).sourceLambda') with [tandemLambda](DevFast.Net.Extensions.Etc.Lambdas.md#DevFast.Net.Extensions.Etc.Lambdas.Pipe_T_(thisSystem.Func_System.Threading.CancellationToken,T_,System.Func_T,System.Threading.CancellationToken,T_,bool).tandemLambda 'DevFast.Net.Extensions.Etc.Lambdas.Pipe<T>(this System.Func<System.Threading.CancellationToken,T>, System.Func<T,System.Threading.CancellationToken,T>, bool).tandemLambda').
 Returns a newly formed lambda which will feed the output of [sourceLambda](DevFast.Net.Extensions.Etc.Lambdas.md#DevFast.Net.Extensions.Etc.Lambdas.Pipe_T_(thisSystem.Func_System.Threading.CancellationToken,T_,System.Func_T,System.Threading.CancellationToken,T_,bool).sourceLambda 'DevFast.Net.Extensions.Etc.Lambdas.Pipe<T>(this System.Func<System.Threading.CancellationToken,T>, System.Func<T,System.Threading.CancellationToken,T>, bool).sourceLambda')
-to the [tandemLambda](DevFast.Net.Extensions.Etc.Lambdas.md#DevFast.Net.Extensions.Etc.Lambdas.Pipe_T_(thisSystem.Func_System.Threading.CancellationToken,T_,System.Func_T,System.Threading.CancellationToken,T_,bool).tandemLambda 'DevFast.Net.Extensions.Etc.Lambdas.Pipe<T>(this System.Func<System.Threading.CancellationToken,T>, System.Func<T,System.Threading.CancellationToken,T>, bool).tandemLambda') and upon execution it would return the output of
-the [tandemLambda](DevFast.Net.Extensions.Etc.Lambdas.md#DevFast.Net.Extensions.Etc.Lambdas.Pipe_T_(thisSystem.Func_System.Threading.CancellationToken,T_,System.Func_T,System.Threading.CancellationToken,T_,bool).tandemLambda 'DevFast.Net.Extensions.Etc.Lambdas.Pipe<T>(this System.Func<System.Threading.CancellationToken,T>, System.Func<T,System.Threading.CancellationToken,T>, bool).tandemLambda') lambda.
+to the [tandemLambda](DevFast.Net.Extensions.Etc.Lambdas.md#DevFast.Net.Extensions.Etc.Lambdas.Pipe_T_(thisSystem.Func_System.Threading.CancellationToken,T_,System.Func_T,System.Threading.CancellationToken,T_,bool).tandemLambda 'DevFast.Net.Extensions.Etc.Lambdas.Pipe<T>(this System.Func<System.Threading.CancellationToken,T>, System.Func<T,System.Threading.CancellationToken,T>, bool).tandemLambda'). Such a resultant lambda, upon execution,
+would return the output of the [tandemLambda](DevFast.Net.Extensions.Etc.Lambdas.md#DevFast.Net.Extensions.Etc.Lambdas.Pipe_T_(thisSystem.Func_System.Threading.CancellationToken,T_,System.Func_T,System.Threading.CancellationToken,T_,bool).tandemLambda 'DevFast.Net.Extensions.Etc.Lambdas.Pipe<T>(this System.Func<System.Threading.CancellationToken,T>, System.Func<T,System.Threading.CancellationToken,T>, bool).tandemLambda').
 
 ```csharp
 public static System.Func<System.Threading.CancellationToken,T> Pipe<T>(this System.Func<System.Threading.CancellationToken,T> sourceLambda, System.Func<T,System.Threading.CancellationToken,T> tandemLambda, bool iff);
@@ -658,13 +556,13 @@ Source lambda to which the tandem operation would be applied.
 
 `tandemLambda` [System.Func&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Func-3 'System.Func`3')[T](DevFast.Net.Extensions.Etc.Lambdas.md#DevFast.Net.Extensions.Etc.Lambdas.Pipe_T_(thisSystem.Func_System.Threading.CancellationToken,T_,System.Func_T,System.Threading.CancellationToken,T_,bool).T 'DevFast.Net.Extensions.Etc.Lambdas.Pipe<T>(this System.Func<System.Threading.CancellationToken,T>, System.Func<T,System.Threading.CancellationToken,T>, bool).T')[,](https://docs.microsoft.com/en-us/dotnet/api/System.Func-3 'System.Func`3')[System.Threading.CancellationToken](https://docs.microsoft.com/en-us/dotnet/api/System.Threading.CancellationToken 'System.Threading.CancellationToken')[,](https://docs.microsoft.com/en-us/dotnet/api/System.Func-3 'System.Func`3')[T](DevFast.Net.Extensions.Etc.Lambdas.md#DevFast.Net.Extensions.Etc.Lambdas.Pipe_T_(thisSystem.Func_System.Threading.CancellationToken,T_,System.Func_T,System.Threading.CancellationToken,T_,bool).T 'DevFast.Net.Extensions.Etc.Lambdas.Pipe<T>(this System.Func<System.Threading.CancellationToken,T>, System.Func<T,System.Threading.CancellationToken,T>, bool).T')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Func-3 'System.Func`3')
 
-Tandem lambda that would consume the output of the source lambda.
+Tandem lambda that would consume the output of the input lambda.
 
 <a name='DevFast.Net.Extensions.Etc.Lambdas.Pipe_T_(thisSystem.Func_System.Threading.CancellationToken,T_,System.Func_T,System.Threading.CancellationToken,T_,bool).iff'></a>
 
 `iff` [System.Boolean](https://docs.microsoft.com/en-us/dotnet/api/System.Boolean 'System.Boolean')
 
-Conditional flag dictating where the transformation should be applied or not
+Conditional flag dictating where the adapter should be applied or not
 
 #### Returns
 [System.Func&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Func-2 'System.Func`2')[System.Threading.CancellationToken](https://docs.microsoft.com/en-us/dotnet/api/System.Threading.CancellationToken 'System.Threading.CancellationToken')[,](https://docs.microsoft.com/en-us/dotnet/api/System.Func-2 'System.Func`2')[T](DevFast.Net.Extensions.Etc.Lambdas.md#DevFast.Net.Extensions.Etc.Lambdas.Pipe_T_(thisSystem.Func_System.Threading.CancellationToken,T_,System.Func_T,System.Threading.CancellationToken,T_,bool).T 'DevFast.Net.Extensions.Etc.Lambdas.Pipe<T>(this System.Func<System.Threading.CancellationToken,T>, System.Func<T,System.Threading.CancellationToken,T>, bool).T')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Func-2 'System.Func`2')
@@ -675,8 +573,8 @@ Conditional flag dictating where the transformation should be applied or not
 
 Conditionally merges the [sourceLambda](DevFast.Net.Extensions.Etc.Lambdas.md#DevFast.Net.Extensions.Etc.Lambdas.Pipe_T_(thisSystem.Func_T_,System.Func_T,T_,bool).sourceLambda 'DevFast.Net.Extensions.Etc.Lambdas.Pipe<T>(this System.Func<T>, System.Func<T,T>, bool).sourceLambda') with [tandemLambda](DevFast.Net.Extensions.Etc.Lambdas.md#DevFast.Net.Extensions.Etc.Lambdas.Pipe_T_(thisSystem.Func_T_,System.Func_T,T_,bool).tandemLambda 'DevFast.Net.Extensions.Etc.Lambdas.Pipe<T>(this System.Func<T>, System.Func<T,T>, bool).tandemLambda').
 Returns a newly formed lambda which will feed the output of [sourceLambda](DevFast.Net.Extensions.Etc.Lambdas.md#DevFast.Net.Extensions.Etc.Lambdas.Pipe_T_(thisSystem.Func_T_,System.Func_T,T_,bool).sourceLambda 'DevFast.Net.Extensions.Etc.Lambdas.Pipe<T>(this System.Func<T>, System.Func<T,T>, bool).sourceLambda')
-to the [tandemLambda](DevFast.Net.Extensions.Etc.Lambdas.md#DevFast.Net.Extensions.Etc.Lambdas.Pipe_T_(thisSystem.Func_T_,System.Func_T,T_,bool).tandemLambda 'DevFast.Net.Extensions.Etc.Lambdas.Pipe<T>(this System.Func<T>, System.Func<T,T>, bool).tandemLambda') and upon execution it would return the output of
-the [tandemLambda](DevFast.Net.Extensions.Etc.Lambdas.md#DevFast.Net.Extensions.Etc.Lambdas.Pipe_T_(thisSystem.Func_T_,System.Func_T,T_,bool).tandemLambda 'DevFast.Net.Extensions.Etc.Lambdas.Pipe<T>(this System.Func<T>, System.Func<T,T>, bool).tandemLambda') lambda.
+to the [tandemLambda](DevFast.Net.Extensions.Etc.Lambdas.md#DevFast.Net.Extensions.Etc.Lambdas.Pipe_T_(thisSystem.Func_T_,System.Func_T,T_,bool).tandemLambda 'DevFast.Net.Extensions.Etc.Lambdas.Pipe<T>(this System.Func<T>, System.Func<T,T>, bool).tandemLambda'). Such a resultant lambda, upon execution,
+would return the output of the [tandemLambda](DevFast.Net.Extensions.Etc.Lambdas.md#DevFast.Net.Extensions.Etc.Lambdas.Pipe_T_(thisSystem.Func_T_,System.Func_T,T_,bool).tandemLambda 'DevFast.Net.Extensions.Etc.Lambdas.Pipe<T>(this System.Func<T>, System.Func<T,T>, bool).tandemLambda').
 
 ```csharp
 public static System.Func<T> Pipe<T>(this System.Func<T> sourceLambda, System.Func<T,T> tandemLambda, bool iff);
@@ -700,181 +598,181 @@ Source lambda to which the tandem operation would be applied.
 
 `tandemLambda` [System.Func&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Func-2 'System.Func`2')[T](DevFast.Net.Extensions.Etc.Lambdas.md#DevFast.Net.Extensions.Etc.Lambdas.Pipe_T_(thisSystem.Func_T_,System.Func_T,T_,bool).T 'DevFast.Net.Extensions.Etc.Lambdas.Pipe<T>(this System.Func<T>, System.Func<T,T>, bool).T')[,](https://docs.microsoft.com/en-us/dotnet/api/System.Func-2 'System.Func`2')[T](DevFast.Net.Extensions.Etc.Lambdas.md#DevFast.Net.Extensions.Etc.Lambdas.Pipe_T_(thisSystem.Func_T_,System.Func_T,T_,bool).T 'DevFast.Net.Extensions.Etc.Lambdas.Pipe<T>(this System.Func<T>, System.Func<T,T>, bool).T')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Func-2 'System.Func`2')
 
-Tandem lambda that would consume the output of the source lambda.
+Tandem lambda that would consume the output of the input lambda.
 
 <a name='DevFast.Net.Extensions.Etc.Lambdas.Pipe_T_(thisSystem.Func_T_,System.Func_T,T_,bool).iff'></a>
 
 `iff` [System.Boolean](https://docs.microsoft.com/en-us/dotnet/api/System.Boolean 'System.Boolean')
 
-Conditional flag dictating where the transformation should be applied or not
+Conditional flag dictating where the adapter should be applied or not
 
 #### Returns
 [System.Func&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Func-1 'System.Func`1')[T](DevFast.Net.Extensions.Etc.Lambdas.md#DevFast.Net.Extensions.Etc.Lambdas.Pipe_T_(thisSystem.Func_T_,System.Func_T,T_,bool).T 'DevFast.Net.Extensions.Etc.Lambdas.Pipe<T>(this System.Func<T>, System.Func<T,T>, bool).T')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Func-1 'System.Func`1')
 
-<a name='DevFast.Net.Extensions.Etc.Lambdas.Pipe_TSource,TTandem_(thisSystem.Func_System.Threading.CancellationToken,System.Threading.Tasks.Task_TSource__,System.Func_TSource,System.Threading.CancellationToken,System.Threading.Tasks.Task_TTandem__)'></a>
+<a name='DevFast.Net.Extensions.Etc.Lambdas.Pipe_TIn,TTandem_(thisSystem.Func_System.Threading.CancellationToken,System.Threading.Tasks.Task_TIn__,System.Func_TIn,System.Threading.CancellationToken,System.Threading.Tasks.Task_TTandem__)'></a>
 
-## Lambdas.Pipe<TSource,TTandem>(this Func<CancellationToken,Task<TSource>>, Func<TSource,CancellationToken,Task<TTandem>>) Method
+## Lambdas.Pipe<TIn,TTandem>(this Func<CancellationToken,Task<TIn>>, Func<TIn,CancellationToken,Task<TTandem>>) Method
 
-Conditionally merges the [sourceLambda](DevFast.Net.Extensions.Etc.Lambdas.md#DevFast.Net.Extensions.Etc.Lambdas.Pipe_TSource,TTandem_(thisSystem.Func_System.Threading.CancellationToken,System.Threading.Tasks.Task_TSource__,System.Func_TSource,System.Threading.CancellationToken,System.Threading.Tasks.Task_TTandem__).sourceLambda 'DevFast.Net.Extensions.Etc.Lambdas.Pipe<TSource,TTandem>(this System.Func<System.Threading.CancellationToken,System.Threading.Tasks.Task<TSource>>, System.Func<TSource,System.Threading.CancellationToken,System.Threading.Tasks.Task<TTandem>>).sourceLambda') with [tandemLambda](DevFast.Net.Extensions.Etc.Lambdas.md#DevFast.Net.Extensions.Etc.Lambdas.Pipe_TSource,TTandem_(thisSystem.Func_System.Threading.CancellationToken,System.Threading.Tasks.Task_TSource__,System.Func_TSource,System.Threading.CancellationToken,System.Threading.Tasks.Task_TTandem__).tandemLambda 'DevFast.Net.Extensions.Etc.Lambdas.Pipe<TSource,TTandem>(this System.Func<System.Threading.CancellationToken,System.Threading.Tasks.Task<TSource>>, System.Func<TSource,System.Threading.CancellationToken,System.Threading.Tasks.Task<TTandem>>).tandemLambda').
-Returns a newly formed lambda which will feed the output of [sourceLambda](DevFast.Net.Extensions.Etc.Lambdas.md#DevFast.Net.Extensions.Etc.Lambdas.Pipe_TSource,TTandem_(thisSystem.Func_System.Threading.CancellationToken,System.Threading.Tasks.Task_TSource__,System.Func_TSource,System.Threading.CancellationToken,System.Threading.Tasks.Task_TTandem__).sourceLambda 'DevFast.Net.Extensions.Etc.Lambdas.Pipe<TSource,TTandem>(this System.Func<System.Threading.CancellationToken,System.Threading.Tasks.Task<TSource>>, System.Func<TSource,System.Threading.CancellationToken,System.Threading.Tasks.Task<TTandem>>).sourceLambda')
-to the [tandemLambda](DevFast.Net.Extensions.Etc.Lambdas.md#DevFast.Net.Extensions.Etc.Lambdas.Pipe_TSource,TTandem_(thisSystem.Func_System.Threading.CancellationToken,System.Threading.Tasks.Task_TSource__,System.Func_TSource,System.Threading.CancellationToken,System.Threading.Tasks.Task_TTandem__).tandemLambda 'DevFast.Net.Extensions.Etc.Lambdas.Pipe<TSource,TTandem>(this System.Func<System.Threading.CancellationToken,System.Threading.Tasks.Task<TSource>>, System.Func<TSource,System.Threading.CancellationToken,System.Threading.Tasks.Task<TTandem>>).tandemLambda') and upon execution it would return the output of
-the [tandemLambda](DevFast.Net.Extensions.Etc.Lambdas.md#DevFast.Net.Extensions.Etc.Lambdas.Pipe_TSource,TTandem_(thisSystem.Func_System.Threading.CancellationToken,System.Threading.Tasks.Task_TSource__,System.Func_TSource,System.Threading.CancellationToken,System.Threading.Tasks.Task_TTandem__).tandemLambda 'DevFast.Net.Extensions.Etc.Lambdas.Pipe<TSource,TTandem>(this System.Func<System.Threading.CancellationToken,System.Threading.Tasks.Task<TSource>>, System.Func<TSource,System.Threading.CancellationToken,System.Threading.Tasks.Task<TTandem>>).tandemLambda') lambda.
+Merges the [sourceLambda](DevFast.Net.Extensions.Etc.Lambdas.md#DevFast.Net.Extensions.Etc.Lambdas.Pipe_TIn,TTandem_(thisSystem.Func_System.Threading.CancellationToken,System.Threading.Tasks.Task_TIn__,System.Func_TIn,System.Threading.CancellationToken,System.Threading.Tasks.Task_TTandem__).sourceLambda 'DevFast.Net.Extensions.Etc.Lambdas.Pipe<TIn,TTandem>(this System.Func<System.Threading.CancellationToken,System.Threading.Tasks.Task<TIn>>, System.Func<TIn,System.Threading.CancellationToken,System.Threading.Tasks.Task<TTandem>>).sourceLambda') with [tandemLambda](DevFast.Net.Extensions.Etc.Lambdas.md#DevFast.Net.Extensions.Etc.Lambdas.Pipe_TIn,TTandem_(thisSystem.Func_System.Threading.CancellationToken,System.Threading.Tasks.Task_TIn__,System.Func_TIn,System.Threading.CancellationToken,System.Threading.Tasks.Task_TTandem__).tandemLambda 'DevFast.Net.Extensions.Etc.Lambdas.Pipe<TIn,TTandem>(this System.Func<System.Threading.CancellationToken,System.Threading.Tasks.Task<TIn>>, System.Func<TIn,System.Threading.CancellationToken,System.Threading.Tasks.Task<TTandem>>).tandemLambda').
+Returns a newly formed lambda which will feed the output of [sourceLambda](DevFast.Net.Extensions.Etc.Lambdas.md#DevFast.Net.Extensions.Etc.Lambdas.Pipe_TIn,TTandem_(thisSystem.Func_System.Threading.CancellationToken,System.Threading.Tasks.Task_TIn__,System.Func_TIn,System.Threading.CancellationToken,System.Threading.Tasks.Task_TTandem__).sourceLambda 'DevFast.Net.Extensions.Etc.Lambdas.Pipe<TIn,TTandem>(this System.Func<System.Threading.CancellationToken,System.Threading.Tasks.Task<TIn>>, System.Func<TIn,System.Threading.CancellationToken,System.Threading.Tasks.Task<TTandem>>).sourceLambda')
+to the [tandemLambda](DevFast.Net.Extensions.Etc.Lambdas.md#DevFast.Net.Extensions.Etc.Lambdas.Pipe_TIn,TTandem_(thisSystem.Func_System.Threading.CancellationToken,System.Threading.Tasks.Task_TIn__,System.Func_TIn,System.Threading.CancellationToken,System.Threading.Tasks.Task_TTandem__).tandemLambda 'DevFast.Net.Extensions.Etc.Lambdas.Pipe<TIn,TTandem>(this System.Func<System.Threading.CancellationToken,System.Threading.Tasks.Task<TIn>>, System.Func<TIn,System.Threading.CancellationToken,System.Threading.Tasks.Task<TTandem>>).tandemLambda') and upon execution it would return the output of
+the [tandemLambda](DevFast.Net.Extensions.Etc.Lambdas.md#DevFast.Net.Extensions.Etc.Lambdas.Pipe_TIn,TTandem_(thisSystem.Func_System.Threading.CancellationToken,System.Threading.Tasks.Task_TIn__,System.Func_TIn,System.Threading.CancellationToken,System.Threading.Tasks.Task_TTandem__).tandemLambda 'DevFast.Net.Extensions.Etc.Lambdas.Pipe<TIn,TTandem>(this System.Func<System.Threading.CancellationToken,System.Threading.Tasks.Task<TIn>>, System.Func<TIn,System.Threading.CancellationToken,System.Threading.Tasks.Task<TTandem>>).tandemLambda') lambda.
 
 ```csharp
-public static System.Func<System.Threading.CancellationToken,System.Threading.Tasks.Task<TTandem>> Pipe<TSource,TTandem>(this System.Func<System.Threading.CancellationToken,System.Threading.Tasks.Task<TSource>> sourceLambda, System.Func<TSource,System.Threading.CancellationToken,System.Threading.Tasks.Task<TTandem>> tandemLambda);
+public static System.Func<System.Threading.CancellationToken,System.Threading.Tasks.Task<TTandem>> Pipe<TIn,TTandem>(this System.Func<System.Threading.CancellationToken,System.Threading.Tasks.Task<TIn>> sourceLambda, System.Func<TIn,System.Threading.CancellationToken,System.Threading.Tasks.Task<TTandem>> tandemLambda);
 ```
 #### Type parameters
 
-<a name='DevFast.Net.Extensions.Etc.Lambdas.Pipe_TSource,TTandem_(thisSystem.Func_System.Threading.CancellationToken,System.Threading.Tasks.Task_TSource__,System.Func_TSource,System.Threading.CancellationToken,System.Threading.Tasks.Task_TTandem__).TSource'></a>
+<a name='DevFast.Net.Extensions.Etc.Lambdas.Pipe_TIn,TTandem_(thisSystem.Func_System.Threading.CancellationToken,System.Threading.Tasks.Task_TIn__,System.Func_TIn,System.Threading.CancellationToken,System.Threading.Tasks.Task_TTandem__).TIn'></a>
 
-`TSource`
+`TIn`
 
 Source lambda output type
 
-<a name='DevFast.Net.Extensions.Etc.Lambdas.Pipe_TSource,TTandem_(thisSystem.Func_System.Threading.CancellationToken,System.Threading.Tasks.Task_TSource__,System.Func_TSource,System.Threading.CancellationToken,System.Threading.Tasks.Task_TTandem__).TTandem'></a>
+<a name='DevFast.Net.Extensions.Etc.Lambdas.Pipe_TIn,TTandem_(thisSystem.Func_System.Threading.CancellationToken,System.Threading.Tasks.Task_TIn__,System.Func_TIn,System.Threading.CancellationToken,System.Threading.Tasks.Task_TTandem__).TTandem'></a>
 
 `TTandem`
 
 Tandem lambda output type
 #### Parameters
 
-<a name='DevFast.Net.Extensions.Etc.Lambdas.Pipe_TSource,TTandem_(thisSystem.Func_System.Threading.CancellationToken,System.Threading.Tasks.Task_TSource__,System.Func_TSource,System.Threading.CancellationToken,System.Threading.Tasks.Task_TTandem__).sourceLambda'></a>
+<a name='DevFast.Net.Extensions.Etc.Lambdas.Pipe_TIn,TTandem_(thisSystem.Func_System.Threading.CancellationToken,System.Threading.Tasks.Task_TIn__,System.Func_TIn,System.Threading.CancellationToken,System.Threading.Tasks.Task_TTandem__).sourceLambda'></a>
 
-`sourceLambda` [System.Func&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Func-2 'System.Func`2')[System.Threading.CancellationToken](https://docs.microsoft.com/en-us/dotnet/api/System.Threading.CancellationToken 'System.Threading.CancellationToken')[,](https://docs.microsoft.com/en-us/dotnet/api/System.Func-2 'System.Func`2')[System.Threading.Tasks.Task&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Threading.Tasks.Task-1 'System.Threading.Tasks.Task`1')[TSource](DevFast.Net.Extensions.Etc.Lambdas.md#DevFast.Net.Extensions.Etc.Lambdas.Pipe_TSource,TTandem_(thisSystem.Func_System.Threading.CancellationToken,System.Threading.Tasks.Task_TSource__,System.Func_TSource,System.Threading.CancellationToken,System.Threading.Tasks.Task_TTandem__).TSource 'DevFast.Net.Extensions.Etc.Lambdas.Pipe<TSource,TTandem>(this System.Func<System.Threading.CancellationToken,System.Threading.Tasks.Task<TSource>>, System.Func<TSource,System.Threading.CancellationToken,System.Threading.Tasks.Task<TTandem>>).TSource')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Threading.Tasks.Task-1 'System.Threading.Tasks.Task`1')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Func-2 'System.Func`2')
+`sourceLambda` [System.Func&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Func-2 'System.Func`2')[System.Threading.CancellationToken](https://docs.microsoft.com/en-us/dotnet/api/System.Threading.CancellationToken 'System.Threading.CancellationToken')[,](https://docs.microsoft.com/en-us/dotnet/api/System.Func-2 'System.Func`2')[System.Threading.Tasks.Task&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Threading.Tasks.Task-1 'System.Threading.Tasks.Task`1')[TIn](DevFast.Net.Extensions.Etc.Lambdas.md#DevFast.Net.Extensions.Etc.Lambdas.Pipe_TIn,TTandem_(thisSystem.Func_System.Threading.CancellationToken,System.Threading.Tasks.Task_TIn__,System.Func_TIn,System.Threading.CancellationToken,System.Threading.Tasks.Task_TTandem__).TIn 'DevFast.Net.Extensions.Etc.Lambdas.Pipe<TIn,TTandem>(this System.Func<System.Threading.CancellationToken,System.Threading.Tasks.Task<TIn>>, System.Func<TIn,System.Threading.CancellationToken,System.Threading.Tasks.Task<TTandem>>).TIn')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Threading.Tasks.Task-1 'System.Threading.Tasks.Task`1')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Func-2 'System.Func`2')
 
 Source lambda to which the tandem operation would be applied.
 
-<a name='DevFast.Net.Extensions.Etc.Lambdas.Pipe_TSource,TTandem_(thisSystem.Func_System.Threading.CancellationToken,System.Threading.Tasks.Task_TSource__,System.Func_TSource,System.Threading.CancellationToken,System.Threading.Tasks.Task_TTandem__).tandemLambda'></a>
+<a name='DevFast.Net.Extensions.Etc.Lambdas.Pipe_TIn,TTandem_(thisSystem.Func_System.Threading.CancellationToken,System.Threading.Tasks.Task_TIn__,System.Func_TIn,System.Threading.CancellationToken,System.Threading.Tasks.Task_TTandem__).tandemLambda'></a>
 
-`tandemLambda` [System.Func&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Func-3 'System.Func`3')[TSource](DevFast.Net.Extensions.Etc.Lambdas.md#DevFast.Net.Extensions.Etc.Lambdas.Pipe_TSource,TTandem_(thisSystem.Func_System.Threading.CancellationToken,System.Threading.Tasks.Task_TSource__,System.Func_TSource,System.Threading.CancellationToken,System.Threading.Tasks.Task_TTandem__).TSource 'DevFast.Net.Extensions.Etc.Lambdas.Pipe<TSource,TTandem>(this System.Func<System.Threading.CancellationToken,System.Threading.Tasks.Task<TSource>>, System.Func<TSource,System.Threading.CancellationToken,System.Threading.Tasks.Task<TTandem>>).TSource')[,](https://docs.microsoft.com/en-us/dotnet/api/System.Func-3 'System.Func`3')[System.Threading.CancellationToken](https://docs.microsoft.com/en-us/dotnet/api/System.Threading.CancellationToken 'System.Threading.CancellationToken')[,](https://docs.microsoft.com/en-us/dotnet/api/System.Func-3 'System.Func`3')[System.Threading.Tasks.Task&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Threading.Tasks.Task-1 'System.Threading.Tasks.Task`1')[TTandem](DevFast.Net.Extensions.Etc.Lambdas.md#DevFast.Net.Extensions.Etc.Lambdas.Pipe_TSource,TTandem_(thisSystem.Func_System.Threading.CancellationToken,System.Threading.Tasks.Task_TSource__,System.Func_TSource,System.Threading.CancellationToken,System.Threading.Tasks.Task_TTandem__).TTandem 'DevFast.Net.Extensions.Etc.Lambdas.Pipe<TSource,TTandem>(this System.Func<System.Threading.CancellationToken,System.Threading.Tasks.Task<TSource>>, System.Func<TSource,System.Threading.CancellationToken,System.Threading.Tasks.Task<TTandem>>).TTandem')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Threading.Tasks.Task-1 'System.Threading.Tasks.Task`1')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Func-3 'System.Func`3')
+`tandemLambda` [System.Func&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Func-3 'System.Func`3')[TIn](DevFast.Net.Extensions.Etc.Lambdas.md#DevFast.Net.Extensions.Etc.Lambdas.Pipe_TIn,TTandem_(thisSystem.Func_System.Threading.CancellationToken,System.Threading.Tasks.Task_TIn__,System.Func_TIn,System.Threading.CancellationToken,System.Threading.Tasks.Task_TTandem__).TIn 'DevFast.Net.Extensions.Etc.Lambdas.Pipe<TIn,TTandem>(this System.Func<System.Threading.CancellationToken,System.Threading.Tasks.Task<TIn>>, System.Func<TIn,System.Threading.CancellationToken,System.Threading.Tasks.Task<TTandem>>).TIn')[,](https://docs.microsoft.com/en-us/dotnet/api/System.Func-3 'System.Func`3')[System.Threading.CancellationToken](https://docs.microsoft.com/en-us/dotnet/api/System.Threading.CancellationToken 'System.Threading.CancellationToken')[,](https://docs.microsoft.com/en-us/dotnet/api/System.Func-3 'System.Func`3')[System.Threading.Tasks.Task&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Threading.Tasks.Task-1 'System.Threading.Tasks.Task`1')[TTandem](DevFast.Net.Extensions.Etc.Lambdas.md#DevFast.Net.Extensions.Etc.Lambdas.Pipe_TIn,TTandem_(thisSystem.Func_System.Threading.CancellationToken,System.Threading.Tasks.Task_TIn__,System.Func_TIn,System.Threading.CancellationToken,System.Threading.Tasks.Task_TTandem__).TTandem 'DevFast.Net.Extensions.Etc.Lambdas.Pipe<TIn,TTandem>(this System.Func<System.Threading.CancellationToken,System.Threading.Tasks.Task<TIn>>, System.Func<TIn,System.Threading.CancellationToken,System.Threading.Tasks.Task<TTandem>>).TTandem')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Threading.Tasks.Task-1 'System.Threading.Tasks.Task`1')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Func-3 'System.Func`3')
 
-Tandem lambda that would consume the output of the source lambda.
+Tandem lambda that would consume the output of the input lambda.
 
 #### Returns
-[System.Func&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Func-2 'System.Func`2')[System.Threading.CancellationToken](https://docs.microsoft.com/en-us/dotnet/api/System.Threading.CancellationToken 'System.Threading.CancellationToken')[,](https://docs.microsoft.com/en-us/dotnet/api/System.Func-2 'System.Func`2')[System.Threading.Tasks.Task&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Threading.Tasks.Task-1 'System.Threading.Tasks.Task`1')[TTandem](DevFast.Net.Extensions.Etc.Lambdas.md#DevFast.Net.Extensions.Etc.Lambdas.Pipe_TSource,TTandem_(thisSystem.Func_System.Threading.CancellationToken,System.Threading.Tasks.Task_TSource__,System.Func_TSource,System.Threading.CancellationToken,System.Threading.Tasks.Task_TTandem__).TTandem 'DevFast.Net.Extensions.Etc.Lambdas.Pipe<TSource,TTandem>(this System.Func<System.Threading.CancellationToken,System.Threading.Tasks.Task<TSource>>, System.Func<TSource,System.Threading.CancellationToken,System.Threading.Tasks.Task<TTandem>>).TTandem')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Threading.Tasks.Task-1 'System.Threading.Tasks.Task`1')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Func-2 'System.Func`2')
+[System.Func&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Func-2 'System.Func`2')[System.Threading.CancellationToken](https://docs.microsoft.com/en-us/dotnet/api/System.Threading.CancellationToken 'System.Threading.CancellationToken')[,](https://docs.microsoft.com/en-us/dotnet/api/System.Func-2 'System.Func`2')[System.Threading.Tasks.Task&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Threading.Tasks.Task-1 'System.Threading.Tasks.Task`1')[TTandem](DevFast.Net.Extensions.Etc.Lambdas.md#DevFast.Net.Extensions.Etc.Lambdas.Pipe_TIn,TTandem_(thisSystem.Func_System.Threading.CancellationToken,System.Threading.Tasks.Task_TIn__,System.Func_TIn,System.Threading.CancellationToken,System.Threading.Tasks.Task_TTandem__).TTandem 'DevFast.Net.Extensions.Etc.Lambdas.Pipe<TIn,TTandem>(this System.Func<System.Threading.CancellationToken,System.Threading.Tasks.Task<TIn>>, System.Func<TIn,System.Threading.CancellationToken,System.Threading.Tasks.Task<TTandem>>).TTandem')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Threading.Tasks.Task-1 'System.Threading.Tasks.Task`1')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Func-2 'System.Func`2')
 
-<a name='DevFast.Net.Extensions.Etc.Lambdas.Pipe_TSource,TTandem_(thisSystem.Func_System.Threading.CancellationToken,System.Threading.Tasks.ValueTask_TSource__,System.Func_TSource,System.Threading.CancellationToken,System.Threading.Tasks.ValueTask_TTandem__)'></a>
+<a name='DevFast.Net.Extensions.Etc.Lambdas.Pipe_TIn,TTandem_(thisSystem.Func_System.Threading.CancellationToken,System.Threading.Tasks.ValueTask_TIn__,System.Func_TIn,System.Threading.CancellationToken,System.Threading.Tasks.ValueTask_TTandem__)'></a>
 
-## Lambdas.Pipe<TSource,TTandem>(this Func<CancellationToken,ValueTask<TSource>>, Func<TSource,CancellationToken,ValueTask<TTandem>>) Method
+## Lambdas.Pipe<TIn,TTandem>(this Func<CancellationToken,ValueTask<TIn>>, Func<TIn,CancellationToken,ValueTask<TTandem>>) Method
 
-Conditionally merges the [sourceLambda](DevFast.Net.Extensions.Etc.Lambdas.md#DevFast.Net.Extensions.Etc.Lambdas.Pipe_TSource,TTandem_(thisSystem.Func_System.Threading.CancellationToken,System.Threading.Tasks.ValueTask_TSource__,System.Func_TSource,System.Threading.CancellationToken,System.Threading.Tasks.ValueTask_TTandem__).sourceLambda 'DevFast.Net.Extensions.Etc.Lambdas.Pipe<TSource,TTandem>(this System.Func<System.Threading.CancellationToken,System.Threading.Tasks.ValueTask<TSource>>, System.Func<TSource,System.Threading.CancellationToken,System.Threading.Tasks.ValueTask<TTandem>>).sourceLambda') with [tandemLambda](DevFast.Net.Extensions.Etc.Lambdas.md#DevFast.Net.Extensions.Etc.Lambdas.Pipe_TSource,TTandem_(thisSystem.Func_System.Threading.CancellationToken,System.Threading.Tasks.ValueTask_TSource__,System.Func_TSource,System.Threading.CancellationToken,System.Threading.Tasks.ValueTask_TTandem__).tandemLambda 'DevFast.Net.Extensions.Etc.Lambdas.Pipe<TSource,TTandem>(this System.Func<System.Threading.CancellationToken,System.Threading.Tasks.ValueTask<TSource>>, System.Func<TSource,System.Threading.CancellationToken,System.Threading.Tasks.ValueTask<TTandem>>).tandemLambda').
-Returns a newly formed lambda which will feed the output of [sourceLambda](DevFast.Net.Extensions.Etc.Lambdas.md#DevFast.Net.Extensions.Etc.Lambdas.Pipe_TSource,TTandem_(thisSystem.Func_System.Threading.CancellationToken,System.Threading.Tasks.ValueTask_TSource__,System.Func_TSource,System.Threading.CancellationToken,System.Threading.Tasks.ValueTask_TTandem__).sourceLambda 'DevFast.Net.Extensions.Etc.Lambdas.Pipe<TSource,TTandem>(this System.Func<System.Threading.CancellationToken,System.Threading.Tasks.ValueTask<TSource>>, System.Func<TSource,System.Threading.CancellationToken,System.Threading.Tasks.ValueTask<TTandem>>).sourceLambda')
-to the [tandemLambda](DevFast.Net.Extensions.Etc.Lambdas.md#DevFast.Net.Extensions.Etc.Lambdas.Pipe_TSource,TTandem_(thisSystem.Func_System.Threading.CancellationToken,System.Threading.Tasks.ValueTask_TSource__,System.Func_TSource,System.Threading.CancellationToken,System.Threading.Tasks.ValueTask_TTandem__).tandemLambda 'DevFast.Net.Extensions.Etc.Lambdas.Pipe<TSource,TTandem>(this System.Func<System.Threading.CancellationToken,System.Threading.Tasks.ValueTask<TSource>>, System.Func<TSource,System.Threading.CancellationToken,System.Threading.Tasks.ValueTask<TTandem>>).tandemLambda') and upon execution it would return the output of
-the [tandemLambda](DevFast.Net.Extensions.Etc.Lambdas.md#DevFast.Net.Extensions.Etc.Lambdas.Pipe_TSource,TTandem_(thisSystem.Func_System.Threading.CancellationToken,System.Threading.Tasks.ValueTask_TSource__,System.Func_TSource,System.Threading.CancellationToken,System.Threading.Tasks.ValueTask_TTandem__).tandemLambda 'DevFast.Net.Extensions.Etc.Lambdas.Pipe<TSource,TTandem>(this System.Func<System.Threading.CancellationToken,System.Threading.Tasks.ValueTask<TSource>>, System.Func<TSource,System.Threading.CancellationToken,System.Threading.Tasks.ValueTask<TTandem>>).tandemLambda') lambda.
+Merges the [sourceLambda](DevFast.Net.Extensions.Etc.Lambdas.md#DevFast.Net.Extensions.Etc.Lambdas.Pipe_TIn,TTandem_(thisSystem.Func_System.Threading.CancellationToken,System.Threading.Tasks.ValueTask_TIn__,System.Func_TIn,System.Threading.CancellationToken,System.Threading.Tasks.ValueTask_TTandem__).sourceLambda 'DevFast.Net.Extensions.Etc.Lambdas.Pipe<TIn,TTandem>(this System.Func<System.Threading.CancellationToken,System.Threading.Tasks.ValueTask<TIn>>, System.Func<TIn,System.Threading.CancellationToken,System.Threading.Tasks.ValueTask<TTandem>>).sourceLambda') with [tandemLambda](DevFast.Net.Extensions.Etc.Lambdas.md#DevFast.Net.Extensions.Etc.Lambdas.Pipe_TIn,TTandem_(thisSystem.Func_System.Threading.CancellationToken,System.Threading.Tasks.ValueTask_TIn__,System.Func_TIn,System.Threading.CancellationToken,System.Threading.Tasks.ValueTask_TTandem__).tandemLambda 'DevFast.Net.Extensions.Etc.Lambdas.Pipe<TIn,TTandem>(this System.Func<System.Threading.CancellationToken,System.Threading.Tasks.ValueTask<TIn>>, System.Func<TIn,System.Threading.CancellationToken,System.Threading.Tasks.ValueTask<TTandem>>).tandemLambda').
+Returns a newly formed lambda which will feed the output of [sourceLambda](DevFast.Net.Extensions.Etc.Lambdas.md#DevFast.Net.Extensions.Etc.Lambdas.Pipe_TIn,TTandem_(thisSystem.Func_System.Threading.CancellationToken,System.Threading.Tasks.ValueTask_TIn__,System.Func_TIn,System.Threading.CancellationToken,System.Threading.Tasks.ValueTask_TTandem__).sourceLambda 'DevFast.Net.Extensions.Etc.Lambdas.Pipe<TIn,TTandem>(this System.Func<System.Threading.CancellationToken,System.Threading.Tasks.ValueTask<TIn>>, System.Func<TIn,System.Threading.CancellationToken,System.Threading.Tasks.ValueTask<TTandem>>).sourceLambda')
+to the [tandemLambda](DevFast.Net.Extensions.Etc.Lambdas.md#DevFast.Net.Extensions.Etc.Lambdas.Pipe_TIn,TTandem_(thisSystem.Func_System.Threading.CancellationToken,System.Threading.Tasks.ValueTask_TIn__,System.Func_TIn,System.Threading.CancellationToken,System.Threading.Tasks.ValueTask_TTandem__).tandemLambda 'DevFast.Net.Extensions.Etc.Lambdas.Pipe<TIn,TTandem>(this System.Func<System.Threading.CancellationToken,System.Threading.Tasks.ValueTask<TIn>>, System.Func<TIn,System.Threading.CancellationToken,System.Threading.Tasks.ValueTask<TTandem>>).tandemLambda') and upon execution it would return the output of
+the [tandemLambda](DevFast.Net.Extensions.Etc.Lambdas.md#DevFast.Net.Extensions.Etc.Lambdas.Pipe_TIn,TTandem_(thisSystem.Func_System.Threading.CancellationToken,System.Threading.Tasks.ValueTask_TIn__,System.Func_TIn,System.Threading.CancellationToken,System.Threading.Tasks.ValueTask_TTandem__).tandemLambda 'DevFast.Net.Extensions.Etc.Lambdas.Pipe<TIn,TTandem>(this System.Func<System.Threading.CancellationToken,System.Threading.Tasks.ValueTask<TIn>>, System.Func<TIn,System.Threading.CancellationToken,System.Threading.Tasks.ValueTask<TTandem>>).tandemLambda') lambda.
 
 ```csharp
-public static System.Func<System.Threading.CancellationToken,System.Threading.Tasks.ValueTask<TTandem>> Pipe<TSource,TTandem>(this System.Func<System.Threading.CancellationToken,System.Threading.Tasks.ValueTask<TSource>> sourceLambda, System.Func<TSource,System.Threading.CancellationToken,System.Threading.Tasks.ValueTask<TTandem>> tandemLambda);
+public static System.Func<System.Threading.CancellationToken,System.Threading.Tasks.ValueTask<TTandem>> Pipe<TIn,TTandem>(this System.Func<System.Threading.CancellationToken,System.Threading.Tasks.ValueTask<TIn>> sourceLambda, System.Func<TIn,System.Threading.CancellationToken,System.Threading.Tasks.ValueTask<TTandem>> tandemLambda);
 ```
 #### Type parameters
 
-<a name='DevFast.Net.Extensions.Etc.Lambdas.Pipe_TSource,TTandem_(thisSystem.Func_System.Threading.CancellationToken,System.Threading.Tasks.ValueTask_TSource__,System.Func_TSource,System.Threading.CancellationToken,System.Threading.Tasks.ValueTask_TTandem__).TSource'></a>
+<a name='DevFast.Net.Extensions.Etc.Lambdas.Pipe_TIn,TTandem_(thisSystem.Func_System.Threading.CancellationToken,System.Threading.Tasks.ValueTask_TIn__,System.Func_TIn,System.Threading.CancellationToken,System.Threading.Tasks.ValueTask_TTandem__).TIn'></a>
 
-`TSource`
+`TIn`
 
 Source lambda output type
 
-<a name='DevFast.Net.Extensions.Etc.Lambdas.Pipe_TSource,TTandem_(thisSystem.Func_System.Threading.CancellationToken,System.Threading.Tasks.ValueTask_TSource__,System.Func_TSource,System.Threading.CancellationToken,System.Threading.Tasks.ValueTask_TTandem__).TTandem'></a>
+<a name='DevFast.Net.Extensions.Etc.Lambdas.Pipe_TIn,TTandem_(thisSystem.Func_System.Threading.CancellationToken,System.Threading.Tasks.ValueTask_TIn__,System.Func_TIn,System.Threading.CancellationToken,System.Threading.Tasks.ValueTask_TTandem__).TTandem'></a>
 
 `TTandem`
 
 Tandem lambda output type
 #### Parameters
 
-<a name='DevFast.Net.Extensions.Etc.Lambdas.Pipe_TSource,TTandem_(thisSystem.Func_System.Threading.CancellationToken,System.Threading.Tasks.ValueTask_TSource__,System.Func_TSource,System.Threading.CancellationToken,System.Threading.Tasks.ValueTask_TTandem__).sourceLambda'></a>
+<a name='DevFast.Net.Extensions.Etc.Lambdas.Pipe_TIn,TTandem_(thisSystem.Func_System.Threading.CancellationToken,System.Threading.Tasks.ValueTask_TIn__,System.Func_TIn,System.Threading.CancellationToken,System.Threading.Tasks.ValueTask_TTandem__).sourceLambda'></a>
 
-`sourceLambda` [System.Func&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Func-2 'System.Func`2')[System.Threading.CancellationToken](https://docs.microsoft.com/en-us/dotnet/api/System.Threading.CancellationToken 'System.Threading.CancellationToken')[,](https://docs.microsoft.com/en-us/dotnet/api/System.Func-2 'System.Func`2')[System.Threading.Tasks.ValueTask&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Threading.Tasks.ValueTask-1 'System.Threading.Tasks.ValueTask`1')[TSource](DevFast.Net.Extensions.Etc.Lambdas.md#DevFast.Net.Extensions.Etc.Lambdas.Pipe_TSource,TTandem_(thisSystem.Func_System.Threading.CancellationToken,System.Threading.Tasks.ValueTask_TSource__,System.Func_TSource,System.Threading.CancellationToken,System.Threading.Tasks.ValueTask_TTandem__).TSource 'DevFast.Net.Extensions.Etc.Lambdas.Pipe<TSource,TTandem>(this System.Func<System.Threading.CancellationToken,System.Threading.Tasks.ValueTask<TSource>>, System.Func<TSource,System.Threading.CancellationToken,System.Threading.Tasks.ValueTask<TTandem>>).TSource')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Threading.Tasks.ValueTask-1 'System.Threading.Tasks.ValueTask`1')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Func-2 'System.Func`2')
+`sourceLambda` [System.Func&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Func-2 'System.Func`2')[System.Threading.CancellationToken](https://docs.microsoft.com/en-us/dotnet/api/System.Threading.CancellationToken 'System.Threading.CancellationToken')[,](https://docs.microsoft.com/en-us/dotnet/api/System.Func-2 'System.Func`2')[System.Threading.Tasks.ValueTask&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Threading.Tasks.ValueTask-1 'System.Threading.Tasks.ValueTask`1')[TIn](DevFast.Net.Extensions.Etc.Lambdas.md#DevFast.Net.Extensions.Etc.Lambdas.Pipe_TIn,TTandem_(thisSystem.Func_System.Threading.CancellationToken,System.Threading.Tasks.ValueTask_TIn__,System.Func_TIn,System.Threading.CancellationToken,System.Threading.Tasks.ValueTask_TTandem__).TIn 'DevFast.Net.Extensions.Etc.Lambdas.Pipe<TIn,TTandem>(this System.Func<System.Threading.CancellationToken,System.Threading.Tasks.ValueTask<TIn>>, System.Func<TIn,System.Threading.CancellationToken,System.Threading.Tasks.ValueTask<TTandem>>).TIn')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Threading.Tasks.ValueTask-1 'System.Threading.Tasks.ValueTask`1')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Func-2 'System.Func`2')
 
 Source lambda to which the tandem operation would be applied.
 
-<a name='DevFast.Net.Extensions.Etc.Lambdas.Pipe_TSource,TTandem_(thisSystem.Func_System.Threading.CancellationToken,System.Threading.Tasks.ValueTask_TSource__,System.Func_TSource,System.Threading.CancellationToken,System.Threading.Tasks.ValueTask_TTandem__).tandemLambda'></a>
+<a name='DevFast.Net.Extensions.Etc.Lambdas.Pipe_TIn,TTandem_(thisSystem.Func_System.Threading.CancellationToken,System.Threading.Tasks.ValueTask_TIn__,System.Func_TIn,System.Threading.CancellationToken,System.Threading.Tasks.ValueTask_TTandem__).tandemLambda'></a>
 
-`tandemLambda` [System.Func&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Func-3 'System.Func`3')[TSource](DevFast.Net.Extensions.Etc.Lambdas.md#DevFast.Net.Extensions.Etc.Lambdas.Pipe_TSource,TTandem_(thisSystem.Func_System.Threading.CancellationToken,System.Threading.Tasks.ValueTask_TSource__,System.Func_TSource,System.Threading.CancellationToken,System.Threading.Tasks.ValueTask_TTandem__).TSource 'DevFast.Net.Extensions.Etc.Lambdas.Pipe<TSource,TTandem>(this System.Func<System.Threading.CancellationToken,System.Threading.Tasks.ValueTask<TSource>>, System.Func<TSource,System.Threading.CancellationToken,System.Threading.Tasks.ValueTask<TTandem>>).TSource')[,](https://docs.microsoft.com/en-us/dotnet/api/System.Func-3 'System.Func`3')[System.Threading.CancellationToken](https://docs.microsoft.com/en-us/dotnet/api/System.Threading.CancellationToken 'System.Threading.CancellationToken')[,](https://docs.microsoft.com/en-us/dotnet/api/System.Func-3 'System.Func`3')[System.Threading.Tasks.ValueTask&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Threading.Tasks.ValueTask-1 'System.Threading.Tasks.ValueTask`1')[TTandem](DevFast.Net.Extensions.Etc.Lambdas.md#DevFast.Net.Extensions.Etc.Lambdas.Pipe_TSource,TTandem_(thisSystem.Func_System.Threading.CancellationToken,System.Threading.Tasks.ValueTask_TSource__,System.Func_TSource,System.Threading.CancellationToken,System.Threading.Tasks.ValueTask_TTandem__).TTandem 'DevFast.Net.Extensions.Etc.Lambdas.Pipe<TSource,TTandem>(this System.Func<System.Threading.CancellationToken,System.Threading.Tasks.ValueTask<TSource>>, System.Func<TSource,System.Threading.CancellationToken,System.Threading.Tasks.ValueTask<TTandem>>).TTandem')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Threading.Tasks.ValueTask-1 'System.Threading.Tasks.ValueTask`1')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Func-3 'System.Func`3')
+`tandemLambda` [System.Func&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Func-3 'System.Func`3')[TIn](DevFast.Net.Extensions.Etc.Lambdas.md#DevFast.Net.Extensions.Etc.Lambdas.Pipe_TIn,TTandem_(thisSystem.Func_System.Threading.CancellationToken,System.Threading.Tasks.ValueTask_TIn__,System.Func_TIn,System.Threading.CancellationToken,System.Threading.Tasks.ValueTask_TTandem__).TIn 'DevFast.Net.Extensions.Etc.Lambdas.Pipe<TIn,TTandem>(this System.Func<System.Threading.CancellationToken,System.Threading.Tasks.ValueTask<TIn>>, System.Func<TIn,System.Threading.CancellationToken,System.Threading.Tasks.ValueTask<TTandem>>).TIn')[,](https://docs.microsoft.com/en-us/dotnet/api/System.Func-3 'System.Func`3')[System.Threading.CancellationToken](https://docs.microsoft.com/en-us/dotnet/api/System.Threading.CancellationToken 'System.Threading.CancellationToken')[,](https://docs.microsoft.com/en-us/dotnet/api/System.Func-3 'System.Func`3')[System.Threading.Tasks.ValueTask&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Threading.Tasks.ValueTask-1 'System.Threading.Tasks.ValueTask`1')[TTandem](DevFast.Net.Extensions.Etc.Lambdas.md#DevFast.Net.Extensions.Etc.Lambdas.Pipe_TIn,TTandem_(thisSystem.Func_System.Threading.CancellationToken,System.Threading.Tasks.ValueTask_TIn__,System.Func_TIn,System.Threading.CancellationToken,System.Threading.Tasks.ValueTask_TTandem__).TTandem 'DevFast.Net.Extensions.Etc.Lambdas.Pipe<TIn,TTandem>(this System.Func<System.Threading.CancellationToken,System.Threading.Tasks.ValueTask<TIn>>, System.Func<TIn,System.Threading.CancellationToken,System.Threading.Tasks.ValueTask<TTandem>>).TTandem')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Threading.Tasks.ValueTask-1 'System.Threading.Tasks.ValueTask`1')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Func-3 'System.Func`3')
 
-Tandem lambda that would consume the output of the source lambda.
+Tandem lambda that would consume the output of the input lambda.
 
 #### Returns
-[System.Func&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Func-2 'System.Func`2')[System.Threading.CancellationToken](https://docs.microsoft.com/en-us/dotnet/api/System.Threading.CancellationToken 'System.Threading.CancellationToken')[,](https://docs.microsoft.com/en-us/dotnet/api/System.Func-2 'System.Func`2')[System.Threading.Tasks.ValueTask&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Threading.Tasks.ValueTask-1 'System.Threading.Tasks.ValueTask`1')[TTandem](DevFast.Net.Extensions.Etc.Lambdas.md#DevFast.Net.Extensions.Etc.Lambdas.Pipe_TSource,TTandem_(thisSystem.Func_System.Threading.CancellationToken,System.Threading.Tasks.ValueTask_TSource__,System.Func_TSource,System.Threading.CancellationToken,System.Threading.Tasks.ValueTask_TTandem__).TTandem 'DevFast.Net.Extensions.Etc.Lambdas.Pipe<TSource,TTandem>(this System.Func<System.Threading.CancellationToken,System.Threading.Tasks.ValueTask<TSource>>, System.Func<TSource,System.Threading.CancellationToken,System.Threading.Tasks.ValueTask<TTandem>>).TTandem')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Threading.Tasks.ValueTask-1 'System.Threading.Tasks.ValueTask`1')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Func-2 'System.Func`2')
+[System.Func&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Func-2 'System.Func`2')[System.Threading.CancellationToken](https://docs.microsoft.com/en-us/dotnet/api/System.Threading.CancellationToken 'System.Threading.CancellationToken')[,](https://docs.microsoft.com/en-us/dotnet/api/System.Func-2 'System.Func`2')[System.Threading.Tasks.ValueTask&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Threading.Tasks.ValueTask-1 'System.Threading.Tasks.ValueTask`1')[TTandem](DevFast.Net.Extensions.Etc.Lambdas.md#DevFast.Net.Extensions.Etc.Lambdas.Pipe_TIn,TTandem_(thisSystem.Func_System.Threading.CancellationToken,System.Threading.Tasks.ValueTask_TIn__,System.Func_TIn,System.Threading.CancellationToken,System.Threading.Tasks.ValueTask_TTandem__).TTandem 'DevFast.Net.Extensions.Etc.Lambdas.Pipe<TIn,TTandem>(this System.Func<System.Threading.CancellationToken,System.Threading.Tasks.ValueTask<TIn>>, System.Func<TIn,System.Threading.CancellationToken,System.Threading.Tasks.ValueTask<TTandem>>).TTandem')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Threading.Tasks.ValueTask-1 'System.Threading.Tasks.ValueTask`1')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Func-2 'System.Func`2')
 
-<a name='DevFast.Net.Extensions.Etc.Lambdas.Pipe_TSource,TTandem_(thisSystem.Func_System.Threading.CancellationToken,TSource_,System.Func_TSource,System.Threading.CancellationToken,TTandem_)'></a>
+<a name='DevFast.Net.Extensions.Etc.Lambdas.Pipe_TIn,TTandem_(thisSystem.Func_System.Threading.CancellationToken,TIn_,System.Func_TIn,System.Threading.CancellationToken,TTandem_)'></a>
 
-## Lambdas.Pipe<TSource,TTandem>(this Func<CancellationToken,TSource>, Func<TSource,CancellationToken,TTandem>) Method
+## Lambdas.Pipe<TIn,TTandem>(this Func<CancellationToken,TIn>, Func<TIn,CancellationToken,TTandem>) Method
 
-Conditionally merges the [sourceLambda](DevFast.Net.Extensions.Etc.Lambdas.md#DevFast.Net.Extensions.Etc.Lambdas.Pipe_TSource,TTandem_(thisSystem.Func_System.Threading.CancellationToken,TSource_,System.Func_TSource,System.Threading.CancellationToken,TTandem_).sourceLambda 'DevFast.Net.Extensions.Etc.Lambdas.Pipe<TSource,TTandem>(this System.Func<System.Threading.CancellationToken,TSource>, System.Func<TSource,System.Threading.CancellationToken,TTandem>).sourceLambda') with [tandemLambda](DevFast.Net.Extensions.Etc.Lambdas.md#DevFast.Net.Extensions.Etc.Lambdas.Pipe_TSource,TTandem_(thisSystem.Func_System.Threading.CancellationToken,TSource_,System.Func_TSource,System.Threading.CancellationToken,TTandem_).tandemLambda 'DevFast.Net.Extensions.Etc.Lambdas.Pipe<TSource,TTandem>(this System.Func<System.Threading.CancellationToken,TSource>, System.Func<TSource,System.Threading.CancellationToken,TTandem>).tandemLambda').
-Returns a newly formed lambda which will feed the output of [sourceLambda](DevFast.Net.Extensions.Etc.Lambdas.md#DevFast.Net.Extensions.Etc.Lambdas.Pipe_TSource,TTandem_(thisSystem.Func_System.Threading.CancellationToken,TSource_,System.Func_TSource,System.Threading.CancellationToken,TTandem_).sourceLambda 'DevFast.Net.Extensions.Etc.Lambdas.Pipe<TSource,TTandem>(this System.Func<System.Threading.CancellationToken,TSource>, System.Func<TSource,System.Threading.CancellationToken,TTandem>).sourceLambda')
-to the [tandemLambda](DevFast.Net.Extensions.Etc.Lambdas.md#DevFast.Net.Extensions.Etc.Lambdas.Pipe_TSource,TTandem_(thisSystem.Func_System.Threading.CancellationToken,TSource_,System.Func_TSource,System.Threading.CancellationToken,TTandem_).tandemLambda 'DevFast.Net.Extensions.Etc.Lambdas.Pipe<TSource,TTandem>(this System.Func<System.Threading.CancellationToken,TSource>, System.Func<TSource,System.Threading.CancellationToken,TTandem>).tandemLambda') and upon execution it would return the output of
-the [tandemLambda](DevFast.Net.Extensions.Etc.Lambdas.md#DevFast.Net.Extensions.Etc.Lambdas.Pipe_TSource,TTandem_(thisSystem.Func_System.Threading.CancellationToken,TSource_,System.Func_TSource,System.Threading.CancellationToken,TTandem_).tandemLambda 'DevFast.Net.Extensions.Etc.Lambdas.Pipe<TSource,TTandem>(this System.Func<System.Threading.CancellationToken,TSource>, System.Func<TSource,System.Threading.CancellationToken,TTandem>).tandemLambda') lambda.
+Merges the [sourceLambda](DevFast.Net.Extensions.Etc.Lambdas.md#DevFast.Net.Extensions.Etc.Lambdas.Pipe_TIn,TTandem_(thisSystem.Func_System.Threading.CancellationToken,TIn_,System.Func_TIn,System.Threading.CancellationToken,TTandem_).sourceLambda 'DevFast.Net.Extensions.Etc.Lambdas.Pipe<TIn,TTandem>(this System.Func<System.Threading.CancellationToken,TIn>, System.Func<TIn,System.Threading.CancellationToken,TTandem>).sourceLambda') with [tandemLambda](DevFast.Net.Extensions.Etc.Lambdas.md#DevFast.Net.Extensions.Etc.Lambdas.Pipe_TIn,TTandem_(thisSystem.Func_System.Threading.CancellationToken,TIn_,System.Func_TIn,System.Threading.CancellationToken,TTandem_).tandemLambda 'DevFast.Net.Extensions.Etc.Lambdas.Pipe<TIn,TTandem>(this System.Func<System.Threading.CancellationToken,TIn>, System.Func<TIn,System.Threading.CancellationToken,TTandem>).tandemLambda').
+Returns a newly formed lambda which will feed the output of [sourceLambda](DevFast.Net.Extensions.Etc.Lambdas.md#DevFast.Net.Extensions.Etc.Lambdas.Pipe_TIn,TTandem_(thisSystem.Func_System.Threading.CancellationToken,TIn_,System.Func_TIn,System.Threading.CancellationToken,TTandem_).sourceLambda 'DevFast.Net.Extensions.Etc.Lambdas.Pipe<TIn,TTandem>(this System.Func<System.Threading.CancellationToken,TIn>, System.Func<TIn,System.Threading.CancellationToken,TTandem>).sourceLambda')
+to the [tandemLambda](DevFast.Net.Extensions.Etc.Lambdas.md#DevFast.Net.Extensions.Etc.Lambdas.Pipe_TIn,TTandem_(thisSystem.Func_System.Threading.CancellationToken,TIn_,System.Func_TIn,System.Threading.CancellationToken,TTandem_).tandemLambda 'DevFast.Net.Extensions.Etc.Lambdas.Pipe<TIn,TTandem>(this System.Func<System.Threading.CancellationToken,TIn>, System.Func<TIn,System.Threading.CancellationToken,TTandem>).tandemLambda') and upon execution it would return the output of
+the [tandemLambda](DevFast.Net.Extensions.Etc.Lambdas.md#DevFast.Net.Extensions.Etc.Lambdas.Pipe_TIn,TTandem_(thisSystem.Func_System.Threading.CancellationToken,TIn_,System.Func_TIn,System.Threading.CancellationToken,TTandem_).tandemLambda 'DevFast.Net.Extensions.Etc.Lambdas.Pipe<TIn,TTandem>(this System.Func<System.Threading.CancellationToken,TIn>, System.Func<TIn,System.Threading.CancellationToken,TTandem>).tandemLambda') lambda.
 
 ```csharp
-public static System.Func<System.Threading.CancellationToken,TTandem> Pipe<TSource,TTandem>(this System.Func<System.Threading.CancellationToken,TSource> sourceLambda, System.Func<TSource,System.Threading.CancellationToken,TTandem> tandemLambda);
+public static System.Func<System.Threading.CancellationToken,TTandem> Pipe<TIn,TTandem>(this System.Func<System.Threading.CancellationToken,TIn> sourceLambda, System.Func<TIn,System.Threading.CancellationToken,TTandem> tandemLambda);
 ```
 #### Type parameters
 
-<a name='DevFast.Net.Extensions.Etc.Lambdas.Pipe_TSource,TTandem_(thisSystem.Func_System.Threading.CancellationToken,TSource_,System.Func_TSource,System.Threading.CancellationToken,TTandem_).TSource'></a>
+<a name='DevFast.Net.Extensions.Etc.Lambdas.Pipe_TIn,TTandem_(thisSystem.Func_System.Threading.CancellationToken,TIn_,System.Func_TIn,System.Threading.CancellationToken,TTandem_).TIn'></a>
 
-`TSource`
+`TIn`
 
 Source lambda output type
 
-<a name='DevFast.Net.Extensions.Etc.Lambdas.Pipe_TSource,TTandem_(thisSystem.Func_System.Threading.CancellationToken,TSource_,System.Func_TSource,System.Threading.CancellationToken,TTandem_).TTandem'></a>
+<a name='DevFast.Net.Extensions.Etc.Lambdas.Pipe_TIn,TTandem_(thisSystem.Func_System.Threading.CancellationToken,TIn_,System.Func_TIn,System.Threading.CancellationToken,TTandem_).TTandem'></a>
 
 `TTandem`
 
 Tandem lambda output type
 #### Parameters
 
-<a name='DevFast.Net.Extensions.Etc.Lambdas.Pipe_TSource,TTandem_(thisSystem.Func_System.Threading.CancellationToken,TSource_,System.Func_TSource,System.Threading.CancellationToken,TTandem_).sourceLambda'></a>
+<a name='DevFast.Net.Extensions.Etc.Lambdas.Pipe_TIn,TTandem_(thisSystem.Func_System.Threading.CancellationToken,TIn_,System.Func_TIn,System.Threading.CancellationToken,TTandem_).sourceLambda'></a>
 
-`sourceLambda` [System.Func&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Func-2 'System.Func`2')[System.Threading.CancellationToken](https://docs.microsoft.com/en-us/dotnet/api/System.Threading.CancellationToken 'System.Threading.CancellationToken')[,](https://docs.microsoft.com/en-us/dotnet/api/System.Func-2 'System.Func`2')[TSource](DevFast.Net.Extensions.Etc.Lambdas.md#DevFast.Net.Extensions.Etc.Lambdas.Pipe_TSource,TTandem_(thisSystem.Func_System.Threading.CancellationToken,TSource_,System.Func_TSource,System.Threading.CancellationToken,TTandem_).TSource 'DevFast.Net.Extensions.Etc.Lambdas.Pipe<TSource,TTandem>(this System.Func<System.Threading.CancellationToken,TSource>, System.Func<TSource,System.Threading.CancellationToken,TTandem>).TSource')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Func-2 'System.Func`2')
+`sourceLambda` [System.Func&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Func-2 'System.Func`2')[System.Threading.CancellationToken](https://docs.microsoft.com/en-us/dotnet/api/System.Threading.CancellationToken 'System.Threading.CancellationToken')[,](https://docs.microsoft.com/en-us/dotnet/api/System.Func-2 'System.Func`2')[TIn](DevFast.Net.Extensions.Etc.Lambdas.md#DevFast.Net.Extensions.Etc.Lambdas.Pipe_TIn,TTandem_(thisSystem.Func_System.Threading.CancellationToken,TIn_,System.Func_TIn,System.Threading.CancellationToken,TTandem_).TIn 'DevFast.Net.Extensions.Etc.Lambdas.Pipe<TIn,TTandem>(this System.Func<System.Threading.CancellationToken,TIn>, System.Func<TIn,System.Threading.CancellationToken,TTandem>).TIn')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Func-2 'System.Func`2')
 
 Source lambda to which the tandem operation would be applied.
 
-<a name='DevFast.Net.Extensions.Etc.Lambdas.Pipe_TSource,TTandem_(thisSystem.Func_System.Threading.CancellationToken,TSource_,System.Func_TSource,System.Threading.CancellationToken,TTandem_).tandemLambda'></a>
+<a name='DevFast.Net.Extensions.Etc.Lambdas.Pipe_TIn,TTandem_(thisSystem.Func_System.Threading.CancellationToken,TIn_,System.Func_TIn,System.Threading.CancellationToken,TTandem_).tandemLambda'></a>
 
-`tandemLambda` [System.Func&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Func-3 'System.Func`3')[TSource](DevFast.Net.Extensions.Etc.Lambdas.md#DevFast.Net.Extensions.Etc.Lambdas.Pipe_TSource,TTandem_(thisSystem.Func_System.Threading.CancellationToken,TSource_,System.Func_TSource,System.Threading.CancellationToken,TTandem_).TSource 'DevFast.Net.Extensions.Etc.Lambdas.Pipe<TSource,TTandem>(this System.Func<System.Threading.CancellationToken,TSource>, System.Func<TSource,System.Threading.CancellationToken,TTandem>).TSource')[,](https://docs.microsoft.com/en-us/dotnet/api/System.Func-3 'System.Func`3')[System.Threading.CancellationToken](https://docs.microsoft.com/en-us/dotnet/api/System.Threading.CancellationToken 'System.Threading.CancellationToken')[,](https://docs.microsoft.com/en-us/dotnet/api/System.Func-3 'System.Func`3')[TTandem](DevFast.Net.Extensions.Etc.Lambdas.md#DevFast.Net.Extensions.Etc.Lambdas.Pipe_TSource,TTandem_(thisSystem.Func_System.Threading.CancellationToken,TSource_,System.Func_TSource,System.Threading.CancellationToken,TTandem_).TTandem 'DevFast.Net.Extensions.Etc.Lambdas.Pipe<TSource,TTandem>(this System.Func<System.Threading.CancellationToken,TSource>, System.Func<TSource,System.Threading.CancellationToken,TTandem>).TTandem')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Func-3 'System.Func`3')
+`tandemLambda` [System.Func&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Func-3 'System.Func`3')[TIn](DevFast.Net.Extensions.Etc.Lambdas.md#DevFast.Net.Extensions.Etc.Lambdas.Pipe_TIn,TTandem_(thisSystem.Func_System.Threading.CancellationToken,TIn_,System.Func_TIn,System.Threading.CancellationToken,TTandem_).TIn 'DevFast.Net.Extensions.Etc.Lambdas.Pipe<TIn,TTandem>(this System.Func<System.Threading.CancellationToken,TIn>, System.Func<TIn,System.Threading.CancellationToken,TTandem>).TIn')[,](https://docs.microsoft.com/en-us/dotnet/api/System.Func-3 'System.Func`3')[System.Threading.CancellationToken](https://docs.microsoft.com/en-us/dotnet/api/System.Threading.CancellationToken 'System.Threading.CancellationToken')[,](https://docs.microsoft.com/en-us/dotnet/api/System.Func-3 'System.Func`3')[TTandem](DevFast.Net.Extensions.Etc.Lambdas.md#DevFast.Net.Extensions.Etc.Lambdas.Pipe_TIn,TTandem_(thisSystem.Func_System.Threading.CancellationToken,TIn_,System.Func_TIn,System.Threading.CancellationToken,TTandem_).TTandem 'DevFast.Net.Extensions.Etc.Lambdas.Pipe<TIn,TTandem>(this System.Func<System.Threading.CancellationToken,TIn>, System.Func<TIn,System.Threading.CancellationToken,TTandem>).TTandem')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Func-3 'System.Func`3')
 
-Tandem lambda that would consume the output of the source lambda.
+Tandem lambda that would consume the output of the input lambda.
 
 #### Returns
-[System.Func&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Func-2 'System.Func`2')[System.Threading.CancellationToken](https://docs.microsoft.com/en-us/dotnet/api/System.Threading.CancellationToken 'System.Threading.CancellationToken')[,](https://docs.microsoft.com/en-us/dotnet/api/System.Func-2 'System.Func`2')[TTandem](DevFast.Net.Extensions.Etc.Lambdas.md#DevFast.Net.Extensions.Etc.Lambdas.Pipe_TSource,TTandem_(thisSystem.Func_System.Threading.CancellationToken,TSource_,System.Func_TSource,System.Threading.CancellationToken,TTandem_).TTandem 'DevFast.Net.Extensions.Etc.Lambdas.Pipe<TSource,TTandem>(this System.Func<System.Threading.CancellationToken,TSource>, System.Func<TSource,System.Threading.CancellationToken,TTandem>).TTandem')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Func-2 'System.Func`2')
+[System.Func&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Func-2 'System.Func`2')[System.Threading.CancellationToken](https://docs.microsoft.com/en-us/dotnet/api/System.Threading.CancellationToken 'System.Threading.CancellationToken')[,](https://docs.microsoft.com/en-us/dotnet/api/System.Func-2 'System.Func`2')[TTandem](DevFast.Net.Extensions.Etc.Lambdas.md#DevFast.Net.Extensions.Etc.Lambdas.Pipe_TIn,TTandem_(thisSystem.Func_System.Threading.CancellationToken,TIn_,System.Func_TIn,System.Threading.CancellationToken,TTandem_).TTandem 'DevFast.Net.Extensions.Etc.Lambdas.Pipe<TIn,TTandem>(this System.Func<System.Threading.CancellationToken,TIn>, System.Func<TIn,System.Threading.CancellationToken,TTandem>).TTandem')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Func-2 'System.Func`2')
 
-<a name='DevFast.Net.Extensions.Etc.Lambdas.Pipe_TSource,TTandem_(thisSystem.Func_TSource_,System.Func_TSource,TTandem_)'></a>
+<a name='DevFast.Net.Extensions.Etc.Lambdas.Pipe_TIn,TTandem_(thisSystem.Func_TIn_,System.Func_TIn,TTandem_)'></a>
 
-## Lambdas.Pipe<TSource,TTandem>(this Func<TSource>, Func<TSource,TTandem>) Method
+## Lambdas.Pipe<TIn,TTandem>(this Func<TIn>, Func<TIn,TTandem>) Method
 
-Merges the [sourceLambda](DevFast.Net.Extensions.Etc.Lambdas.md#DevFast.Net.Extensions.Etc.Lambdas.Pipe_TSource,TTandem_(thisSystem.Func_TSource_,System.Func_TSource,TTandem_).sourceLambda 'DevFast.Net.Extensions.Etc.Lambdas.Pipe<TSource,TTandem>(this System.Func<TSource>, System.Func<TSource,TTandem>).sourceLambda') with [tandemLambda](DevFast.Net.Extensions.Etc.Lambdas.md#DevFast.Net.Extensions.Etc.Lambdas.Pipe_TSource,TTandem_(thisSystem.Func_TSource_,System.Func_TSource,TTandem_).tandemLambda 'DevFast.Net.Extensions.Etc.Lambdas.Pipe<TSource,TTandem>(this System.Func<TSource>, System.Func<TSource,TTandem>).tandemLambda').
-Returns a newly formed lambda which will feed the output of [sourceLambda](DevFast.Net.Extensions.Etc.Lambdas.md#DevFast.Net.Extensions.Etc.Lambdas.Pipe_TSource,TTandem_(thisSystem.Func_TSource_,System.Func_TSource,TTandem_).sourceLambda 'DevFast.Net.Extensions.Etc.Lambdas.Pipe<TSource,TTandem>(this System.Func<TSource>, System.Func<TSource,TTandem>).sourceLambda')
-to the [tandemLambda](DevFast.Net.Extensions.Etc.Lambdas.md#DevFast.Net.Extensions.Etc.Lambdas.Pipe_TSource,TTandem_(thisSystem.Func_TSource_,System.Func_TSource,TTandem_).tandemLambda 'DevFast.Net.Extensions.Etc.Lambdas.Pipe<TSource,TTandem>(this System.Func<TSource>, System.Func<TSource,TTandem>).tandemLambda') and upon execution it would return the output of
-the [tandemLambda](DevFast.Net.Extensions.Etc.Lambdas.md#DevFast.Net.Extensions.Etc.Lambdas.Pipe_TSource,TTandem_(thisSystem.Func_TSource_,System.Func_TSource,TTandem_).tandemLambda 'DevFast.Net.Extensions.Etc.Lambdas.Pipe<TSource,TTandem>(this System.Func<TSource>, System.Func<TSource,TTandem>).tandemLambda') lambda.
+Merges the [sourceLambda](DevFast.Net.Extensions.Etc.Lambdas.md#DevFast.Net.Extensions.Etc.Lambdas.Pipe_TIn,TTandem_(thisSystem.Func_TIn_,System.Func_TIn,TTandem_).sourceLambda 'DevFast.Net.Extensions.Etc.Lambdas.Pipe<TIn,TTandem>(this System.Func<TIn>, System.Func<TIn,TTandem>).sourceLambda') with [tandemLambda](DevFast.Net.Extensions.Etc.Lambdas.md#DevFast.Net.Extensions.Etc.Lambdas.Pipe_TIn,TTandem_(thisSystem.Func_TIn_,System.Func_TIn,TTandem_).tandemLambda 'DevFast.Net.Extensions.Etc.Lambdas.Pipe<TIn,TTandem>(this System.Func<TIn>, System.Func<TIn,TTandem>).tandemLambda').
+Returns a newly formed lambda which will feed the output of [sourceLambda](DevFast.Net.Extensions.Etc.Lambdas.md#DevFast.Net.Extensions.Etc.Lambdas.Pipe_TIn,TTandem_(thisSystem.Func_TIn_,System.Func_TIn,TTandem_).sourceLambda 'DevFast.Net.Extensions.Etc.Lambdas.Pipe<TIn,TTandem>(this System.Func<TIn>, System.Func<TIn,TTandem>).sourceLambda')
+to the [tandemLambda](DevFast.Net.Extensions.Etc.Lambdas.md#DevFast.Net.Extensions.Etc.Lambdas.Pipe_TIn,TTandem_(thisSystem.Func_TIn_,System.Func_TIn,TTandem_).tandemLambda 'DevFast.Net.Extensions.Etc.Lambdas.Pipe<TIn,TTandem>(this System.Func<TIn>, System.Func<TIn,TTandem>).tandemLambda') and upon execution it would return the output of
+the [tandemLambda](DevFast.Net.Extensions.Etc.Lambdas.md#DevFast.Net.Extensions.Etc.Lambdas.Pipe_TIn,TTandem_(thisSystem.Func_TIn_,System.Func_TIn,TTandem_).tandemLambda 'DevFast.Net.Extensions.Etc.Lambdas.Pipe<TIn,TTandem>(this System.Func<TIn>, System.Func<TIn,TTandem>).tandemLambda') lambda.
 
 ```csharp
-public static System.Func<TTandem> Pipe<TSource,TTandem>(this System.Func<TSource> sourceLambda, System.Func<TSource,TTandem> tandemLambda);
+public static System.Func<TTandem> Pipe<TIn,TTandem>(this System.Func<TIn> sourceLambda, System.Func<TIn,TTandem> tandemLambda);
 ```
 #### Type parameters
 
-<a name='DevFast.Net.Extensions.Etc.Lambdas.Pipe_TSource,TTandem_(thisSystem.Func_TSource_,System.Func_TSource,TTandem_).TSource'></a>
+<a name='DevFast.Net.Extensions.Etc.Lambdas.Pipe_TIn,TTandem_(thisSystem.Func_TIn_,System.Func_TIn,TTandem_).TIn'></a>
 
-`TSource`
+`TIn`
 
 Source lambda output type
 
-<a name='DevFast.Net.Extensions.Etc.Lambdas.Pipe_TSource,TTandem_(thisSystem.Func_TSource_,System.Func_TSource,TTandem_).TTandem'></a>
+<a name='DevFast.Net.Extensions.Etc.Lambdas.Pipe_TIn,TTandem_(thisSystem.Func_TIn_,System.Func_TIn,TTandem_).TTandem'></a>
 
 `TTandem`
 
 Tandem lambda output type
 #### Parameters
 
-<a name='DevFast.Net.Extensions.Etc.Lambdas.Pipe_TSource,TTandem_(thisSystem.Func_TSource_,System.Func_TSource,TTandem_).sourceLambda'></a>
+<a name='DevFast.Net.Extensions.Etc.Lambdas.Pipe_TIn,TTandem_(thisSystem.Func_TIn_,System.Func_TIn,TTandem_).sourceLambda'></a>
 
-`sourceLambda` [System.Func&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Func-1 'System.Func`1')[TSource](DevFast.Net.Extensions.Etc.Lambdas.md#DevFast.Net.Extensions.Etc.Lambdas.Pipe_TSource,TTandem_(thisSystem.Func_TSource_,System.Func_TSource,TTandem_).TSource 'DevFast.Net.Extensions.Etc.Lambdas.Pipe<TSource,TTandem>(this System.Func<TSource>, System.Func<TSource,TTandem>).TSource')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Func-1 'System.Func`1')
+`sourceLambda` [System.Func&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Func-1 'System.Func`1')[TIn](DevFast.Net.Extensions.Etc.Lambdas.md#DevFast.Net.Extensions.Etc.Lambdas.Pipe_TIn,TTandem_(thisSystem.Func_TIn_,System.Func_TIn,TTandem_).TIn 'DevFast.Net.Extensions.Etc.Lambdas.Pipe<TIn,TTandem>(this System.Func<TIn>, System.Func<TIn,TTandem>).TIn')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Func-1 'System.Func`1')
 
 Source lambda to which the tandem operation would be applied.
 
-<a name='DevFast.Net.Extensions.Etc.Lambdas.Pipe_TSource,TTandem_(thisSystem.Func_TSource_,System.Func_TSource,TTandem_).tandemLambda'></a>
+<a name='DevFast.Net.Extensions.Etc.Lambdas.Pipe_TIn,TTandem_(thisSystem.Func_TIn_,System.Func_TIn,TTandem_).tandemLambda'></a>
 
-`tandemLambda` [System.Func&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Func-2 'System.Func`2')[TSource](DevFast.Net.Extensions.Etc.Lambdas.md#DevFast.Net.Extensions.Etc.Lambdas.Pipe_TSource,TTandem_(thisSystem.Func_TSource_,System.Func_TSource,TTandem_).TSource 'DevFast.Net.Extensions.Etc.Lambdas.Pipe<TSource,TTandem>(this System.Func<TSource>, System.Func<TSource,TTandem>).TSource')[,](https://docs.microsoft.com/en-us/dotnet/api/System.Func-2 'System.Func`2')[TTandem](DevFast.Net.Extensions.Etc.Lambdas.md#DevFast.Net.Extensions.Etc.Lambdas.Pipe_TSource,TTandem_(thisSystem.Func_TSource_,System.Func_TSource,TTandem_).TTandem 'DevFast.Net.Extensions.Etc.Lambdas.Pipe<TSource,TTandem>(this System.Func<TSource>, System.Func<TSource,TTandem>).TTandem')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Func-2 'System.Func`2')
+`tandemLambda` [System.Func&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Func-2 'System.Func`2')[TIn](DevFast.Net.Extensions.Etc.Lambdas.md#DevFast.Net.Extensions.Etc.Lambdas.Pipe_TIn,TTandem_(thisSystem.Func_TIn_,System.Func_TIn,TTandem_).TIn 'DevFast.Net.Extensions.Etc.Lambdas.Pipe<TIn,TTandem>(this System.Func<TIn>, System.Func<TIn,TTandem>).TIn')[,](https://docs.microsoft.com/en-us/dotnet/api/System.Func-2 'System.Func`2')[TTandem](DevFast.Net.Extensions.Etc.Lambdas.md#DevFast.Net.Extensions.Etc.Lambdas.Pipe_TIn,TTandem_(thisSystem.Func_TIn_,System.Func_TIn,TTandem_).TTandem 'DevFast.Net.Extensions.Etc.Lambdas.Pipe<TIn,TTandem>(this System.Func<TIn>, System.Func<TIn,TTandem>).TTandem')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Func-2 'System.Func`2')
 
-Tandem lambda that would consume the output of the source lambda.
+Tandem lambda that would consume the output of the input lambda.
 
 #### Returns
-[System.Func&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Func-1 'System.Func`1')[TTandem](DevFast.Net.Extensions.Etc.Lambdas.md#DevFast.Net.Extensions.Etc.Lambdas.Pipe_TSource,TTandem_(thisSystem.Func_TSource_,System.Func_TSource,TTandem_).TTandem 'DevFast.Net.Extensions.Etc.Lambdas.Pipe<TSource,TTandem>(this System.Func<TSource>, System.Func<TSource,TTandem>).TTandem')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Func-1 'System.Func`1')
+[System.Func&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Func-1 'System.Func`1')[TTandem](DevFast.Net.Extensions.Etc.Lambdas.md#DevFast.Net.Extensions.Etc.Lambdas.Pipe_TIn,TTandem_(thisSystem.Func_TIn_,System.Func_TIn,TTandem_).TTandem 'DevFast.Net.Extensions.Etc.Lambdas.Pipe<TIn,TTandem>(this System.Func<TIn>, System.Func<TIn,TTandem>).TTandem')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Func-1 'System.Func`1')
