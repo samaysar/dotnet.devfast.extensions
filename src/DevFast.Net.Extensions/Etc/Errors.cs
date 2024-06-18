@@ -245,7 +245,7 @@ public static class Errors
     {
         try
         {
-            return await asyncLambda().StartIfNeeded().ConfigureAwait(false);
+            return await asyncLambda().Run().ConfigureAwait(false);
         }
         catch (TError e)
         {
@@ -353,7 +353,7 @@ public static class Errors
     {
         try
         {
-            return await asyncLambda().StartIfNeeded().ConfigureAwait(false);
+            return await asyncLambda().Run().ConfigureAwait(false);
         }
         finally
         {
@@ -557,7 +557,7 @@ public static class Errors
     {
         try
         {
-            return await asyncLambda(state).StartIfNeeded().ConfigureAwait(false);
+            return await asyncLambda(state).Run().ConfigureAwait(false);
         }
         finally
         {
@@ -583,7 +583,7 @@ public static class Errors
     {
         try
         {
-            return await asyncLambda(state).StartIfNeeded().ConfigureAwait(false);
+            return await asyncLambda(state).Run().ConfigureAwait(false);
         }
         finally
         {
@@ -612,7 +612,7 @@ public static class Errors
     {
         try
         {
-            return await asyncLambda(state).StartIfNeeded().ConfigureAwait(false);
+            return await asyncLambda(state).Run().ConfigureAwait(false);
         }
         finally
         {

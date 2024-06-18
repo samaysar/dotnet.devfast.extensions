@@ -5,6 +5,18 @@
 /// </summary>
 public static class Lambdas
 {
+    private static Func<Func<Token, Task<TIn>>, Func<Token, Task<TOut>>> Adapter<TIn, TOut>(
+        this Func<TIn, Token, Task<TOut>> tandem)
+    {
+        return src => async t => await tandem(await src(t).Run().ConfigureAwait(false), t).Run().ConfigureAwait(false);
+    }
+
+    private static Func<Func<Token, ValueTask<TIn>>, Func<Token, ValueTask<TOut>>> Adapter<TIn, TOut>(
+        this Func<TIn, Token, ValueTask<TOut>> tandem)
+    {
+        return src => async t => await tandem(await src(t).ConfigureAwait(false), t).ConfigureAwait(false);
+    }
+
     /// <summary>
     /// Creates a <see cref="Func{T}"/> based lambda that returns the <paramref name="value"/> upon execution.
     /// </summary>
@@ -16,14 +28,14 @@ public static class Lambdas
     }
 
     /// <summary>
-    /// Creates a <see cref="Func{CancellationToken, T}"/> based lambda.
+    /// Creates a <see cref="Func{Token, T}"/> based lambda.
     /// Such lambda would throw <see cref="OperationCanceledException"/> when
-    /// supplied <see cref="CancellationToken.IsCancellationRequested"/> evaluates to
+    /// supplied <see cref="Token.IsCancellationRequested"/> evaluates to
     /// <see langword="true"/>; otherwise, returns the <paramref name="value"/>.
     /// </summary>
     /// <typeparam name="T">Type of value</typeparam>
     /// <param name="value">Value to return when lambda is executed</param>
-    public static Func<CancellationToken, T> AsLambdaWithCancellation<T>(this T value)
+    public static Func<Token, T> AsLambdaWithCancellation<T>(this T value)
     {
         return t =>
         {
@@ -33,15 +45,15 @@ public static class Lambdas
     }
 
     /// <summary>
-    /// Creates a <see cref="Func{CancellationToken, T}"/> based lambda.
+    /// Creates a <see cref="Func{Token, T}"/> based lambda.
     /// Such lambda would throw <see cref="OperationCanceledException"/> when
-    /// supplied <see cref="CancellationToken.IsCancellationRequested"/> evaluates to
+    /// supplied <see cref="Token.IsCancellationRequested"/> evaluates to
     /// <see langword="true"/>; otherwise, it starts the task (if not already running) and
     /// returns the value of the <paramref name="task"/>.
     /// <para>
-    /// NOTE: <see cref="CancellationToken"/> is checked once before awaiting on the <paramref name="task"/>.
+    /// NOTE: <see cref="Token"/> is checked once before awaiting on the <paramref name="task"/>.
     /// If the task itself can be canceled, one should find a way to pass
-    /// the <see cref="CancellationToken"/> to such <paramref name="task"/>.
+    /// the <see cref="Token"/> to such <paramref name="task"/>.
     /// </para>
     /// Purpose of such method is to lazily start the <paramref name="task"/>,
     /// thus, one should avoid (though possible) passing already running <paramref name="task"/>
@@ -49,29 +61,29 @@ public static class Lambdas
     /// </summary>
     /// <typeparam name="T">Type of value</typeparam>
     /// <param name="task">Value to return when lambda is executed</param>
-    public static Func<CancellationToken, Task<T>> AsAsyncLambda<T>(this Task<T> task)
+    public static Func<Token, Task<T>> AsAsyncLambda<T>(this Task<T> task)
     {
         return async t =>
         {
             t.ThrowIfCancellationRequested();
-            return await task.StartIfNeeded().ConfigureAwait(false);
+            return await task.Run().ConfigureAwait(false);
         };
     }
 
     /// <summary>
-    /// Creates a <see cref="Func{CancellationToken, T}"/> based lambda.
+    /// Creates a <see cref="Func{Token, T}"/> based lambda.
     /// Such lambda would throw <see cref="OperationCanceledException"/> when
-    /// supplied <see cref="CancellationToken.IsCancellationRequested"/> evaluates to
+    /// supplied <see cref="Token.IsCancellationRequested"/> evaluates to
     /// <see langword="true"/>; otherwise, it returns the value of the <paramref name="valueTask"/>.
     /// <para>
-    /// NOTE: <see cref="CancellationToken"/> is checked once before awaiting on the <paramref name="valueTask"/>.
+    /// NOTE: <see cref="Token"/> is checked once before awaiting on the <paramref name="valueTask"/>.
     /// If the task itself can be canceled, one should find a way to pass
-    /// the <see cref="CancellationToken"/> to such <paramref name="valueTask"/>.
+    /// the <see cref="Token"/> to such <paramref name="valueTask"/>.
     /// </para>
     /// </summary>
     /// <typeparam name="T">Type of value</typeparam>
     /// <param name="valueTask">Value to return when lambda is executed</param>
-    public static Func<CancellationToken, ValueTask<T>> AsAsyncLambda<T>(this ValueTask<T> valueTask)
+    public static Func<Token, ValueTask<T>> AsAsyncLambda<T>(this ValueTask<T> valueTask)
     {
         return async t =>
         {
@@ -81,129 +93,101 @@ public static class Lambdas
     }
 
     /// <summary>
-    /// Applies <paramref name="transformation"/> on the <paramref name="sourceLambda"/>.
+    /// Applies <paramref name="adapter"/> on the <paramref name="input"/>
+    /// and returns the results.
     /// </summary>
-    /// <typeparam name="TSource">Source lambda output type</typeparam>
-    /// <typeparam name="TTransformed">Transformed lambda output type</typeparam>
-    /// <param name="sourceLambda">Source lambda on which the transformation is applied.</param>
-    /// <param name="transformation">Transformation lambda</param>
-    public static Func<TTransformed> Apply<TSource, TTransformed>(this Func<TSource> sourceLambda,
-        Func<Func<TSource>, Func<TTransformed>> transformation)
+    /// <typeparam name="TIn">Input type</typeparam>
+    /// <typeparam name="TOut">Output type</typeparam>
+    /// <param name="input">Source on which the adapter is applied.</param>
+    /// <param name="adapter">Adapter lambda</param>
+    public static TOut Adapt<TIn, TOut>(this TIn input,
+        Func<TIn, TOut> adapter)
     {
-        return transformation(sourceLambda);
+        return adapter(input);
     }
 
     /// <summary>
-    /// Applies <paramref name="transformation"/> on the <paramref name="sourceLambda"/>.
+    /// Applies <paramref name="adapter"/> on the <paramref name="input"/>
+    /// when <paramref name="iff"/> is <see langword="true"/> and returns the result;
+    /// otherwise, returns back the original <paramref name="input"/>.
     /// </summary>
-    /// <typeparam name="TSource">Source lambda output type</typeparam>
-    /// <typeparam name="TTransformed">Transformed lambda output type</typeparam>
-    /// <param name="sourceLambda">Source lambda on which the transformation is applied.</param>
-    /// <param name="transformation">Transformation lambda</param>
-    public static Func<CancellationToken, TTransformed> Apply<TSource, TTransformed>(this Func<CancellationToken, TSource> sourceLambda,
-        Func<Func<CancellationToken, TSource>, Func<CancellationToken, TTransformed>> transformation)
-    {
-        return transformation(sourceLambda);
-    }
-
-    /// <summary>
-    /// Conditionally applies <paramref name="transformation"/> on the <paramref name="sourceLambda"/>.
-    /// Returns transformed lambda (when <paramref name="iff"/> is <see langword="true"/>);
-    /// otherwise, returns back the origin <paramref name="sourceLambda"/>.
-    /// </summary>
-    /// <typeparam name="T">Lambda output type</typeparam>
-    /// <param name="sourceLambda">Source lambda on which the transformation is applied.</param>
-    /// <param name="transformation">Transformation lambda</param>
-    /// <param name="iff">Conditional flag dictating where the transformation should be applied or not</param>
-    public static Func<T> Apply<T>(this Func<T> sourceLambda,
-        Func<Func<T>, Func<T>> transformation,
+    /// <typeparam name="T">Adapter type</typeparam>
+    /// <param name="input">Source on which the adapter is applied.</param>
+    /// <param name="adapter">Adapter lambda</param>
+    /// <param name="iff">Conditional flag dictating where the adapter should be applied or not</param>
+    public static T Adapt<T>(this T input,
+        Func<T, T> adapter,
         bool iff)
     {
-        return iff ? sourceLambda.Apply(transformation) : sourceLambda;
-    }
-
-    /// <summary>
-    /// Conditionally applies <paramref name="transformation"/> on the <paramref name="sourceLambda"/>.
-    /// Returns transformed lambda (when <paramref name="iff"/> is <see langword="true"/>);
-    /// otherwise, returns back the origin <paramref name="sourceLambda"/>.
-    /// </summary>
-    /// <typeparam name="T">Lambda output type</typeparam>
-    /// <param name="sourceLambda">Source lambda on which the transformation is applied.</param>
-    /// <param name="transformation">Transformation lambda</param>
-    /// <param name="iff">Conditional flag dictating where the transformation should be applied or not</param>
-    public static Func<CancellationToken, T> Apply<T>(this Func<CancellationToken, T> sourceLambda,
-        Func<Func<CancellationToken, T>, Func<CancellationToken, T>> transformation,
-        bool iff)
-    {
-        return iff ? sourceLambda.Apply(transformation) : sourceLambda;
+        return iff ? input.Adapt(adapter) : input;
     }
 
     /// <summary>
     /// Conditionally merges the <paramref name="sourceLambda"/> with <paramref name="tandemLambda"/>.
     /// Returns a newly formed lambda which will feed the output of <paramref name="sourceLambda"/>
-    /// to the <paramref name="tandemLambda"/> and upon execution it would return the output of
-    /// the <paramref name="tandemLambda"/> lambda.
+    /// to the <paramref name="tandemLambda"/>. Such a resultant lambda, upon execution,
+    /// would return the output of the <paramref name="tandemLambda"/>.
     /// </summary>
     /// <typeparam name="T">Lambda output type</typeparam>
     /// <param name="sourceLambda">Source lambda to which the tandem operation would be applied.</param>
-    /// <param name="tandemLambda">Tandem lambda that would consume the output of the source lambda.</param>
-    /// <param name="iff">Conditional flag dictating where the transformation should be applied or not</param>
+    /// <param name="tandemLambda">Tandem lambda that would consume the output of the input lambda.</param>
+    /// <param name="iff">Conditional flag dictating where the adapter should be applied or not</param>
     public static Func<T> Pipe<T>(this Func<T> sourceLambda,
         Func<T, T> tandemLambda,
         bool iff)
     {
-        return sourceLambda.Apply(src => () => tandemLambda(src()), iff);
+        return sourceLambda.Adapt(src => () => tandemLambda(src()), iff);
     }
 
     /// <summary>
     /// Conditionally merges the <paramref name="sourceLambda"/> with <paramref name="tandemLambda"/>.
     /// Returns a newly formed lambda which will feed the output of <paramref name="sourceLambda"/>
-    /// to the <paramref name="tandemLambda"/> and upon execution it would return the output of
-    /// the <paramref name="tandemLambda"/> lambda.
+    /// to the <paramref name="tandemLambda"/>. Such a resultant lambda, upon execution,
+    /// would return the output of the <paramref name="tandemLambda"/>.
     /// </summary>
     /// <typeparam name="T">Lambda output type</typeparam>
     /// <param name="sourceLambda">Source lambda to which the tandem operation would be applied.</param>
-    /// <param name="tandemLambda">Tandem lambda that would consume the output of the source lambda.</param>
-    /// <param name="iff">Conditional flag dictating where the transformation should be applied or not</param>
-    public static Func<CancellationToken, T> Pipe<T>(this Func<CancellationToken, T> sourceLambda,
-        Func<T, CancellationToken, T> tandemLambda,
+    /// <param name="tandemLambda">Tandem lambda that would consume the output of the input lambda.</param>
+    /// <param name="iff">Conditional flag dictating where the adapter should be applied or not</param>
+    public static Func<Token, T> Pipe<T>(this Func<Token, T> sourceLambda,
+        Func<T, Token, T> tandemLambda,
         bool iff)
     {
-        return sourceLambda.Apply(src => t => tandemLambda(src(t), t), iff);
+        return sourceLambda.Adapt(src => t => tandemLambda(src(t), t), iff);
     }
 
     /// <summary>
     /// Conditionally merges the <paramref name="sourceLambda"/> with <paramref name="tandemLambda"/>.
     /// Returns a newly formed lambda which will feed the output of <paramref name="sourceLambda"/>
-    /// to the <paramref name="tandemLambda"/> and upon execution it would return the output of
-    /// the <paramref name="tandemLambda"/> lambda.
+    /// to the <paramref name="tandemLambda"/>. Such a resultant lambda, upon execution,
+    /// would return the output of the <paramref name="tandemLambda"/>.
     /// </summary>
     /// <typeparam name="T">Lambda output type</typeparam>
     /// <param name="sourceLambda">Source lambda to which the tandem operation would be applied.</param>
-    /// <param name="tandemLambda">Tandem lambda that would consume the output of the source lambda.</param>
-    /// <param name="iff">Conditional flag dictating where the transformation should be applied or not</param>
-    public static Func<CancellationToken, Task<T>> Pipe<T>(this Func<CancellationToken, Task<T>> sourceLambda,
-        Func<T, CancellationToken, Task<T>> tandemLambda,
+    /// <param name="tandemLambda">Tandem lambda that would consume the output of the input lambda.</param>
+    /// <param name="iff">Conditional flag dictating where the adapter should be applied or not</param>
+    public static Func<Token, Task<T>> Pipe<T>(this Func<Token, Task<T>> sourceLambda,
+        Func<T, Token, Task<T>> tandemLambda,
         bool iff)
     {
-        return sourceLambda.Apply(src => async t => await tandemLambda(await src(t).StartIfNeeded().ConfigureAwait(false), t).StartIfNeeded().ConfigureAwait(false), iff);
+        return sourceLambda.Adapt(tandemLambda.Adapter(), iff);
     }
 
     /// <summary>
     /// Conditionally merges the <paramref name="sourceLambda"/> with <paramref name="tandemLambda"/>.
     /// Returns a newly formed lambda which will feed the output of <paramref name="sourceLambda"/>
-    /// to the <paramref name="tandemLambda"/> and upon execution it would return the output of
-    /// the <paramref name="tandemLambda"/> lambda.
+    /// to the <paramref name="tandemLambda"/>. Such a resultant lambda, upon execution,
+    /// would return the output of the <paramref name="tandemLambda"/>.
     /// </summary>
     /// <typeparam name="T">Lambda output type</typeparam>
     /// <param name="sourceLambda">Source lambda to which the tandem operation would be applied.</param>
-    /// <param name="tandemLambda">Tandem lambda that would consume the output of the source lambda.</param>
-    /// <param name="iff">Conditional flag dictating where the transformation should be applied or not</param>
-    public static Func<CancellationToken, ValueTask<T>> Pipe<T>(this Func<CancellationToken, ValueTask<T>> sourceLambda,
-        Func<T, CancellationToken, ValueTask<T>> tandemLambda,
+    /// <param name="tandemLambda">Tandem lambda that would consume the output of the input lambda.</param>
+    /// <param name="iff">Conditional flag dictating where the adapter should be applied or not</param>
+    public static Func<Token, ValueTask<T>> Pipe<T>(this Func<Token, ValueTask<T>> sourceLambda,
+        Func<T, Token, ValueTask<T>> tandemLambda,
         bool iff)
     {
-        return sourceLambda.Apply(src => async t => await tandemLambda(await src(t).ConfigureAwait(false), t).ConfigureAwait(false), iff);
+        return sourceLambda.Adapt(tandemLambda.Adapter(), iff);
     }
 
     /// <summary>
@@ -212,14 +196,14 @@ public static class Lambdas
     /// to the <paramref name="tandemLambda"/> and upon execution it would return the output of
     /// the <paramref name="tandemLambda"/> lambda.
     /// </summary>
-    /// <typeparam name="TSource">Source lambda output type</typeparam>
+    /// <typeparam name="TIn">Source lambda output type</typeparam>
     /// <typeparam name="TTandem">Tandem lambda output type</typeparam>
     /// <param name="sourceLambda">Source lambda to which the tandem operation would be applied.</param>
-    /// <param name="tandemLambda">Tandem lambda that would consume the output of the source lambda.</param>
-    public static Func<TTandem> Pipe<TSource, TTandem>(this Func<TSource> sourceLambda,
-        Func<TSource, TTandem> tandemLambda)
+    /// <param name="tandemLambda">Tandem lambda that would consume the output of the input lambda.</param>
+    public static Func<TTandem> Pipe<TIn, TTandem>(this Func<TIn> sourceLambda,
+        Func<TIn, TTandem> tandemLambda)
     {
-        return sourceLambda.Apply<TSource, TTandem>(src => () => tandemLambda(src()));
+        return sourceLambda.Adapt<Func<TIn>, Func<TTandem>>(src => () => tandemLambda(src()));
     }
 
     /// <summary>
@@ -228,14 +212,14 @@ public static class Lambdas
     /// to the <paramref name="tandemLambda"/> and upon execution it would return the output of
     /// the <paramref name="tandemLambda"/> lambda.
     /// </summary>
-    /// <typeparam name="TSource">Source lambda output type</typeparam>
+    /// <typeparam name="TIn">Source lambda output type</typeparam>
     /// <typeparam name="TTandem">Tandem lambda output type</typeparam>
     /// <param name="sourceLambda">Source lambda to which the tandem operation would be applied.</param>
-    /// <param name="tandemLambda">Tandem lambda that would consume the output of the source lambda.</param>
-    public static Func<CancellationToken, TTandem> Pipe<TSource, TTandem>(this Func<CancellationToken, TSource> sourceLambda,
-        Func<TSource, CancellationToken, TTandem> tandemLambda)
+    /// <param name="tandemLambda">Tandem lambda that would consume the output of the input lambda.</param>
+    public static Func<Token, TTandem> Pipe<TIn, TTandem>(this Func<Token, TIn> sourceLambda,
+        Func<TIn, Token, TTandem> tandemLambda)
     {
-        return sourceLambda.Apply<TSource, TTandem>(src => t => tandemLambda(src(t), t));
+        return sourceLambda.Adapt<Func<Token, TIn>, Func<Token, TTandem>>(src => t => tandemLambda(src(t), t));
     }
 
     /// <summary>
@@ -244,14 +228,14 @@ public static class Lambdas
     /// to the <paramref name="tandemLambda"/> and upon execution it would return the output of
     /// the <paramref name="tandemLambda"/> lambda.
     /// </summary>
-    /// <typeparam name="TSource">Source lambda output type</typeparam>
+    /// <typeparam name="TIn">Source lambda output type</typeparam>
     /// <typeparam name="TTandem">Tandem lambda output type</typeparam>
     /// <param name="sourceLambda">Source lambda to which the tandem operation would be applied.</param>
-    /// <param name="tandemLambda">Tandem lambda that would consume the output of the source lambda.</param>
-    public static Func<CancellationToken, Task<TTandem>> Pipe<TSource, TTandem>(this Func<CancellationToken, Task<TSource>> sourceLambda,
-        Func<TSource, CancellationToken, Task<TTandem>> tandemLambda)
+    /// <param name="tandemLambda">Tandem lambda that would consume the output of the input lambda.</param>
+    public static Func<Token, Task<TTandem>> Pipe<TIn, TTandem>(this Func<Token, Task<TIn>> sourceLambda,
+        Func<TIn, Token, Task<TTandem>> tandemLambda)
     {
-        return sourceLambda.Apply<Task<TSource>, Task<TTandem>>(src => async t => await tandemLambda(await src(t).StartIfNeeded().ConfigureAwait(false), t).StartIfNeeded().ConfigureAwait(false));
+        return sourceLambda.Adapt(tandemLambda.Adapter());
     }
 
     /// <summary>
@@ -260,14 +244,14 @@ public static class Lambdas
     /// to the <paramref name="tandemLambda"/> and upon execution it would return the output of
     /// the <paramref name="tandemLambda"/> lambda.
     /// </summary>
-    /// <typeparam name="TSource">Source lambda output type</typeparam>
+    /// <typeparam name="TIn">Source lambda output type</typeparam>
     /// <typeparam name="TTandem">Tandem lambda output type</typeparam>
     /// <param name="sourceLambda">Source lambda to which the tandem operation would be applied.</param>
-    /// <param name="tandemLambda">Tandem lambda that would consume the output of the source lambda.</param>
-    public static Func<CancellationToken, ValueTask<TTandem>> Pipe<TSource, TTandem>(this Func<CancellationToken, ValueTask<TSource>> sourceLambda,
-        Func<TSource, CancellationToken, ValueTask<TTandem>> tandemLambda)
+    /// <param name="tandemLambda">Tandem lambda that would consume the output of the input lambda.</param>
+    public static Func<Token, ValueTask<TTandem>> Pipe<TIn, TTandem>(this Func<Token, ValueTask<TIn>> sourceLambda,
+        Func<TIn, Token, ValueTask<TTandem>> tandemLambda)
     {
-        return sourceLambda.Apply<ValueTask<TSource>, ValueTask<TTandem>>(src => async t => await tandemLambda(await src(t).ConfigureAwait(false), t).ConfigureAwait(false));
+        return sourceLambda.Adapt(tandemLambda.Adapter());
     }
 
     /// <summary>
@@ -289,8 +273,8 @@ public static class Lambdas
     /// <param name="lambda">Lambda to execute.</param>
     /// <param name="token">Cancellation token</param>
     /// <param name="finallyClause">Code to execute in finally block of try-finally (if any)</param>
-    public static T Execute<T>(this Func<CancellationToken, T> lambda,
-        CancellationToken token,
+    public static T Execute<T>(this Func<Token, T> lambda,
+        Token token,
         Action? finallyClause = null)
     {
         return finallyClause == null ? lambda(token) : lambda.Finally(token, finallyClause);
@@ -301,10 +285,10 @@ public static class Lambdas
     /// </summary>
     /// <param name="lambda">Lambda to execute.</param>
     /// <param name="token">Cancellation token</param>
-    public static async Task ExecuteAsync(this Func<CancellationToken, Task> lambda,
-        CancellationToken token)
+    public static async Task ExecuteAsync(this Func<Token, Task> lambda,
+        Token token)
     {
-        await lambda(token).StartIfNeeded().ConfigureAwait(false);
+        await lambda(token).Run().ConfigureAwait(false);
     }
 
     /// <summary>
@@ -313,10 +297,10 @@ public static class Lambdas
     /// <typeparam name="T">Output type of the resultant task</typeparam>
     /// <param name="lambda">Lambda to execute.</param>
     /// <param name="token">Cancellation token</param>
-    public static async Task<T> ExecuteAsync<T>(this Func<CancellationToken, Task<T>> lambda,
-        CancellationToken token)
+    public static async Task<T> ExecuteAsync<T>(this Func<Token, Task<T>> lambda,
+        Token token)
     {
-        return await lambda(token).StartIfNeeded().ConfigureAwait(false);
+        return await lambda(token).Run().ConfigureAwait(false);
     }
 
     /// <summary>
@@ -324,8 +308,8 @@ public static class Lambdas
     /// </summary>
     /// <param name="lambda">Lambda to execute.</param>
     /// <param name="token">Cancellation token</param>
-    public static async ValueTask ExecuteAsync(this Func<CancellationToken, ValueTask> lambda,
-        CancellationToken token)
+    public static async ValueTask ExecuteAsync(this Func<Token, ValueTask> lambda,
+        Token token)
     {
         await lambda(token).ConfigureAwait(false);
     }
@@ -336,8 +320,8 @@ public static class Lambdas
     /// <typeparam name="T">Output type of the resultant task</typeparam>
     /// <param name="lambda">Lambda to execute.</param>
     /// <param name="token">Cancellation token</param>
-    public static async ValueTask<T> ExecuteAsync<T>(this Func<CancellationToken, ValueTask<T>> lambda,
-        CancellationToken token)
+    public static async ValueTask<T> ExecuteAsync<T>(this Func<Token, ValueTask<T>> lambda,
+        Token token)
     {
         return await lambda(token).ConfigureAwait(false);
     }

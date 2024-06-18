@@ -9,7 +9,7 @@ public static class Asynchro
     /// Starts the given task if not already started. Returns it back after starting for chaining or awaiting.
     /// </summary>
     /// <param name="task">Task to start</param>
-    public static T StartIfNeeded<T>(this T task)
+    public static T Run<T>(this T task)
         where T : Task
     {
         if (task.Status == TaskStatus.Created)
