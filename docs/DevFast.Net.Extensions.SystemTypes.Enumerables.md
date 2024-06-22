@@ -467,7 +467,7 @@ Asynchronously Enumerable items
 
 `count` [System.Int32](https://docs.microsoft.com/en-us/dotnet/api/System.Int32 'System.Int32')
 
-Total number of elements to skip
+Total number (max) of elements to take
 
 <a name='DevFast.Net.Extensions.SystemTypes.Enumerables.TakeAsync_TIn_(thisSystem.Collections.Generic.IAsyncEnumerable_TIn_,int,System.Threading.CancellationToken,bool).token'></a>
 

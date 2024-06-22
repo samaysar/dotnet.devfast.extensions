@@ -19,25 +19,7 @@ public static class Lambdas
         return src => async state => await tandem(await src(state).ConfigureAwait(false), state).ConfigureAwait(false);
     }
 
-    /// <summary>
-    /// Creates a <see cref="Func{T}"/> based lambda that returns the <paramref name="value"/> upon execution.
-    /// </summary>
-    /// <typeparam name="T">Type of value</typeparam>
-    /// <param name="value">Value to return when lambda is executed</param>
-    public static Func<T> AsLambda<T>(this T value)
-    {
-        return () => value;
-    }
-
-    /// <summary>
-    /// Creates a <see cref="Func{Token, T}"/> based lambda.
-    /// Such lambda would throw <see cref="OperationCanceledException"/> when
-    /// supplied <see cref="Token.IsCancellationRequested"/> evaluates to
-    /// <see langword="true"/>; otherwise, returns the <paramref name="value"/>.
-    /// </summary>
-    /// <typeparam name="T">Type of value</typeparam>
-    /// <param name="value">Value to return when lambda is executed</param>
-    public static Func<Token, T> AsLambdaWithCancellation<T>(this T value)
+    private static Func<Token, T> Adapter<T>(this T value)
     {
         return t =>
         {
@@ -46,24 +28,16 @@ public static class Lambdas
         };
     }
 
-    /// <summary>
-    /// Creates a <see cref="Func{Token, T}"/> based lambda.
-    /// Such lambda would throw <see cref="OperationCanceledException"/> when
-    /// supplied <see cref="Token.IsCancellationRequested"/> evaluates to
-    /// <see langword="true"/>; otherwise, it starts the task (if not already running) and
-    /// returns the value of the <paramref name="task"/>.
-    /// <para>
-    /// NOTE: <see cref="Token"/> is checked once before awaiting on the <paramref name="task"/>.
-    /// If the task itself can be canceled, one should find a way to pass
-    /// the <see cref="Token"/> to such <paramref name="task"/>.
-    /// </para>
-    /// Purpose of such method is to lazily start the <paramref name="task"/>,
-    /// thus, one should avoid (though possible) passing already running <paramref name="task"/>
-    /// created using <see cref="TaskFactory"/> or by other means.
-    /// </summary>
-    /// <typeparam name="T">Type of value</typeparam>
-    /// <param name="task">Value to return when lambda is executed</param>
-    public static Func<Token, Task<T>> AsAsyncLambda<T>(this Task<T> task)
+    private static Func<Token, T> Adapter<T>(this Func<T> lambda)
+    {
+        return t =>
+        {
+            t.ThrowIfCancellationRequested();
+            return lambda();
+        };
+    }
+
+    private static Func<Token, Task<T>> Adapter<T>(this Task<T> task)
     {
         return async t =>
         {
@@ -72,20 +46,7 @@ public static class Lambdas
         };
     }
 
-    /// <summary>
-    /// Creates a <see cref="Func{Token, T}"/> based lambda.
-    /// Such lambda would throw <see cref="OperationCanceledException"/> when
-    /// supplied <see cref="Token.IsCancellationRequested"/> evaluates to
-    /// <see langword="true"/>; otherwise, it returns the value of the <paramref name="valueTask"/>.
-    /// <para>
-    /// NOTE: <see cref="Token"/> is checked once before awaiting on the <paramref name="valueTask"/>.
-    /// If the task itself can be canceled, one should find a way to pass
-    /// the <see cref="Token"/> to such <paramref name="valueTask"/>.
-    /// </para>
-    /// </summary>
-    /// <typeparam name="T">Type of value</typeparam>
-    /// <param name="valueTask">Value to return when lambda is executed</param>
-    public static Func<Token, ValueTask<T>> AsAsyncLambda<T>(this ValueTask<T> valueTask)
+    private static Func<Token, ValueTask<T>> Adapter<T>(this ValueTask<T> valueTask)
     {
         return async t =>
         {
@@ -125,20 +86,71 @@ public static class Lambdas
     }
 
     /// <summary>
-    /// Conditionally merges the <paramref name="sourceLambda"/> with <paramref name="tandemLambda"/>.
-    /// Returns a newly formed lambda which will feed the output of <paramref name="sourceLambda"/>
-    /// to the <paramref name="tandemLambda"/>. Such a resultant lambda, upon execution,
-    /// would return the output of the <paramref name="tandemLambda"/>.
+    /// Provides a cancellable (<see cref="CancellationToken"/> based) conditional lambda, which upon execution:
+    /// <para>
+    /// 1. If <paramref name="flag"/> is <see langword="true"/>, feeds <paramref name="value"/>
+    /// to the <paramref name="tandemLambda"/> and returns the output obtained
+    /// from <paramref name="tandemLambda"/>.
+    /// </para>
+    /// 2. If <paramref name="flag"/> is <see langword="false"/>, returns the original
+    /// <paramref name="value"/>.
+    /// </summary>
+    /// <typeparam name="T">Lambda output type</typeparam>
+    /// <param name="value">Value to feed</param>
+    /// <param name="tandemLambda">Tandem lambda that would consume the value.</param>
+    /// <param name="flag">Conditional flag dictating whether <paramref name="tandemLambda"/> should be applied or not</param>
+    public static Func<Token, T> Pipe<T>(this T value,
+        Func<T, Token, T> tandemLambda,
+        bool flag)
+    {
+        return value.Adapter().Pipe(tandemLambda, flag);
+    }
+
+    /// <summary>
+    /// Provides a cancellable (<see cref="CancellationToken"/> based) conditional lambda, which upon execution:
+    /// <para>
+    /// 1. If <paramref name="flag"/> is <see langword="true"/>, feeds the output of
+    /// <paramref name="sourceLambda"/> to the <paramref name="tandemLambda"/> and returns the output obtained
+    /// from <paramref name="tandemLambda"/>.
+    /// </para>
+    /// 2. If <paramref name="flag"/> is <see langword="false"/>, returns the output of the original
+    /// <paramref name="sourceLambda"/>.
     /// </summary>
     /// <typeparam name="T">Lambda output type</typeparam>
     /// <param name="sourceLambda">Source lambda to which the tandem operation would be applied.</param>
-    /// <param name="tandemLambda">Tandem lambda that would consume the output of the input lambda.</param>
-    /// <param name="iff">Conditional flag dictating where the adapter should be applied or not</param>
-    public static Func<T> Pipe<T>(this Func<T> sourceLambda,
-        Func<T, T> tandemLambda,
-        bool iff)
+    /// <param name="tandemLambda">Tandem lambda that would consume the output of <paramref name="sourceLambda"/>.</param>
+    /// <param name="flag">Conditional flag dictating whether <paramref name="tandemLambda"/> should be applied or not</param>
+    public static Func<Token, T> Pipe<T>(this Func<T> sourceLambda,
+        Func<T, Token, T> tandemLambda,
+        bool flag)
     {
-        return sourceLambda.Adapt(src => () => tandemLambda(src()), iff);
+        return sourceLambda.Adapter().Pipe(tandemLambda, flag);
+    }
+
+    /// <summary>
+    /// Provides a cancellable (<see cref="CancellationToken"/> based) conditional lambda, which upon execution:
+    /// <para>
+    /// 1. If <paramref name="flag"/> is <see langword="true"/>, feeds the output of
+    /// <paramref name="task"/> to the <paramref name="tandemLambda"/> and returns the output obtained
+    /// from <paramref name="tandemLambda"/>.
+    /// </para>
+    /// 2. If <paramref name="flag"/> is <see langword="false"/>, returns the output of the original
+    /// <paramref name="task"/>.
+    /// <para>
+    /// IMPLEMENTATION NOTE: As the purpose of pipelines is to executes everything as lazily as possible,
+    /// calling this method on a non-running <see cref="Task"/> is advisable, though NOT necessary.
+    /// Irrespective to the state of the <paramref name="task"/> outcome would be identical.
+    /// </para>
+    /// </summary>
+    /// <typeparam name="T">Lambda output type</typeparam>
+    /// <param name="task">Source lambda to which the tandem operation would be applied.</param>
+    /// <param name="tandemLambda">Tandem lambda that would consume the output of <paramref name="task"/>.</param>
+    /// <param name="flag">Conditional flag dictating whether <paramref name="tandemLambda"/> should be applied or not</param>
+    public static Func<Token, Task<T>> Pipe<T>(this Task<T> task,
+        Func<T, Token, Task<T>> tandemLambda,
+        bool flag)
+    {
+        return task.Adapter().Pipe(tandemLambda, flag);
     }
 
     /// <summary>
@@ -334,12 +346,13 @@ public static class Lambdas
     /// <param name="lambda">Lambda to execute.</param>
     /// <param name="errorHandler">Exception handler</param>
     /// <param name="finallyClause">Code to execute in finally block of try-finally (if any)</param>
-    public static T PipeCatch<T, TError>(this Func<T> lambda,
+    public static T? PipeCatch<T, TError>(this Func<T> lambda,
         Func<ExceptionDispatchInfo, TError, T> errorHandler,
         Action? finallyClause = null)
         where TError : Exception
     {
-        return lambda.Catch(errorHandler, finallyClause);
+        return default;
+        //return lambda.Catch(errorHandler, finallyClause);
     }
 
     /// <summary>

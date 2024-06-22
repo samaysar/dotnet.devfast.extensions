@@ -163,7 +163,7 @@ namespace DevFast.Net.Extensions.SystemTypes
         /// </summary>
         /// <typeparam name="TIn">Input Type</typeparam>
         /// <param name="asyncCollection">Asynchronously Enumerable items</param>
-        /// <param name="count">Total number of elements to skip</param>
+        /// <param name="count">Total number (max) of elements to take</param>
         /// <param name="token">Cancellation token for enumerator of <paramref name="asyncCollection"/></param>
         /// <param name="continueOnCapturedContext"><see langword="true"/> to attempt to marshal the continuation back to the original context captured; otherwise, <see langword="false"/>.</param>
         public static async IAsyncEnumerable<TIn> TakeAsync<TIn>(this IAsyncEnumerable<TIn> asyncCollection,
