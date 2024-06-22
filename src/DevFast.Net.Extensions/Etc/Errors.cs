@@ -20,30 +20,6 @@ public static class Errors
     }
 
     /// <summary>
-    /// Throws an <see cref="ArgumentException"/> if <paramref name="predicate"/> is <see langword="false"/>.
-    /// Otherwise, always returns <paramref name="value"/> for chaining purpose.
-    /// <para>
-    /// NOTE: If <see cref="ArgumentException"/> is thrown, the message will be
-    /// '{argumentName} does not satisfy {predicateName ?? predicate}.',
-    /// thus, a well-formed <paramref name="argumentName"/> and <paramref name="predicateName"/>
-    /// will make more sense during debugging or log-analysis.
-    /// </para>
-    /// </summary>
-    /// <param name="value">Value to evaluate predicate on</param>
-    /// <param name="predicate">Predicate lambda</param>
-    /// <param name="argumentName">Name of the argument</param>
-    /// <param name="predicateName">Name of the predicate</param>
-    /// <param name="innerException">Inner exceptions of the <see cref="ArgumentException"/></param>
-    public static T ThrowArgumentExceptionOnPredicateFail<T>(this T value,
-        Func<T, bool> predicate,
-        string argumentName,
-        string? predicateName = null,
-        Exception? innerException = null)
-    {
-        return predicate(value) ? value : throw new ArgumentException($"{argumentName} does not satisfy {predicateName ?? nameof(predicate)}.", innerException);
-    }
-
-    /// <summary>
     /// Throws an <see cref="InvalidOperationException"/> if <paramref name="flag"/> is <see langword="true"/>.
     /// Otherwise, always returns <see langword="false"/> for chaining purpose.
     /// </summary>
@@ -58,11 +34,35 @@ public static class Errors
     }
 
     /// <summary>
+    /// Throws an <see cref="ArgumentException"/> if <paramref name="predicate"/> is <see langword="false"/>.
+    /// Otherwise, always returns <paramref name="value"/> for chaining purpose.
+    /// <para>
+    /// NOTE: If <see cref="ArgumentException"/> is thrown, the message will be
+    /// '{argumentName} does not satisfy {predicateName}.',
+    /// thus, a well-formed <paramref name="argumentName"/> and <paramref name="predicateName"/>
+    /// will make more sense during debugging or log-analysis.
+    /// </para>
+    /// </summary>
+    /// <param name="value">Value to evaluate predicate on</param>
+    /// <param name="predicate">Predicate lambda</param>
+    /// <param name="argumentName">Name of the argument</param>
+    /// <param name="predicateName">Name of the predicate</param>
+    /// <param name="innerException">Inner exceptions of the <see cref="ArgumentException"/></param>
+    public static T ThrowArgumentExceptionOnPredicateFail<T>(this T value,
+        Func<T, bool> predicate,
+        string argumentName,
+        string predicateName,
+        Exception? innerException = null)
+    {
+        return predicate(value) ? value : throw new ArgumentException($"{argumentName} does not satisfy {predicateName}.", innerException);
+    }
+
+    /// <summary>
     /// Throws an <see cref="ArgumentException"/> if <paramref name="predicate"/> is <see langword="true"/>.
     /// Otherwise, always returns <paramref name="value"/> for chaining purpose.
     /// <para>
     /// NOTE: If <see cref="ArgumentException"/> is thrown, the message will be
-    /// '{argumentName} satisfied {predicateName ?? predicate}.',
+    /// '{argumentName} satisfied {predicateName}.',
     /// thus, a well-formed <paramref name="argumentName"/> and <paramref name="predicateName"/>
     /// will make more sense during debugging or log-analysis.
     /// </para>
@@ -75,10 +75,10 @@ public static class Errors
     public static T ThrowArgumentExceptionOnPredicateSuccess<T>(this T value,
         Func<T, bool> predicate,
         string argumentName,
-        string? predicateName = null,
+        string predicateName,
         Exception? innerException = null)
     {
-        return predicate(value) ? throw new ArgumentException($"{argumentName} satisfied {predicateName ?? nameof(predicate)}.", innerException) : value;
+        return predicate(value) ? throw new ArgumentException($"{argumentName} satisfied {predicateName}.", innerException) : value;
     }
 
     /// <summary>
@@ -105,7 +105,7 @@ public static class Errors
     /// Otherwise, returns the <paramref name="value"/> for chaining purpose.
     /// <para>
     /// NOTE: If <see cref="ArgumentException"/> is thrown, the message will be
-    /// '{argumentName} does not satisfy {predicateName ?? predicate}.',
+    /// '{argumentName} does not satisfy {predicateName}.',
     /// thus, a well-formed <paramref name="argumentName"/> and/or <paramref name="predicateName"/>
     /// will make more sense during debugging or log-analysis.
     /// </para>
@@ -118,10 +118,10 @@ public static class Errors
     public static T ThrowArgumentExceptionForNullOrOnPredicateFail<T>(this T? value,
         Func<T, bool> predicate,
         string argumentName,
-        string? predicateName = null,
+        string predicateName,
         Exception? innerException = null)
     {
-        return value.ThrowArgumentExceptionForNull(argumentName, innerException).ThrowArgumentExceptionOnPredicateFail(predicate, argumentName, predicateName);
+        return value.ThrowArgumentExceptionForNull(argumentName, innerException).ThrowArgumentExceptionOnPredicateFail(predicate, argumentName, predicateName, innerException);
     }
 
     /// <summary>
@@ -130,7 +130,7 @@ public static class Errors
     /// Otherwise, returns the <paramref name="value"/> for chaining purpose.
     /// <para>
     /// NOTE: If <see cref="ArgumentException"/> is thrown, the message will be
-    /// '{argumentName} satisfied {predicateName ?? predicate}.',
+    /// '{argumentName} satisfied {predicateName}.',
     /// thus, a well-formed <paramref name="argumentName"/> and/or <paramref name="predicateName"/>
     /// will make more sense during debugging or log-analysis.
     /// </para>
@@ -143,9 +143,9 @@ public static class Errors
     public static T ThrowArgumentExceptionForNullOrOnPredicateSuccess<T>(this T? value,
         Func<T, bool> predicate,
         string argumentName,
-        string? predicateName = null,
+        string predicateName,
         Exception? innerException = null)
     {
-        return value.ThrowArgumentExceptionForNull(argumentName, innerException).ThrowArgumentExceptionOnPredicateSuccess(predicate, argumentName, predicateName);
+        return value.ThrowArgumentExceptionForNull(argumentName, innerException).ThrowArgumentExceptionOnPredicateSuccess(predicate, argumentName, predicateName, innerException);
     }
 }

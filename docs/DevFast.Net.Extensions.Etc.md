@@ -8,4 +8,3 @@ Under this [namespace](https://docs.microsoft.com/en-us/dotnet/csharp/language-r
 | :--- | :--- |
 | [Asynchro](DevFast.Net.Extensions.Etc.Asynchro.md 'DevFast.Net.Extensions.Etc.Asynchro') | Extension methods on the [System.Threading.Tasks.Task](https://docs.microsoft.com/en-us/dotnet/api/System.Threading.Tasks.Task 'System.Threading.Tasks.Task'), [System.Threading.Tasks.ValueTask](https://docs.microsoft.com/en-us/dotnet/api/System.Threading.Tasks.ValueTask 'System.Threading.Tasks.ValueTask'). |
 | [Errors](DevFast.Net.Extensions.Etc.Errors.md 'DevFast.Net.Extensions.Etc.Errors') | Extension methods to throw or consume various kind of exceptions. |
-| [Lambdas](DevFast.Net.Extensions.Etc.Lambdas.md 'DevFast.Net.Extensions.Etc.Lambdas') | Extension methods on the lambdas. |

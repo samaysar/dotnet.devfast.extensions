@@ -73,9 +73,10 @@ namespace DevFast.Net.Extensions.SystemTypes
             [EnumeratorCancellation] CancellationToken token = default,
             bool continueOnCapturedContext = false)
         {
-            foreach (TIn item in collection)
+            using IEnumerator<TIn> enu = collection.GetEnumerator();
+            while (enu.MoveNext())
             {
-                yield return await lambda(item, token).ConfigureAwait(continueOnCapturedContext);
+                yield return await lambda(enu.Current, token).ConfigureAwait(continueOnCapturedContext);
             }
         }
 
@@ -94,9 +95,17 @@ namespace DevFast.Net.Extensions.SystemTypes
             [EnumeratorCancellation] CancellationToken token = default,
             bool continueOnCapturedContext = false)
         {
-            await foreach (TIn item in asyncCollection.WithCancellation(token).ConfigureAwait(continueOnCapturedContext))
+            ConfiguredCancelableAsyncEnumerable<TIn>.Enumerator ae = asyncCollection.WithCancellation(token).ConfigureAwait(continueOnCapturedContext).GetAsyncEnumerator();
+            try
             {
-                yield return lambda(item, token);
+                while (await ae.MoveNextAsync())
+                {
+                    yield return lambda(ae.Current, token);
+                }
+            }
+            finally
+            {
+                await ae.DisposeAsync();
             }
         }
 
@@ -115,9 +124,17 @@ namespace DevFast.Net.Extensions.SystemTypes
             [EnumeratorCancellation] CancellationToken token = default,
             bool continueOnCapturedContext = false)
         {
-            await foreach (TIn item in asyncCollection.WithCancellation(token).ConfigureAwait(continueOnCapturedContext))
+            ConfiguredCancelableAsyncEnumerable<TIn>.Enumerator ae = asyncCollection.WithCancellation(token).ConfigureAwait(continueOnCapturedContext).GetAsyncEnumerator();
+            try
             {
-                yield return await lambda(item, token).ConfigureAwait(continueOnCapturedContext);
+                while (await ae.MoveNextAsync())
+                {
+                    yield return await lambda(ae.Current, token).ConfigureAwait(continueOnCapturedContext);
+                }
+            }
+            finally
+            {
+                await ae.DisposeAsync();
             }
         }
 

@@ -78,12 +78,12 @@ or if the [predicate](DevFast.Net.Extensions.Etc.Errors.md#DevFast.Net.Extension
 Otherwise, returns the [value](DevFast.Net.Extensions.Etc.Errors.md#DevFast.Net.Extensions.Etc.Errors.ThrowArgumentExceptionForNullOrOnPredicateFail_T_(thisT,System.Func_T,bool_,string,string,System.Exception).value 'DevFast.Net.Extensions.Etc.Errors.ThrowArgumentExceptionForNullOrOnPredicateFail<T>(this T, System.Func<T,bool>, string, string, System.Exception).value') for chaining purpose.
 
 NOTE: If [System.ArgumentException](https://docs.microsoft.com/en-us/dotnet/api/System.ArgumentException 'System.ArgumentException') is thrown, the message will be
-'{argumentName} does not satisfy {predicateName ?? predicate}.',
+'{argumentName} does not satisfy {predicateName}.',
 thus, a well-formed [argumentName](DevFast.Net.Extensions.Etc.Errors.md#DevFast.Net.Extensions.Etc.Errors.ThrowArgumentExceptionForNullOrOnPredicateFail_T_(thisT,System.Func_T,bool_,string,string,System.Exception).argumentName 'DevFast.Net.Extensions.Etc.Errors.ThrowArgumentExceptionForNullOrOnPredicateFail<T>(this T, System.Func<T,bool>, string, string, System.Exception).argumentName') and/or [predicateName](DevFast.Net.Extensions.Etc.Errors.md#DevFast.Net.Extensions.Etc.Errors.ThrowArgumentExceptionForNullOrOnPredicateFail_T_(thisT,System.Func_T,bool_,string,string,System.Exception).predicateName 'DevFast.Net.Extensions.Etc.Errors.ThrowArgumentExceptionForNullOrOnPredicateFail<T>(this T, System.Func<T,bool>, string, string, System.Exception).predicateName')
 will make more sense during debugging or log-analysis.
 
 ```csharp
-public static T ThrowArgumentExceptionForNullOrOnPredicateFail<T>(this T? value, System.Func<T,bool> predicate, string argumentName, string? predicateName=null, System.Exception? innerException=null);
+public static T ThrowArgumentExceptionForNullOrOnPredicateFail<T>(this T? value, System.Func<T,bool> predicate, string argumentName, string predicateName, System.Exception? innerException=null);
 ```
 #### Type parameters
 
@@ -134,12 +134,12 @@ or if the [predicate](DevFast.Net.Extensions.Etc.Errors.md#DevFast.Net.Extension
 Otherwise, returns the [value](DevFast.Net.Extensions.Etc.Errors.md#DevFast.Net.Extensions.Etc.Errors.ThrowArgumentExceptionForNullOrOnPredicateSuccess_T_(thisT,System.Func_T,bool_,string,string,System.Exception).value 'DevFast.Net.Extensions.Etc.Errors.ThrowArgumentExceptionForNullOrOnPredicateSuccess<T>(this T, System.Func<T,bool>, string, string, System.Exception).value') for chaining purpose.
 
 NOTE: If [System.ArgumentException](https://docs.microsoft.com/en-us/dotnet/api/System.ArgumentException 'System.ArgumentException') is thrown, the message will be
-'{argumentName} satisfied {predicateName ?? predicate}.',
+'{argumentName} satisfied {predicateName}.',
 thus, a well-formed [argumentName](DevFast.Net.Extensions.Etc.Errors.md#DevFast.Net.Extensions.Etc.Errors.ThrowArgumentExceptionForNullOrOnPredicateSuccess_T_(thisT,System.Func_T,bool_,string,string,System.Exception).argumentName 'DevFast.Net.Extensions.Etc.Errors.ThrowArgumentExceptionForNullOrOnPredicateSuccess<T>(this T, System.Func<T,bool>, string, string, System.Exception).argumentName') and/or [predicateName](DevFast.Net.Extensions.Etc.Errors.md#DevFast.Net.Extensions.Etc.Errors.ThrowArgumentExceptionForNullOrOnPredicateSuccess_T_(thisT,System.Func_T,bool_,string,string,System.Exception).predicateName 'DevFast.Net.Extensions.Etc.Errors.ThrowArgumentExceptionForNullOrOnPredicateSuccess<T>(this T, System.Func<T,bool>, string, string, System.Exception).predicateName')
 will make more sense during debugging or log-analysis.
 
 ```csharp
-public static T ThrowArgumentExceptionForNullOrOnPredicateSuccess<T>(this T? value, System.Func<T,bool> predicate, string argumentName, string? predicateName=null, System.Exception? innerException=null);
+public static T ThrowArgumentExceptionForNullOrOnPredicateSuccess<T>(this T? value, System.Func<T,bool> predicate, string argumentName, string predicateName, System.Exception? innerException=null);
 ```
 #### Type parameters
 
@@ -189,12 +189,12 @@ Throws an [System.ArgumentException](https://docs.microsoft.com/en-us/dotnet/api
 Otherwise, always returns [value](DevFast.Net.Extensions.Etc.Errors.md#DevFast.Net.Extensions.Etc.Errors.ThrowArgumentExceptionOnPredicateFail_T_(thisT,System.Func_T,bool_,string,string,System.Exception).value 'DevFast.Net.Extensions.Etc.Errors.ThrowArgumentExceptionOnPredicateFail<T>(this T, System.Func<T,bool>, string, string, System.Exception).value') for chaining purpose.
 
 NOTE: If [System.ArgumentException](https://docs.microsoft.com/en-us/dotnet/api/System.ArgumentException 'System.ArgumentException') is thrown, the message will be
-'{argumentName} does not satisfy {predicateName ?? predicate}.',
+'{argumentName} does not satisfy {predicateName}.',
 thus, a well-formed [argumentName](DevFast.Net.Extensions.Etc.Errors.md#DevFast.Net.Extensions.Etc.Errors.ThrowArgumentExceptionOnPredicateFail_T_(thisT,System.Func_T,bool_,string,string,System.Exception).argumentName 'DevFast.Net.Extensions.Etc.Errors.ThrowArgumentExceptionOnPredicateFail<T>(this T, System.Func<T,bool>, string, string, System.Exception).argumentName') and [predicateName](DevFast.Net.Extensions.Etc.Errors.md#DevFast.Net.Extensions.Etc.Errors.ThrowArgumentExceptionOnPredicateFail_T_(thisT,System.Func_T,bool_,string,string,System.Exception).predicateName 'DevFast.Net.Extensions.Etc.Errors.ThrowArgumentExceptionOnPredicateFail<T>(this T, System.Func<T,bool>, string, string, System.Exception).predicateName')
 will make more sense during debugging or log-analysis.
 
 ```csharp
-public static T ThrowArgumentExceptionOnPredicateFail<T>(this T value, System.Func<T,bool> predicate, string argumentName, string? predicateName=null, System.Exception? innerException=null);
+public static T ThrowArgumentExceptionOnPredicateFail<T>(this T value, System.Func<T,bool> predicate, string argumentName, string predicateName, System.Exception? innerException=null);
 ```
 #### Type parameters
 
@@ -244,12 +244,12 @@ Throws an [System.ArgumentException](https://docs.microsoft.com/en-us/dotnet/api
 Otherwise, always returns [value](DevFast.Net.Extensions.Etc.Errors.md#DevFast.Net.Extensions.Etc.Errors.ThrowArgumentExceptionOnPredicateSuccess_T_(thisT,System.Func_T,bool_,string,string,System.Exception).value 'DevFast.Net.Extensions.Etc.Errors.ThrowArgumentExceptionOnPredicateSuccess<T>(this T, System.Func<T,bool>, string, string, System.Exception).value') for chaining purpose.
 
 NOTE: If [System.ArgumentException](https://docs.microsoft.com/en-us/dotnet/api/System.ArgumentException 'System.ArgumentException') is thrown, the message will be
-'{argumentName} satisfied {predicateName ?? predicate}.',
+'{argumentName} satisfied {predicateName}.',
 thus, a well-formed [argumentName](DevFast.Net.Extensions.Etc.Errors.md#DevFast.Net.Extensions.Etc.Errors.ThrowArgumentExceptionOnPredicateSuccess_T_(thisT,System.Func_T,bool_,string,string,System.Exception).argumentName 'DevFast.Net.Extensions.Etc.Errors.ThrowArgumentExceptionOnPredicateSuccess<T>(this T, System.Func<T,bool>, string, string, System.Exception).argumentName') and [predicateName](DevFast.Net.Extensions.Etc.Errors.md#DevFast.Net.Extensions.Etc.Errors.ThrowArgumentExceptionOnPredicateSuccess_T_(thisT,System.Func_T,bool_,string,string,System.Exception).predicateName 'DevFast.Net.Extensions.Etc.Errors.ThrowArgumentExceptionOnPredicateSuccess<T>(this T, System.Func<T,bool>, string, string, System.Exception).predicateName')
 will make more sense during debugging or log-analysis.
 
 ```csharp
-public static T ThrowArgumentExceptionOnPredicateSuccess<T>(this T value, System.Func<T,bool> predicate, string argumentName, string? predicateName=null, System.Exception? innerException=null);
+public static T ThrowArgumentExceptionOnPredicateSuccess<T>(this T value, System.Func<T,bool> predicate, string argumentName, string predicateName, System.Exception? innerException=null);
 ```
 #### Type parameters
 
