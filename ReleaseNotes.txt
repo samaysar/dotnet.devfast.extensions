@@ -1,9 +1,22 @@
+DevFast.Net.Extensions 0.4.0
+
+ 1. New feature - Added following new extension methods in DevFast.Net.Extensions.Etc.Asynchro:
+			- Run<T>(this T) where T : Task
+ 2. New feature - Added following new extension methods in DevFast.Net.Extensions.Etc.Errors:
+			- ThrowInvalidOperationExceptionIfFalse(this bool, string, Exception?)
+			- ThrowInvalidOperationExceptionIfTrue(this bool, string, Exception?)
+			- ThrowArgumentExceptionOnPredicateFail<T>(this T, Func<T, bool>, string, string, Exception?)
+			- ThrowArgumentExceptionOnPredicateSuccess<T>(this T, Func<T, bool>, string, string, Exception?)
+			- ThrowArgumentExceptionForNull<T>(this T, string, Exception?)
+			- ThrowArgumentExceptionForNullOrOnPredicateFail<T>(this T?, Func<T, bool>, string, string, Exception?)
+			- ThrowArgumentExceptionForNullOrOnPredicateSuccess<T>(this T?, Func<T, bool>, string, string, Exception?)
+
 DevFast.Net.Extensions 0.3.0
 
- 1. New feature - Adding following new extension methods in DevFast.Net.Extensions.SystemTypes.Enumerables:
+ 1. New feature - Added following new extension methods in DevFast.Net.Extensions.SystemTypes.Enumerables:
 			- ToBlockingEnumerable(this IAsyncEnumerable<T>, CancellationToken, bool)
 
- 2. New feature - Adding following new extension methods in DevFast.Net.Extensions.SystemTypes.Strings:
+ 2. New feature - Added following new extension methods in DevFast.Net.Extensions.SystemTypes.Strings:
 			- IsNows(this string?)
 			- IsNotNows(this string?)
 			- ToTrimmedUpperSafe(this string?, string, CultureInfo?)
@@ -34,7 +47,7 @@ DevFast.Net.Extensions 0.3.0
 			- TryTo(this string?, out DateTimeOnly, string, DateTimeStyles, IFormatProvider?)
 			- TryTo(this string?, out DateTimeOnly, string[], DateTimeStyles, IFormatProvider?)
 			
- 3. New feature - Adding following new extension methods in DevFast.Net.Extensions.SystemTypes.ReadOnlySpan:
+ 3. New feature - Added following new extension methods in DevFast.Net.Extensions.SystemTypes.ReadOnlySpan:
 	A. .Net 6 onwards:
 			- TryTo(this ReadOnlySpan<char>, out bool)
 			- TryTo(this ReadOnlySpan<char>, out Guid)
@@ -74,23 +87,23 @@ DevFast.Net.Extensions 0.3.0
 
 DevFast.Net.Extensions 0.2.0
 
- 1. New feature - Adding net8.0 as target framework.
+ 1. New feature - Added net8.0 as target framework.
 
 DevFast.Net.Extensions 0.1.1
 
- 1. New feature - Adding following new extension methods in DevFast.Net.Extensions.SystemTypes.Enumerables:
+ 1. New feature - Added following new extension methods in DevFast.Net.Extensions.SystemTypes.Enumerables:
 			- CountAsync<T>(this IAsyncEnumerable<T>, CancellationToken, bool)
 			- CountLongAsync<T>(this IAsyncEnumerable<T>, CancellationToken, bool)
-			- SelectAsync<TIn,TOut>(this IAsyncEnumerable<TIn>, Func<TIn,CancellationToken,TOut>, CancellationToken, bool)
-			- WhereAsync<T>(this IAsyncEnumerable<T>, Func<T,CancellationToken,bool>, CancellationToken, bool)
+			- SelectAsync<TIn, TOut>(this IAsyncEnumerable<TIn>, Func<TIn, CancellationToken, TOut>, CancellationToken, bool)
+			- WhereAsync<T>(this IAsyncEnumerable<T>, Func<T, CancellationToken, bool>, CancellationToken, bool)
 
  2. Modifications - Using ValueTask, instead of Task, on following extension methods of DevFast.Net.Extensions.SystemTypes.Enumerables:
-			- ForEachAsync<T>(this IEnumerable<T>, Func<T,CancellationToken,ValueTask>, CancellationToken, bool)
-			- SelectAsync<TIn,TOut>(this IEnumerable<TIn>, Func<TIn,CancellationToken,ValueTask<TOut>>, CancellationToken, bool)
-			- ForEachAsync<T>(this IAsyncEnumerable<T>, Func<T,CancellationToken,ValueTask>, CancellationToken, bool)
-			- SelectAsync<TIn,TOut>(this IAsyncEnumerable<TIn>, Func<TIn,CancellationToken,ValueTask<TOut>>, CancellationToken, bool)
+			- ForEachAsync<T>(this IEnumerable<T>, Func<T, CancellationToken, ValueTask>, CancellationToken, bool)
+			- SelectAsync<TIn, TOut>(this IEnumerable<TIn>, Func<TIn, CancellationToken, ValueTask<TOut>>, CancellationToken, bool)
+			- ForEachAsync<T>(this IAsyncEnumerable<T>, Func<T, CancellationToken, ValueTask>, CancellationToken, bool)
+			- SelectAsync<TIn, TOut>(this IAsyncEnumerable<TIn>, Func<TIn, CancellationToken, ValueTask<TOut>>, CancellationToken, bool)
 			- ToListAsync<T>(this IAsyncEnumerable<T>, CancellationToken, bool)
-			- WhereAsync<T>(this IAsyncEnumerable<T>, Func<T,CancellationToken,ValueTask<bool>>, CancellationToken, bool)
+			- WhereAsync<T>(this IAsyncEnumerable<T>, Func<T, CancellationToken, ValueTask<bool>>, CancellationToken, bool)
 
 
 DevFast.Net.Extensions 0.1.0
