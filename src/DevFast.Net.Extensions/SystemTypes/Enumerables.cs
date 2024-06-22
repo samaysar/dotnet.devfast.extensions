@@ -73,9 +73,10 @@ namespace DevFast.Net.Extensions.SystemTypes
             [EnumeratorCancellation] CancellationToken token = default,
             bool continueOnCapturedContext = false)
         {
-            foreach (TIn item in collection)
+            using IEnumerator<TIn> enu = collection.GetEnumerator();
+            while (enu.MoveNext())
             {
-                yield return await lambda(item, token).ConfigureAwait(continueOnCapturedContext);
+                yield return await lambda(enu.Current, token).ConfigureAwait(continueOnCapturedContext);
             }
         }
 
@@ -94,9 +95,17 @@ namespace DevFast.Net.Extensions.SystemTypes
             [EnumeratorCancellation] CancellationToken token = default,
             bool continueOnCapturedContext = false)
         {
-            await foreach (TIn item in asyncCollection.WithCancellation(token).ConfigureAwait(continueOnCapturedContext))
+            ConfiguredCancelableAsyncEnumerable<TIn>.Enumerator ae = asyncCollection.WithCancellation(token).ConfigureAwait(continueOnCapturedContext).GetAsyncEnumerator();
+            try
             {
-                yield return lambda(item, token);
+                while (await ae.MoveNextAsync())
+                {
+                    yield return lambda(ae.Current, token);
+                }
+            }
+            finally
+            {
+                await ae.DisposeAsync();
             }
         }
 
@@ -115,9 +124,17 @@ namespace DevFast.Net.Extensions.SystemTypes
             [EnumeratorCancellation] CancellationToken token = default,
             bool continueOnCapturedContext = false)
         {
-            await foreach (TIn item in asyncCollection.WithCancellation(token).ConfigureAwait(continueOnCapturedContext))
+            ConfiguredCancelableAsyncEnumerable<TIn>.Enumerator ae = asyncCollection.WithCancellation(token).ConfigureAwait(continueOnCapturedContext).GetAsyncEnumerator();
+            try
             {
-                yield return await lambda(item, token).ConfigureAwait(continueOnCapturedContext);
+                while (await ae.MoveNextAsync())
+                {
+                    yield return await lambda(ae.Current, token).ConfigureAwait(continueOnCapturedContext);
+                }
+            }
+            finally
+            {
+                await ae.DisposeAsync();
             }
         }
 
@@ -163,7 +180,7 @@ namespace DevFast.Net.Extensions.SystemTypes
         /// </summary>
         /// <typeparam name="TIn">Input Type</typeparam>
         /// <param name="asyncCollection">Asynchronously Enumerable items</param>
-        /// <param name="count">Total number of elements to skip</param>
+        /// <param name="count">Total number (max) of elements to take</param>
         /// <param name="token">Cancellation token for enumerator of <paramref name="asyncCollection"/></param>
         /// <param name="continueOnCapturedContext"><see langword="true"/> to attempt to marshal the continuation back to the original context captured; otherwise, <see langword="false"/>.</param>
         public static async IAsyncEnumerable<TIn> TakeAsync<TIn>(this IAsyncEnumerable<TIn> asyncCollection,
@@ -333,27 +350,29 @@ namespace DevFast.Net.Extensions.SystemTypes
 
 #if NET6_0
         /// <summary>
-        /// Converts provided <paramref name="asyncCollection"/> instance into an <see cref="IEnumerable{T}"/> that enumerates elements in a blocking manner..
+        /// Converts provided <paramref name="asyncCollection"/> instance into an <see cref="IEnumerable{T}"/> that enumerates elements in a blocking manner.
         /// </summary>
         /// <typeparam name="T">Input Type</typeparam>
         /// <param name="asyncCollection">Asynchronously Enumerable items</param>
         /// <param name="token">Cancellation token to pass to enumerator of <paramref name="asyncCollection"/></param>
-        /// <param name="continueOnCapturedContext"><see langword="true"/> to attempt to marshal the continuation back to the original context captured; otherwise, <see langword="false"/>.</param>
         public static IEnumerable<T> ToBlockingEnumerable<T>(this IAsyncEnumerable<T> asyncCollection,
-            CancellationToken token = default,
-            bool continueOnCapturedContext = false)
+            CancellationToken token = default)
         {
-            ConfiguredCancelableAsyncEnumerable<T>.Enumerator ae = asyncCollection.WithCancellation(token).ConfigureAwait(continueOnCapturedContext).GetAsyncEnumerator();
+            IAsyncEnumerator<T> ae = asyncCollection.GetAsyncEnumerator(token);
             try
             {
-                while (ae.MoveNextAsync().GetAwaiter().GetResult())
+                //Costly poly-fill, but dont want to complexify the logic
+                //using status check and onCompletion method using waithandles.
+                //NET6 is soon going out of support, so would probably
+                //drop the framework from the library.
+                while (ae.MoveNextAsync().AsTask().GetAwaiter().GetResult())
                 {
                     yield return ae.Current;
                 }
             }
             finally
             {
-                ae.DisposeAsync().GetAwaiter().GetResult();
+                ae.DisposeAsync().AsTask().GetAwaiter().GetResult();
             }
         }
 #endif

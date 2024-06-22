@@ -289,6 +289,13 @@ namespace DevFast.Net.Extensions.Tests.SystemTypes
                     t.ThrowIfCancellationRequested();
                     return x;
                 }, CancellationToken.None).ToBlockingEnumerable(token).ToList());
+            That(Array.Empty<int>().SelectAsync(
+                async (x, t) =>
+                {
+                    await Task.CompletedTask;
+                    t.ThrowIfCancellationRequested();
+                    return x;
+                }, CancellationToken.None).ToBlockingEnumerable(token).ToList(), Is.Empty);
         }
 #endif
 
