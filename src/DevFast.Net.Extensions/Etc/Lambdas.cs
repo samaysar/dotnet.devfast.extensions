@@ -202,6 +202,84 @@ public static class Lambdas
     }
 
     /// <summary>
+    /// Executes <paramref name="lambda"/> inside try block.
+    /// If any exception of type <typeparamref name="TError"/> (or
+    /// its derived types) occurs during <paramref name="lambda"/>
+    /// execution, relevant information is passed to <paramref name="errorHandler"/>.
+    /// And, <paramref name="finallyClause"/> will be executed inside finally.
+    /// <para>
+    /// NOTE: The code itself will NOT re-throw caught exception, but,
+    /// <paramref name="errorHandler"/> may itself re-throw those (e.g.
+    /// <see cref="ExceptionDispatchInfo.Throw()"/>), if needed.
+    /// </para>
+    /// </summary>
+    /// <typeparam name="TError">Exception type</typeparam>
+    /// <typeparam name="TState">State type</typeparam>
+    /// <param name="lambda">Lambda to execute inside try clause</param>
+    /// <param name="state">Lambda state</param>
+    /// <param name="errorHandler">Error handler to invoke inside catch clause</param>
+    /// <param name="finallyClause">Code to run inside finally clause</param>
+    public static void Execute<TState, TError>(this Action<TState> lambda,
+        TState state,
+        Action<ExceptionDispatchInfo, TError, TState> errorHandler,
+        Action<TState> finallyClause)
+        where TError : Exception
+    {
+        try
+        {
+            lambda(state);
+        }
+        catch (TError e)
+        {
+            errorHandler(ExceptionDispatchInfo.Capture(e), e, state);
+        }
+        finally
+        {
+            finallyClause(state);
+        }
+    }
+
+    /// <summary>
+    /// Executes <paramref name="lambda"/> inside try block and returns its value.
+    /// If any exception of type <typeparamref name="TError"/> (or
+    /// its derived types) occurs during <paramref name="lambda"/>
+    /// execution, relevant information is passed to <paramref name="errorHandler"/>
+    /// to obtain the return value.
+    /// And, <paramref name="finallyClause"/> will be executed inside finally.
+    /// <para>
+    /// NOTE: The code itself will NOT re-throw caught exception, but,
+    /// <paramref name="errorHandler"/> may itself re-throw those (e.g.
+    /// <see cref="ExceptionDispatchInfo.Throw()"/>), if needed.
+    /// </para>
+    /// </summary>
+    /// <typeparam name="TOut">Return type</typeparam>
+    /// <typeparam name="TState">State type</typeparam>
+    /// <typeparam name="TError">Exception type</typeparam>
+    /// <param name="lambda">Lambda to execute inside try clause</param>
+    /// <param name="state">Lambda state</param>
+    /// <param name="errorHandler">Error handler to invoke inside catch clause</param>
+    /// <param name="finallyClause">Code to run inside finally clause</param>
+    public static TOut Execute<TState, TOut, TError>(this Func<TState, TOut> lambda,
+        TState state,
+        Func<ExceptionDispatchInfo, TError, TState, TOut> errorHandler,
+        Action<TState> finallyClause)
+        where TError : Exception
+    {
+        try
+        {
+            return lambda(state);
+        }
+        catch (TError e)
+        {
+            return errorHandler(ExceptionDispatchInfo.Capture(e), e, state);
+        }
+        finally
+        {
+            finallyClause(state);
+        }
+    }
+
+    /// <summary>
     /// Executes <paramref name="lambda"/> inside try block and
     /// excutes <paramref name="finallyClause"/> inside finally.
     /// <para>
