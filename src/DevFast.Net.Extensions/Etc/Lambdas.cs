@@ -785,12 +785,11 @@ public static class Lambdas
     /// NOTE: The code itself will NOT catch any <see cref="Exception"/>.
     /// </para>
     /// </summary>
-    /// <typeparam name="TOut">Return type</typeparam>
     /// <typeparam name="TState">State type</typeparam>
     /// <param name="asyncLambda">Lambda to execute inside try clause</param>
     /// <param name="state">Lambda state</param>
     /// <param name="finallyClause">Code to run inside finally clause</param>
-    public static async Task ExecuteAsync<TState, TOut>(this Func<TState, Task> asyncLambda,
+    public static async Task ExecuteAsync<TState>(this Func<TState, Task> asyncLambda,
         TState state,
         Action finallyClause)
     {
