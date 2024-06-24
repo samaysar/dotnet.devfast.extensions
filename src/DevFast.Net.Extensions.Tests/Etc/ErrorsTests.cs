@@ -1,6 +1,4 @@
-﻿using DevFast.Net.Extensions.Etc;
-
-namespace DevFast.Net.Extensions.Tests.Etc;
+﻿namespace DevFast.Net.Extensions.Tests.Etc;
 
 [TestFixture]
 public class ErrorsTests
@@ -17,7 +15,7 @@ public class ErrorsTests
         else
         {
             Exception dummyInner = new("dummy");
-            InvalidOperationException? ex = Throws<InvalidOperationException>(() => dontThrow.ThrowInvalidOperationExceptionIfFalse("will throw", dummyInner));
+            Ioe? ex = Throws<Ioe>(() => dontThrow.ThrowInvalidOperationExceptionIfFalse("will throw", dummyInner));
             That(ex, Is.Not.Null);
             That(ex.Message, Is.EqualTo("will throw"));
             That(ReferenceEquals(ex.InnerException, dummyInner), Is.EqualTo(true));
@@ -32,7 +30,7 @@ public class ErrorsTests
         if (shouldThrow)
         {
             Exception dummyInner = new("dummy");
-            InvalidOperationException? ex = Throws<InvalidOperationException>(() => shouldThrow.ThrowInvalidOperationExceptionIfTrue("will throw", dummyInner));
+            Ioe? ex = Throws<Ioe>(() => shouldThrow.ThrowInvalidOperationExceptionIfTrue("will throw", dummyInner));
             That(ex, Is.Not.Null);
             That(ex.Message, Is.EqualTo("will throw"));
             That(ReferenceEquals(ex.InnerException, dummyInner), Is.EqualTo(shouldThrow));
@@ -55,7 +53,7 @@ public class ErrorsTests
         else
         {
             Exception dummyInner = new("dummy");
-            ArgumentException? ex = Throws<ArgumentException>(() => dontThrow.ThrowArgumentExceptionOnPredicateFail(static x => x, nameof(dontThrow), nameof(ThrowArgumentExceptionOnPredicateFail_Behaves_Correctly), dummyInner));
+            Ae? ex = Throws<Ae>(() => dontThrow.ThrowArgumentExceptionOnPredicateFail(static x => x, nameof(dontThrow), nameof(ThrowArgumentExceptionOnPredicateFail_Behaves_Correctly), dummyInner));
             That(ex, Is.Not.Null);
             That(ex.Message, Is.EqualTo($"{nameof(dontThrow)} does not satisfy {nameof(ThrowArgumentExceptionOnPredicateFail_Behaves_Correctly)}."));
             That(ReferenceEquals(ex.InnerException, dummyInner), Is.EqualTo(true));
@@ -70,7 +68,7 @@ public class ErrorsTests
         if (shouldThrow)
         {
             Exception dummyInner = new("dummy");
-            ArgumentException? ex = Throws<ArgumentException>(() => shouldThrow.ThrowArgumentExceptionOnPredicateSuccess(static x => x, nameof(shouldThrow), nameof(ThrowArgumentExceptionOnPredicateSuccess_Behaves_Correctly), dummyInner));
+            Ae? ex = Throws<Ae>(() => shouldThrow.ThrowArgumentExceptionOnPredicateSuccess(static x => x, nameof(shouldThrow), nameof(ThrowArgumentExceptionOnPredicateSuccess_Behaves_Correctly), dummyInner));
             That(ex, Is.Not.Null);
             That(ex.Message, Is.EqualTo($"{nameof(shouldThrow)} satisfied {nameof(ThrowArgumentExceptionOnPredicateSuccess_Behaves_Correctly)}."));
             That(ReferenceEquals(ex.InnerException, dummyInner), Is.EqualTo(shouldThrow));
@@ -93,7 +91,7 @@ public class ErrorsTests
         else
         {
             Exception dummyInner = new("dummy");
-            ArgumentException? ex = Throws<ArgumentException>(() => value.ThrowArgumentExceptionForNull(nameof(value), dummyInner));
+            Ae? ex = Throws<Ae>(() => value.ThrowArgumentExceptionForNull(nameof(value), dummyInner));
             That(ex, Is.Not.Null);
             That(ex.Message, Is.EqualTo($"{nameof(value)} was null."));
             That(ReferenceEquals(ex.InnerException, dummyInner), Is.EqualTo(true));
@@ -116,7 +114,7 @@ public class ErrorsTests
             else
             {
                 Exception dummyInner = new("dummy");
-                ArgumentException? ex = Throws<ArgumentException>(() => value.ThrowArgumentExceptionForNullOrOnPredicateFail(_ => shouldThrow, nameof(shouldThrow), nameof(ThrowArgumentExceptionForNullOrOnPredicateFail_Behaves_Correctly), dummyInner));
+                Ae? ex = Throws<Ae>(() => value.ThrowArgumentExceptionForNullOrOnPredicateFail(_ => shouldThrow, nameof(shouldThrow), nameof(ThrowArgumentExceptionForNullOrOnPredicateFail_Behaves_Correctly), dummyInner));
                 That(ex, Is.Not.Null);
                 That(ex.Message, Is.EqualTo($"{nameof(shouldThrow)} does not satisfy {nameof(ThrowArgumentExceptionForNullOrOnPredicateFail_Behaves_Correctly)}."));
                 That(ReferenceEquals(ex.InnerException, dummyInner), Is.EqualTo(true));
@@ -125,7 +123,7 @@ public class ErrorsTests
         else
         {
             Exception dummyInner = new("dummy");
-            ArgumentException? ex = Throws<ArgumentException>(() => value.ThrowArgumentExceptionForNullOrOnPredicateFail(static _ => false, nameof(value), nameof(ThrowArgumentExceptionForNullOrOnPredicateFail_Behaves_Correctly), dummyInner));
+            Ae? ex = Throws<Ae>(() => value.ThrowArgumentExceptionForNullOrOnPredicateFail(static _ => false, nameof(value), nameof(ThrowArgumentExceptionForNullOrOnPredicateFail_Behaves_Correctly), dummyInner));
             That(ex, Is.Not.Null);
             That(ex.Message, Is.EqualTo($"{nameof(value)} was null."));
             That(ReferenceEquals(ex.InnerException, dummyInner), Is.EqualTo(true));
@@ -144,7 +142,7 @@ public class ErrorsTests
             if (shouldThrow)
             {
                 Exception dummyInner = new("dummy");
-                ArgumentException? ex = Throws<ArgumentException>(() => value.ThrowArgumentExceptionForNullOrOnPredicateSuccess(_ => shouldThrow, nameof(shouldThrow), nameof(ThrowArgumentExceptionForNullOrOnPredicateSuccess_Behaves_Correctly), dummyInner));
+                Ae? ex = Throws<Ae>(() => value.ThrowArgumentExceptionForNullOrOnPredicateSuccess(_ => shouldThrow, nameof(shouldThrow), nameof(ThrowArgumentExceptionForNullOrOnPredicateSuccess_Behaves_Correctly), dummyInner));
                 That(ex, Is.Not.Null);
                 That(ex.Message, Is.EqualTo($"{nameof(shouldThrow)} satisfied {nameof(ThrowArgumentExceptionForNullOrOnPredicateSuccess_Behaves_Correctly)}."));
                 That(ReferenceEquals(ex.InnerException, dummyInner), Is.EqualTo(true));
@@ -157,7 +155,7 @@ public class ErrorsTests
         else
         {
             Exception dummyInner = new("dummy");
-            ArgumentException? ex = Throws<ArgumentException>(() => value.ThrowArgumentExceptionForNullOrOnPredicateSuccess(static _ => false, nameof(value), nameof(ThrowArgumentExceptionForNullOrOnPredicateSuccess_Behaves_Correctly), dummyInner));
+            Ae? ex = Throws<Ae>(() => value.ThrowArgumentExceptionForNullOrOnPredicateSuccess(static _ => false, nameof(value), nameof(ThrowArgumentExceptionForNullOrOnPredicateSuccess_Behaves_Correctly), dummyInner));
             That(ex, Is.Not.Null);
             That(ex.Message, Is.EqualTo($"{nameof(value)} was null."));
             That(ReferenceEquals(ex.InnerException, dummyInner), Is.EqualTo(true));
