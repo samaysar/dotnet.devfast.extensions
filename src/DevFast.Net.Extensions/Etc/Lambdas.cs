@@ -376,7 +376,7 @@ public static class Lambdas
 
     /// <summary>
     /// Executes <paramref name="lambda"/> inside try block and
-    /// excutes <paramref name="finallyClause"/> inside finally.
+    /// executes <paramref name="finallyClause"/> inside finally.
     /// <para>
     /// NOTE: The code itself will NOT catch any <see cref="Exception"/>.
     /// </para>
@@ -400,7 +400,7 @@ public static class Lambdas
 
     /// <summary>
     /// Executes <paramref name="lambda"/> inside try block and returns its value
-    /// after excuting <paramref name="finallyClause"/> inside finally.
+    /// after executing <paramref name="finallyClause"/> inside finally.
     /// <para>
     /// NOTE: The code itself will NOT catch any <see cref="Exception"/>.
     /// </para>
@@ -664,6 +664,84 @@ public static class Lambdas
     /// its derived types) occurs during <paramref name="asyncLambda"/>
     /// execution, relevant information is passed to <paramref name="errorHandler"/>
     /// to obtain the return value.
+    /// And, <paramref name="finallyClause"/> will be executed inside finally.
+    /// <para>
+    /// NOTE: The code itself will NOT re-throw caught exception, but,
+    /// <paramref name="errorHandler"/> may itself re-throw those (e.g.
+    /// <see cref="ExceptionDispatchInfo.Throw()"/>), if needed.
+    /// </para>
+    /// </summary>
+    /// <typeparam name="TState">State type</typeparam>
+    /// <typeparam name="TError">Exception type</typeparam>
+    /// <param name="asyncLambda">Lambda to execute inside try clause</param>
+    /// <param name="state">Lambda state</param>
+    /// <param name="errorHandler">Error handler to invoke inside catch clause</param>
+    /// <param name="finallyClause">Code to run inside finally clause</param>
+    public static async Task ExecuteAsync<TState, TError>(this Func<TState, Task> asyncLambda,
+        TState state,
+        Action<ExceptionDispatchInfo, TError, TState> errorHandler,
+        Action<TState> finallyClause)
+        where TError : Exception
+    {
+        try
+        {
+            await asyncLambda(state).Run().ConfigureAwait(false);
+        }
+        catch (TError e)
+        {
+            errorHandler(ExceptionDispatchInfo.Capture(e), e, state);
+        }
+        finally
+        {
+            finallyClause(state);
+        }
+    }
+
+    /// <summary>
+    /// Asynchronously executes <paramref name="asyncLambda"/> inside try block and returns its value.
+    /// If any exception of type <typeparamref name="TError"/> (or
+    /// its derived types) occurs during <paramref name="asyncLambda"/>
+    /// execution, relevant information is passed to <paramref name="errorHandler"/>
+    /// to obtain the return value.
+    /// And, <paramref name="finallyClause"/> will be executed inside finally.
+    /// <para>
+    /// NOTE: The code itself will NOT re-throw caught exception, but,
+    /// <paramref name="errorHandler"/> may itself re-throw those (e.g.
+    /// <see cref="ExceptionDispatchInfo.Throw()"/>), if needed.
+    /// </para>
+    /// </summary>
+    /// <typeparam name="TState">State type</typeparam>
+    /// <typeparam name="TError">Exception type</typeparam>
+    /// <param name="asyncLambda">Lambda to execute inside try clause</param>
+    /// <param name="state">Lambda state</param>
+    /// <param name="errorHandler">Error handler to invoke inside catch clause</param>
+    /// <param name="finallyClause">Code to run inside finally clause</param>
+    public static async ValueTask ExecuteAsync<TState, TError>(this Func<TState, ValueTask> asyncLambda,
+        TState state,
+        Action<ExceptionDispatchInfo, TError, TState> errorHandler,
+        Action<TState> finallyClause)
+        where TError : Exception
+    {
+        try
+        {
+            await asyncLambda(state).ConfigureAwait(false);
+        }
+        catch (TError e)
+        {
+            errorHandler(ExceptionDispatchInfo.Capture(e), e, state);
+        }
+        finally
+        {
+            finallyClause(state);
+        }
+    }
+
+    /// <summary>
+    /// Asynchronously executes <paramref name="asyncLambda"/> inside try block and returns its value.
+    /// If any exception of type <typeparamref name="TError"/> (or
+    /// its derived types) occurs during <paramref name="asyncLambda"/>
+    /// execution, relevant information is passed to <paramref name="errorHandler"/>
+    /// to obtain the return value.
     /// If any <paramref name="finallyClause"/> is provided, it will be executed inside finally.
     /// <para>
     /// NOTE: The code itself will NOT re-throw caught exception, but,
@@ -809,6 +887,86 @@ public static class Lambdas
         finally
         {
             finallyClause?.Invoke();
+        }
+    }
+
+    /// <summary>
+    /// Asynchronously executes <paramref name="asyncLambda"/> inside try block and returns its value.
+    /// If any exception of type <typeparamref name="TError"/> (or
+    /// its derived types) occurs during <paramref name="asyncLambda"/>
+    /// execution, relevant information is passed to <paramref name="errorHandler"/>
+    /// to obtain the return value.
+    /// And, <paramref name="finallyClause"/> will be executed inside finally.
+    /// <para>
+    /// NOTE: The code itself will NOT re-throw caught exception, but,
+    /// <paramref name="errorHandler"/> may itself re-throw those (e.g.
+    /// <see cref="ExceptionDispatchInfo.Throw()"/>), if needed.
+    /// </para>
+    /// </summary>
+    /// <typeparam name="TOut">Return type</typeparam>
+    /// <typeparam name="TState">State type</typeparam>
+    /// <typeparam name="TError">Exception type</typeparam>
+    /// <param name="asyncLambda">Lambda to execute inside try clause</param>
+    /// <param name="state">Lambda state</param>
+    /// <param name="errorHandler">Error handler to invoke inside catch clause</param>
+    /// <param name="finallyClause">Code to run inside finally clause</param>
+    public static async Task<TOut> ExecuteAsync<TState, TOut, TError>(this Func<TState, Task<TOut>> asyncLambda,
+        TState state,
+        Func<ExceptionDispatchInfo, TError, TState, TOut> errorHandler,
+        Action<TState> finallyClause)
+        where TError : Exception
+    {
+        try
+        {
+            return await asyncLambda(state).Run().ConfigureAwait(false);
+        }
+        catch (TError e)
+        {
+            return errorHandler(ExceptionDispatchInfo.Capture(e), e, state);
+        }
+        finally
+        {
+            finallyClause(state);
+        }
+    }
+
+    /// <summary>
+    /// Asynchronously executes <paramref name="asyncLambda"/> inside try block and returns its value.
+    /// If any exception of type <typeparamref name="TError"/> (or
+    /// its derived types) occurs during <paramref name="asyncLambda"/>
+    /// execution, relevant information is passed to <paramref name="errorHandler"/>
+    /// to obtain the return value.
+    /// And, <paramref name="finallyClause"/> will be executed inside finally.
+    /// <para>
+    /// NOTE: The code itself will NOT re-throw caught exception, but,
+    /// <paramref name="errorHandler"/> may itself re-throw those (e.g.
+    /// <see cref="ExceptionDispatchInfo.Throw()"/>), if needed.
+    /// </para>
+    /// </summary>
+    /// <typeparam name="TOut">Return type</typeparam>
+    /// <typeparam name="TState">State type</typeparam>
+    /// <typeparam name="TError">Exception type</typeparam>
+    /// <param name="asyncLambda">Lambda to execute inside try clause</param>
+    /// <param name="state">Lambda state</param>
+    /// <param name="errorHandler">Error handler to invoke inside catch clause</param>
+    /// <param name="finallyClause">Code to run inside finally clause</param>
+    public static async ValueTask<TOut> ExecuteAsync<TState, TOut, TError>(this Func<TState, ValueTask<TOut>> asyncLambda,
+        TState state,
+        Func<ExceptionDispatchInfo, TError, TState, TOut> errorHandler,
+        Action<TState> finallyClause)
+        where TError : Exception
+    {
+        try
+        {
+            return await asyncLambda(state).ConfigureAwait(false);
+        }
+        catch (TError e)
+        {
+            return errorHandler(ExceptionDispatchInfo.Capture(e), e, state);
+        }
+        finally
+        {
+            finallyClause(state);
         }
     }
 

@@ -443,4 +443,941 @@ public class LambdasTests
         That(ReferenceEquals(err, ex), Is.EqualTo(true));
         That(finallyCount, Is.EqualTo(2));
     }
+
+    [Test]
+    public async Task ExecuteAsync_On_FuncTask_Works_As_Expected()
+    {
+        Exception ex = new("Error");
+        int lambdaCount = 0;
+        Func<Task> result = () =>
+        {
+            _ = Interlocked.Increment(ref lambdaCount);
+            return Task.CompletedTask;
+        };
+        Func<Task> error = () => throw ex;
+        await result.ExecuteAsync().ConfigureAwait(false);
+        That(lambdaCount, Is.EqualTo(1));
+        Exception? err = ThrowsAsync<Exception>(async () => await error.ExecuteAsync().ConfigureAwait(false));
+        That(err, Is.Not.Null);
+        That(ReferenceEquals(err, ex), Is.EqualTo(true));
+    }
+
+    [Test]
+    public async Task ExecuteAsync_On_FuncValueTask_Works_As_Expected()
+    {
+        Exception ex = new("Error");
+        int lambdaCount = 0;
+        Func<ValueTask> result = () =>
+        {
+            _ = Interlocked.Increment(ref lambdaCount);
+            return ValueTask.CompletedTask;
+        };
+        Func<ValueTask> error = () => throw ex;
+        await result.ExecuteAsync().ConfigureAwait(false);
+        That(lambdaCount, Is.EqualTo(1));
+        Exception? err = ThrowsAsync<Exception>(async () => await error.ExecuteAsync().ConfigureAwait(false));
+        That(err, Is.Not.Null);
+        That(ReferenceEquals(err, ex), Is.EqualTo(true));
+    }
+
+    [Test]
+    public async Task ExecuteAsync_On_FuncTInTask_Works_As_Expected()
+    {
+        Exception ex = new("Error");
+        int lambdaCount = 0;
+        Func<int, Task> result = i =>
+        {
+            _ = Interlocked.Add(ref lambdaCount, i);
+            return Task.CompletedTask;
+        };
+        Func<int, Task> error = _ => throw ex;
+        await result.ExecuteAsync(1).ConfigureAwait(false);
+        That(lambdaCount, Is.EqualTo(1));
+        Exception? err = ThrowsAsync<Exception>(async () => await error.ExecuteAsync(1).ConfigureAwait(false));
+        That(err, Is.Not.Null);
+        That(ReferenceEquals(err, ex), Is.EqualTo(true));
+    }
+
+    [Test]
+    public async Task ExecuteAsync_On_FuncTInValueTask_Works_As_Expected()
+    {
+        Exception ex = new("Error");
+        int lambdaCount = 0;
+        Func<int, ValueTask> result = i =>
+        {
+            _ = Interlocked.Add(ref lambdaCount, i);
+            return ValueTask.CompletedTask;
+        };
+        Func<int, ValueTask> error = _ => throw ex;
+        await result.ExecuteAsync(1).ConfigureAwait(false);
+        That(lambdaCount, Is.EqualTo(1));
+        Exception? err = ThrowsAsync<Exception>(async () => await error.ExecuteAsync(1).ConfigureAwait(false));
+        That(err, Is.Not.Null);
+        That(ReferenceEquals(err, ex), Is.EqualTo(true));
+    }
+
+    [Test]
+    public async Task ExecuteAsync_On_FuncTaskTOut_Works_As_Expected()
+    {
+        Exception ex = new("Error");
+        int lambdaCount = 0;
+        Func<Task<int>> result = () => Task.FromResult(Interlocked.Increment(ref lambdaCount));
+        Func<Task> error = () => throw ex;
+        That(await result.ExecuteAsync().ConfigureAwait(false), Is.EqualTo(1));
+        That(lambdaCount, Is.EqualTo(1));
+        Exception? err = ThrowsAsync<Exception>(async () => await error.ExecuteAsync().ConfigureAwait(false));
+        That(err, Is.Not.Null);
+        That(ReferenceEquals(err, ex), Is.EqualTo(true));
+    }
+
+    [Test]
+    public async Task ExecuteAsync_On_FuncValueTaskTOut_Works_As_Expected()
+    {
+        Exception ex = new("Error");
+        int lambdaCount = 0;
+        Func<ValueTask<int>> result = () => ValueTask.FromResult(Interlocked.Increment(ref lambdaCount));
+        Func<ValueTask<int>> error = () => throw ex;
+        That(await result.ExecuteAsync().ConfigureAwait(false), Is.EqualTo(1));
+        That(lambdaCount, Is.EqualTo(1));
+        Exception? err = ThrowsAsync<Exception>(async () => await error.ExecuteAsync().ConfigureAwait(false));
+        That(err, Is.Not.Null);
+        That(ReferenceEquals(err, ex), Is.EqualTo(true));
+    }
+
+    [Test]
+    public async Task ExecuteAsync_On_FuncTInTaskTOut_Works_As_Expected()
+    {
+        Exception ex = new("Error");
+        Func<int, Task<int>> result = static i => Task.FromResult(++i);
+        Func<int, Task<int>> error = _ => throw ex;
+        That(await result.ExecuteAsync(0).ConfigureAwait(false), Is.EqualTo(1));
+        Exception? err = ThrowsAsync<Exception>(async () => await error.ExecuteAsync(0).ConfigureAwait(false));
+        That(err, Is.Not.Null);
+        That(ReferenceEquals(err, ex), Is.EqualTo(true));
+    }
+
+    [Test]
+    public async Task ExecuteAsync_On_FuncTInValueTaskTOut_Works_As_Expected()
+    {
+        Exception ex = new("Error");
+        Func<int, ValueTask<int>> result = static i => ValueTask.FromResult(++i);
+        Func<int, ValueTask<int>> error = _ => throw ex;
+        That(await result.ExecuteAsync(0).ConfigureAwait(false), Is.EqualTo(1));
+        Exception? err = ThrowsAsync<Exception>(async () => await error.ExecuteAsync(0).ConfigureAwait(false));
+        That(err, Is.Not.Null);
+        That(ReferenceEquals(err, ex), Is.EqualTo(true));
+    }
+
+    [Test]
+    public async Task ExecuteAsync_On_FuncTask_With_ErrorHandler_Works_As_Expected()
+    {
+        ArgumentException ex = new("Error");
+        int lambdaCount = 0;
+        int finallyCount = 0;
+        int handlerCount = 0;
+        Func<Task> result = () =>
+        {
+            _ = Interlocked.Increment(ref lambdaCount);
+            return Task.CompletedTask;
+        };
+        Func<Task> error = () => throw ex;
+        void Finally()
+        {
+            ++finallyCount;
+        }
+
+        void errorHandler(ExceptionDispatchInfo edi, ArgumentException e)
+        {
+            That(e, Is.Not.Null);
+            That(ReferenceEquals(e, ex), Is.EqualTo(true));
+            That(ReferenceEquals(edi.SourceException, e), Is.EqualTo(true));
+            _ = Interlocked.Increment(ref handlerCount);
+        }
+        void errorNoHandler(ExceptionDispatchInfo edi, ArgumentException _)
+        {
+            edi.Throw();
+        }
+        await result.ExecuteAsync((Action<ExceptionDispatchInfo, ArgumentException>)errorHandler).ConfigureAwait(false);
+        That(lambdaCount, Is.EqualTo(1));
+        await error.ExecuteAsync((Action<ExceptionDispatchInfo, ArgumentException>)errorHandler).ConfigureAwait(false);
+        That(handlerCount, Is.EqualTo(1));
+        ArgumentException? err = ThrowsAsync<ArgumentException>(async () => await error.ExecuteAsync((Action<ExceptionDispatchInfo, ArgumentException>)errorNoHandler).ConfigureAwait(false));
+        That(err, Is.Not.Null);
+        That(ReferenceEquals(err, ex), Is.EqualTo(true));
+
+        await result.ExecuteAsync((Action<ExceptionDispatchInfo, ArgumentException>)errorHandler, Finally).ConfigureAwait(false);
+        That(finallyCount, Is.EqualTo(1));
+        That(lambdaCount, Is.EqualTo(2));
+        That(handlerCount, Is.EqualTo(1));
+        await error.ExecuteAsync((Action<ExceptionDispatchInfo, ArgumentException>)errorHandler, Finally).ConfigureAwait(false);
+        That(handlerCount, Is.EqualTo(2));
+        That(finallyCount, Is.EqualTo(2));
+        err = ThrowsAsync<ArgumentException>(async () => await error.ExecuteAsync((Action<ExceptionDispatchInfo, ArgumentException>)errorNoHandler, Finally).ConfigureAwait(false));
+        That(err, Is.Not.Null);
+        That(ReferenceEquals(err, ex), Is.EqualTo(true));
+        That(finallyCount, Is.EqualTo(3));
+    }
+
+    [Test]
+    public async Task ExecuteAsync_On_FuncValueTask_With_ErrorHandler_Works_As_Expected()
+    {
+        ArgumentException ex = new("Error");
+        int lambdaCount = 0;
+        Func<ValueTask> result = () =>
+        {
+            _ = Interlocked.Increment(ref lambdaCount);
+            return ValueTask.CompletedTask;
+        };
+        Func<ValueTask> error = () => throw ex;
+
+        int finallyCount = 0;
+        int handlerCount = 0;
+        void Finally()
+        {
+            ++finallyCount;
+        }
+
+        void errorHandler(ExceptionDispatchInfo edi, ArgumentException e)
+        {
+            That(e, Is.Not.Null);
+            That(ReferenceEquals(e, ex), Is.EqualTo(true));
+            That(ReferenceEquals(edi.SourceException, e), Is.EqualTo(true));
+            _ = Interlocked.Increment(ref handlerCount);
+        }
+        void errorNoHandler(ExceptionDispatchInfo edi, ArgumentException _)
+        {
+            edi.Throw();
+        }
+        await result.ExecuteAsync((Action<ExceptionDispatchInfo, ArgumentException>)errorHandler).ConfigureAwait(false);
+        That(lambdaCount, Is.EqualTo(1));
+        await error.ExecuteAsync((Action<ExceptionDispatchInfo, ArgumentException>)errorHandler).ConfigureAwait(false);
+        That(handlerCount, Is.EqualTo(1));
+        ArgumentException? err = ThrowsAsync<ArgumentException>(async () => await error.ExecuteAsync((Action<ExceptionDispatchInfo, ArgumentException>)errorNoHandler).ConfigureAwait(false));
+        That(err, Is.Not.Null);
+        That(ReferenceEquals(err, ex), Is.EqualTo(true));
+
+        await result.ExecuteAsync((Action<ExceptionDispatchInfo, ArgumentException>)errorHandler, Finally).ConfigureAwait(false);
+        That(finallyCount, Is.EqualTo(1));
+        That(lambdaCount, Is.EqualTo(2));
+        That(handlerCount, Is.EqualTo(1));
+        await error.ExecuteAsync((Action<ExceptionDispatchInfo, ArgumentException>)errorHandler, Finally).ConfigureAwait(false);
+        That(handlerCount, Is.EqualTo(2));
+        That(finallyCount, Is.EqualTo(2));
+        err = ThrowsAsync<ArgumentException>(async () => await error.ExecuteAsync((Action<ExceptionDispatchInfo, ArgumentException>)errorNoHandler, Finally).ConfigureAwait(false));
+        That(err, Is.Not.Null);
+        That(ReferenceEquals(err, ex), Is.EqualTo(true));
+        That(finallyCount, Is.EqualTo(3));
+    }
+
+    [Test]
+    public async Task ExecuteAsync_On_FuncTInTask_With_ErrorHandler_Works_As_Expected()
+    {
+        ArgumentException ex = new("Error");
+        int lambdaCount = 0;
+        Func<int, Task> result = i =>
+        {
+            _ = Interlocked.Add(ref lambdaCount, i);
+            return Task.CompletedTask;
+        };
+        Func<int, Task> error = _ => throw ex;
+        int finallyCount = 0;
+        int handlerCount = 0;
+        void Finally()
+        {
+            ++finallyCount;
+        }
+
+        void errorHandler(ExceptionDispatchInfo edi, ArgumentException e, int _)
+        {
+            That(e, Is.Not.Null);
+            That(ReferenceEquals(e, ex), Is.EqualTo(true));
+            That(ReferenceEquals(edi.SourceException, e), Is.EqualTo(true));
+            _ = Interlocked.Increment(ref handlerCount);
+        }
+        void errorNoHandler(ExceptionDispatchInfo edi, ArgumentException _, int __)
+        {
+            edi.Throw();
+        }
+
+        await result.ExecuteAsync(1, (Action<ExceptionDispatchInfo, ArgumentException, int>)errorHandler).ConfigureAwait(false);
+        That(lambdaCount, Is.EqualTo(1));
+        await error.ExecuteAsync(1, (Action<ExceptionDispatchInfo, ArgumentException, int>)errorHandler).ConfigureAwait(false);
+        That(handlerCount, Is.EqualTo(1));
+        ArgumentException? err = ThrowsAsync<ArgumentException>(async () => await error.ExecuteAsync(1, (Action<ExceptionDispatchInfo, ArgumentException, int>)errorNoHandler).ConfigureAwait(false));
+        That(err, Is.Not.Null);
+        That(ReferenceEquals(err, ex), Is.EqualTo(true));
+
+        await result.ExecuteAsync(1, (Action<ExceptionDispatchInfo, ArgumentException, int>)errorHandler, Finally).ConfigureAwait(false);
+        That(finallyCount, Is.EqualTo(1));
+        That(lambdaCount, Is.EqualTo(2));
+        That(handlerCount, Is.EqualTo(1));
+        await error.ExecuteAsync(1, (Action<ExceptionDispatchInfo, ArgumentException, int>)errorHandler, Finally).ConfigureAwait(false);
+        That(handlerCount, Is.EqualTo(2));
+        That(finallyCount, Is.EqualTo(2));
+        err = ThrowsAsync<ArgumentException>(async () => await error.ExecuteAsync(1, (Action<ExceptionDispatchInfo, ArgumentException, int>)errorNoHandler, Finally).ConfigureAwait(false));
+        That(err, Is.Not.Null);
+        That(ReferenceEquals(err, ex), Is.EqualTo(true));
+        That(finallyCount, Is.EqualTo(3));
+    }
+
+    [Test]
+    public async Task ExecuteAsync_On_FuncTInValueTask_With_ErrorHandler_Works_As_Expected()
+    {
+        ArgumentException ex = new("Error");
+        int lambdaCount = 0;
+        Func<int, ValueTask> result = i =>
+        {
+            _ = Interlocked.Add(ref lambdaCount, i);
+            return ValueTask.CompletedTask;
+        };
+        Func<int, ValueTask> error = _ => throw ex;
+        int finallyCount = 0;
+        int handlerCount = 0;
+        void Finally()
+        {
+            ++finallyCount;
+        }
+
+        void errorHandler(ExceptionDispatchInfo edi, ArgumentException e, int _)
+        {
+            That(e, Is.Not.Null);
+            That(ReferenceEquals(e, ex), Is.EqualTo(true));
+            That(ReferenceEquals(edi.SourceException, e), Is.EqualTo(true));
+            _ = Interlocked.Increment(ref handlerCount);
+        }
+        void errorNoHandler(ExceptionDispatchInfo edi, ArgumentException _, int __)
+        {
+            edi.Throw();
+        }
+
+        await result.ExecuteAsync(1, (Action<ExceptionDispatchInfo, ArgumentException, int>)errorHandler).ConfigureAwait(false);
+        That(lambdaCount, Is.EqualTo(1));
+        await error.ExecuteAsync(1, (Action<ExceptionDispatchInfo, ArgumentException, int>)errorHandler).ConfigureAwait(false);
+        That(handlerCount, Is.EqualTo(1));
+        ArgumentException? err = ThrowsAsync<ArgumentException>(async () => await error.ExecuteAsync(1, (Action<ExceptionDispatchInfo, ArgumentException, int>)errorNoHandler).ConfigureAwait(false));
+        That(err, Is.Not.Null);
+        That(ReferenceEquals(err, ex), Is.EqualTo(true));
+
+        await result.ExecuteAsync(1, (Action<ExceptionDispatchInfo, ArgumentException, int>)errorHandler, Finally).ConfigureAwait(false);
+        That(finallyCount, Is.EqualTo(1));
+        That(lambdaCount, Is.EqualTo(2));
+        That(handlerCount, Is.EqualTo(1));
+        await error.ExecuteAsync(1, (Action<ExceptionDispatchInfo, ArgumentException, int>)errorHandler, Finally).ConfigureAwait(false);
+        That(handlerCount, Is.EqualTo(2));
+        That(finallyCount, Is.EqualTo(2));
+        err = ThrowsAsync<ArgumentException>(async () => await error.ExecuteAsync(1, (Action<ExceptionDispatchInfo, ArgumentException, int>)errorNoHandler, Finally).ConfigureAwait(false));
+        That(err, Is.Not.Null);
+        That(ReferenceEquals(err, ex), Is.EqualTo(true));
+        That(finallyCount, Is.EqualTo(3));
+    }
+
+    [Test]
+    public async Task ExecuteAsync_On_FuncTInTask_With_ErrorHandler_N_FinallyT_Works_As_Expected()
+    {
+        ArgumentException ex = new("Error");
+        int lambdaCount = 0;
+        Func<int, Task> result = i =>
+        {
+            _ = Interlocked.Add(ref lambdaCount, i);
+            return Task.CompletedTask;
+        };
+        Func<int, Task> error = _ => throw ex;
+        int finallyCount = 0;
+        int handlerCount = 0;
+        void Finally(int i)
+        {
+            That(i, Is.EqualTo(1));
+            ++finallyCount;
+        }
+
+        void errorHandler(ExceptionDispatchInfo edi, ArgumentException e, int _)
+        {
+            That(e, Is.Not.Null);
+            That(ReferenceEquals(e, ex), Is.EqualTo(true));
+            That(ReferenceEquals(edi.SourceException, e), Is.EqualTo(true));
+            _ = Interlocked.Increment(ref handlerCount);
+        }
+        void errorNoHandler(ExceptionDispatchInfo edi, ArgumentException _, int __)
+        {
+            edi.Throw();
+        }
+
+        await result.ExecuteAsync(1, (Action<ExceptionDispatchInfo, ArgumentException, int>)errorHandler, Finally).ConfigureAwait(false);
+        That(finallyCount, Is.EqualTo(1));
+        That(lambdaCount, Is.EqualTo(1));
+        That(handlerCount, Is.EqualTo(0));
+        await error.ExecuteAsync(1, (Action<ExceptionDispatchInfo, ArgumentException, int>)errorHandler, Finally).ConfigureAwait(false);
+        That(handlerCount, Is.EqualTo(1));
+        That(finallyCount, Is.EqualTo(2));
+        ArgumentException? err = ThrowsAsync<ArgumentException>(async () => await error.ExecuteAsync(1, (Action<ExceptionDispatchInfo, ArgumentException, int>)errorNoHandler, Finally).ConfigureAwait(false));
+        That(err, Is.Not.Null);
+        That(ReferenceEquals(err, ex), Is.EqualTo(true));
+        That(finallyCount, Is.EqualTo(3));
+    }
+
+    [Test]
+    public async Task ExecuteAsync_On_FuncTInValueTask_With_ErrorHandler_N_FinallyT_Works_As_Expected()
+    {
+        ArgumentException ex = new("Error");
+        int lambdaCount = 0;
+        Func<int, ValueTask> result = i =>
+        {
+            _ = Interlocked.Add(ref lambdaCount, i);
+            return ValueTask.CompletedTask;
+        };
+        Func<int, ValueTask> error = _ => throw ex;
+        int finallyCount = 0;
+        int handlerCount = 0;
+        void Finally(int i)
+        {
+            That(i, Is.EqualTo(1));
+            ++finallyCount;
+        }
+
+        void errorHandler(ExceptionDispatchInfo edi, ArgumentException e, int _)
+        {
+            That(e, Is.Not.Null);
+            That(ReferenceEquals(e, ex), Is.EqualTo(true));
+            That(ReferenceEquals(edi.SourceException, e), Is.EqualTo(true));
+            _ = Interlocked.Increment(ref handlerCount);
+        }
+        void errorNoHandler(ExceptionDispatchInfo edi, ArgumentException _, int __)
+        {
+            edi.Throw();
+        }
+
+        await result.ExecuteAsync(1, (Action<ExceptionDispatchInfo, ArgumentException, int>)errorHandler, Finally).ConfigureAwait(false);
+        That(finallyCount, Is.EqualTo(1));
+        That(lambdaCount, Is.EqualTo(1));
+        That(handlerCount, Is.EqualTo(0));
+        await error.ExecuteAsync(1, (Action<ExceptionDispatchInfo, ArgumentException, int>)errorHandler, Finally).ConfigureAwait(false);
+        That(handlerCount, Is.EqualTo(1));
+        That(finallyCount, Is.EqualTo(2));
+        ArgumentException? err = ThrowsAsync<ArgumentException>(async () => await error.ExecuteAsync(1, (Action<ExceptionDispatchInfo, ArgumentException, int>)errorNoHandler, Finally).ConfigureAwait(false));
+        That(err, Is.Not.Null);
+        That(ReferenceEquals(err, ex), Is.EqualTo(true));
+        That(finallyCount, Is.EqualTo(3));
+    }
+
+    [Test]
+    public async Task ExecuteAsync_On_FuncTaskTOut_With_ErrorHandler_Works_As_Expected()
+    {
+        ArgumentException ex = new("Error");
+        int lambdaCount = 0;
+        int finallyCount = 0;
+        int handlerCount = 0;
+        Func<Task<int>> result = () => Task.FromResult(Interlocked.Increment(ref lambdaCount));
+        Func<Task<int>> error = () => throw ex;
+        void Finally()
+        {
+            ++finallyCount;
+        }
+
+        int errorHandler(ExceptionDispatchInfo edi, ArgumentException e)
+        {
+            That(e, Is.Not.Null);
+            That(ReferenceEquals(e, ex), Is.EqualTo(true));
+            That(ReferenceEquals(edi.SourceException, e), Is.EqualTo(true));
+            return Interlocked.Increment(ref handlerCount);
+        }
+        int errorNoHandler(ExceptionDispatchInfo edi, ArgumentException _)
+        {
+            edi.Throw();
+            return 0;
+        }
+        That(await result.ExecuteAsync((Func<ExceptionDispatchInfo, ArgumentException, int>)errorHandler).ConfigureAwait(false), Is.EqualTo(1));
+        That(await error.ExecuteAsync((Func<ExceptionDispatchInfo, ArgumentException, int>)errorHandler).ConfigureAwait(false), Is.EqualTo(1));
+        ArgumentException? err = ThrowsAsync<ArgumentException>(async () => await error.ExecuteAsync((Func<ExceptionDispatchInfo, ArgumentException, int>)errorNoHandler).ConfigureAwait(false));
+        That(err, Is.Not.Null);
+        That(ReferenceEquals(err, ex), Is.EqualTo(true));
+
+        That(await result.ExecuteAsync((Func<ExceptionDispatchInfo, ArgumentException, int>)errorHandler, Finally).ConfigureAwait(false), Is.EqualTo(2));
+        That(finallyCount, Is.EqualTo(1));
+        That(handlerCount, Is.EqualTo(1));
+        That(await error.ExecuteAsync((Func<ExceptionDispatchInfo, ArgumentException, int>)errorHandler, Finally).ConfigureAwait(false), Is.EqualTo(2));
+        That(finallyCount, Is.EqualTo(2));
+        err = ThrowsAsync<ArgumentException>(async () => await error.ExecuteAsync((Func<ExceptionDispatchInfo, ArgumentException, int>)errorNoHandler, Finally).ConfigureAwait(false));
+        That(err, Is.Not.Null);
+        That(ReferenceEquals(err, ex), Is.EqualTo(true));
+        That(finallyCount, Is.EqualTo(3));
+    }
+
+    [Test]
+    public async Task ExecuteAsync_On_FuncValueTaskTOut_With_ErrorHandler_Works_As_Expected()
+    {
+        ArgumentException ex = new("Error");
+        int lambdaCount = 0;
+        int finallyCount = 0;
+        int handlerCount = 0;
+        Func<ValueTask<int>> result = () => ValueTask.FromResult(Interlocked.Increment(ref lambdaCount));
+        Func<ValueTask<int>> error = () => throw ex;
+        void Finally()
+        {
+            ++finallyCount;
+        }
+
+        int errorHandler(ExceptionDispatchInfo edi, ArgumentException e)
+        {
+            That(e, Is.Not.Null);
+            That(ReferenceEquals(e, ex), Is.EqualTo(true));
+            That(ReferenceEquals(edi.SourceException, e), Is.EqualTo(true));
+            return Interlocked.Increment(ref handlerCount);
+        }
+        int errorNoHandler(ExceptionDispatchInfo edi, ArgumentException _)
+        {
+            edi.Throw();
+            return 0;
+        }
+        That(await result.ExecuteAsync((Func<ExceptionDispatchInfo, ArgumentException, int>)errorHandler).ConfigureAwait(false), Is.EqualTo(1));
+        That(await error.ExecuteAsync((Func<ExceptionDispatchInfo, ArgumentException, int>)errorHandler).ConfigureAwait(false), Is.EqualTo(1));
+        ArgumentException? err = ThrowsAsync<ArgumentException>(async () => await error.ExecuteAsync((Func<ExceptionDispatchInfo, ArgumentException, int>)errorNoHandler).ConfigureAwait(false));
+        That(err, Is.Not.Null);
+        That(ReferenceEquals(err, ex), Is.EqualTo(true));
+
+        That(await result.ExecuteAsync((Func<ExceptionDispatchInfo, ArgumentException, int>)errorHandler, Finally).ConfigureAwait(false), Is.EqualTo(2));
+        That(finallyCount, Is.EqualTo(1));
+        That(handlerCount, Is.EqualTo(1));
+        That(await error.ExecuteAsync((Func<ExceptionDispatchInfo, ArgumentException, int>)errorHandler, Finally).ConfigureAwait(false), Is.EqualTo(2));
+        That(finallyCount, Is.EqualTo(2));
+        err = ThrowsAsync<ArgumentException>(async () => await error.ExecuteAsync((Func<ExceptionDispatchInfo, ArgumentException, int>)errorNoHandler, Finally).ConfigureAwait(false));
+        That(err, Is.Not.Null);
+        That(ReferenceEquals(err, ex), Is.EqualTo(true));
+        That(finallyCount, Is.EqualTo(3));
+    }
+
+    [Test]
+    public async Task ExecuteAsync_On_FuncTInTaskTOut_With_ErrorHandler_Works_As_Expected()
+    {
+        ArgumentException ex = new("Error");
+        Func<int, Task<int>> result = static i => Task.FromResult(++i);
+        Func<int, Task<int>> error = _ => throw ex;
+        int finallyCount = 0;
+        void Finally()
+        {
+            ++finallyCount;
+        }
+
+        int errorHandler(ExceptionDispatchInfo edi, ArgumentException e, int i)
+        {
+            That(e, Is.Not.Null);
+            That(ReferenceEquals(e, ex), Is.EqualTo(true));
+            That(ReferenceEquals(edi.SourceException, e), Is.EqualTo(true));
+            return i + 2;
+        }
+        int errorNoHandler(ExceptionDispatchInfo edi, ArgumentException _, int i)
+        {
+            edi.Throw();
+            return i;
+        }
+
+        That(await result.ExecuteAsync(0, (Func<ExceptionDispatchInfo, ArgumentException, int, int>)errorHandler).ConfigureAwait(false), Is.EqualTo(1));
+        That(await error.ExecuteAsync(0, (Func<ExceptionDispatchInfo, ArgumentException, int, int>)errorHandler).ConfigureAwait(false), Is.EqualTo(2));
+        ArgumentException? err = ThrowsAsync<ArgumentException>(async () => await error.ExecuteAsync(1, (Func<ExceptionDispatchInfo, ArgumentException, int, int>)errorNoHandler).ConfigureAwait(false));
+        That(err, Is.Not.Null);
+        That(ReferenceEquals(err, ex), Is.EqualTo(true));
+
+        That(await result.ExecuteAsync(0, (Func<ExceptionDispatchInfo, ArgumentException, int, int>)errorHandler, Finally).ConfigureAwait(false), Is.EqualTo(1));
+        That(finallyCount, Is.EqualTo(1));
+        That(await error.ExecuteAsync(0, (Func<ExceptionDispatchInfo, ArgumentException, int, int>)errorHandler, Finally).ConfigureAwait(false), Is.EqualTo(2));
+        That(finallyCount, Is.EqualTo(2));
+        err = ThrowsAsync<ArgumentException>(async () => await error.ExecuteAsync(1, (Func<ExceptionDispatchInfo, ArgumentException, int, int>)errorNoHandler, Finally).ConfigureAwait(false));
+        That(err, Is.Not.Null);
+        That(ReferenceEquals(err, ex), Is.EqualTo(true));
+        That(finallyCount, Is.EqualTo(3));
+    }
+
+    [Test]
+    public async Task ExecuteAsync_On_FuncTInValueTaskTOut_With_ErrorHandler_Works_As_Expected()
+    {
+        ArgumentException ex = new("Error");
+        Func<int, ValueTask<int>> result = static i => ValueTask.FromResult(++i);
+        Func<int, ValueTask<int>> error = _ => throw ex;
+        int finallyCount = 0;
+        void Finally()
+        {
+            ++finallyCount;
+        }
+
+        int errorHandler(ExceptionDispatchInfo edi, ArgumentException e, int i)
+        {
+            That(e, Is.Not.Null);
+            That(ReferenceEquals(e, ex), Is.EqualTo(true));
+            That(ReferenceEquals(edi.SourceException, e), Is.EqualTo(true));
+            return i + 2;
+        }
+        int errorNoHandler(ExceptionDispatchInfo edi, ArgumentException _, int i)
+        {
+            edi.Throw();
+            return i;
+        }
+
+        That(await result.ExecuteAsync(0, (Func<ExceptionDispatchInfo, ArgumentException, int, int>)errorHandler).ConfigureAwait(false), Is.EqualTo(1));
+        That(await error.ExecuteAsync(0, (Func<ExceptionDispatchInfo, ArgumentException, int, int>)errorHandler).ConfigureAwait(false), Is.EqualTo(2));
+        ArgumentException? err = ThrowsAsync<ArgumentException>(async () => await error.ExecuteAsync(1, (Func<ExceptionDispatchInfo, ArgumentException, int, int>)errorNoHandler).ConfigureAwait(false));
+        That(err, Is.Not.Null);
+        That(ReferenceEquals(err, ex), Is.EqualTo(true));
+
+        That(await result.ExecuteAsync(0, (Func<ExceptionDispatchInfo, ArgumentException, int, int>)errorHandler, Finally).ConfigureAwait(false), Is.EqualTo(1));
+        That(finallyCount, Is.EqualTo(1));
+        That(await error.ExecuteAsync(0, (Func<ExceptionDispatchInfo, ArgumentException, int, int>)errorHandler, Finally).ConfigureAwait(false), Is.EqualTo(2));
+        That(finallyCount, Is.EqualTo(2));
+        err = ThrowsAsync<ArgumentException>(async () => await error.ExecuteAsync(1, (Func<ExceptionDispatchInfo, ArgumentException, int, int>)errorNoHandler, Finally).ConfigureAwait(false));
+        That(err, Is.Not.Null);
+        That(ReferenceEquals(err, ex), Is.EqualTo(true));
+        That(finallyCount, Is.EqualTo(3));
+    }
+
+    [Test]
+    public async Task ExecuteAsync_On_FuncTInTaskTOut_With_ErrorHandler_N_FinallyT_Works_As_Expected()
+    {
+        ArgumentException ex = new("Error");
+        Func<int, Task<int>> result = static i => Task.FromResult(++i);
+        Func<int, Task<int>> error = _ => throw ex;
+        int finallyCount = 0;
+        void Finally(int i)
+        {
+            That(i, Is.EqualTo(1));
+            ++finallyCount;
+        }
+
+        int errorHandler(ExceptionDispatchInfo edi, ArgumentException e, int i)
+        {
+            That(e, Is.Not.Null);
+            That(ReferenceEquals(e, ex), Is.EqualTo(true));
+            That(ReferenceEquals(edi.SourceException, e), Is.EqualTo(true));
+            return i + 2;
+        }
+        int errorNoHandler(ExceptionDispatchInfo edi, ArgumentException _, int i)
+        {
+            edi.Throw();
+            return i;
+        }
+
+        That(await result.ExecuteAsync(1, (Func<ExceptionDispatchInfo, ArgumentException, int, int>)errorHandler, Finally).ConfigureAwait(false), Is.EqualTo(2));
+        That(finallyCount, Is.EqualTo(1));
+        That(await error.ExecuteAsync(1, (Func<ExceptionDispatchInfo, ArgumentException, int, int>)errorHandler, Finally).ConfigureAwait(false), Is.EqualTo(3));
+        That(finallyCount, Is.EqualTo(2));
+        ArgumentException? err = ThrowsAsync<ArgumentException>(async () => await error.ExecuteAsync(1, (Func<ExceptionDispatchInfo, ArgumentException, int, int>)errorNoHandler, Finally).ConfigureAwait(false));
+        That(err, Is.Not.Null);
+        That(ReferenceEquals(err, ex), Is.EqualTo(true));
+        That(finallyCount, Is.EqualTo(3));
+    }
+
+    [Test]
+    public async Task ExecuteAsync_On_FuncTInValueTaskTOut_With_ErrorHandler_N_FinallyT_Works_As_Expected()
+    {
+        ArgumentException ex = new("Error");
+        Func<int, ValueTask<int>> result = static i => ValueTask.FromResult(++i);
+        Func<int, ValueTask<int>> error = _ => throw ex;
+        int finallyCount = 0;
+        void Finally(int i)
+        {
+            That(i, Is.EqualTo(1));
+            ++finallyCount;
+        }
+
+        int errorHandler(ExceptionDispatchInfo edi, ArgumentException e, int i)
+        {
+            That(e, Is.Not.Null);
+            That(ReferenceEquals(e, ex), Is.EqualTo(true));
+            That(ReferenceEquals(edi.SourceException, e), Is.EqualTo(true));
+            return i + 2;
+        }
+        int errorNoHandler(ExceptionDispatchInfo edi, ArgumentException _, int i)
+        {
+            edi.Throw();
+            return i;
+        }
+
+        That(await result.ExecuteAsync(1, (Func<ExceptionDispatchInfo, ArgumentException, int, int>)errorHandler, Finally).ConfigureAwait(false), Is.EqualTo(2));
+        That(finallyCount, Is.EqualTo(1));
+        That(await error.ExecuteAsync(1, (Func<ExceptionDispatchInfo, ArgumentException, int, int>)errorHandler, Finally).ConfigureAwait(false), Is.EqualTo(3));
+        That(finallyCount, Is.EqualTo(2));
+        ArgumentException? err = ThrowsAsync<ArgumentException>(async () => await error.ExecuteAsync(1, (Func<ExceptionDispatchInfo, ArgumentException, int, int>)errorNoHandler, Finally).ConfigureAwait(false));
+        That(err, Is.Not.Null);
+        That(ReferenceEquals(err, ex), Is.EqualTo(true));
+        That(finallyCount, Is.EqualTo(3));
+    }
+
+    [Test]
+    public async Task ExecuteAsync_On_FuncTask_With_Finally_Works_As_Expected()
+    {
+        ArgumentException ex = new("Error");
+        int lambdaCount = 0;
+        int finallyCount = 0;
+        Func<Task> result = () =>
+        {
+            _ = Interlocked.Increment(ref lambdaCount);
+            return Task.CompletedTask;
+        };
+        Func<Task> error = () => throw ex;
+        void Finally()
+        {
+            ++finallyCount;
+        }
+
+        await result.ExecuteAsync(Finally).ConfigureAwait(false);
+        That(finallyCount, Is.EqualTo(1));
+        That(lambdaCount, Is.EqualTo(1));
+        ArgumentException? err = ThrowsAsync<ArgumentException>(async () => await error.ExecuteAsync(Finally).ConfigureAwait(false));
+        That(err, Is.Not.Null);
+        That(ReferenceEquals(err, ex), Is.EqualTo(true));
+        That(finallyCount, Is.EqualTo(2));
+    }
+
+    [Test]
+    public async Task ExecuteAsync_On_FuncValueTask_With_Finally_Works_As_Expected()
+    {
+        ArgumentException ex = new("Error");
+        int lambdaCount = 0;
+        Func<ValueTask> result = () =>
+        {
+            _ = Interlocked.Increment(ref lambdaCount);
+            return ValueTask.CompletedTask;
+        };
+        Func<ValueTask> error = () => throw ex;
+
+        int finallyCount = 0;
+        void Finally()
+        {
+            ++finallyCount;
+        }
+        await result.ExecuteAsync(Finally).ConfigureAwait(false);
+        That(finallyCount, Is.EqualTo(1));
+        That(lambdaCount, Is.EqualTo(1));
+        ArgumentException? err = ThrowsAsync<ArgumentException>(async () => await error.ExecuteAsync(Finally).ConfigureAwait(false));
+        That(err, Is.Not.Null);
+        That(ReferenceEquals(err, ex), Is.EqualTo(true));
+        That(finallyCount, Is.EqualTo(2));
+    }
+
+    [Test]
+    public async Task ExecuteAsync_On_FuncTInTask_With_Finally_Works_As_Expected()
+    {
+        ArgumentException ex = new("Error");
+        int lambdaCount = 0;
+        Func<int, Task> result = i =>
+        {
+            _ = Interlocked.Add(ref lambdaCount, i);
+            return Task.CompletedTask;
+        };
+        Func<int, Task> error = _ => throw ex;
+        int finallyCount = 0;
+        void Finally()
+        {
+            ++finallyCount;
+        }
+
+        await result.ExecuteAsync(1, Finally).ConfigureAwait(false);
+        That(finallyCount, Is.EqualTo(1));
+        That(lambdaCount, Is.EqualTo(1));
+        ArgumentException? err = ThrowsAsync<ArgumentException>(async () => await error.ExecuteAsync(1, Finally).ConfigureAwait(false));
+        That(err, Is.Not.Null);
+        That(ReferenceEquals(err, ex), Is.EqualTo(true));
+        That(finallyCount, Is.EqualTo(2));
+    }
+
+    [Test]
+    public async Task ExecuteAsync_On_FuncTInValueTask_With_Finally_Works_As_Expected()
+    {
+        ArgumentException ex = new("Error");
+        int lambdaCount = 0;
+        Func<int, ValueTask> result = i =>
+        {
+            _ = Interlocked.Add(ref lambdaCount, i);
+            return ValueTask.CompletedTask;
+        };
+        Func<int, ValueTask> error = _ => throw ex;
+        int finallyCount = 0;
+        void Finally()
+        {
+            ++finallyCount;
+        }
+
+        await result.ExecuteAsync(1, Finally).ConfigureAwait(false);
+        That(finallyCount, Is.EqualTo(1));
+        That(lambdaCount, Is.EqualTo(1));
+        ArgumentException? err = ThrowsAsync<ArgumentException>(async () => await error.ExecuteAsync(1, Finally).ConfigureAwait(false));
+        That(err, Is.Not.Null);
+        That(ReferenceEquals(err, ex), Is.EqualTo(true));
+        That(finallyCount, Is.EqualTo(2));
+    }
+
+    [Test]
+    public async Task ExecuteAsync_On_FuncTInTask_With_FinallyT_Works_As_Expected()
+    {
+        ArgumentException ex = new("Error");
+        int lambdaCount = 0;
+        Func<int, Task> result = i =>
+        {
+            _ = Interlocked.Add(ref lambdaCount, i);
+            return Task.CompletedTask;
+        };
+        Func<int, Task> error = _ => throw ex;
+        int finallyCount = 0;
+        void Finally(int i)
+        {
+            That(i, Is.EqualTo(1));
+            ++finallyCount;
+        }
+
+        await result.ExecuteAsync(1, Finally).ConfigureAwait(false);
+        That(finallyCount, Is.EqualTo(1));
+        That(lambdaCount, Is.EqualTo(1));
+        ArgumentException? err = ThrowsAsync<ArgumentException>(async () => await error.ExecuteAsync(1, Finally).ConfigureAwait(false));
+        That(err, Is.Not.Null);
+        That(ReferenceEquals(err, ex), Is.EqualTo(true));
+        That(finallyCount, Is.EqualTo(2));
+    }
+
+    [Test]
+    public async Task ExecuteAsync_On_FuncTInValueTask_FinallyT_Works_As_Expected()
+    {
+        ArgumentException ex = new("Error");
+        int lambdaCount = 0;
+        Func<int, ValueTask> result = i =>
+        {
+            _ = Interlocked.Add(ref lambdaCount, i);
+            return ValueTask.CompletedTask;
+        };
+        Func<int, ValueTask> error = _ => throw ex;
+        int finallyCount = 0;
+        void Finally(int i)
+        {
+            That(i, Is.EqualTo(1));
+            ++finallyCount;
+        }
+
+        await result.ExecuteAsync(1, Finally).ConfigureAwait(false);
+        That(finallyCount, Is.EqualTo(1));
+        That(lambdaCount, Is.EqualTo(1));
+        ArgumentException? err = ThrowsAsync<ArgumentException>(async () => await error.ExecuteAsync(1, Finally).ConfigureAwait(false));
+        That(err, Is.Not.Null);
+        That(ReferenceEquals(err, ex), Is.EqualTo(true));
+        That(finallyCount, Is.EqualTo(2));
+    }
+
+    [Test]
+    public async Task ExecuteAsync_On_FuncTaskTOut_With_Finally_Works_As_Expected()
+    {
+        ArgumentException ex = new("Error");
+        int lambdaCount = 0;
+        int finallyCount = 0;
+        Func<Task<int>> result = () => Task.FromResult(Interlocked.Increment(ref lambdaCount));
+        Func<Task<int>> error = () => throw ex;
+        void Finally()
+        {
+            ++finallyCount;
+        }
+
+        That(await result.ExecuteAsync(Finally).ConfigureAwait(false), Is.EqualTo(1));
+        That(finallyCount, Is.EqualTo(1));
+        ArgumentException? err = ThrowsAsync<ArgumentException>(async () => await error.ExecuteAsync(Finally).ConfigureAwait(false));
+        That(err, Is.Not.Null);
+        That(ReferenceEquals(err, ex), Is.EqualTo(true));
+        That(finallyCount, Is.EqualTo(2));
+    }
+
+    [Test]
+    public async Task ExecuteAsync_On_FuncValueTaskTOut_With_Finally_Works_As_Expected()
+    {
+        ArgumentException ex = new("Error");
+        int lambdaCount = 0;
+        int finallyCount = 0;
+        Func<ValueTask<int>> result = () => ValueTask.FromResult(Interlocked.Increment(ref lambdaCount));
+        Func<ValueTask<int>> error = () => throw ex;
+        void Finally()
+        {
+            ++finallyCount;
+        }
+
+        That(await result.ExecuteAsync(Finally).ConfigureAwait(false), Is.EqualTo(1));
+        That(finallyCount, Is.EqualTo(1));
+        ArgumentException? err = ThrowsAsync<ArgumentException>(async () => await error.ExecuteAsync(Finally).ConfigureAwait(false));
+        That(err, Is.Not.Null);
+        That(ReferenceEquals(err, ex), Is.EqualTo(true));
+        That(finallyCount, Is.EqualTo(2));
+    }
+
+    [Test]
+    public async Task ExecuteAsync_On_FuncTInTaskTOut_With_Finally_Works_As_Expected()
+    {
+        ArgumentException ex = new("Error");
+        Func<int, Task<int>> result = static i => Task.FromResult(++i);
+        Func<int, Task<int>> error = _ => throw ex;
+        int finallyCount = 0;
+        void Finally()
+        {
+            ++finallyCount;
+        }
+
+        That(await result.ExecuteAsync(0, Finally).ConfigureAwait(false), Is.EqualTo(1));
+        That(finallyCount, Is.EqualTo(1));
+        ArgumentException? err = ThrowsAsync<ArgumentException>(async () => await error.ExecuteAsync(1, Finally).ConfigureAwait(false));
+        That(err, Is.Not.Null);
+        That(ReferenceEquals(err, ex), Is.EqualTo(true));
+        That(finallyCount, Is.EqualTo(2));
+    }
+
+    [Test]
+    public async Task ExecuteAsync_On_FuncTInValueTaskTOut_With_Finally_Works_As_Expected()
+    {
+        ArgumentException ex = new("Error");
+        Func<int, ValueTask<int>> result = static i => ValueTask.FromResult(++i);
+        Func<int, ValueTask<int>> error = _ => throw ex;
+        int finallyCount = 0;
+        void Finally()
+        {
+            ++finallyCount;
+        }
+
+        That(await result.ExecuteAsync(0, Finally).ConfigureAwait(false), Is.EqualTo(1));
+        That(finallyCount, Is.EqualTo(1));
+        ArgumentException? err = ThrowsAsync<ArgumentException>(async () => await error.ExecuteAsync(1, Finally).ConfigureAwait(false));
+        That(err, Is.Not.Null);
+        That(ReferenceEquals(err, ex), Is.EqualTo(true));
+        That(finallyCount, Is.EqualTo(2));
+    }
+
+    [Test]
+    public async Task ExecuteAsync_On_FuncTInTaskTOut_With_FinallyT_Works_As_Expected()
+    {
+        ArgumentException ex = new("Error");
+        Func<int, Task<int>> result = static i => Task.FromResult(++i);
+        Func<int, Task<int>> error = _ => throw ex;
+        int finallyCount = 0;
+        void Finally(int i)
+        {
+            That(i, Is.EqualTo(1));
+            ++finallyCount;
+        }
+
+        That(await result.ExecuteAsync(1, Finally).ConfigureAwait(false), Is.EqualTo(2));
+        That(finallyCount, Is.EqualTo(1));
+        ArgumentException? err = ThrowsAsync<ArgumentException>(async () => await error.ExecuteAsync(1, Finally).ConfigureAwait(false));
+        That(err, Is.Not.Null);
+        That(ReferenceEquals(err, ex), Is.EqualTo(true));
+        That(finallyCount, Is.EqualTo(2));
+    }
+
+    [Test]
+    public async Task ExecuteAsync_On_FuncTInValueTaskTOut_With_FinallyT_Works_As_Expected()
+    {
+        ArgumentException ex = new("Error");
+        Func<int, ValueTask<int>> result = static i => ValueTask.FromResult(++i);
+        Func<int, ValueTask<int>> error = _ => throw ex;
+        int finallyCount = 0;
+        void Finally(int i)
+        {
+            That(i, Is.EqualTo(1));
+            ++finallyCount;
+        }
+
+        That(await result.ExecuteAsync(1, Finally).ConfigureAwait(false), Is.EqualTo(2));
+        That(finallyCount, Is.EqualTo(1));
+        ArgumentException? err = ThrowsAsync<ArgumentException>(async () => await error.ExecuteAsync(1, Finally).ConfigureAwait(false));
+        That(err, Is.Not.Null);
+        That(ReferenceEquals(err, ex), Is.EqualTo(true));
+        That(finallyCount, Is.EqualTo(2));
+    }
 }
