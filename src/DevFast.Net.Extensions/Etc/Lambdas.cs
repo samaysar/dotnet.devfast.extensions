@@ -1,6 +1,4 @@
-﻿using System.Runtime.ExceptionServices;
-
-namespace DevFast.Net.Extensions.Etc;
+﻿namespace DevFast.Net.Extensions.Etc;
 
 /// <summary>
 /// Extension methods to execute lambdas.
@@ -60,7 +58,7 @@ public static class Lambdas
     /// <para>
     /// NOTE: The code itself will NOT re-throw caught exception, but,
     /// <paramref name="errorHandler"/> may itself re-throw those (e.g.
-    /// <see cref="ExceptionDispatchInfo.Throw()"/>), if needed.
+    /// <see cref="Edi.Throw()"/>), if needed.
     /// </para>
     /// </summary>
     /// <typeparam name="TError">Exception type</typeparam>
@@ -68,7 +66,7 @@ public static class Lambdas
     /// <param name="errorHandler">Error handler to invoke inside catch clause</param>
     /// <param name="finallyClause">Code to run inside finally clause</param>
     public static void Execute<TError>(this Action lambda,
-        Action<ExceptionDispatchInfo, TError> errorHandler,
+        Action<Edi, TError> errorHandler,
         Action? finallyClause = null)
         where TError : Exception
     {
@@ -78,7 +76,7 @@ public static class Lambdas
         }
         catch (TError e)
         {
-            errorHandler(ExceptionDispatchInfo.Capture(e), e);
+            errorHandler(Edi.Capture(e), e);
         }
         finally
         {
@@ -96,7 +94,7 @@ public static class Lambdas
     /// <para>
     /// NOTE: The code itself will NOT re-throw caught exception, but,
     /// <paramref name="errorHandler"/> may itself re-throw those (e.g.
-    /// <see cref="ExceptionDispatchInfo.Throw()"/>), if needed.
+    /// <see cref="Edi.Throw()"/>), if needed.
     /// </para>
     /// </summary>
     /// <typeparam name="TOut">Return type</typeparam>
@@ -105,7 +103,7 @@ public static class Lambdas
     /// <param name="errorHandler">Error handler to invoke inside catch clause</param>
     /// <param name="finallyClause">Code to run inside finally clause</param>
     public static TOut Execute<TOut, TError>(this Func<TOut> lambda,
-        Func<ExceptionDispatchInfo, TError, TOut> errorHandler,
+        Func<Edi, TError, TOut> errorHandler,
         Action? finallyClause = null)
         where TError : Exception
     {
@@ -115,7 +113,7 @@ public static class Lambdas
         }
         catch (TError e)
         {
-            return errorHandler(ExceptionDispatchInfo.Capture(e), e);
+            return errorHandler(Edi.Capture(e), e);
         }
         finally
         {
@@ -132,7 +130,7 @@ public static class Lambdas
     /// <para>
     /// NOTE: The code itself will NOT re-throw caught exception, but,
     /// <paramref name="errorHandler"/> may itself re-throw those (e.g.
-    /// <see cref="ExceptionDispatchInfo.Throw()"/>), if needed.
+    /// <see cref="Edi.Throw()"/>), if needed.
     /// </para>
     /// </summary>
     /// <typeparam name="TError">Exception type</typeparam>
@@ -143,7 +141,7 @@ public static class Lambdas
     /// <param name="finallyClause">Code to run inside finally clause</param>
     public static void Execute<TState, TError>(this Action<TState> lambda,
         TState state,
-        Action<ExceptionDispatchInfo, TError, TState> errorHandler,
+        Action<Edi, TError, TState> errorHandler,
         Action? finallyClause = null)
         where TError : Exception
     {
@@ -153,7 +151,7 @@ public static class Lambdas
         }
         catch (TError e)
         {
-            errorHandler(ExceptionDispatchInfo.Capture(e), e, state);
+            errorHandler(Edi.Capture(e), e, state);
         }
         finally
         {
@@ -171,7 +169,7 @@ public static class Lambdas
     /// <para>
     /// NOTE: The code itself will NOT re-throw caught exception, but,
     /// <paramref name="errorHandler"/> may itself re-throw those (e.g.
-    /// <see cref="ExceptionDispatchInfo.Throw()"/>), if needed.
+    /// <see cref="Edi.Throw()"/>), if needed.
     /// </para>
     /// </summary>
     /// <typeparam name="TOut">Return type</typeparam>
@@ -183,7 +181,7 @@ public static class Lambdas
     /// <param name="finallyClause">Code to run inside finally clause</param>
     public static TOut Execute<TState, TOut, TError>(this Func<TState, TOut> lambda,
         TState state,
-        Func<ExceptionDispatchInfo, TError, TState, TOut> errorHandler,
+        Func<Edi, TError, TState, TOut> errorHandler,
         Action? finallyClause = null)
         where TError : Exception
     {
@@ -193,7 +191,7 @@ public static class Lambdas
         }
         catch (TError e)
         {
-            return errorHandler(ExceptionDispatchInfo.Capture(e), e, state);
+            return errorHandler(Edi.Capture(e), e, state);
         }
         finally
         {
@@ -210,7 +208,7 @@ public static class Lambdas
     /// <para>
     /// NOTE: The code itself will NOT re-throw caught exception, but,
     /// <paramref name="errorHandler"/> may itself re-throw those (e.g.
-    /// <see cref="ExceptionDispatchInfo.Throw()"/>), if needed.
+    /// <see cref="Edi.Throw()"/>), if needed.
     /// </para>
     /// </summary>
     /// <typeparam name="TError">Exception type</typeparam>
@@ -221,7 +219,7 @@ public static class Lambdas
     /// <param name="finallyClause">Code to run inside finally clause</param>
     public static void Execute<TState, TError>(this Action<TState> lambda,
         TState state,
-        Action<ExceptionDispatchInfo, TError, TState> errorHandler,
+        Action<Edi, TError, TState> errorHandler,
         Action<TState> finallyClause)
         where TError : Exception
     {
@@ -231,7 +229,7 @@ public static class Lambdas
         }
         catch (TError e)
         {
-            errorHandler(ExceptionDispatchInfo.Capture(e), e, state);
+            errorHandler(Edi.Capture(e), e, state);
         }
         finally
         {
@@ -249,7 +247,7 @@ public static class Lambdas
     /// <para>
     /// NOTE: The code itself will NOT re-throw caught exception, but,
     /// <paramref name="errorHandler"/> may itself re-throw those (e.g.
-    /// <see cref="ExceptionDispatchInfo.Throw()"/>), if needed.
+    /// <see cref="Edi.Throw()"/>), if needed.
     /// </para>
     /// </summary>
     /// <typeparam name="TOut">Return type</typeparam>
@@ -261,7 +259,7 @@ public static class Lambdas
     /// <param name="finallyClause">Code to run inside finally clause</param>
     public static TOut Execute<TState, TOut, TError>(this Func<TState, TOut> lambda,
         TState state,
-        Func<ExceptionDispatchInfo, TError, TState, TOut> errorHandler,
+        Func<Edi, TError, TState, TOut> errorHandler,
         Action<TState> finallyClause)
         where TError : Exception
     {
@@ -271,7 +269,7 @@ public static class Lambdas
         }
         catch (TError e)
         {
-            return errorHandler(ExceptionDispatchInfo.Capture(e), e, state);
+            return errorHandler(Edi.Capture(e), e, state);
         }
         finally
         {
@@ -519,7 +517,7 @@ public static class Lambdas
     /// <para>
     /// NOTE: The code itself will NOT re-throw caught exception, but,
     /// <paramref name="errorHandler"/> may itself re-throw those (e.g.
-    /// <see cref="ExceptionDispatchInfo.Throw()"/>), if needed.
+    /// <see cref="Edi.Throw()"/>), if needed.
     /// </para>
     /// </summary>
     /// <typeparam name="TError">Exception type</typeparam>
@@ -527,7 +525,7 @@ public static class Lambdas
     /// <param name="errorHandler">Error handler to invoke inside catch clause</param>
     /// <param name="finallyClause">Code to run inside finally clause</param>
     public static async Task ExecuteAsync<TError>(this Func<Task> asyncLambda,
-        Action<ExceptionDispatchInfo, TError> errorHandler,
+        Action<Edi, TError> errorHandler,
         Action? finallyClause = null)
         where TError : Exception
     {
@@ -537,7 +535,7 @@ public static class Lambdas
         }
         catch (TError e)
         {
-            errorHandler(ExceptionDispatchInfo.Capture(e), e);
+            errorHandler(Edi.Capture(e), e);
         }
         finally
         {
@@ -554,7 +552,7 @@ public static class Lambdas
     /// <para>
     /// NOTE: The code itself will NOT re-throw caught exception, but,
     /// <paramref name="errorHandler"/> may itself re-throw those (e.g.
-    /// <see cref="ExceptionDispatchInfo.Throw()"/>), if needed.
+    /// <see cref="Edi.Throw()"/>), if needed.
     /// </para>
     /// </summary>
     /// <typeparam name="TError">Exception type</typeparam>
@@ -562,7 +560,7 @@ public static class Lambdas
     /// <param name="errorHandler">Error handler to invoke inside catch clause</param>
     /// <param name="finallyClause">Code to run inside finally clause</param>
     public static async ValueTask ExecuteAsync<TError>(this Func<ValueTask> asyncLambda,
-        Action<ExceptionDispatchInfo, TError> errorHandler,
+        Action<Edi, TError> errorHandler,
         Action? finallyClause = null)
         where TError : Exception
     {
@@ -572,7 +570,7 @@ public static class Lambdas
         }
         catch (TError e)
         {
-            errorHandler(ExceptionDispatchInfo.Capture(e), e);
+            errorHandler(Edi.Capture(e), e);
         }
         finally
         {
@@ -590,7 +588,7 @@ public static class Lambdas
     /// <para>
     /// NOTE: The code itself will NOT re-throw caught exception, but,
     /// <paramref name="errorHandler"/> may itself re-throw those (e.g.
-    /// <see cref="ExceptionDispatchInfo.Throw()"/>), if needed.
+    /// <see cref="Edi.Throw()"/>), if needed.
     /// </para>
     /// </summary>
     /// <typeparam name="TState">State type</typeparam>
@@ -601,7 +599,7 @@ public static class Lambdas
     /// <param name="finallyClause">Code to run inside finally clause</param>
     public static async Task ExecuteAsync<TState, TError>(this Func<TState, Task> asyncLambda,
         TState state,
-        Action<ExceptionDispatchInfo, TError, TState> errorHandler,
+        Action<Edi, TError, TState> errorHandler,
         Action? finallyClause = null)
         where TError : Exception
     {
@@ -611,7 +609,7 @@ public static class Lambdas
         }
         catch (TError e)
         {
-            errorHandler(ExceptionDispatchInfo.Capture(e), e, state);
+            errorHandler(Edi.Capture(e), e, state);
         }
         finally
         {
@@ -629,7 +627,7 @@ public static class Lambdas
     /// <para>
     /// NOTE: The code itself will NOT re-throw caught exception, but,
     /// <paramref name="errorHandler"/> may itself re-throw those (e.g.
-    /// <see cref="ExceptionDispatchInfo.Throw()"/>), if needed.
+    /// <see cref="Edi.Throw()"/>), if needed.
     /// </para>
     /// </summary>
     /// <typeparam name="TState">State type</typeparam>
@@ -640,7 +638,7 @@ public static class Lambdas
     /// <param name="finallyClause">Code to run inside finally clause</param>
     public static async ValueTask ExecuteAsync<TState, TError>(this Func<TState, ValueTask> asyncLambda,
         TState state,
-        Action<ExceptionDispatchInfo, TError, TState> errorHandler,
+        Action<Edi, TError, TState> errorHandler,
         Action? finallyClause = null)
         where TError : Exception
     {
@@ -650,7 +648,7 @@ public static class Lambdas
         }
         catch (TError e)
         {
-            errorHandler(ExceptionDispatchInfo.Capture(e), e, state);
+            errorHandler(Edi.Capture(e), e, state);
         }
         finally
         {
@@ -668,7 +666,7 @@ public static class Lambdas
     /// <para>
     /// NOTE: The code itself will NOT re-throw caught exception, but,
     /// <paramref name="errorHandler"/> may itself re-throw those (e.g.
-    /// <see cref="ExceptionDispatchInfo.Throw()"/>), if needed.
+    /// <see cref="Edi.Throw()"/>), if needed.
     /// </para>
     /// </summary>
     /// <typeparam name="TState">State type</typeparam>
@@ -679,7 +677,7 @@ public static class Lambdas
     /// <param name="finallyClause">Code to run inside finally clause</param>
     public static async Task ExecuteAsync<TState, TError>(this Func<TState, Task> asyncLambda,
         TState state,
-        Action<ExceptionDispatchInfo, TError, TState> errorHandler,
+        Action<Edi, TError, TState> errorHandler,
         Action<TState> finallyClause)
         where TError : Exception
     {
@@ -689,7 +687,7 @@ public static class Lambdas
         }
         catch (TError e)
         {
-            errorHandler(ExceptionDispatchInfo.Capture(e), e, state);
+            errorHandler(Edi.Capture(e), e, state);
         }
         finally
         {
@@ -707,7 +705,7 @@ public static class Lambdas
     /// <para>
     /// NOTE: The code itself will NOT re-throw caught exception, but,
     /// <paramref name="errorHandler"/> may itself re-throw those (e.g.
-    /// <see cref="ExceptionDispatchInfo.Throw()"/>), if needed.
+    /// <see cref="Edi.Throw()"/>), if needed.
     /// </para>
     /// </summary>
     /// <typeparam name="TState">State type</typeparam>
@@ -718,7 +716,7 @@ public static class Lambdas
     /// <param name="finallyClause">Code to run inside finally clause</param>
     public static async ValueTask ExecuteAsync<TState, TError>(this Func<TState, ValueTask> asyncLambda,
         TState state,
-        Action<ExceptionDispatchInfo, TError, TState> errorHandler,
+        Action<Edi, TError, TState> errorHandler,
         Action<TState> finallyClause)
         where TError : Exception
     {
@@ -728,7 +726,7 @@ public static class Lambdas
         }
         catch (TError e)
         {
-            errorHandler(ExceptionDispatchInfo.Capture(e), e, state);
+            errorHandler(Edi.Capture(e), e, state);
         }
         finally
         {
@@ -746,7 +744,7 @@ public static class Lambdas
     /// <para>
     /// NOTE: The code itself will NOT re-throw caught exception, but,
     /// <paramref name="errorHandler"/> may itself re-throw those (e.g.
-    /// <see cref="ExceptionDispatchInfo.Throw()"/>), if needed.
+    /// <see cref="Edi.Throw()"/>), if needed.
     /// </para>
     /// </summary>
     /// <typeparam name="TOut">Return type</typeparam>
@@ -755,7 +753,7 @@ public static class Lambdas
     /// <param name="errorHandler">Error handler to invoke inside catch clause</param>
     /// <param name="finallyClause">Code to run inside finally clause</param>
     public static async Task<TOut> ExecuteAsync<TOut, TError>(this Func<Task<TOut>> asyncLambda,
-        Func<ExceptionDispatchInfo, TError, TOut> errorHandler,
+        Func<Edi, TError, TOut> errorHandler,
         Action? finallyClause = null)
         where TError : Exception
     {
@@ -765,7 +763,7 @@ public static class Lambdas
         }
         catch (TError e)
         {
-            return errorHandler(ExceptionDispatchInfo.Capture(e), e);
+            return errorHandler(Edi.Capture(e), e);
         }
         finally
         {
@@ -783,7 +781,7 @@ public static class Lambdas
     /// <para>
     /// NOTE: The code itself will NOT re-throw caught exception, but,
     /// <paramref name="errorHandler"/> may itself re-throw those (e.g.
-    /// <see cref="ExceptionDispatchInfo.Throw()"/>), if needed.
+    /// <see cref="Edi.Throw()"/>), if needed.
     /// </para>
     /// </summary>
     /// <typeparam name="TOut">Return type</typeparam>
@@ -792,7 +790,7 @@ public static class Lambdas
     /// <param name="errorHandler">Error handler to invoke inside catch clause</param>
     /// <param name="finallyClause">Code to run inside finally clause</param>
     public static async ValueTask<TOut> ExecuteAsync<TOut, TError>(this Func<ValueTask<TOut>> asyncLambda,
-        Func<ExceptionDispatchInfo, TError, TOut> errorHandler,
+        Func<Edi, TError, TOut> errorHandler,
         Action? finallyClause = null)
         where TError : Exception
     {
@@ -802,7 +800,7 @@ public static class Lambdas
         }
         catch (TError e)
         {
-            return errorHandler(ExceptionDispatchInfo.Capture(e), e);
+            return errorHandler(Edi.Capture(e), e);
         }
         finally
         {
@@ -820,7 +818,7 @@ public static class Lambdas
     /// <para>
     /// NOTE: The code itself will NOT re-throw caught exception, but,
     /// <paramref name="errorHandler"/> may itself re-throw those (e.g.
-    /// <see cref="ExceptionDispatchInfo.Throw()"/>), if needed.
+    /// <see cref="Edi.Throw()"/>), if needed.
     /// </para>
     /// </summary>
     /// <typeparam name="TOut">Return type</typeparam>
@@ -832,7 +830,7 @@ public static class Lambdas
     /// <param name="finallyClause">Code to run inside finally clause</param>
     public static async Task<TOut> ExecuteAsync<TState, TOut, TError>(this Func<TState, Task<TOut>> asyncLambda,
         TState state,
-        Func<ExceptionDispatchInfo, TError, TState, TOut> errorHandler,
+        Func<Edi, TError, TState, TOut> errorHandler,
         Action? finallyClause = null)
         where TError : Exception
     {
@@ -842,7 +840,7 @@ public static class Lambdas
         }
         catch (TError e)
         {
-            return errorHandler(ExceptionDispatchInfo.Capture(e), e, state);
+            return errorHandler(Edi.Capture(e), e, state);
         }
         finally
         {
@@ -860,7 +858,7 @@ public static class Lambdas
     /// <para>
     /// NOTE: The code itself will NOT re-throw caught exception, but,
     /// <paramref name="errorHandler"/> may itself re-throw those (e.g.
-    /// <see cref="ExceptionDispatchInfo.Throw()"/>), if needed.
+    /// <see cref="Edi.Throw()"/>), if needed.
     /// </para>
     /// </summary>
     /// <typeparam name="TOut">Return type</typeparam>
@@ -872,7 +870,7 @@ public static class Lambdas
     /// <param name="finallyClause">Code to run inside finally clause</param>
     public static async ValueTask<TOut> ExecuteAsync<TState, TOut, TError>(this Func<TState, ValueTask<TOut>> asyncLambda,
         TState state,
-        Func<ExceptionDispatchInfo, TError, TState, TOut> errorHandler,
+        Func<Edi, TError, TState, TOut> errorHandler,
         Action? finallyClause = null)
         where TError : Exception
     {
@@ -882,7 +880,7 @@ public static class Lambdas
         }
         catch (TError e)
         {
-            return errorHandler(ExceptionDispatchInfo.Capture(e), e, state);
+            return errorHandler(Edi.Capture(e), e, state);
         }
         finally
         {
@@ -900,7 +898,7 @@ public static class Lambdas
     /// <para>
     /// NOTE: The code itself will NOT re-throw caught exception, but,
     /// <paramref name="errorHandler"/> may itself re-throw those (e.g.
-    /// <see cref="ExceptionDispatchInfo.Throw()"/>), if needed.
+    /// <see cref="Edi.Throw()"/>), if needed.
     /// </para>
     /// </summary>
     /// <typeparam name="TOut">Return type</typeparam>
@@ -912,7 +910,7 @@ public static class Lambdas
     /// <param name="finallyClause">Code to run inside finally clause</param>
     public static async Task<TOut> ExecuteAsync<TState, TOut, TError>(this Func<TState, Task<TOut>> asyncLambda,
         TState state,
-        Func<ExceptionDispatchInfo, TError, TState, TOut> errorHandler,
+        Func<Edi, TError, TState, TOut> errorHandler,
         Action<TState> finallyClause)
         where TError : Exception
     {
@@ -922,7 +920,7 @@ public static class Lambdas
         }
         catch (TError e)
         {
-            return errorHandler(ExceptionDispatchInfo.Capture(e), e, state);
+            return errorHandler(Edi.Capture(e), e, state);
         }
         finally
         {
@@ -940,7 +938,7 @@ public static class Lambdas
     /// <para>
     /// NOTE: The code itself will NOT re-throw caught exception, but,
     /// <paramref name="errorHandler"/> may itself re-throw those (e.g.
-    /// <see cref="ExceptionDispatchInfo.Throw()"/>), if needed.
+    /// <see cref="Edi.Throw()"/>), if needed.
     /// </para>
     /// </summary>
     /// <typeparam name="TOut">Return type</typeparam>
@@ -952,7 +950,7 @@ public static class Lambdas
     /// <param name="finallyClause">Code to run inside finally clause</param>
     public static async ValueTask<TOut> ExecuteAsync<TState, TOut, TError>(this Func<TState, ValueTask<TOut>> asyncLambda,
         TState state,
-        Func<ExceptionDispatchInfo, TError, TState, TOut> errorHandler,
+        Func<Edi, TError, TState, TOut> errorHandler,
         Action<TState> finallyClause)
         where TError : Exception
     {
@@ -962,7 +960,7 @@ public static class Lambdas
         }
         catch (TError e)
         {
-            return errorHandler(ExceptionDispatchInfo.Capture(e), e, state);
+            return errorHandler(Edi.Capture(e), e, state);
         }
         finally
         {

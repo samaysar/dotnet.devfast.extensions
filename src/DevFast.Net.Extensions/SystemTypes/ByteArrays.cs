@@ -21,12 +21,12 @@
         {
             if (sourcePosition + total > bytes.Length)
             {
-                throw new ArgumentException($"Source position breaches length {bytes.Length}");
+                throw new Ae($"Source position breaches length {bytes.Length}");
             }
 
             if (targetPosition + total > bytes.Length)
             {
-                throw new ArgumentException($"Target position breaches length {bytes.Length}");
+                throw new Ae($"Target position breaches length {bytes.Length}");
             }
 
             bytes.LiftNCopyUnSafe(sourcePosition, total, targetPosition);
@@ -109,12 +109,12 @@
         {
             if (sourcePosition + total > source.Length)
             {
-                throw new ArgumentException($"Source position breaches length {source.Length}");
+                throw new Ae($"Source position breaches length {source.Length}");
             }
 
             if (targetPosition + total > target.Length)
             {
-                throw new ArgumentException($"Target position breaches length {target.Length}");
+                throw new Ae($"Target position breaches length {target.Length}");
             }
 
             source.CopyToUnSafe(target, sourcePosition, total, targetPosition);
