@@ -9,8 +9,8 @@
     <NoWarn>CA1062;CA1068</NoWarn>
     <Deterministic>true</Deterministic>
     <GenerateDocumentationFile>True</GenerateDocumentationFile>
-    <DocumentationFile>DevFast.Net.Extensions.xml</DocumentationFile>
-    <DefaultDocumentationFolder>../../docs</DefaultDocumentationFolder>
+    <DocumentationFile>bin/$(Configuration)/$(TargetFramework)/$(AssemblyName).xml</DocumentationFile>
+    <DefaultDocumentationFolder>../../docs/$(TargetFramework)</DefaultDocumentationFolder>
     <DefaultDocumentationGeneratedPages>Namespaces,Types</DefaultDocumentationGeneratedPages>
     <DefaultDocumentationConfigurationFile>../../DocConfig.json</DefaultDocumentationConfigurationFile>
     <DefaultDocumentationLinksBaseUrl>https://github.com/samaysar/dotnet.devfast.extensions/tree/master/docs</DefaultDocumentationLinksBaseUrl>
@@ -54,13 +54,6 @@
     <None Include="..\..\icon.png" Pack="true" PackagePath="" />
     <None Include="..\..\LICENSE" Pack="true" Visible="false" PackagePath="" />
     <None Include="..\..\README.md" Pack="true" PackagePath="" />
-    <Content Include="DevFast.Net.Extensions.xml">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-      <CopyToPublishDirectory>Always</CopyToPublishDirectory>
-      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
-      <PackageCopyToOutput>true</PackageCopyToOutput>
-      <BuildAction>None</BuildAction>
-    </Content>
   </ItemGroup>
 
   <ItemGroup>
