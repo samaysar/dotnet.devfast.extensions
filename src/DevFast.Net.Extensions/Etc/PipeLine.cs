@@ -3,181 +3,201 @@
     /// <summary>
     /// Extension methods on Lambdas to create a executable Pipeline.
     /// </summary>
-    public static class Pipe
+    public static class PipeLine
     {
-        //    private static Func<Func<TStateIn, TIn>, Func<TStateOut, TOut>> Adapter<TIn, TStateIn, TStateOut, TOut>(
-        //        this Func<TIn, TStateOut, TOut> tandem,
-        //        Func<TStateOut, TStateIn> stateAdapter)
-        //    {
-        //        return src => state => tandem(src(stateAdapter(state)), state);
-        //    }
+        private static Func<Func<TStateIn, TIn>, Func<TStateOut, TOut>> Adapter<TIn, TStateIn, TStateOut, TOut>(
+            this Func<TIn, TStateOut, TOut> tandem,
+            Func<TStateOut, TStateIn> stateAdapter)
+        {
+            return src => state => tandem(src(stateAdapter(state)), state);
+        }
 
-        //    private static Func<Func<TStateIn, Task<TIn>>, Func<TStateOut, Task<TOut>>> Adapter<TIn, TStateIn, TStateOut, TOut>(
-        //        this Func<TIn, TStateOut, Task<TOut>> tandem,
-        //        Func<TStateOut, TStateIn> stateAdapter)
-        //    {
-        //        return src => async state => await tandem(await src(stateAdapter(state)).Run().ConfigureAwait(false), state).Run().ConfigureAwait(false);
-        //    }
+        private static Func<Func<TStateIn, Task<TIn>>, Func<TStateOut, Task<TOut>>> Adapter<TIn, TStateIn, TStateOut, TOut>(
+            this Func<TIn, TStateOut, Task<TOut>> tandem,
+            Func<TStateOut, TStateIn> stateAdapter)
+        {
+            return src => async state => await tandem(await src(stateAdapter(state)).Run().ConfigureAwait(false), state).Run().ConfigureAwait(false);
+        }
 
-        //    private static Func<Func<TStateIn, ValueTask<TIn>>, Func<TStateOut, ValueTask<TOut>>> Adapter<TIn, TStateIn, TStateOut, TOut>(
-        //        this Func<TIn, TStateOut, ValueTask<TOut>> tandem,
-        //        Func<TStateOut, TStateIn> stateAdapter)
-        //    {
-        //        return src => async state => await tandem(await src(stateAdapter(state)).ConfigureAwait(false), state).ConfigureAwait(false);
-        //    }
+        private static Func<Func<TStateIn, ValueTask<TIn>>, Func<TStateOut, ValueTask<TOut>>> Adapter<TIn, TStateIn, TStateOut, TOut>(
+            this Func<TIn, TStateOut, ValueTask<TOut>> tandem,
+            Func<TStateOut, TStateIn> stateAdapter)
+        {
+            return src => async state => await tandem(await src(stateAdapter(state)).ConfigureAwait(false), state).ConfigureAwait(false);
+        }
 
-        //    private static Func<Func<TStateIn, ValueTask<TIn>>, Func<TStateOut, Task<TOut>>> CrossAdapter<TIn, TStateIn, TStateOut, TOut>(
-        //        this Func<TIn, TStateOut, Task<TOut>> tandem,
-        //        Func<TStateOut, TStateIn> stateAdapter)
-        //    {
-        //        return src => async state => await tandem(await src(stateAdapter(state)).ConfigureAwait(false), state).Run().ConfigureAwait(false);
-        //    }
+        private static Func<Func<TStateIn, ValueTask<TIn>>, Func<TStateOut, Task<TOut>>> CrossAdapter<TIn, TStateIn, TStateOut, TOut>(
+            this Func<TIn, TStateOut, Task<TOut>> tandem,
+            Func<TStateOut, TStateIn> stateAdapter)
+        {
+            return src => async state => await tandem(await src(stateAdapter(state)).ConfigureAwait(false), state).Run().ConfigureAwait(false);
+        }
 
-        //    private static Func<Func<TStateIn, TIn>, Func<TStateOut, TOut>> Adapter<TIn, TStateIn, TStateOut, TOut>(
-        //        this Func<TIn, TStateOut, TOut> tandem)
-        //        where TStateOut : TStateIn
-        //    {
-        //        return tandem.Adapter<TIn, TStateIn, TStateOut, TOut>(static x => x);
-        //    }
+        private static Func<Func<TStateIn, TIn>, Func<TStateOut, TOut>> Adapter<TIn, TStateIn, TStateOut, TOut>(
+            this Func<TIn, TStateOut, TOut> tandem)
+            where TStateOut : TStateIn
+        {
+            return tandem.Adapter<TIn, TStateIn, TStateOut, TOut>(static x => x);
+        }
 
-        //    private static Func<Func<TStateIn, Task<TIn>>, Func<TStateOut, Task<TOut>>> Adapter<TIn, TStateIn, TStateOut, TOut>(
-        //        this Func<TIn, TStateOut, Task<TOut>> tandem)
-        //        where TStateOut : TStateIn
-        //    {
-        //        return tandem.Adapter<TIn, TStateIn, TStateOut, TOut>(static x => x);
-        //    }
+        private static Func<Func<TStateIn, Task<TIn>>, Func<TStateOut, Task<TOut>>> Adapter<TIn, TStateIn, TStateOut, TOut>(
+            this Func<TIn, TStateOut, Task<TOut>> tandem)
+            where TStateOut : TStateIn
+        {
+            return tandem.Adapter<TIn, TStateIn, TStateOut, TOut>(static x => x);
+        }
 
-        //    private static Func<Func<TStateIn, ValueTask<TIn>>, Func<TStateOut, ValueTask<TOut>>> Adapter<TIn, TStateIn, TStateOut, TOut>(
-        //        this Func<TIn, TStateOut, ValueTask<TOut>> tandem)
-        //        where TStateOut : TStateIn
-        //    {
-        //        return tandem.Adapter<TIn, TStateIn, TStateOut, TOut>(static x => x);
-        //    }
+        private static Func<Func<TStateIn, ValueTask<TIn>>, Func<TStateOut, ValueTask<TOut>>> Adapter<TIn, TStateIn, TStateOut, TOut>(
+            this Func<TIn, TStateOut, ValueTask<TOut>> tandem)
+            where TStateOut : TStateIn
+        {
+            return tandem.Adapter<TIn, TStateIn, TStateOut, TOut>(static x => x);
+        }
 
-        //    private static Func<Func<TStateIn, ValueTask<TIn>>, Func<TStateOut, Task<TOut>>> CrossAdapter<TIn, TStateIn, TStateOut, TOut>(
-        //        this Func<TIn, TStateOut, Task<TOut>> tandem)
-        //        where TStateOut : TStateIn
-        //    {
-        //        return tandem.CrossAdapter<TIn, TStateIn, TStateOut, TOut>(static x => x);
-        //    }
+        private static Func<Func<TStateIn, ValueTask<TIn>>, Func<TStateOut, Task<TOut>>> CrossAdapter<TIn, TStateIn, TStateOut, TOut>(
+            this Func<TIn, TStateOut, Task<TOut>> tandem)
+            where TStateOut : TStateIn
+        {
+            return tandem.CrossAdapter<TIn, TStateIn, TStateOut, TOut>(static x => x);
+        }
 
-        //    private static Func<Func<TState, TIn>, Func<TState, TOut>> Adapter<TIn, TState, TOut>(
-        //        this Func<TIn, TState, TOut> tandem)
-        //    {
-        //        return tandem.Adapter<TIn, TState, TState, TOut>();
-        //    }
+        private static Func<Func<TState, TIn>, Func<TState, TOut>> Adapter<TIn, TState, TOut>(
+            this Func<TIn, TState, TOut> tandem)
+        {
+            return tandem.Adapter<TIn, TState, TState, TOut>();
+        }
 
-        //    private static Func<Func<TState, Task<TIn>>, Func<TState, Task<TOut>>> Adapter<TIn, TState, TOut>(
-        //        this Func<TIn, TState, Task<TOut>> tandem)
-        //    {
-        //        return tandem.Adapter<TIn, TState, TState, TOut>();
-        //    }
+        private static Func<Func<TState, Task<TIn>>, Func<TState, Task<TOut>>> Adapter<TIn, TState, TOut>(
+            this Func<TIn, TState, Task<TOut>> tandem)
+        {
+            return tandem.Adapter<TIn, TState, TState, TOut>();
+        }
 
-        //    private static Func<Func<TState, ValueTask<TIn>>, Func<TState, ValueTask<TOut>>> Adapter<TIn, TState, TOut>(
-        //        this Func<TIn, TState, ValueTask<TOut>> tandem)
-        //    {
-        //        return tandem.Adapter<TIn, TState, TState, TOut>();
-        //    }
+        private static Func<Func<TState, ValueTask<TIn>>, Func<TState, ValueTask<TOut>>> Adapter<TIn, TState, TOut>(
+            this Func<TIn, TState, ValueTask<TOut>> tandem)
+        {
+            return tandem.Adapter<TIn, TState, TState, TOut>();
+        }
 
-        //    private static Func<Func<TState, ValueTask<TIn>>, Func<TState, Task<TOut>>> CrossAdapter<TIn, TState, TOut>(
-        //        this Func<TIn, TState, Task<TOut>> tandem)
-        //    {
-        //        return tandem.CrossAdapter<TIn, TState, TState, TOut>();
-        //    }
+        private static Func<Func<TState, ValueTask<TIn>>, Func<TState, Task<TOut>>> CrossAdapter<TIn, TState, TOut>(
+            this Func<TIn, TState, Task<TOut>> tandem)
+        {
+            return tandem.CrossAdapter<TIn, TState, TState, TOut>();
+        }
 
-        //    private static Func<TState, T> Adapter<T, TState>(this T value)
-        //    {
-        //        return _ => value;
-        //    }
+        private static Func<TState, T> Adapter<T, TState>(this T value)
+        {
+            return _ => value;
+        }
 
-        //    private static Func<TState, T> Adapter<T, TState>(this Func<T> lambda)
-        //    {
-        //        return _ => lambda();
-        //    }
+        private static Func<TState, T> Adapter<T, TState>(this Func<T> lambda)
+        {
+            return _ => lambda();
+        }
 
-        //    private static Func<TState, Task<T>> Adapter<T, TState>(this Task<T> task)
-        //    {
-        //        return async _ => await task.Run().ConfigureAwait(false);
-        //    }
+        private static Func<TState, Task<T>> Adapter<T, TState>(this Task<T> task)
+        {
+            return async _ => await task.Run().ConfigureAwait(false);
+        }
 
-        //    private static Func<TStateOut, T> Adapter<T, TStateIn, TStateOut>(this Func<TStateIn, T> lambda)
-        //        where TStateOut : TStateIn
-        //    {
-        //        return state => lambda(state);
-        //    }
+        private static Func<TStateOut, T> Adapter<T, TStateIn, TStateOut>(this Func<TStateIn, T> lambda)
+            where TStateOut : TStateIn
+        {
+            return state => lambda(state);
+        }
 
-        //    private static Func<TStateOut, T> Adapter<T, TStateIn, TStateOut>(this Func<TStateIn, T> lambda,
-        //        Func<TStateOut, TStateIn> stateAdapter)
-        //    {
-        //        return state => lambda(stateAdapter(state));
-        //    }
+        private static Func<TStateOut, T> Adapter<T, TStateIn, TStateOut>(this Func<TStateIn, T> lambda,
+            Func<TStateOut, TStateIn> stateAdapter)
+        {
+            return state => lambda(stateAdapter(state));
+        }
 
-        //    /// <summary>
-        //    /// Applies <paramref name="adapter"/> on the <paramref name="input"/>
-        //    /// and returns the results.
-        //    /// </summary>
-        //    /// <param name="input">Source on which the adapter is applied.</param>
-        //    /// <param name="adapter">Adapter lambda</param>
-        //    public static TOut Pipe<TIn, TOut>(this TIn input,
-        //        Func<TIn, TOut> adapter)
-        //    {
-        //        return adapter(input);
-        //    }
+        /// <summary>
+        /// Applies <paramref name="adapter"/> on the <paramref name="input"/>
+        /// and returns the results.
+        /// </summary>
+        /// <param name="input">Source on which the adapter is applied.</param>
+        /// <param name="adapter">Adapter lambda</param>
+        public static TOut Pipe<TIn, TOut>(this TIn input,
+            Func<TIn, TOut> adapter)
+        {
+            return adapter(input);
+        }
 
-        //    /// <summary>
-        //    /// Applies <paramref name="adapter"/> on the <paramref name="input"/>
-        //    /// when <paramref name="flag"/> is <see langword="true"/> and returns the result;
-        //    /// otherwise, returns back the original <paramref name="input"/>.
-        //    /// </summary>
-        //    /// <param name="input">Source on which the adapter is applied.</param>
-        //    /// <param name="adapter">Adapter lambda</param>
-        //    /// <param name="flag">Flag dictating whether should be applied or not</param>
-        //    public static T Pipe<T>(this T input,
-        //        Func<T, T> adapter,
-        //        bool flag)
-        //    {
-        //        return flag ? input.Pipe(adapter) : input;
-        //    }
+        /// <summary>
+        /// Applies <paramref name="adapter"/> on the <paramref name="input"/>
+        /// when <paramref name="flag"/> is <see langword="true"/> and returns the result;
+        /// otherwise, returns back the original <paramref name="input"/>.
+        /// </summary>
+        /// <param name="input">Source on which the adapter is applied.</param>
+        /// <param name="adapter">Adapter lambda</param>
+        /// <param name="flag">Flag dictating whether should be applied or not</param>
+        public static T Pipe<T>(this T input,
+            Func<T, T> adapter,
+            bool flag)
+        {
+            return flag ? input.Pipe(adapter) : input;
+        }
 
-        //    /// <summary>
-        //    /// Provides a conditional lambda, which upon execution:
-        //    /// <para>
-        //    /// 1. If <paramref name="flag"/> is <see langword="true"/>, feeds <paramref name="value"/>
-        //    /// to the <paramref name="tandemLambda"/> and returns the output obtained
-        //    /// from <paramref name="tandemLambda"/>.
-        //    /// </para>
-        //    /// 2. If <paramref name="flag"/> is <see langword="false"/>, returns the original
-        //    /// <paramref name="value"/>.
-        //    /// </summary>
-        //    /// <param name="value">Value to feed</param>
-        //    /// <param name="tandemLambda">Tandem lambda that would consume the value.</param>
-        //    /// <param name="flag">Conditional flag dictating whether <paramref name="tandemLambda"/> should be applied or not</param>
-        //    public static Func<TState, T> Pipe<T, TState>(this T value,
-        //        Func<T, TState, T> tandemLambda,
-        //        bool flag)
-        //    {
-        //        return value.Adapter<T, TState>().Pipe(tandemLambda, flag);
-        //    }
+        /// <summary>
+        /// Provides a conditional lambda, which upon execution:
+        /// <para>
+        /// 1. If <paramref name="flag"/> is <see langword="true"/>, feeds the output of
+        /// <paramref name="sourceLambda"/> to the <paramref name="tandemLambda"/> and returns the output obtained
+        /// from <paramref name="tandemLambda"/>.
+        /// </para>
+        /// 2. If <paramref name="flag"/> is <see langword="false"/>, returns the output of the original
+        /// <paramref name="sourceLambda"/>.
+        /// </summary>
+        /// <param name="sourceLambda">Source lambda to which the tandem operation would be applied.</param>
+        /// <param name="tandemLambda">Tandem lambda that would consume the output of <paramref name="sourceLambda"/>.</param>
+        /// <param name="flag">Conditional flag dictating whether <paramref name="tandemLambda"/> should be applied or not</param>
+        public static Func<TState, T> Pipe<T, TState>(this Func<TState, T> sourceLambda,
+            Func<T, TState, T> tandemLambda,
+            bool flag)
+        {
+            return sourceLambda.Pipe(tandemLambda.Adapter(), flag);
+        }
 
-        //    /// <summary>
-        //    /// Provides a conditional lambda, which upon execution:
-        //    /// <para>
-        //    /// 1. If <paramref name="flag"/> is <see langword="true"/>, feeds the output of
-        //    /// <paramref name="sourceLambda"/> to the <paramref name="tandemLambda"/> and returns the output obtained
-        //    /// from <paramref name="tandemLambda"/>.
-        //    /// </para>
-        //    /// 2. If <paramref name="flag"/> is <see langword="false"/>, returns the output of the original
-        //    /// <paramref name="sourceLambda"/>.
-        //    /// </summary>
-        //    /// <param name="sourceLambda">Source lambda to which the tandem operation would be applied.</param>
-        //    /// <param name="tandemLambda">Tandem lambda that would consume the output of <paramref name="sourceLambda"/>.</param>
-        //    /// <param name="flag">Conditional flag dictating whether <paramref name="tandemLambda"/> should be applied or not</param>
-        //    public static Func<TState, T> Pipe<T, TState>(this Func<T> sourceLambda,
-        //        Func<T, TState, T> tandemLambda,
-        //        bool flag)
-        //    {
-        //        return sourceLambda.Adapter<T, TState>().Pipe(tandemLambda, flag);
-        //    }
+        /// <summary>
+        /// Provides a conditional lambda, which upon execution:
+        /// <para>
+        /// 1. If <paramref name="flag"/> is <see langword="true"/>, feeds <paramref name="value"/>
+        /// to the <paramref name="tandemLambda"/> and returns the output obtained
+        /// from <paramref name="tandemLambda"/>.
+        /// </para>
+        /// 2. If <paramref name="flag"/> is <see langword="false"/>, returns the original
+        /// <paramref name="value"/>.
+        /// </summary>
+        /// <param name="value">Value to feed</param>
+        /// <param name="tandemLambda">Tandem lambda that would consume the value.</param>
+        /// <param name="flag">Conditional flag dictating whether <paramref name="tandemLambda"/> should be applied or not</param>
+        public static Func<TState, T> Pipe<T, TState>(this T value,
+            Func<T, TState, T> tandemLambda,
+            bool flag)
+        {
+            return value.Adapter<T, TState>().Pipe(tandemLambda, flag);
+        }
+
+        /// <summary>
+        /// Provides a conditional lambda, which upon execution:
+        /// <para>
+        /// 1. If <paramref name="flag"/> is <see langword="true"/>, feeds the output of
+        /// <paramref name="sourceLambda"/> to the <paramref name="tandemLambda"/> and returns the output obtained
+        /// from <paramref name="tandemLambda"/>.
+        /// </para>
+        /// 2. If <paramref name="flag"/> is <see langword="false"/>, returns the output of the original
+        /// <paramref name="sourceLambda"/>.
+        /// </summary>
+        /// <param name="sourceLambda">Source lambda to which the tandem operation would be applied.</param>
+        /// <param name="tandemLambda">Tandem lambda that would consume the output of <paramref name="sourceLambda"/>.</param>
+        /// <param name="flag">Conditional flag dictating whether <paramref name="tandemLambda"/> should be applied or not</param>
+        public static Func<TState, T> Pipe<T, TState>(this Func<T> sourceLambda,
+            Func<T, TState, T> tandemLambda,
+            bool flag)
+        {
+            return sourceLambda.Adapter<T, TState>().Pipe(tandemLambda, flag);
+        }
 
         //    /// <summary>
         //    /// Provides a conditional asynchronous lambda, which upon execution:
@@ -202,26 +222,6 @@
         //        bool flag)
         //    {
         //        return task.Adapter<T, TState>().Pipe(tandemLambda, flag);
-        //    }
-
-        //    /// <summary>
-        //    /// Provides a conditional lambda, which upon execution:
-        //    /// <para>
-        //    /// 1. If <paramref name="flag"/> is <see langword="true"/>, feeds the output of
-        //    /// <paramref name="sourceLambda"/> to the <paramref name="tandemLambda"/> and returns the output obtained
-        //    /// from <paramref name="tandemLambda"/>.
-        //    /// </para>
-        //    /// 2. If <paramref name="flag"/> is <see langword="false"/>, returns the output of the original
-        //    /// <paramref name="sourceLambda"/>.
-        //    /// </summary>
-        //    /// <param name="sourceLambda">Source lambda to which the tandem operation would be applied.</param>
-        //    /// <param name="tandemLambda">Tandem lambda that would consume the output of <paramref name="sourceLambda"/>.</param>
-        //    /// <param name="flag">Conditional flag dictating whether <paramref name="tandemLambda"/> should be applied or not</param>
-        //    public static Func<TState, T> Pipe<T, TState>(this Func<TState, T> sourceLambda,
-        //        Func<T, TState, T> tandemLambda,
-        //        bool flag)
-        //    {
-        //        return sourceLambda.Pipe(tandemLambda.Adapter(), flag);
         //    }
 
         //    /// <summary>

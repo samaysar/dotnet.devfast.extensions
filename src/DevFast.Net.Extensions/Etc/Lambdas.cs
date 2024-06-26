@@ -39,8 +39,8 @@ public static class Lambdas
     /// <summary>
     /// Executes the given <paramref name="lambda"/> and returns its results.
     /// </summary>
-    /// <typeparam name="TOut">Output type of the lambda</typeparam>
     /// <typeparam name="TState">State type</typeparam>
+    /// <typeparam name="TOut">Output type of the lambda</typeparam>
     /// <param name="lambda">Lambda to execute.</param>
     /// <param name="state">Lambda state</param>
     public static TOut Execute<TState, TOut>(this Func<TState, TOut> lambda,
@@ -133,8 +133,8 @@ public static class Lambdas
     /// <see cref="Edi.Throw()"/>), if needed.
     /// </para>
     /// </summary>
-    /// <typeparam name="TError">Exception type</typeparam>
     /// <typeparam name="TState">State type</typeparam>
+    /// <typeparam name="TError">Exception type</typeparam>
     /// <param name="lambda">Lambda to execute inside try clause</param>
     /// <param name="state">Lambda state</param>
     /// <param name="errorHandler">Error handler to invoke inside catch clause</param>
@@ -172,8 +172,8 @@ public static class Lambdas
     /// <see cref="Edi.Throw()"/>), if needed.
     /// </para>
     /// </summary>
-    /// <typeparam name="TOut">Return type</typeparam>
     /// <typeparam name="TState">State type</typeparam>
+    /// <typeparam name="TOut">Return type</typeparam>
     /// <typeparam name="TError">Exception type</typeparam>
     /// <param name="lambda">Lambda to execute inside try clause</param>
     /// <param name="state">Lambda state</param>
@@ -211,8 +211,8 @@ public static class Lambdas
     /// <see cref="Edi.Throw()"/>), if needed.
     /// </para>
     /// </summary>
-    /// <typeparam name="TError">Exception type</typeparam>
     /// <typeparam name="TState">State type</typeparam>
+    /// <typeparam name="TError">Exception type</typeparam>
     /// <param name="lambda">Lambda to execute inside try clause</param>
     /// <param name="state">Lambda state</param>
     /// <param name="errorHandler">Error handler to invoke inside catch clause</param>
@@ -250,8 +250,8 @@ public static class Lambdas
     /// <see cref="Edi.Throw()"/>), if needed.
     /// </para>
     /// </summary>
-    /// <typeparam name="TOut">Return type</typeparam>
     /// <typeparam name="TState">State type</typeparam>
+    /// <typeparam name="TOut">Return type</typeparam>
     /// <typeparam name="TError">Exception type</typeparam>
     /// <param name="lambda">Lambda to execute inside try clause</param>
     /// <param name="state">Lambda state</param>
@@ -353,8 +353,8 @@ public static class Lambdas
     /// NOTE: The code itself will NOT catch any <see cref="Exception"/>.
     /// </para>
     /// </summary>
-    /// <typeparam name="TOut">Return type</typeparam>
     /// <typeparam name="TState">State type</typeparam>
+    /// <typeparam name="TOut">Return type</typeparam>
     /// <param name="lambda">Lambda to execute inside try clause</param>
     /// <param name="state">Lambda state</param>
     /// <param name="finallyClause">Code to run inside finally clause</param>
@@ -403,8 +403,8 @@ public static class Lambdas
     /// NOTE: The code itself will NOT catch any <see cref="Exception"/>.
     /// </para>
     /// </summary>
-    /// <typeparam name="TOut">Return type</typeparam>
     /// <typeparam name="TState">State type</typeparam>
+    /// <typeparam name="TOut">Return type</typeparam>
     /// <param name="lambda">Lambda to execute inside try clause</param>
     /// <param name="state">Lambda state</param>
     /// <param name="finallyClause">Code to run inside finally clause</param>
@@ -821,8 +821,8 @@ public static class Lambdas
     /// <see cref="Edi.Throw()"/>), if needed.
     /// </para>
     /// </summary>
-    /// <typeparam name="TOut">Return type</typeparam>
     /// <typeparam name="TState">State type</typeparam>
+    /// <typeparam name="TOut">Return type</typeparam>
     /// <typeparam name="TError">Exception type</typeparam>
     /// <param name="asyncLambda">Lambda to execute inside try clause</param>
     /// <param name="state">Lambda state</param>
@@ -861,8 +861,8 @@ public static class Lambdas
     /// <see cref="Edi.Throw()"/>), if needed.
     /// </para>
     /// </summary>
-    /// <typeparam name="TOut">Return type</typeparam>
     /// <typeparam name="TState">State type</typeparam>
+    /// <typeparam name="TOut">Return type</typeparam>
     /// <typeparam name="TError">Exception type</typeparam>
     /// <param name="asyncLambda">Lambda to execute inside try clause</param>
     /// <param name="state">Lambda state</param>
@@ -901,8 +901,8 @@ public static class Lambdas
     /// <see cref="Edi.Throw()"/>), if needed.
     /// </para>
     /// </summary>
-    /// <typeparam name="TOut">Return type</typeparam>
     /// <typeparam name="TState">State type</typeparam>
+    /// <typeparam name="TOut">Return type</typeparam>
     /// <typeparam name="TError">Exception type</typeparam>
     /// <param name="asyncLambda">Lambda to execute inside try clause</param>
     /// <param name="state">Lambda state</param>
@@ -941,8 +941,8 @@ public static class Lambdas
     /// <see cref="Edi.Throw()"/>), if needed.
     /// </para>
     /// </summary>
-    /// <typeparam name="TOut">Return type</typeparam>
     /// <typeparam name="TState">State type</typeparam>
+    /// <typeparam name="TOut">Return type</typeparam>
     /// <typeparam name="TError">Exception type</typeparam>
     /// <param name="asyncLambda">Lambda to execute inside try clause</param>
     /// <param name="state">Lambda state</param>
@@ -1165,8 +1165,8 @@ public static class Lambdas
     /// NOTE: The code itself will NOT catch any <see cref="Exception"/>.
     /// </para>
     /// </summary>
-    /// <typeparam name="TOut">Return type</typeparam>
     /// <typeparam name="TState">State type</typeparam>
+    /// <typeparam name="TOut">Return type</typeparam>
     /// <param name="asyncLambda">Lambda to execute inside try clause</param>
     /// <param name="state">Lambda state</param>
     /// <param name="finallyClause">Code to run inside finally clause</param>
@@ -1191,8 +1191,8 @@ public static class Lambdas
     /// NOTE: The code itself will NOT catch any <see cref="Exception"/>.
     /// </para>
     /// </summary>
-    /// <typeparam name="TOut">Return type</typeparam>
     /// <typeparam name="TState">State type</typeparam>
+    /// <typeparam name="TOut">Return type</typeparam>
     /// <param name="asyncLambda">Lambda to execute inside try clause</param>
     /// <param name="state">Lambda state</param>
     /// <param name="finallyClause">Code to run inside finally clause</param>
@@ -1217,8 +1217,8 @@ public static class Lambdas
     /// NOTE: The code itself will NOT catch any <see cref="Exception"/>.
     /// </para>
     /// </summary>
-    /// <typeparam name="TOut">Return type</typeparam>
     /// <typeparam name="TState">State type</typeparam>
+    /// <typeparam name="TOut">Return type</typeparam>
     /// <param name="asyncLambda">Lambda to execute inside try clause</param>
     /// <param name="state">Lambda state</param>
     /// <param name="finallyClause">Code to run inside finally clause</param>
@@ -1243,8 +1243,8 @@ public static class Lambdas
     /// NOTE: The code itself will NOT catch any <see cref="Exception"/>.
     /// </para>
     /// </summary>
-    /// <typeparam name="TOut">Return type</typeparam>
     /// <typeparam name="TState">State type</typeparam>
+    /// <typeparam name="TOut">Return type</typeparam>
     /// <param name="asyncLambda">Lambda to execute inside try clause</param>
     /// <param name="state">Lambda state</param>
     /// <param name="finallyClause">Code to run inside finally clause</param>
