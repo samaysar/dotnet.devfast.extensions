@@ -26,12 +26,12 @@
             return src => async state => await tandem(await src(stateAdapter(state)).ConfigureAwait(false), state).ConfigureAwait(false);
         }
 
-        private static Func<Func<TStateIn, ValueTask<TIn>>, Func<TStateOut, Task<TOut>>> CrossAdapter<TIn, TStateIn, TStateOut, TOut>(
-            this Func<TIn, TStateOut, Task<TOut>> tandem,
-            Func<TStateOut, TStateIn> stateAdapter)
-        {
-            return src => async state => await tandem(await src(stateAdapter(state)).ConfigureAwait(false), state).Run().ConfigureAwait(false);
-        }
+        //private static Func<Func<TStateIn, ValueTask<TIn>>, Func<TStateOut, Task<TOut>>> CrossAdapter<TIn, TStateIn, TStateOut, TOut>(
+        //    this Func<TIn, TStateOut, Task<TOut>> tandem,
+        //    Func<TStateOut, TStateIn> stateAdapter)
+        //{
+        //    return src => async state => await tandem(await src(stateAdapter(state)).ConfigureAwait(false), state).Run().ConfigureAwait(false);
+        //}
 
         private static Func<Func<TStateIn, TIn>, Func<TStateOut, TOut>> Adapter<TIn, TStateIn, TStateOut, TOut>(
             this Func<TIn, TStateOut, TOut> tandem)
@@ -54,12 +54,12 @@
             return tandem.Adapter<TIn, TStateIn, TStateOut, TOut>(static x => x);
         }
 
-        private static Func<Func<TStateIn, ValueTask<TIn>>, Func<TStateOut, Task<TOut>>> CrossAdapter<TIn, TStateIn, TStateOut, TOut>(
-            this Func<TIn, TStateOut, Task<TOut>> tandem)
-            where TStateOut : TStateIn
-        {
-            return tandem.CrossAdapter<TIn, TStateIn, TStateOut, TOut>(static x => x);
-        }
+        //private static Func<Func<TStateIn, ValueTask<TIn>>, Func<TStateOut, Task<TOut>>> CrossAdapter<TIn, TStateIn, TStateOut, TOut>(
+        //    this Func<TIn, TStateOut, Task<TOut>> tandem)
+        //    where TStateOut : TStateIn
+        //{
+        //    return src => async state => await tandem(await src(state).ConfigureAwait(false), state).Run().ConfigureAwait(false);
+        //}
 
         private static Func<Func<TState, TIn>, Func<TState, TOut>> Adapter<TIn, TState, TOut>(
             this Func<TIn, TState, TOut> tandem)
@@ -79,35 +79,11 @@
             return tandem.Adapter<TIn, TState, TState, TOut>();
         }
 
-        private static Func<Func<TState, ValueTask<TIn>>, Func<TState, Task<TOut>>> CrossAdapter<TIn, TState, TOut>(
-            this Func<TIn, TState, Task<TOut>> tandem)
-        {
-            return tandem.CrossAdapter<TIn, TState, TState, TOut>();
-        }
-
-        private static Func<Func<TState, T>, Func<TState, T>> Adapter<T, TState>(
-            this Func<T, TState, T> tandem)
-        {
-            return tandem.Adapter<T, TState, T>();
-        }
-
-        private static Func<Func<TState, Task<T>>, Func<TState, Task<T>>> Adapter<T, TState>(
-            this Func<T, TState, Task<T>> tandem)
-        {
-            return tandem.Adapter<T, TState, T>();
-        }
-
-        private static Func<Func<TState, ValueTask<T>>, Func<TState, ValueTask<T>>> Adapter<T, TState>(
-            this Func<T, TState, ValueTask<T>> tandem)
-        {
-            return tandem.Adapter<T, TState, T>();
-        }
-
-        private static Func<Func<TState, ValueTask<T>>, Func<TState, Task<T>>> CrossAdapter<T, TState>(
-            this Func<T, TState, Task<T>> tandem)
-        {
-            return tandem.CrossAdapter<T, TState, T>();
-        }
+        //private static Func<Func<TState, ValueTask<TIn>>, Func<TState, Task<TOut>>> CrossAdapter<TIn, TState, TOut>(
+        //    this Func<TIn, TState, Task<TOut>> tandem)
+        //{
+        //    return tandem.CrossAdapter<TIn, TState, TState, TOut>();
+        //}
 
         private static Func<TState, T> Adapter<T, TState>(this T value)
         {
@@ -144,17 +120,17 @@
             return async state => await task(state).ConfigureAwait(false);
         }
 
-        private static Func<TStateOut, T> Adapter<T, TStateIn, TStateOut>(this Func<TStateIn, T> lambda)
-            where TStateOut : TStateIn
-        {
-            return state => lambda(state);
-        }
+        //private static Func<TStateOut, T> Adapter<T, TStateIn, TStateOut>(this Func<TStateIn, T> lambda)
+        //    where TStateOut : TStateIn
+        //{
+        //    return state => lambda(state);
+        //}
 
-        private static Func<TStateOut, T> Adapter<T, TStateIn, TStateOut>(this Func<TStateIn, T> lambda,
-            Func<TStateOut, TStateIn> stateAdapter)
-        {
-            return state => lambda(stateAdapter(state));
-        }
+        //private static Func<TStateOut, T> Adapter<T, TStateIn, TStateOut>(this Func<TStateIn, T> lambda,
+        //    Func<TStateOut, TStateIn> stateAdapter)
+        //{
+        //    return state => lambda(stateAdapter(state));
+        //}
 
         /// <summary>
         /// Applies <paramref name="adapter"/> on the <paramref name="input"/>
@@ -260,7 +236,7 @@
             Func<T, TState, Task<T>> tandemLambda,
             bool flag)
         {
-            return sourceLambda.Pipe(tandemLambda.Adapter<T, TState>(), flag);
+            return sourceLambda.Pipe(tandemLambda.Adapter(), flag);
         }
 
         /// <summary>
@@ -325,7 +301,7 @@
             Func<T, TState, ValueTask<T>> tandemLambda,
             bool flag)
         {
-            return sourceLambda.Pipe(tandemLambda.Adapter<T, TState>(), flag);
+            return sourceLambda.Pipe(tandemLambda.Adapter(), flag);
         }
 
         /// <summary>
