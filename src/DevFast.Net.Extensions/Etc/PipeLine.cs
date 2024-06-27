@@ -367,54 +367,6 @@
         //    //-------------------------------------------->>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
         //    /// <summary>
-        //    /// Conditionally merges the <paramref name="sourceLambda"/> with <paramref name="tandemLambda"/>.
-        //    /// Returns a newly formed lambda which will feed the output of <paramref name="sourceLambda"/>
-        //    /// to the <paramref name="tandemLambda"/>. Such a resultant lambda, upon execution,
-        //    /// would return the output of the <paramref name="tandemLambda"/>.
-        //    /// </summary>
-        //    /// <typeparam name="T">Lambda output type</typeparam>
-        //    /// <param name="sourceLambda">Source lambda to which the tandem operation would be applied.</param>
-        //    /// <param name="tandemLambda">Tandem lambda that would consume the output of the input lambda.</param>
-        //    /// <param name="flag">Conditional flag dictating where the adapter should be applied or not</param>
-        //    public static Func<Token, Task<T>> Pipe<T>(this Func<Token, Task<T>> sourceLambda,
-        //        Func<T, Token, Task<T>> tandemLambda,
-        //        bool flag)
-        //    {
-        //        return sourceLambda.Pipe(tandemLambda.Adapter(), flag);
-        //    }
-
-        //    /// <summary>
-        //    /// Conditionally merges the <paramref name="sourceLambda"/> with <paramref name="tandemLambda"/>.
-        //    /// Returns a newly formed lambda which will feed the output of <paramref name="sourceLambda"/>
-        //    /// to the <paramref name="tandemLambda"/>. Such a resultant lambda, upon execution,
-        //    /// would return the output of the <paramref name="tandemLambda"/>.
-        //    /// </summary>
-        //    /// <typeparam name="T">Lambda output type</typeparam>
-        //    /// <param name="sourceLambda">Source lambda to which the tandem operation would be applied.</param>
-        //    /// <param name="tandemLambda">Tandem lambda that would consume the output of the input lambda.</param>
-        //    /// <param name="iff">Conditional flag dictating where the adapter should be applied or not</param>
-        //    public static Func<Token, ValueTask<T>> Pipe<T>(this Func<Token, ValueTask<T>> sourceLambda,
-        //        Func<T, Token, ValueTask<T>> tandemLambda,
-        //        bool iff)
-        //    {
-        //        return sourceLambda.Adapt(tandemLambda.Adapter(), iff);
-        //    }
-
-        //    /// <summary>
-        //    /// Merges the <paramref name="sourceLambda"/> with <paramref name="tandemLambda"/>.
-        //    /// Returns a newly formed lambda which will feed the output of <paramref name="sourceLambda"/>
-        //    /// to the <paramref name="tandemLambda"/> upon execution.
-        //    /// </summary>
-        //    /// <typeparam name="TIn">Source lambda output type</typeparam>
-        //    /// <param name="sourceLambda">Source lambda to which the tandem operation would be applied.</param>
-        //    /// <param name="tandemLambda">Tandem lambda that would consume the output of the input lambda.</param>
-        //    public static Action Pipe<TIn>(this Func<TIn> sourceLambda,
-        //        Action<TIn> tandemLambda)
-        //    {
-        //        return () => tandemLambda(sourceLambda());
-        //    }
-
-        //    /// <summary>
         //    /// Merges the <paramref name="sourceLambda"/> with <paramref name="tandemLambda"/>.
         //    /// Returns a newly formed lambda which will feed the output of <paramref name="sourceLambda"/>
         //    /// to the <paramref name="tandemLambda"/> and upon execution it would return the output of
