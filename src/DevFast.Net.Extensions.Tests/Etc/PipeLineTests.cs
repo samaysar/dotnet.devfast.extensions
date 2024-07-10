@@ -161,6 +161,8 @@ public class PipeLineTests
         That(calledWith, Is.EqualTo(useAdapter ? 1 : 0));
     }
 
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_0_OR_GREATER || NET5_0_OR_GREATER
+
     [Test]
     [TestCase(true)]
     [TestCase(false)]
@@ -249,6 +251,8 @@ public class PipeLineTests
         That(calledWith, Is.EqualTo(useAdapter ? 1 : 0));
     }
 
+#endif
+
     [Test]
     [TestCase(true)]
     [TestCase(false)]
@@ -272,6 +276,8 @@ public class PipeLineTests
         That(await src.Pipe(Tandem, useAdapter).ExecuteAsync(t), Is.EqualTo(useAdapter ? 2 : 1));
         That(calledWith, Is.EqualTo(useAdapter ? 1 : 0));
     }
+
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_0_OR_GREATER || NET5_0_OR_GREATER
 
     [Test]
     [TestCase(true)]
@@ -297,6 +303,8 @@ public class PipeLineTests
         That(calledWith, Is.EqualTo(useAdapter ? 1 : 0));
     }
 
+#endif
+
     [Test]
     [TestCase(true)]
     [TestCase(false)]
@@ -321,6 +329,8 @@ public class PipeLineTests
         That(calledWith, Is.EqualTo(useAdapter ? 1 : 0));
     }
 
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_0_OR_GREATER || NET5_0_OR_GREATER
+
     [Test]
     [TestCase(true)]
     [TestCase(false)]
@@ -344,6 +354,8 @@ public class PipeLineTests
         That(await src.Pipe(Tandem, useAdapter).ExecuteAsync(t), Is.EqualTo(useAdapter ? 2 : 1));
         That(calledWith, Is.EqualTo(useAdapter ? 1 : 0));
     }
+
+#endif
 
     #endregion Conditional Pipes (T, TState)
 
@@ -397,6 +409,8 @@ public class PipeLineTests
         That(state.CalledWith, Is.EqualTo(useAdapter ? 1 : 0));
     }
 
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_0_OR_GREATER || NET5_0_OR_GREATER
+
     [Test]
     [TestCase(true)]
     [TestCase(false)]
@@ -421,6 +435,8 @@ public class PipeLineTests
         That(state.CalledWith, Is.EqualTo(useAdapter ? 1 : 0));
     }
 
+#endif
+
     [Test]
     [TestCase(true)]
     [TestCase(false)]
@@ -444,6 +460,8 @@ public class PipeLineTests
         That(await src.Pipe((Func<int, StateObj, Task<int>>)Tandem, static x => x.Token, useAdapter).ExecuteAsync(state), Is.EqualTo(useAdapter ? 2 : 1));
         That(state.CalledWith, Is.EqualTo(useAdapter ? 1 : 0));
     }
+
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_0_OR_GREATER || NET5_0_OR_GREATER
 
     [Test]
     [TestCase(true)]
@@ -493,6 +511,8 @@ public class PipeLineTests
         That(state.CalledWith, Is.EqualTo(useAdapter ? 1 : 0));
     }
 
+#endif
+
     [Test]
     [TestCase(true)]
     [TestCase(false)]
@@ -517,6 +537,8 @@ public class PipeLineTests
         That(state.CalledWith, Is.EqualTo(useAdapter ? 1 : 0));
     }
 
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_0_OR_GREATER || NET5_0_OR_GREATER
+
     [Test]
     [TestCase(true)]
     [TestCase(false)]
@@ -540,6 +562,8 @@ public class PipeLineTests
         That(await src.Pipe((Func<int, StateObj, int>)Tandem, static x => x.Token, useAdapter).ExecuteAsync(state), Is.EqualTo(useAdapter ? 2 : 1));
         That(state.CalledWith, Is.EqualTo(useAdapter ? 1 : 0));
     }
+
+#endif
 
     #endregion Conditional Pipes (T, TTanState <> TSrcState)
 
@@ -582,6 +606,8 @@ public class PipeLineTests
         await src.Pipe(Tandem).ExecuteAsync(Token.None);
     }
 
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_0_OR_GREATER || NET5_0_OR_GREATER
+
     [Test]
     public async ValueTask Pipe_T_TState_FuncTStateT_Combines_ValueTaskLambda()
     {
@@ -600,6 +626,8 @@ public class PipeLineTests
 
         await src.Pipe(Tandem).ExecuteAsync(Token.None);
     }
+
+#endif
 
     [Test]
     public async Task Pipe_T_TState_FuncTStateTaskT_Combines_VoidLambda()
@@ -637,6 +665,8 @@ public class PipeLineTests
 
         await src.Pipe(Tandem).ExecuteAsync(Token.None);
     }
+
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_0_OR_GREATER || NET5_0_OR_GREATER
 
     [Test]
     public async Task Pipe_T_TState_FuncTStateValueTaskT_Combines_VoidLambda()
@@ -694,6 +724,8 @@ public class PipeLineTests
         await src.Pipe(Tandem).ExecuteAsync(Token.None);
     }
 
+#endif
+
     #endregion Conditional Pipes To Void Lambda (T, TState)
 
     #region Conditional Pipes To Void Lambda (T, TTanState <> TSrcState)
@@ -741,6 +773,8 @@ public class PipeLineTests
         That(state.CalledWith, Is.EqualTo(1));
     }
 
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_0_OR_GREATER || NET5_0_OR_GREATER
+
     [Test]
     public async ValueTask Pipe_T_TSrcState_TTanState_FuncTStateT_Combines_ValueTaskLambda()
     {
@@ -762,6 +796,8 @@ public class PipeLineTests
         await src.Pipe((Func<int, StateObj, ValueTask>)Tandem, static x => x.Token).ExecuteAsync(state);
         That(state.CalledWith, Is.EqualTo(1));
     }
+
+#endif
 
     [Test]
     public async Task Pipe_T_TSrcState_TTanState_FuncTStateTaskT_Combines_VoidLambda()
@@ -805,6 +841,8 @@ public class PipeLineTests
         await src.Pipe((Func<int, StateObj, Task>)Tandem, static x => x.Token).ExecuteAsync(state);
         That(state.CalledWith, Is.EqualTo(1));
     }
+
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_0_OR_GREATER || NET5_0_OR_GREATER
 
     [Test]
     public async Task Pipe_T_TSrcState_TTanState_FuncTStateValueTaskT_Combines_VoidLambda()
@@ -871,11 +909,13 @@ public class PipeLineTests
         That(state.CalledWith, Is.EqualTo(1));
     }
 
+#endif
+
     #endregion Conditional Pipes To Void Lambda (T, TTanState <> TSrcState)
 
     private class StateObj
     {
-        public Token Token { get; init; }
+        public Token Token { get; set; }
         public int CalledWith { get; set; }
     }
 }

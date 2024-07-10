@@ -1,8 +1,14 @@
 ﻿namespace DevFast.Net.Extensions.Etc;
 
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_0_OR_GREATER
 /// <summary>
 /// Extension methods on the <see cref="Task"/>, <see cref="ValueTask"/>.
 /// </summary>
+#else
+/// <summary>
+/// Extension methods on the <see cref="Task"/>.
+/// </summary>
+#endif
 public static class Asynchro
 {
     /// <summary>

@@ -2,9 +2,15 @@
 
 namespace DevFast.Net.Extensions.SystemTypes;
 
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_0_OR_GREATER
 /// <summary>
 /// Extension methods on <see cref="IEnumerable{T}"/> and <see cref="IAsyncEnumerable{T}"/>.
 /// </summary>
+#else
+/// <summary>
+/// Extension methods on <see cref="IEnumerable{T}"/>.
+/// </summary>
+#endif
 public static class Enumerables
 {
     /// <summary>
@@ -21,6 +27,8 @@ public static class Enumerables
             lambda(item, token);
         }
     }
+
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_0_OR_GREATER
 
     /// <summary>
     /// Calls <paramref name="lambda"/> for every item in <paramref name="collection"/> with given <paramref name="token"/>, asynchronously.
@@ -441,4 +449,6 @@ public static class Enumerables
             yield return l;
         }
     }
+
+#endif
 }

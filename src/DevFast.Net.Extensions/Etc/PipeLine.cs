@@ -53,16 +53,18 @@ public static class PipeLine
         return src => async state => await tandem(src(state), state).Run().ConfigureAwait(false);
     }
 
-    private static Func<Func<TState, TIn>, Func<TState, ValueTask<TOut>>> SyncAdapter<TIn, TState, TOut>(
-        this Func<TIn, TState, ValueTask<TOut>> tandem)
-    {
-        return src => async state => await tandem(src(state), state).ConfigureAwait(false);
-    }
-
     private static Func<Func<TState, Task<TIn>>, Func<TState, Task<TOut>>> TaskAdapter<TIn, TState, TOut>(
         this Func<TIn, TState, TOut> tandem)
     {
         return src => async state => tandem(await src(state).Run().ConfigureAwait(false), state);
+    }
+
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_0_OR_GREATER
+
+    private static Func<Func<TState, TIn>, Func<TState, ValueTask<TOut>>> SyncAdapter<TIn, TState, TOut>(
+        this Func<TIn, TState, ValueTask<TOut>> tandem)
+    {
+        return src => async state => await tandem(src(state), state).ConfigureAwait(false);
     }
 
     private static Func<Func<TState, ValueTask<TIn>>, Func<TState, ValueTask<TOut>>> Adapter<TIn, TState, TOut>(
@@ -76,6 +78,8 @@ public static class PipeLine
     {
         return src => async state => tandem(await src(state).ConfigureAwait(false), state);
     }
+
+#endif
 
     #endregion Tandem Adapter
 
@@ -101,6 +105,25 @@ public static class PipeLine
         return async _ => await lambda().Run().ConfigureAwait(false);
     }
 
+    private static Func<TInState, T> Adapter<T, TInState, TState>(this Func<TState, T> lambda,
+        Func<TInState, TState> stateAdapter)
+    {
+        return state => lambda(stateAdapter(state));
+    }
+
+    private static Func<TInState, Task<T>> Adapter<T, TInState, TState>(this Func<TState, Task<T>> lambda,
+        Func<TInState, TState> stateAdapter)
+    {
+        return async state => await lambda(stateAdapter(state)).Run().ConfigureAwait(false);
+    }
+
+    private static Func<TState, Task<T>> TaskAdapter<T, TState>(this Func<TState, T> lambda)
+    {
+        return state => Task.FromResult(lambda(state));
+    }
+
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_0_OR_GREATER
+
     private static Func<TState, ValueTask<T>> Adapter<T, TState>(this Func<ValueTask<T>> lambda)
     {
         return async _ => await lambda().ConfigureAwait(false);
@@ -116,27 +139,14 @@ public static class PipeLine
         return async state => await lambda(state).ConfigureAwait(false);
     }
 
-    private static Func<TState, Task<T>> TaskAdapter<T, TState>(this Func<TState, T> lambda)
-    {
-        return state => Task.FromResult(lambda(state));
-    }
+#if NET5_0_OR_GREATER
 
     private static Func<TState, ValueTask<T>> ValueAdapter<T, TState>(this Func<TState, T> lambda)
     {
         return state => ValueTask.FromResult(lambda(state));
     }
 
-    private static Func<TInState, T> Adapter<T, TInState, TState>(this Func<TState, T> lambda,
-        Func<TInState, TState> stateAdapter)
-    {
-        return state => lambda(stateAdapter(state));
-    }
-
-    private static Func<TInState, Task<T>> Adapter<T, TInState, TState>(this Func<TState, Task<T>> lambda,
-        Func<TInState, TState> stateAdapter)
-    {
-        return async state => await lambda(stateAdapter(state)).Run().ConfigureAwait(false);
-    }
+#endif
 
     private static Func<TInState, ValueTask<T>> Adapter<T, TInState, TState>(this Func<TState, ValueTask<T>> lambda,
         Func<TInState, TState> stateAdapter)
@@ -149,6 +159,8 @@ public static class PipeLine
     {
         return async state => await lambda(stateAdapter(state)).ConfigureAwait(false);
     }
+
+#endif
 
     #endregion Source Adapter
 
@@ -307,6 +319,48 @@ public static class PipeLine
     }
 
     /// <summary>
+    /// Provides a conditional lambda, which upon execution:
+    /// <para>
+    /// 1. If <paramref name="flag"/> is <see langword="true"/>, feeds the output of
+    /// <paramref name="sourceLambda"/> to the <paramref name="tandemLambda"/> and returns the output obtained
+    /// from <paramref name="tandemLambda"/>.
+    /// </para>
+    /// 2. If <paramref name="flag"/> is <see langword="false"/>, returns the output of the original
+    /// <paramref name="sourceLambda"/>.
+    /// </summary>
+    /// <param name="sourceLambda">Source lambda to which the tandem operation would be applied.</param>
+    /// <param name="tandemLambda">Tandem lambda that would consume the output of <paramref name="sourceLambda"/>.</param>
+    /// <param name="flag">Conditional flag dictating whether <paramref name="tandemLambda"/> should be applied or not</param>
+    public static Func<TState, Task<T>> Pipe<T, TState>(this Func<TState, T> sourceLambda,
+        Func<T, TState, Task<T>> tandemLambda,
+        bool flag)
+    {
+        return sourceLambda.Pipe(flag ? tandemLambda.SyncAdapter() : static s => s.TaskAdapter());
+    }
+
+    /// <summary>
+    /// Provides a conditional asynchronous lambda, which upon execution:
+    /// <para>
+    /// 1. If <paramref name="flag"/> is <see langword="true"/>, feeds the output of
+    /// <paramref name="sourceLambda"/>'s <see cref="Task{T}"/> to the <paramref name="tandemLambda"/>
+    /// and returns a <see cref="Task{T}"/> containing the output of <paramref name="tandemLambda"/>.
+    /// </para>
+    /// 2. If <paramref name="flag"/> is <see langword="false"/>, returns a <see cref="Task{T}"/>
+    /// containing the output of the original <paramref name="sourceLambda"/>.
+    /// </summary>
+    /// <param name="sourceLambda">Source lambda to which the tandem operation would be applied.</param>
+    /// <param name="tandemLambda">Tandem lambda that would consume the output of <paramref name="sourceLambda"/>'s <see cref="Task{TResult}"/>.</param>
+    /// <param name="flag">Conditional flag dictating whether <paramref name="tandemLambda"/> should be applied or not</param>
+    public static Func<TState, Task<T>> Pipe<T, TState>(this Func<TState, Task<T>> sourceLambda,
+        Func<T, TState, T> tandemLambda,
+        bool flag)
+    {
+        return sourceLambda.Pipe(tandemLambda.TaskAdapter(), flag);
+    }
+
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_0_OR_GREATER
+
+    /// <summary>
     /// Provides a conditional asynchronous lambda, which upon execution:
     /// <para>
     /// 1. If <paramref name="flag"/> is <see langword="true"/>, feeds the output of
@@ -386,25 +440,7 @@ public static class PipeLine
         return sourceLambda.CrossAdapter().Pipe(tandemLambda, flag);
     }
 
-    /// <summary>
-    /// Provides a conditional lambda, which upon execution:
-    /// <para>
-    /// 1. If <paramref name="flag"/> is <see langword="true"/>, feeds the output of
-    /// <paramref name="sourceLambda"/> to the <paramref name="tandemLambda"/> and returns the output obtained
-    /// from <paramref name="tandemLambda"/>.
-    /// </para>
-    /// 2. If <paramref name="flag"/> is <see langword="false"/>, returns the output of the original
-    /// <paramref name="sourceLambda"/>.
-    /// </summary>
-    /// <param name="sourceLambda">Source lambda to which the tandem operation would be applied.</param>
-    /// <param name="tandemLambda">Tandem lambda that would consume the output of <paramref name="sourceLambda"/>.</param>
-    /// <param name="flag">Conditional flag dictating whether <paramref name="tandemLambda"/> should be applied or not</param>
-    public static Func<TState, Task<T>> Pipe<T, TState>(this Func<TState, T> sourceLambda,
-        Func<T, TState, Task<T>> tandemLambda,
-        bool flag)
-    {
-        return sourceLambda.Pipe(flag ? tandemLambda.SyncAdapter() : static s => s.TaskAdapter());
-    }
+#if NET5_0_OR_GREATER
 
     /// <summary>
     /// Provides a conditional lambda, which upon execution:
@@ -426,25 +462,7 @@ public static class PipeLine
         return sourceLambda.Pipe(flag ? tandemLambda.SyncAdapter() : static s => s.ValueAdapter());
     }
 
-    /// <summary>
-    /// Provides a conditional asynchronous lambda, which upon execution:
-    /// <para>
-    /// 1. If <paramref name="flag"/> is <see langword="true"/>, feeds the output of
-    /// <paramref name="sourceLambda"/>'s <see cref="Task{T}"/> to the <paramref name="tandemLambda"/>
-    /// and returns a <see cref="Task{T}"/> containing the output of <paramref name="tandemLambda"/>.
-    /// </para>
-    /// 2. If <paramref name="flag"/> is <see langword="false"/>, returns a <see cref="Task{T}"/>
-    /// containing the output of the original <paramref name="sourceLambda"/>.
-    /// </summary>
-    /// <param name="sourceLambda">Source lambda to which the tandem operation would be applied.</param>
-    /// <param name="tandemLambda">Tandem lambda that would consume the output of <paramref name="sourceLambda"/>'s <see cref="Task{TResult}"/>.</param>
-    /// <param name="flag">Conditional flag dictating whether <paramref name="tandemLambda"/> should be applied or not</param>
-    public static Func<TState, Task<T>> Pipe<T, TState>(this Func<TState, Task<T>> sourceLambda,
-        Func<T, TState, T> tandemLambda,
-        bool flag)
-    {
-        return sourceLambda.Pipe(tandemLambda.TaskAdapter(), flag);
-    }
+#endif
 
     /// <summary>
     /// Provides a conditional asynchronous lambda, which upon execution:
@@ -465,6 +483,8 @@ public static class PipeLine
     {
         return sourceLambda.Pipe(tandemLambda.ValueTaskAdapter(), flag);
     }
+
+#endif
 
     #endregion Conditional Pipes (T, TState)
 
@@ -528,6 +548,52 @@ public static class PipeLine
     /// <param name="tandemLambda">Tandem lambda that would consume the output of <paramref name="sourceLambda"/>.</param>
     /// <param name="stateAdapter">Lambda for state manipulation.</param>
     /// <param name="flag">Conditional flag dictating whether <paramref name="tandemLambda"/> should be applied or not</param>
+    public static Func<TTanState, Task<T>> Pipe<T, TSrcState, TTanState>(this Func<TSrcState, T> sourceLambda,
+        Func<T, TTanState, Task<T>> tandemLambda,
+        Func<TTanState, TSrcState> stateAdapter,
+        bool flag)
+    {
+        return sourceLambda.Adapter(stateAdapter).Pipe(tandemLambda, flag);
+    }
+
+    /// <summary>
+    /// Provides a conditional lambda, which upon execution:
+    /// <para>
+    /// 1. If <paramref name="flag"/> is <see langword="true"/>, feeds the output of
+    /// <paramref name="sourceLambda"/> to the <paramref name="tandemLambda"/> and returns the output obtained
+    /// from <paramref name="tandemLambda"/>.
+    /// </para>
+    /// 2. If <paramref name="flag"/> is <see langword="false"/>, returns the output of the original
+    /// <paramref name="sourceLambda"/>.
+    /// </summary>
+    /// <param name="sourceLambda">Source lambda to which the tandem operation would be applied.</param>
+    /// <param name="tandemLambda">Tandem lambda that would consume the output of <paramref name="sourceLambda"/>.</param>
+    /// <param name="stateAdapter">Lambda for state manipulation.</param>
+    /// <param name="flag">Conditional flag dictating whether <paramref name="tandemLambda"/> should be applied or not</param>
+    public static Func<TTanState, Task<T>> Pipe<T, TSrcState, TTanState>(this Func<TSrcState, Task<T>> sourceLambda,
+        Func<T, TTanState, T> tandemLambda,
+        Func<TTanState, TSrcState> stateAdapter,
+        bool flag)
+    {
+        return sourceLambda.Adapter(stateAdapter).Pipe(tandemLambda, flag);
+    }
+
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_0_OR_GREATER
+
+    /// <summary>
+    /// Provides a conditional lambda, which upon execution:
+    /// <para>
+    /// 1. If <paramref name="flag"/> is <see langword="true"/>, feeds the output of
+    /// <paramref name="sourceLambda"/> to the <paramref name="tandemLambda"/> and returns the output obtained
+    /// from <paramref name="tandemLambda"/>.
+    /// </para>
+    /// 2. If <paramref name="flag"/> is <see langword="false"/>, returns the output of the original
+    /// <paramref name="sourceLambda"/>.
+    /// </summary>
+    /// <param name="sourceLambda">Source lambda to which the tandem operation would be applied.</param>
+    /// <param name="tandemLambda">Tandem lambda that would consume the output of <paramref name="sourceLambda"/>.</param>
+    /// <param name="stateAdapter">Lambda for state manipulation.</param>
+    /// <param name="flag">Conditional flag dictating whether <paramref name="tandemLambda"/> should be applied or not</param>
     public static Func<TTanState, ValueTask<T>> Pipe<T, TSrcState, TTanState>(this Func<TSrcState, ValueTask<T>> sourceLambda,
         Func<T, TTanState, ValueTask<T>> tandemLambda,
         Func<TTanState, TSrcState> stateAdapter,
@@ -558,27 +624,7 @@ public static class PipeLine
         return sourceLambda.CrossAdapter(stateAdapter).Pipe(tandemLambda, flag);
     }
 
-    /// <summary>
-    /// Provides a conditional lambda, which upon execution:
-    /// <para>
-    /// 1. If <paramref name="flag"/> is <see langword="true"/>, feeds the output of
-    /// <paramref name="sourceLambda"/> to the <paramref name="tandemLambda"/> and returns the output obtained
-    /// from <paramref name="tandemLambda"/>.
-    /// </para>
-    /// 2. If <paramref name="flag"/> is <see langword="false"/>, returns the output of the original
-    /// <paramref name="sourceLambda"/>.
-    /// </summary>
-    /// <param name="sourceLambda">Source lambda to which the tandem operation would be applied.</param>
-    /// <param name="tandemLambda">Tandem lambda that would consume the output of <paramref name="sourceLambda"/>.</param>
-    /// <param name="stateAdapter">Lambda for state manipulation.</param>
-    /// <param name="flag">Conditional flag dictating whether <paramref name="tandemLambda"/> should be applied or not</param>
-    public static Func<TTanState, Task<T>> Pipe<T, TSrcState, TTanState>(this Func<TSrcState, T> sourceLambda,
-        Func<T, TTanState, Task<T>> tandemLambda,
-        Func<TTanState, TSrcState> stateAdapter,
-        bool flag)
-    {
-        return sourceLambda.Adapter(stateAdapter).Pipe(tandemLambda, flag);
-    }
+#if NET5_0_OR_GREATER
 
     /// <summary>
     /// Provides a conditional lambda, which upon execution:
@@ -602,27 +648,7 @@ public static class PipeLine
         return sourceLambda.Adapter(stateAdapter).Pipe(tandemLambda, flag);
     }
 
-    /// <summary>
-    /// Provides a conditional lambda, which upon execution:
-    /// <para>
-    /// 1. If <paramref name="flag"/> is <see langword="true"/>, feeds the output of
-    /// <paramref name="sourceLambda"/> to the <paramref name="tandemLambda"/> and returns the output obtained
-    /// from <paramref name="tandemLambda"/>.
-    /// </para>
-    /// 2. If <paramref name="flag"/> is <see langword="false"/>, returns the output of the original
-    /// <paramref name="sourceLambda"/>.
-    /// </summary>
-    /// <param name="sourceLambda">Source lambda to which the tandem operation would be applied.</param>
-    /// <param name="tandemLambda">Tandem lambda that would consume the output of <paramref name="sourceLambda"/>.</param>
-    /// <param name="stateAdapter">Lambda for state manipulation.</param>
-    /// <param name="flag">Conditional flag dictating whether <paramref name="tandemLambda"/> should be applied or not</param>
-    public static Func<TTanState, Task<T>> Pipe<T, TSrcState, TTanState>(this Func<TSrcState, Task<T>> sourceLambda,
-        Func<T, TTanState, T> tandemLambda,
-        Func<TTanState, TSrcState> stateAdapter,
-        bool flag)
-    {
-        return sourceLambda.Adapter(stateAdapter).Pipe(tandemLambda, flag);
-    }
+#endif
 
     /// <summary>
     /// Provides a conditional lambda, which upon execution:
@@ -645,6 +671,8 @@ public static class PipeLine
     {
         return sourceLambda.Adapter(stateAdapter).Pipe(tandemLambda, flag);
     }
+
+#endif
 
     #endregion Conditional Pipes (T, TTanState <> TSrcState)
 
@@ -680,18 +708,6 @@ public static class PipeLine
     /// </summary>
     /// <param name="sourceLambda">Source lambda to which the tandem operation would be applied.</param>
     /// <param name="tandemLambda">Tandem lambda that would consume the output of <paramref name="sourceLambda"/>.</param>
-    public static Func<TState, ValueTask> Pipe<T, TState>(this Func<TState, T> sourceLambda,
-        Func<T, TState, ValueTask> tandemLambda)
-    {
-        return async state => await tandemLambda(sourceLambda(state), state).ConfigureAwait(false);
-    }
-
-    /// <summary>
-    /// Provides a lambda, which upon execution, feeds the output of <paramref name="sourceLambda"/>
-    /// to the <paramref name="tandemLambda"/>.
-    /// </summary>
-    /// <param name="sourceLambda">Source lambda to which the tandem operation would be applied.</param>
-    /// <param name="tandemLambda">Tandem lambda that would consume the output of <paramref name="sourceLambda"/>.</param>
     public static Func<TState, Task> Pipe<T, TState>(this Func<TState, Task<T>> sourceLambda,
         Action<T, TState> tandemLambda)
     {
@@ -708,6 +724,20 @@ public static class PipeLine
         Func<T, TState, Task> tandemLambda)
     {
         return async state => await tandemLambda(await sourceLambda(state).Run().ConfigureAwait(false), state).Run().ConfigureAwait(false);
+    }
+
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_0_OR_GREATER
+
+    /// <summary>
+    /// Provides a lambda, which upon execution, feeds the output of <paramref name="sourceLambda"/>
+    /// to the <paramref name="tandemLambda"/>.
+    /// </summary>
+    /// <param name="sourceLambda">Source lambda to which the tandem operation would be applied.</param>
+    /// <param name="tandemLambda">Tandem lambda that would consume the output of <paramref name="sourceLambda"/>.</param>
+    public static Func<TState, ValueTask> Pipe<T, TState>(this Func<TState, T> sourceLambda,
+        Func<T, TState, ValueTask> tandemLambda)
+    {
+        return async state => await tandemLambda(sourceLambda(state), state).ConfigureAwait(false);
     }
 
     /// <summary>
@@ -745,6 +775,8 @@ public static class PipeLine
     {
         return async state => await tandemLambda(await sourceLambda(state).ConfigureAwait(false), state).Run().ConfigureAwait(false);
     }
+
+#endif
 
     #endregion Conditional Pipes To Void Lambda (T, TState)
 
@@ -785,20 +817,6 @@ public static class PipeLine
     /// <param name="sourceLambda">Source lambda to which the tandem operation would be applied.</param>
     /// <param name="tandemLambda">Tandem lambda that would consume the output of <paramref name="sourceLambda"/>.</param>
     /// <param name="stateAdapter">Lambda for state manipulation.</param>
-    public static Func<TTanState, ValueTask> Pipe<T, TSrcState, TTanState>(this Func<TSrcState, T> sourceLambda,
-        Func<T, TTanState, ValueTask> tandemLambda,
-        Func<TTanState, TSrcState> stateAdapter)
-    {
-        return sourceLambda.Adapter(stateAdapter).Pipe(tandemLambda);
-    }
-
-    /// <summary>
-    /// Provides a lambda, which upon execution, feeds the output of <paramref name="sourceLambda"/>
-    /// to the <paramref name="tandemLambda"/>.
-    /// </summary>
-    /// <param name="sourceLambda">Source lambda to which the tandem operation would be applied.</param>
-    /// <param name="tandemLambda">Tandem lambda that would consume the output of <paramref name="sourceLambda"/>.</param>
-    /// <param name="stateAdapter">Lambda for state manipulation.</param>
     public static Func<TTanState, Task> Pipe<T, TSrcState, TTanState>(this Func<TSrcState, Task<T>> sourceLambda,
         Action<T, TTanState> tandemLambda,
         Func<TTanState, TSrcState> stateAdapter)
@@ -815,6 +833,22 @@ public static class PipeLine
     /// <param name="stateAdapter">Lambda for state manipulation.</param>
     public static Func<TTanState, Task> Pipe<T, TSrcState, TTanState>(this Func<TSrcState, Task<T>> sourceLambda,
         Func<T, TTanState, Task> tandemLambda,
+        Func<TTanState, TSrcState> stateAdapter)
+    {
+        return sourceLambda.Adapter(stateAdapter).Pipe(tandemLambda);
+    }
+
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_0_OR_GREATER
+
+    /// <summary>
+    /// Provides a lambda, which upon execution, feeds the output of <paramref name="sourceLambda"/>
+    /// to the <paramref name="tandemLambda"/>.
+    /// </summary>
+    /// <param name="sourceLambda">Source lambda to which the tandem operation would be applied.</param>
+    /// <param name="tandemLambda">Tandem lambda that would consume the output of <paramref name="sourceLambda"/>.</param>
+    /// <param name="stateAdapter">Lambda for state manipulation.</param>
+    public static Func<TTanState, ValueTask> Pipe<T, TSrcState, TTanState>(this Func<TSrcState, T> sourceLambda,
+        Func<T, TTanState, ValueTask> tandemLambda,
         Func<TTanState, TSrcState> stateAdapter)
     {
         return sourceLambda.Adapter(stateAdapter).Pipe(tandemLambda);
@@ -861,6 +895,8 @@ public static class PipeLine
     {
         return sourceLambda.Adapter(stateAdapter).Pipe(tandemLambda);
     }
+
+#endif
 
     #endregion Conditional Pipes To Void Lambda (T, TState)
 
