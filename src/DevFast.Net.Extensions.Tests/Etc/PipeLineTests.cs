@@ -202,5 +202,49 @@
             That(await src.Pipe((Func<int, Token, ValueTask<int>>)Tandem, useAdapter).ExecuteAsync(t), Is.EqualTo(useAdapter ? 2 : 1));
             That(calledWith, Is.EqualTo(useAdapter ? 1 : 0));
         }
+
+        [Test]
+        [TestCase(true)]
+        [TestCase(false)]
+        public async Task Pipe_T_TState_FuncValueTaskT_Combines_TaskT_Tandem(bool useAdapter)
+        {
+            Token t = new Cts().Token;
+            int calledWith = 0;
+            Func<ValueTask<int>> src = static () => ValueTask.FromResult(1);
+            Task<int> Tandem(int i, Token state)
+            {
+                That(state, Is.EqualTo(t));
+                That(i, Is.EqualTo(1));
+                calledWith = i;
+                return Task.FromResult(++i);
+            }
+
+            That(await src.Pipe((Func<int, Token, Task<int>>)Tandem, useAdapter).ExecuteAsync(t), Is.EqualTo(useAdapter ? 2 : 1));
+            That(calledWith, Is.EqualTo(useAdapter ? 1 : 0));
+        }
+
+        [Test]
+        [TestCase(true)]
+        [TestCase(false)]
+        public async Task Pipe_T_TState_FuncTStateValueTaskT_Combines_TaskT_Tandem(bool useAdapter)
+        {
+            Token t = new Cts().Token;
+            int calledWith = 0;
+            Func<Token, ValueTask<int>> src = token =>
+            {
+                That(token, Is.EqualTo(t));
+                return ValueTask.FromResult(1);
+            };
+            Task<int> Tandem(int i, Token state)
+            {
+                That(state, Is.EqualTo(t));
+                That(i, Is.EqualTo(1));
+                calledWith = i;
+                return Task.FromResult(++i);
+            }
+
+            That(await src.Pipe(Tandem, useAdapter).ExecuteAsync(t), Is.EqualTo(useAdapter ? 2 : 1));
+            That(calledWith, Is.EqualTo(useAdapter ? 1 : 0));
+        }
     }
 }
