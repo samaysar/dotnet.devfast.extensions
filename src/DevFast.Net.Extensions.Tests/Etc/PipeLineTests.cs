@@ -543,6 +543,336 @@
 
         #endregion Conditional Pipes (T, TTanState <> TSrcState)
 
+        #region Conditional Pipes To Void Lambda (T, TState)
+
+        [Test]
+        public void Pipe_T_TState_FuncTStateT_Combines_VoidLambda()
+        {
+            Func<Token, int> src = static token =>
+            {
+                That(token, Is.EqualTo(Token.None));
+                return 1;
+            };
+
+            static void Tandem(int i, Token token)
+            {
+                That(token, Is.EqualTo(Token.None));
+                That(i, Is.EqualTo(1));
+            }
+
+            src.Pipe(Tandem).Execute(Token.None);
+        }
+
+        [Test]
+        public async Task Pipe_T_TState_FuncTStateT_Combines_TaskLambda()
+        {
+            Func<Token, int> src = static token =>
+            {
+                That(token, Is.EqualTo(Token.None));
+                return 1;
+            };
+
+            static Task Tandem(int i, Token token)
+            {
+                That(token, Is.EqualTo(Token.None));
+                That(i, Is.EqualTo(1));
+                return Task.CompletedTask;
+            }
+
+            await src.Pipe(Tandem).ExecuteAsync(Token.None);
+        }
+
+        [Test]
+        public async ValueTask Pipe_T_TState_FuncTStateT_Combines_ValueTaskLambda()
+        {
+            Func<Token, int> src = static token =>
+            {
+                That(token, Is.EqualTo(Token.None));
+                return 1;
+            };
+
+            static ValueTask Tandem(int i, Token token)
+            {
+                That(token, Is.EqualTo(Token.None));
+                That(i, Is.EqualTo(1));
+                return ValueTask.CompletedTask;
+            }
+
+            await src.Pipe(Tandem).ExecuteAsync(Token.None);
+        }
+
+        [Test]
+        public async Task Pipe_T_TState_FuncTStateTaskT_Combines_VoidLambda()
+        {
+            Func<Token, Task<int>> src = static token =>
+            {
+                That(token, Is.EqualTo(Token.None));
+                return Task.FromResult(1);
+            };
+
+            static void Tandem(int i, Token token)
+            {
+                That(token, Is.EqualTo(Token.None));
+                That(i, Is.EqualTo(1));
+            }
+
+            await src.Pipe(Tandem).ExecuteAsync(Token.None);
+        }
+
+        [Test]
+        public async Task Pipe_T_TState_FuncTStateTaskT_Combines_TaskLambda()
+        {
+            Func<Token, Task<int>> src = static token =>
+            {
+                That(token, Is.EqualTo(Token.None));
+                return Task.FromResult(1);
+            };
+
+            static Task Tandem(int i, Token token)
+            {
+                That(token, Is.EqualTo(Token.None));
+                That(i, Is.EqualTo(1));
+                return Task.CompletedTask;
+            }
+
+            await src.Pipe(Tandem).ExecuteAsync(Token.None);
+        }
+
+        [Test]
+        public async Task Pipe_T_TState_FuncTStateValueTaskT_Combines_VoidLambda()
+        {
+            Func<Token, ValueTask<int>> src = static token =>
+            {
+                That(token, Is.EqualTo(Token.None));
+                return ValueTask.FromResult(1);
+            };
+
+            static void Tandem(int i, Token token)
+            {
+                That(token, Is.EqualTo(Token.None));
+                That(i, Is.EqualTo(1));
+            }
+
+            await src.Pipe(Tandem).ExecuteAsync(Token.None);
+        }
+
+        [Test]
+        public async ValueTask Pipe_T_TState_FuncTStateValueTaskT_Combines_ValueTaskLambda()
+        {
+            Func<Token, ValueTask<int>> src = static token =>
+            {
+                That(token, Is.EqualTo(Token.None));
+                return ValueTask.FromResult(1);
+            };
+
+            static ValueTask Tandem(int i, Token token)
+            {
+                That(token, Is.EqualTo(Token.None));
+                That(i, Is.EqualTo(1));
+                return ValueTask.CompletedTask;
+            }
+
+            await src.Pipe(Tandem).ExecuteAsync(Token.None);
+        }
+
+        [Test]
+        public async Task Pipe_T_TState_FuncTStateValueTaskT_Combines_TaskLambda()
+        {
+            Func<Token, ValueTask<int>> src = static token =>
+            {
+                That(token, Is.EqualTo(Token.None));
+                return ValueTask.FromResult(1);
+            };
+
+            static Task Tandem(int i, Token token)
+            {
+                That(token, Is.EqualTo(Token.None));
+                That(i, Is.EqualTo(1));
+                return Task.CompletedTask;
+            }
+
+            await src.Pipe(Tandem).ExecuteAsync(Token.None);
+        }
+
+        #endregion Conditional Pipes To Void Lambda (T, TState)
+
+        #region Conditional Pipes To Void Lambda (T, TTanState <> TSrcState)
+
+        [Test]
+        public void Pipe_T_TSrcState_TTanState_FuncTStateT_Combines_VoidLambda()
+        {
+            Func<Token, int> src = static token =>
+            {
+                That(token, Is.EqualTo(Token.None));
+                return 1;
+            };
+
+            static void Tandem(int i, StateObj state)
+            {
+                That(state.Token, Is.EqualTo(Token.None));
+                That(state.CalledWith, Is.EqualTo(0));
+                state.CalledWith = i;
+            }
+
+            StateObj state = new() { Token = Token.None, CalledWith = 0 };
+            src.Pipe((Action<int, StateObj>)Tandem, static x => x.Token).Execute(state);
+            That(state.CalledWith, Is.EqualTo(1));
+        }
+
+        [Test]
+        public async Task Pipe_T_TSrcState_TTanState_FuncTStateT_Combines_TaskLambda()
+        {
+            Func<Token, int> src = static token =>
+            {
+                That(token, Is.EqualTo(Token.None));
+                return 1;
+            };
+
+            static Task Tandem(int i, StateObj state)
+            {
+                That(state.Token, Is.EqualTo(Token.None));
+                That(state.CalledWith, Is.EqualTo(0));
+                state.CalledWith = i;
+                return Task.CompletedTask;
+            }
+
+            StateObj state = new() { Token = Token.None, CalledWith = 0 };
+            await src.Pipe((Func<int, StateObj, Task>)Tandem, static x => x.Token).ExecuteAsync(state);
+            That(state.CalledWith, Is.EqualTo(1));
+        }
+
+        [Test]
+        public async ValueTask Pipe_T_TSrcState_TTanState_FuncTStateT_Combines_ValueTaskLambda()
+        {
+            Func<Token, int> src = static token =>
+            {
+                That(token, Is.EqualTo(Token.None));
+                return 1;
+            };
+
+            static ValueTask Tandem(int i, StateObj state)
+            {
+                That(state.Token, Is.EqualTo(Token.None));
+                That(state.CalledWith, Is.EqualTo(0));
+                state.CalledWith = i;
+                return ValueTask.CompletedTask;
+            }
+
+            StateObj state = new() { Token = Token.None, CalledWith = 0 };
+            await src.Pipe((Func<int, StateObj, ValueTask>)Tandem, static x => x.Token).ExecuteAsync(state);
+            That(state.CalledWith, Is.EqualTo(1));
+        }
+
+        [Test]
+        public async Task Pipe_T_TSrcState_TTanState_FuncTStateTaskT_Combines_VoidLambda()
+        {
+            Func<Token, Task<int>> src = static token =>
+            {
+                That(token, Is.EqualTo(Token.None));
+                return Task.FromResult(1);
+            };
+
+            static void Tandem(int i, StateObj state)
+            {
+                That(state.Token, Is.EqualTo(Token.None));
+                That(state.CalledWith, Is.EqualTo(0));
+                state.CalledWith = i;
+            }
+
+            StateObj state = new() { Token = Token.None, CalledWith = 0 };
+            await src.Pipe((Action<int, StateObj>)Tandem, static x => x.Token).ExecuteAsync(state);
+            That(state.CalledWith, Is.EqualTo(1));
+        }
+
+        [Test]
+        public async Task Pipe_T_TSrcState_TTanState_FuncTStateTaskT_Combines_TaskLambda()
+        {
+            Func<Token, Task<int>> src = static token =>
+            {
+                That(token, Is.EqualTo(Token.None));
+                return Task.FromResult(1);
+            };
+
+            static Task Tandem(int i, StateObj state)
+            {
+                That(state.Token, Is.EqualTo(Token.None));
+                That(state.CalledWith, Is.EqualTo(0));
+                state.CalledWith = i;
+                return Task.CompletedTask;
+            }
+
+            StateObj state = new() { Token = Token.None, CalledWith = 0 };
+            await src.Pipe((Func<int, StateObj, Task>)Tandem, static x => x.Token).ExecuteAsync(state);
+            That(state.CalledWith, Is.EqualTo(1));
+        }
+
+        [Test]
+        public async Task Pipe_T_TSrcState_TTanState_FuncTStateValueTaskT_Combines_VoidLambda()
+        {
+            Func<Token, ValueTask<int>> src = static token =>
+            {
+                That(token, Is.EqualTo(Token.None));
+                return ValueTask.FromResult(1);
+            };
+
+            static void Tandem(int i, StateObj state)
+            {
+                That(state.Token, Is.EqualTo(Token.None));
+                That(state.CalledWith, Is.EqualTo(0));
+                state.CalledWith = i;
+            }
+
+            StateObj state = new() { Token = Token.None, CalledWith = 0 };
+            await src.Pipe((Action<int, StateObj>)Tandem, static x => x.Token).ExecuteAsync(state);
+            That(state.CalledWith, Is.EqualTo(1));
+        }
+
+        [Test]
+        public async ValueTask Pipe_T_TSrcState_TTanState_FuncTStateValueTaskT_Combines_ValueTaskLambda()
+        {
+            Func<Token, ValueTask<int>> src = static token =>
+            {
+                That(token, Is.EqualTo(Token.None));
+                return ValueTask.FromResult(1);
+            };
+
+            static ValueTask Tandem(int i, StateObj state)
+            {
+                That(state.Token, Is.EqualTo(Token.None));
+                That(state.CalledWith, Is.EqualTo(0));
+                state.CalledWith = i;
+                return ValueTask.CompletedTask;
+            }
+
+            StateObj state = new() { Token = Token.None, CalledWith = 0 };
+            await src.Pipe((Func<int, StateObj, ValueTask>)Tandem, static x => x.Token).ExecuteAsync(state);
+            That(state.CalledWith, Is.EqualTo(1));
+        }
+
+        [Test]
+        public async Task Pipe_T_TSrcState_TTanState_FuncTStateValueTaskT_Combines_TaskLambda()
+        {
+            Func<Token, ValueTask<int>> src = static token =>
+            {
+                That(token, Is.EqualTo(Token.None));
+                return ValueTask.FromResult(1);
+            };
+
+            static Task Tandem(int i, StateObj state)
+            {
+                That(state.Token, Is.EqualTo(Token.None));
+                That(state.CalledWith, Is.EqualTo(0));
+                state.CalledWith = i;
+                return Task.CompletedTask;
+            }
+
+            StateObj state = new() { Token = Token.None, CalledWith = 0 };
+            await src.Pipe((Func<int, StateObj, Task>)Tandem, static x => x.Token).ExecuteAsync(state);
+            That(state.CalledWith, Is.EqualTo(1));
+        }
+
+        #endregion Conditional Pipes To Void Lambda (T, TTanState <> TSrcState)
+
         private class StateObj
         {
             public Token Token { get; init; }
