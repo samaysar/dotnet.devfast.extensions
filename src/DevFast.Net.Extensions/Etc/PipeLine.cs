@@ -151,7 +151,7 @@
             return flag ? input.Pipe(adapter) : input;
         }
 
-        #region Conditional Pipes (TIn = TOut, TState)
+        #region Conditional Pipes (T, TState)
 
         /// <summary>
         /// Provides a conditional lambda, which upon execution:
@@ -358,9 +358,9 @@
             return sourceLambda.CrossAdapter().Pipe(tandemLambda, flag);
         }
 
-        #endregion Conditional Pipes (TIn = TOut, TState)
+        #endregion Conditional Pipes (T, TState)
 
-        #region Conditional Pipes (TIn = TOut, TTanState <> TSrcState)
+        #region Conditional Pipes (T, TTanState <> TSrcState)
 
         /// <summary>
         /// Provides a conditional lambda, which upon execution:
@@ -451,9 +451,9 @@
             return sourceLambda.CrossAdapter(stateAdapter).Pipe(tandemLambda.Adapter(), flag);
         }
 
-        #endregion Conditional Pipes (TIn = TOut, TTanState <> TSrcState)
+        #endregion Conditional Pipes (T, TTanState <> TSrcState)
 
-        #region Conditional Pipes To Action (TIn = TOut, TState)
+        #region Conditional Pipes To Action (T, TState)
 
         /// <summary>
         /// Provides a lambda, which upon execution, feeds the output of <paramref name="sourceLambda"/>
@@ -527,9 +527,9 @@
             return async state => await tandemLambda(await sourceLambda(state).ConfigureAwait(false), state).Run().ConfigureAwait(false);
         }
 
-        #endregion Conditional Pipes To Action (TIn = TOut, TState)
+        #endregion Conditional Pipes To Action (T, TState)
 
-        #region Conditional Pipes To Action (TIn = TOut, TTanState <> TSrcState)
+        #region Conditional Pipes To Action (T, TTanState <> TSrcState)
 
         /// <summary>
         /// Provides a lambda, which upon execution, feeds the output of <paramref name="sourceLambda"/>
@@ -615,7 +615,7 @@
             return async state => await tandemLambda(await sourceLambda(stateAdapter(state)).ConfigureAwait(false), state).Run().ConfigureAwait(false);
         }
 
-        #endregion Conditional Pipes To Action (TIn = TOut, TState)
+        #endregion Conditional Pipes To Action (T, TState)
 
         //    //-------------------------------------------->>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
