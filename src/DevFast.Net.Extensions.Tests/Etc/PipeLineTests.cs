@@ -3,6 +3,8 @@
     [TestFixture]
     public class PipeLineTests
     {
+        #region Conditional Pipes (TIn = TOut, TState)
+
         [Test]
         public void Pipe_TInTOut_Uses_Adapter()
         {
@@ -246,5 +248,13 @@
             That(await src.Pipe(Tandem, useAdapter).ExecuteAsync(t), Is.EqualTo(useAdapter ? 2 : 1));
             That(calledWith, Is.EqualTo(useAdapter ? 1 : 0));
         }
+
+        #endregion Conditional Pipes (TIn = TOut, TState)
+
+        #region Conditional Pipes (TIn = TOut, TTanState <> TSrcState)
+
+
+
+        #endregion Conditional Pipes (TIn = TOut, TTanState <> TSrcState)
     }
 }

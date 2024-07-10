@@ -12,7 +12,7 @@ public class LambdasTests
         Action error = () => throw ex;
         result.Execute();
         That(lambdaCount, Is.EqualTo(1));
-        Exception? err = Throws<Exception>(() => error.Execute());
+        Exception? err = Throws<Exception>(error.Execute);
         That(err, Is.Not.Null);
         That(ReferenceEquals(err, ex), Is.EqualTo(true));
     }
@@ -455,7 +455,7 @@ public class LambdasTests
         Func<Task> error = () => throw ex;
         await result.ExecuteAsync().ConfigureAwait(false);
         That(lambdaCount, Is.EqualTo(1));
-        Exception? err = ThrowsAsync<Exception>(async () => await error.ExecuteAsync().ConfigureAwait(false));
+        Exception? err = ThrowsAsync<Exception>(error.ExecuteAsync);
         That(err, Is.Not.Null);
         That(ReferenceEquals(err, ex), Is.EqualTo(true));
     }
@@ -523,7 +523,7 @@ public class LambdasTests
         Func<Task> error = () => throw ex;
         That(await result.ExecuteAsync().ConfigureAwait(false), Is.EqualTo(1));
         That(lambdaCount, Is.EqualTo(1));
-        Exception? err = ThrowsAsync<Exception>(async () => await error.ExecuteAsync().ConfigureAwait(false));
+        Exception? err = ThrowsAsync<Exception>(error.ExecuteAsync);
         That(err, Is.Not.Null);
         That(ReferenceEquals(err, ex), Is.EqualTo(true));
     }
