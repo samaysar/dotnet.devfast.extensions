@@ -268,7 +268,7 @@ public static class PipeLine
     /// Irrespective to the state of the <paramref name="task"/> outcome would be identical.
     /// </para>
     /// </summary>
-    /// <param name="task">Source lambda to which the tandem operation would be applied.</param>
+    /// <param name="task">Task to which the tandem operation would be applied.</param>
     /// <param name="tandemLambda">Tandem lambda that would consume the output of <paramref name="task"/>.</param>
     /// <param name="flag">Conditional flag dictating whether <paramref name="tandemLambda"/> should be applied or not</param>
     public static Func<TState, Task<T>> Pipe<T, TState>(this Task<T> task,
@@ -899,6 +899,105 @@ public static class PipeLine
 #endif
 
     #endregion Conditional Pipes To Void Lambda (T, TState)
+
+    #region Pipes (TIn, TState, TOut)
+
+    /// <summary>
+    /// Provides a lambda, which upon execution, feeds <paramref name="value"/>
+    /// to the <paramref name="tandemLambda"/> and returns its output.
+    /// </summary>
+    /// <param name="value">Value to feed</param>
+    /// <param name="tandemLambda">Tandem lambda that would consume the value.</param>
+    public static Func<TState, TOut> Pipe<TIn, TState, TOut>(this TIn value,
+        Func<TIn, TState, TOut> tandemLambda)
+    {
+        return value.Adapter<TIn, TState>().Pipe(tandemLambda);
+    }
+
+    /// <summary>
+    /// Provides a lambda, which upon execution, feeds the output of
+    /// <paramref name="sourceLambda"/> to the <paramref name="tandemLambda"/> and returns the output obtained
+    /// from <paramref name="tandemLambda"/>.
+    /// </summary>
+    /// <param name="sourceLambda">Source lambda to which the tandem operation would be applied.</param>
+    /// <param name="tandemLambda">Tandem lambda that would consume the value.</param>
+    public static Func<TState, TOut> Pipe<TIn, TState, TOut>(this Func<TIn> sourceLambda,
+        Func<TIn, TState, TOut> tandemLambda)
+    {
+        return sourceLambda.Adapter<TIn, TState>().Pipe(tandemLambda);
+    }
+
+    /// <summary>
+    /// Provides a lambda, which upon execution, feeds the output of
+    /// <paramref name="sourceLambda"/> to the <paramref name="tandemLambda"/> and returns the output obtained
+    /// from <paramref name="tandemLambda"/>.
+    /// </summary>
+    /// <param name="sourceLambda">Source lambda to which the tandem operation would be applied.</param>
+    /// <param name="tandemLambda">Tandem lambda that would consume the value.</param>
+    public static Func<TState, TOut> Pipe<TIn, TState, TOut>(this Func<TState, TIn> sourceLambda,
+        Func<TIn, TState, TOut> tandemLambda)
+    {
+        return sourceLambda.Pipe(tandemLambda.Adapter());
+    }
+
+    /// <summary>
+    /// Provides a lambda, which upon execution, feeds the output of
+    /// <paramref name="task"/> to the <paramref name="tandemLambda"/> and returns the output obtained
+    /// from <paramref name="tandemLambda"/>.
+    /// </summary>
+    /// <para>
+    /// IMPLEMENTATION NOTE: As the purpose of pipelines is to executes everything as lazily as possible,
+    /// calling this method on a non-running <see cref="Task"/> is advisable, though NOT necessary.
+    /// Irrespective to the state of the <paramref name="task"/> outcome would be identical.
+    /// </para>
+    /// <param name="task">Task to which the tandem operation would be applied.</param>
+    /// <param name="tandemLambda">Tandem lambda that would consume the value.</param>
+    public static Func<TState, Task<TOut>> Pipe<TIn, TState, TOut>(this Task<TIn> task,
+        Func<TIn, TState, Task<TOut>> tandemLambda)
+    {
+        return task.Adapter<TIn, TState>().Pipe(tandemLambda);
+    }
+
+    /// <summary>
+    /// Provides a lambda, which upon execution, feeds the output of
+    /// <paramref name="sourceLambda"/> to the <paramref name="tandemLambda"/> and returns the output obtained
+    /// from <paramref name="tandemLambda"/>.
+    /// </summary>
+    /// <param name="sourceLambda">Source lambda to which the tandem operation would be applied.</param>
+    /// <param name="tandemLambda">Tandem lambda that would consume the value.</param>
+    public static Func<TState, Task<TOut>> Pipe<TIn, TState, TOut>(this Func<Task<TIn>> sourceLambda,
+        Func<TIn, TState, Task<TOut>> tandemLambda)
+    {
+        return sourceLambda.Adapter<TIn, TState>().Pipe(tandemLambda);
+    }
+
+    /// <summary>
+    /// Provides a lambda, which upon execution, feeds the output of
+    /// <paramref name="sourceLambda"/> to the <paramref name="tandemLambda"/> and returns the output obtained
+    /// from <paramref name="tandemLambda"/>.
+    /// </summary>
+    /// <param name="sourceLambda">Source lambda to which the tandem operation would be applied.</param>
+    /// <param name="tandemLambda">Tandem lambda that would consume the value.</param>
+    public static Func<TState, Task<TOut>> Pipe<TIn, TState, TOut>(this Func<TState, Task<TIn>> sourceLambda,
+        Func<TIn, TState, Task<TOut>> tandemLambda)
+    {
+        return sourceLambda.Pipe(tandemLambda.Adapter());
+    }
+
+    /// <summary>
+    /// Provides a lambda, which upon execution, feeds the output of
+    /// <paramref name="sourceLambda"/> to the <paramref name="tandemLambda"/> and returns the output obtained
+    /// from <paramref name="tandemLambda"/>.
+    /// </summary>
+    /// <param name="sourceLambda">Source lambda to which the tandem operation would be applied.</param>
+    /// <param name="tandemLambda">Tandem lambda that would consume the value.</param>
+    public static Func<TState, Task<TOut>> Pipe<TIn, TState, TOut>(this Func<TState, TIn> sourceLambda,
+        Func<TIn, TState, Task<TOut>> tandemLambda)
+    {
+        return sourceLambda.Pipe(tandemLambda.SyncAdapter());
+    }
+
+    #endregion Pipes (TIn, TState, TOut)
 
     //    //-------------------------------------------->>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
