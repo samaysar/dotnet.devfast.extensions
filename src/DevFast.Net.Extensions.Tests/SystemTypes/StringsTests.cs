@@ -1,5 +1,4 @@
 ﻿using System.Globalization;
-using DevFast.Net.Extensions.SystemTypes;
 
 namespace DevFast.Net.Extensions.Tests.SystemTypes
 {
@@ -512,6 +511,8 @@ namespace DevFast.Net.Extensions.Tests.SystemTypes
             });
         }
 
+#if NET6_0_OR_GREATER
+
         [Test]
         [TestCase("2001-01-01", "yyyy-MM-dd", true)]
         [TestCase("2001-01-01", "yyyy-MM-dd", true)]
@@ -653,6 +654,8 @@ namespace DevFast.Net.Extensions.Tests.SystemTypes
                 That(default(TimeOnly), Is.EqualTo(ts));
             }
         }
+
+#endif
 
         [Test]
         [TestCase("2001-01-01 00:00:00", "yyyy-MM-dd hh:mm:ss", true)]

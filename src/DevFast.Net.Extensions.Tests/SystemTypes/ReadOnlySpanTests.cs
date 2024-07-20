@@ -1,4 +1,5 @@
-﻿using System.Globalization;
+﻿#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_0_OR_GREATER
+using System.Globalization;
 using DevFast.Net.Extensions.SystemTypes;
 
 namespace DevFast.Net.Extensions.Tests.SystemTypes
@@ -873,3 +874,4 @@ namespace DevFast.Net.Extensions.Tests.SystemTypes
 #endif
     }
 }
+#endif

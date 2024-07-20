@@ -1,4 +1,6 @@
-﻿using System.Globalization;
+﻿#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_0_OR_GREATER
+
+using System.Globalization;
 
 namespace DevFast.Net.Extensions.SystemTypes;
 
@@ -185,6 +187,8 @@ public static class ReadOnlySpan
         return decimal.TryParse(input, style, formatProvider, out value);
     }
 
+#if NET6_0_OR_GREATER
+
     /// <summary>
     /// Tries parsing <paramref name="input"/> character span to <seealso cref="DateOnly"/> value.
     /// Returns <see langword="true"/> if parsing is successful else <see langword="false"/>.
@@ -272,6 +276,8 @@ public static class ReadOnlySpan
     {
         return TimeOnly.TryParseExact(input, formats, formatProvider, style, out value);
     }
+
+#endif
 
     /// <summary>
     /// Tries parsing <paramref name="input"/> character span to <seealso cref="DateTime"/> value.
@@ -479,3 +485,5 @@ public static class ReadOnlySpan
     #endregion TryTo on ReadOnlySpan<char>
 #endif
 }
+
+#endif
