@@ -6,7 +6,7 @@ public class PipeLineTests
     #region Conditional Pipes (T, TState)
 
     [Test]
-    public void Pipe_TInTOut_Uses_Adapter()
+    public void Pipe_TInTOut_Uses_Tandem()
     {
         int calledWith = 0;
         double Adapter(int i)
@@ -20,9 +20,24 @@ public class PipeLineTests
     }
 
     [Test]
+    public void Pipe_TInTOut_FuncTIn_Uses_Tandem()
+    {
+        int calledWith = 0;
+        Func<int> src = () => 2;
+        double Adapter(int i)
+        {
+            calledWith = i;
+            return 0;
+        }
+
+        That(src.Pipe(Adapter).Execute(), Is.EqualTo(0));
+        That(calledWith, Is.EqualTo(2));
+    }
+
+    [Test]
     [TestCase(true)]
     [TestCase(false)]
-    public void Pipe_TIn_TOut_Uses_Adapter(bool useAdapter)
+    public void Pipe_T_Uses_Tandem(bool useAdapter)
     {
         int calledWith = 0;
         int Adapter(int i)
@@ -32,6 +47,23 @@ public class PipeLineTests
         }
 
         That(2.Pipe(Adapter, useAdapter), Is.EqualTo(!useAdapter ? 2 : 0));
+        That(calledWith, Is.EqualTo(useAdapter ? 2 : 0));
+    }
+
+    [Test]
+    [TestCase(true)]
+    [TestCase(false)]
+    public void Pipe_T_FuncT_Uses_Tandem(bool useAdapter)
+    {
+        int calledWith = 0;
+        Func<int> src = () => 2;
+        int Adapter(int i)
+        {
+            calledWith = i;
+            return 0;
+        }
+
+        That(src.Pipe(Adapter, useAdapter).Execute(), Is.EqualTo(!useAdapter ? 2 : 0));
         That(calledWith, Is.EqualTo(useAdapter ? 2 : 0));
     }
 
@@ -1208,6 +1240,193 @@ public class PipeLineTests
     #endregion Pipes (TIn, TState, TOut)
 
     #region Pipes (TIn, TTanState <> TSrcState, TOut)
+
+    [Test]
+    public void Pipe_TInTSrcStateTTanStateTOut_On_FuncTSrcStateTIn_Combines_Tandem()
+    {
+        Func<Token, int> src = static token =>
+        {
+            That(token, Is.EqualTo(Token.None));
+            return 1;
+        };
+
+        static decimal Tandem(int i, StateObj state)
+        {
+            Multiple(() => That(state.Token, Is.EqualTo(Token.None)));
+            That(state.CalledWith, Is.EqualTo(0));
+            state.CalledWith = i;
+            return ++i;
+        }
+
+        StateObj state = new() { Token = Token.None, CalledWith = 0 };
+        Multiple(() => That(src.Pipe((Func<int, StateObj, decimal>)Tandem, static x => x.Token).Execute(state), Is.EqualTo(2.0m)));
+        That(state.CalledWith, Is.EqualTo(1));
+    }
+
+    [Test]
+    public void Pipe_TInTSrcStateTTanStateTOut_On_FuncTSrcStateTaskTIn_Combines_Tandem()
+    {
+        Func<Token, Task<int>> src = static token =>
+        {
+            That(token, Is.EqualTo(Token.None));
+            return Task.FromResult(1);
+        };
+
+        static Task<decimal> Tandem(int i, StateObj state)
+        {
+            Multiple(() => That(state.Token, Is.EqualTo(Token.None)));
+            That(state.CalledWith, Is.EqualTo(0));
+            state.CalledWith = i;
+            return Task.FromResult(++i * 1.0m);
+        }
+
+        StateObj state = new() { Token = Token.None, CalledWith = 0 };
+        Multiple(async () => That(await src.Pipe((Func<int, StateObj, Task<decimal>>)Tandem, static x => x.Token).ExecuteAsync(state), Is.EqualTo(2.0m)));
+        That(state.CalledWith, Is.EqualTo(1));
+    }
+
+    [Test]
+    public void Pipe_TInTSrcStateTTanStateTOut_On_FuncTSrcStateTIn_Combines_Task_Tandem()
+    {
+        Func<Token, int> src = static token =>
+        {
+            That(token, Is.EqualTo(Token.None));
+            return 1;
+        };
+
+        static Task<decimal> Tandem(int i, StateObj state)
+        {
+            Multiple(() => That(state.Token, Is.EqualTo(Token.None)));
+            That(state.CalledWith, Is.EqualTo(0));
+            state.CalledWith = i;
+            return Task.FromResult(++i * 1.0m);
+        }
+
+        StateObj state = new() { Token = Token.None, CalledWith = 0 };
+        Multiple(async () => That(await src.Pipe((Func<int, StateObj, Task<decimal>>)Tandem, static x => x.Token).ExecuteAsync(state), Is.EqualTo(2.0m)));
+        That(state.CalledWith, Is.EqualTo(1));
+    }
+
+    [Test]
+    public void Pipe_TInTSrcStateTTanStateTOut_On_FuncTSrcStateTaskTIn_Combines_Sync_Tandem()
+    {
+        Func<Token, Task<int>> src = static token =>
+        {
+            That(token, Is.EqualTo(Token.None));
+            return Task.FromResult(1);
+        };
+
+        static decimal Tandem(int i, StateObj state)
+        {
+            Multiple(() => That(state.Token, Is.EqualTo(Token.None)));
+            That(state.CalledWith, Is.EqualTo(0));
+            state.CalledWith = i;
+            return ++i * 1.0m;
+        }
+
+        StateObj state = new() { Token = Token.None, CalledWith = 0 };
+        Multiple(async () => That(await src.Pipe((Func<int, StateObj, decimal>)Tandem, static x => x.Token).ExecuteAsync(state), Is.EqualTo(2.0m)));
+        That(state.CalledWith, Is.EqualTo(1));
+    }
+
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_0_OR_GREATER
+
+    [Test]
+    public void Pipe_TInTSrcStateTTanStateTOut_On_FuncTSrcStateValueTaskTIn_Combines_Tandem()
+    {
+        Func<Token, ValueTask<int>> src = static token =>
+        {
+            That(token, Is.EqualTo(Token.None));
+            return ValueTask.FromResult(1);
+        };
+
+        static ValueTask<decimal> Tandem(int i, StateObj state)
+        {
+            Multiple(() => That(state.Token, Is.EqualTo(Token.None)));
+            That(state.CalledWith, Is.EqualTo(0));
+            state.CalledWith = i;
+            return ValueTask.FromResult(++i * 1.0m);
+        }
+
+        StateObj state = new() { Token = Token.None, CalledWith = 0 };
+        Multiple(async () => That(await src.Pipe((Func<int, StateObj, ValueTask<decimal>>)Tandem, static x => x.Token).ExecuteAsync(state), Is.EqualTo(2.0m)));
+
+        That(state.CalledWith, Is.EqualTo(1));
+    }
+
+    [Test]
+    public void Pipe_TInTSrcStateTTanStateTOut_On_FuncTSrcStateValueTaskTIn_Combines_Task_Tandem()
+    {
+        Func<Token, ValueTask<int>> src = static token =>
+        {
+            That(token, Is.EqualTo(Token.None));
+            return ValueTask.FromResult(1);
+        };
+
+        static Task<decimal> Tandem(int i, StateObj state)
+        {
+            Multiple(() => That(state.Token, Is.EqualTo(Token.None)));
+            That(state.CalledWith, Is.EqualTo(0));
+            state.CalledWith = i;
+            return Task.FromResult(++i * 1.0m);
+        }
+
+        StateObj state = new() { Token = Token.None, CalledWith = 0 };
+        Multiple(async () => That(await src.Pipe((Func<int, StateObj, Task<decimal>>)Tandem, static x => x.Token).ExecuteAsync(state), Is.EqualTo(2.0m)));
+        That(state.CalledWith, Is.EqualTo(1));
+    }
+
+#if NET5_0_OR_GREATER
+
+    [Test]
+    public void Pipe_TInTSrcStateTTanStateTOut_On_FuncTSrcStateTIn_Combines_ValueTask_Tandem()
+    {
+        Func<Token, int> src = static token =>
+        {
+            That(token, Is.EqualTo(Token.None));
+            return 1;
+        };
+
+        static ValueTask<decimal> Tandem(int i, StateObj state)
+        {
+            Multiple(() => That(state.Token, Is.EqualTo(Token.None)));
+            That(state.CalledWith, Is.EqualTo(0));
+            state.CalledWith = i;
+            return ValueTask.FromResult(++i * 1.0m);
+        }
+
+        StateObj state = new() { Token = Token.None, CalledWith = 0 };
+        Multiple(async () => That(await src.Pipe((Func<int, StateObj, ValueTask<decimal>>)Tandem, static x => x.Token).ExecuteAsync(state), Is.EqualTo(2.0m)));
+
+        That(state.CalledWith, Is.EqualTo(1));
+    }
+
+#endif
+
+    [Test]
+    public void Pipe_TInTSrcStateTTanStateTOut_On_FuncTSrcStateValueTaskTIn_Combines_Sync_Tandem()
+    {
+        Func<Token, ValueTask<int>> src = static token =>
+        {
+            That(token, Is.EqualTo(Token.None));
+            return ValueTask.FromResult(1);
+        };
+
+        static decimal Tandem(int i, StateObj state)
+        {
+            Multiple(() => That(state.Token, Is.EqualTo(Token.None)));
+            That(state.CalledWith, Is.EqualTo(0));
+            state.CalledWith = i;
+            return ++i * 1.0m;
+        }
+
+        StateObj state = new() { Token = Token.None, CalledWith = 0 };
+        Multiple(async () => That(await src.Pipe((Func<int, StateObj, decimal>)Tandem, static x => x.Token).ExecuteAsync(state), Is.EqualTo(2.0m)));
+
+        That(state.CalledWith, Is.EqualTo(1));
+    }
+
+#endif
 
     #endregion Pipes (TIn, TTanState <> TSrcState, TOut)
 

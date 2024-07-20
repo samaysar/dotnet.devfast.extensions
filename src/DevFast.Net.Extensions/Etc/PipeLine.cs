@@ -164,32 +164,143 @@ public static class PipeLine
 
     #endregion Source Adapter
 
+    #region Pipe (TIn, TOut)
+
     /// <summary>
-    /// Applies <paramref name="adapter"/> on the <paramref name="input"/>
+    /// Applies <paramref name="tandemLambda"/> on the <paramref name="input"/>
     /// and returns the results.
     /// </summary>
     /// <param name="input">Source on which the adapter is applied.</param>
-    /// <param name="adapter">Adapter lambda</param>
+    /// <param name="tandemLambda">Tandem lambda</param>
     public static TOut Pipe<TIn, TOut>(this TIn input,
-        Func<TIn, TOut> adapter)
+        Func<TIn, TOut> tandemLambda)
     {
-        return adapter(input);
+        return tandemLambda(input);
     }
 
     /// <summary>
-    /// Applies <paramref name="adapter"/> on the <paramref name="input"/>
+    /// Applies <paramref name="tandemLambda"/> on the output of <paramref name="sourceLambda"/>.
+    /// </summary>
+    /// <param name="sourceLambda">Source lambda on which tandem lambda will be applied</param>
+    /// <param name="tandemLambda">Tandem lambda to apply</param>
+    public static Func<TTOut> Pipe<TIn, TTOut>(this Func<TIn> sourceLambda,
+        Func<TIn, TTOut> tandemLambda)
+    {
+        return () => tandemLambda(sourceLambda());
+    }
+
+    /// <summary>
+    /// Applies <paramref name="tandemLambda"/> on the output of <paramref name="task"/>.
+    /// </summary>
+    /// <para>
+    /// IMPLEMENTATION NOTE: As the purpose of pipelines is to executes everything as lazily as possible,
+    /// calling this method on a non-running <see cref="Task"/> is advisable, though NOT necessary.
+    /// Irrespective to the state of the <paramref name="task"/> outcome would be identical.
+    /// </para>
+    /// <param name="task">Task on which tandem lambda will be applied</param>
+    /// <param name="tandemLambda">Tandem lambda to apply</param>
+    public static Func<Task<TTOut>> Pipe<TIn, TTOut>(this Task<TIn> task,
+        Func<TIn, Task<TTOut>> tandemLambda)
+    {
+        return async () => await tandemLambda(await task.Run().ConfigureAwait(false)).Run().ConfigureAwait(false);
+    }
+
+    /// <summary>
+    /// Applies <paramref name="tandemLambda"/> on the output of <paramref name="task"/>.
+    /// </summary>
+    /// <para>
+    /// IMPLEMENTATION NOTE: As the purpose of pipelines is to executes everything as lazily as possible,
+    /// calling this method on a non-running <see cref="Task"/> is advisable, though NOT necessary.
+    /// Irrespective to the state of the <paramref name="task"/> outcome would be identical.
+    /// </para>
+    /// <param name="task">Task on which tandem lambda will be applied</param>
+    /// <param name="tandemLambda">Tandem lambda to apply</param>
+    public static Func<Task<TTOut>> Pipe<TIn, TTOut>(this Task<TIn> task,
+        Func<TIn, TTOut> tandemLambda)
+    {
+        return async () => tandemLambda(await task.Run().ConfigureAwait(false));
+    }
+
+    /// <summary>
+    /// Applies <paramref name="tandemLambda"/> on <paramref name="value"/>.
+    /// </summary>
+    /// <param name="value">Value on which tandem lambda will be applied</param>
+    /// <param name="tandemLambda">Tandem lambda to apply</param>
+    public static Func<Task<TTOut>> Pipe<TIn, TTOut>(this TIn value,
+        Func<TIn, Task<TTOut>> tandemLambda)
+    {
+        return async () => await tandemLambda(value).Run().ConfigureAwait(false);
+    }
+
+    /// <summary>
+    /// Applies <paramref name="tandemLambda"/> on the output of <paramref name="sourceLambda"/>.
+    /// </summary>
+    /// <param name="sourceLambda">Lambda on which tandem lambda will be applied</param>
+    /// <param name="tandemLambda">Tandem lambda to apply</param>
+    public static Func<Task<TTOut>> Pipe<TIn, TTOut>(this Func<Task<TIn>> sourceLambda,
+        Func<TIn, Task<TTOut>> tandemLambda)
+    {
+        return async () => await tandemLambda(await sourceLambda().Run().ConfigureAwait(false)).Run().ConfigureAwait(false);
+    }
+
+    /// <summary>
+    /// Applies <paramref name="tandemLambda"/> on the output of <paramref name="sourceLambda"/>.
+    /// </summary>
+    /// <param name="sourceLambda">Lambda on which tandem lambda will be applied</param>
+    /// <param name="tandemLambda">Tandem lambda to apply</param>
+    public static Func<Task<TTOut>> Pipe<TIn, TTOut>(this Func<Task<TIn>> sourceLambda,
+        Func<TIn, TTOut> tandemLambda)
+    {
+        return async () => tandemLambda(await sourceLambda().Run().ConfigureAwait(false));
+    }
+
+    /// <summary>
+    /// Applies <paramref name="tandemLambda"/> on the output of <paramref name="sourceLambda"/>.
+    /// </summary>
+    /// <param name="sourceLambda">Lambda on which tandem lambda will be applied</param>
+    /// <param name="tandemLambda">Tandem lambda to apply</param>
+    public static Func<Task<TTOut>> Pipe<TIn, TTOut>(this Func<TIn> sourceLambda,
+        Func<TIn, Task<TTOut>> tandemLambda)
+    {
+        return async () => await tandemLambda(sourceLambda()).Run().ConfigureAwait(false);
+    }
+
+    #endregion Pipe (TIn, TOut)
+
+    #region Conditional Pipe (T)
+
+    /// <summary>
+    /// Applies <paramref name="tandemLambda"/> on the <paramref name="input"/>
     /// when <paramref name="flag"/> is <see langword="true"/> and returns the result;
     /// otherwise, returns back the original <paramref name="input"/>.
     /// </summary>
     /// <param name="input">Source on which the adapter is applied.</param>
-    /// <param name="adapter">Adapter lambda</param>
+    /// <param name="tandemLambda">Tandem lambda</param>
     /// <param name="flag">Flag dictating whether should be applied or not</param>
     public static T Pipe<T>(this T input,
-        Func<T, T> adapter,
+        Func<T, T> tandemLambda,
         bool flag)
     {
-        return flag ? input.Pipe(adapter) : input;
+        return flag ? input.Pipe(tandemLambda) : input;
     }
+
+    /// <summary>
+    /// Applies <paramref name="tandemLambda"/> on the out of
+    /// <paramref name="sourceLambda"/> when <paramref name="flag"/> is
+    /// <see langword="true"/>;
+    /// otherwise, returns back the original <paramref name="sourceLambda"/>.
+    /// </summary>
+    /// <param name="sourceLambda">Source lambda on which tandem lambda will be applied</param>
+    /// <param name="tandemLambda">Tandem lambda to apply</param>
+    /// <param name="flag">Flag which dictate whether to apply tandem lambda or not</param>
+    public static Func<T> Pipe<T>(this Func<T> sourceLambda,
+        Func<T, T> tandemLambda,
+        bool flag)
+    {
+        return flag ? () => tandemLambda(sourceLambda()) : sourceLambda;
+    }
+
+    #endregion Conditional Pipe (T)
 
     #region Conditional Pipes (T, TState)
 
