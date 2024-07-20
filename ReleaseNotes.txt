@@ -1,6 +1,9 @@
 DevFast.Net.Extensions 0.7.0
 
- 1. New feature - Added following new extension methods in DevFast.Net.Extensions.Etc.PipeLine:
+ 1. Changes - Removing support for .Net 7.0 
+ 2. New feature - Adding support for .Net Standard 2.0
+ 3. New feature - Adding support for .Net Standard 2.1
+ 4. New feature - Added following new extension methods in DevFast.Net.Extensions.Etc.PipeLine:
 			- Pipe<T>(this Func<Task<T>>, Func<T,Task<T>>, bool)
 			- Pipe<T>(this Func<Task<T>>, Func<T,T>, bool)
 			- Pipe<T>(this Func<ValueTask<T>>, Func<T,Task<T>>, bool)
