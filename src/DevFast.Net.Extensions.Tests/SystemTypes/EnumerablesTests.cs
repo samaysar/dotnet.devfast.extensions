@@ -18,7 +18,7 @@ public class EnumerablesTests
         That(val, Is.EqualTo(1));
     }
 
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_0_OR_GREATER || NET5_0_OR_GREATER
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_0_OR_GREATER
 
     [Test]
     public async Task ForEachAsync_On_Enumerable_Calls_The_Lambda_With_Given_Token()

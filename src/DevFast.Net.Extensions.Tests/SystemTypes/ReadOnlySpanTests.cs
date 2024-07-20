@@ -1,4 +1,4 @@
-﻿#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_0_OR_GREATER || NET5_0_OR_GREATER
+﻿#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_0_OR_GREATER
 using System.Globalization;
 using DevFast.Net.Extensions.SystemTypes;
 

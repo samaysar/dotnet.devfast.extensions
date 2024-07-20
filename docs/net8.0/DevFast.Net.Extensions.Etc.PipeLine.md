@@ -49,6 +49,20 @@ public static class PipeLine
   - **[Pipe&lt;T,TState&gt;(this T, Func&lt;T,TState,T&gt;, bool)](DevFast.Net.Extensions.Etc.PipeLine.md#DevFast.Net.Extensions.Etc.PipeLine.Pipe_T,TState_(thisT,System.Func_T,TState,T_,bool) 'DevFast.Net.Extensions.Etc.PipeLine.Pipe<T,TState>(this T, System.Func<T,TState,T>, bool)')**
   - **[Pipe&lt;T&gt;(this T, Func&lt;T,T&gt;, bool)](DevFast.Net.Extensions.Etc.PipeLine.md#DevFast.Net.Extensions.Etc.PipeLine.Pipe_T_(thisT,System.Func_T,T_,bool) 'DevFast.Net.Extensions.Etc.PipeLine.Pipe<T>(this T, System.Func<T,T>, bool)')**
   - **[Pipe&lt;TIn,TOut&gt;(this TIn, Func&lt;TIn,TOut&gt;)](DevFast.Net.Extensions.Etc.PipeLine.md#DevFast.Net.Extensions.Etc.PipeLine.Pipe_TIn,TOut_(thisTIn,System.Func_TIn,TOut_) 'DevFast.Net.Extensions.Etc.PipeLine.Pipe<TIn,TOut>(this TIn, System.Func<TIn,TOut>)')**
+  - **[Pipe&lt;TIn,TState,TOut&gt;(this Func&lt;Task&lt;TIn&gt;&gt;, Func&lt;TIn,TState,Task&lt;TOut&gt;&gt;)](DevFast.Net.Extensions.Etc.PipeLine.md#DevFast.Net.Extensions.Etc.PipeLine.Pipe_TIn,TState,TOut_(thisSystem.Func_System.Threading.Tasks.Task_TIn__,System.Func_TIn,TState,System.Threading.Tasks.Task_TOut__) 'DevFast.Net.Extensions.Etc.PipeLine.Pipe<TIn,TState,TOut>(this System.Func<System.Threading.Tasks.Task<TIn>>, System.Func<TIn,TState,System.Threading.Tasks.Task<TOut>>)')**
+  - **[Pipe&lt;TIn,TState,TOut&gt;(this Func&lt;ValueTask&lt;TIn&gt;&gt;, Func&lt;TIn,TState,Task&lt;TOut&gt;&gt;)](DevFast.Net.Extensions.Etc.PipeLine.md#DevFast.Net.Extensions.Etc.PipeLine.Pipe_TIn,TState,TOut_(thisSystem.Func_System.Threading.Tasks.ValueTask_TIn__,System.Func_TIn,TState,System.Threading.Tasks.Task_TOut__) 'DevFast.Net.Extensions.Etc.PipeLine.Pipe<TIn,TState,TOut>(this System.Func<System.Threading.Tasks.ValueTask<TIn>>, System.Func<TIn,TState,System.Threading.Tasks.Task<TOut>>)')**
+  - **[Pipe&lt;TIn,TState,TOut&gt;(this Func&lt;ValueTask&lt;TIn&gt;&gt;, Func&lt;TIn,TState,ValueTask&lt;TOut&gt;&gt;)](DevFast.Net.Extensions.Etc.PipeLine.md#DevFast.Net.Extensions.Etc.PipeLine.Pipe_TIn,TState,TOut_(thisSystem.Func_System.Threading.Tasks.ValueTask_TIn__,System.Func_TIn,TState,System.Threading.Tasks.ValueTask_TOut__) 'DevFast.Net.Extensions.Etc.PipeLine.Pipe<TIn,TState,TOut>(this System.Func<System.Threading.Tasks.ValueTask<TIn>>, System.Func<TIn,TState,System.Threading.Tasks.ValueTask<TOut>>)')**
+  - **[Pipe&lt;TIn,TState,TOut&gt;(this Func&lt;TIn&gt;, Func&lt;TIn,TState,TOut&gt;)](DevFast.Net.Extensions.Etc.PipeLine.md#DevFast.Net.Extensions.Etc.PipeLine.Pipe_TIn,TState,TOut_(thisSystem.Func_TIn_,System.Func_TIn,TState,TOut_) 'DevFast.Net.Extensions.Etc.PipeLine.Pipe<TIn,TState,TOut>(this System.Func<TIn>, System.Func<TIn,TState,TOut>)')**
+  - **[Pipe&lt;TIn,TState,TOut&gt;(this Func&lt;TState,Task&lt;TIn&gt;&gt;, Func&lt;TIn,TState,Task&lt;TOut&gt;&gt;)](DevFast.Net.Extensions.Etc.PipeLine.md#DevFast.Net.Extensions.Etc.PipeLine.Pipe_TIn,TState,TOut_(thisSystem.Func_TState,System.Threading.Tasks.Task_TIn__,System.Func_TIn,TState,System.Threading.Tasks.Task_TOut__) 'DevFast.Net.Extensions.Etc.PipeLine.Pipe<TIn,TState,TOut>(this System.Func<TState,System.Threading.Tasks.Task<TIn>>, System.Func<TIn,TState,System.Threading.Tasks.Task<TOut>>)')**
+  - **[Pipe&lt;TIn,TState,TOut&gt;(this Func&lt;TState,Task&lt;TIn&gt;&gt;, Func&lt;TIn,TState,TOut&gt;)](DevFast.Net.Extensions.Etc.PipeLine.md#DevFast.Net.Extensions.Etc.PipeLine.Pipe_TIn,TState,TOut_(thisSystem.Func_TState,System.Threading.Tasks.Task_TIn__,System.Func_TIn,TState,TOut_) 'DevFast.Net.Extensions.Etc.PipeLine.Pipe<TIn,TState,TOut>(this System.Func<TState,System.Threading.Tasks.Task<TIn>>, System.Func<TIn,TState,TOut>)')**
+  - **[Pipe&lt;TIn,TState,TOut&gt;(this Func&lt;TState,ValueTask&lt;TIn&gt;&gt;, Func&lt;TIn,TState,Task&lt;TOut&gt;&gt;)](DevFast.Net.Extensions.Etc.PipeLine.md#DevFast.Net.Extensions.Etc.PipeLine.Pipe_TIn,TState,TOut_(thisSystem.Func_TState,System.Threading.Tasks.ValueTask_TIn__,System.Func_TIn,TState,System.Threading.Tasks.Task_TOut__) 'DevFast.Net.Extensions.Etc.PipeLine.Pipe<TIn,TState,TOut>(this System.Func<TState,System.Threading.Tasks.ValueTask<TIn>>, System.Func<TIn,TState,System.Threading.Tasks.Task<TOut>>)')**
+  - **[Pipe&lt;TIn,TState,TOut&gt;(this Func&lt;TState,ValueTask&lt;TIn&gt;&gt;, Func&lt;TIn,TState,ValueTask&lt;TOut&gt;&gt;)](DevFast.Net.Extensions.Etc.PipeLine.md#DevFast.Net.Extensions.Etc.PipeLine.Pipe_TIn,TState,TOut_(thisSystem.Func_TState,System.Threading.Tasks.ValueTask_TIn__,System.Func_TIn,TState,System.Threading.Tasks.ValueTask_TOut__) 'DevFast.Net.Extensions.Etc.PipeLine.Pipe<TIn,TState,TOut>(this System.Func<TState,System.Threading.Tasks.ValueTask<TIn>>, System.Func<TIn,TState,System.Threading.Tasks.ValueTask<TOut>>)')**
+  - **[Pipe&lt;TIn,TState,TOut&gt;(this Func&lt;TState,ValueTask&lt;TIn&gt;&gt;, Func&lt;TIn,TState,TOut&gt;)](DevFast.Net.Extensions.Etc.PipeLine.md#DevFast.Net.Extensions.Etc.PipeLine.Pipe_TIn,TState,TOut_(thisSystem.Func_TState,System.Threading.Tasks.ValueTask_TIn__,System.Func_TIn,TState,TOut_) 'DevFast.Net.Extensions.Etc.PipeLine.Pipe<TIn,TState,TOut>(this System.Func<TState,System.Threading.Tasks.ValueTask<TIn>>, System.Func<TIn,TState,TOut>)')**
+  - **[Pipe&lt;TIn,TState,TOut&gt;(this Func&lt;TState,TIn&gt;, Func&lt;TIn,TState,Task&lt;TOut&gt;&gt;)](DevFast.Net.Extensions.Etc.PipeLine.md#DevFast.Net.Extensions.Etc.PipeLine.Pipe_TIn,TState,TOut_(thisSystem.Func_TState,TIn_,System.Func_TIn,TState,System.Threading.Tasks.Task_TOut__) 'DevFast.Net.Extensions.Etc.PipeLine.Pipe<TIn,TState,TOut>(this System.Func<TState,TIn>, System.Func<TIn,TState,System.Threading.Tasks.Task<TOut>>)')**
+  - **[Pipe&lt;TIn,TState,TOut&gt;(this Func&lt;TState,TIn&gt;, Func&lt;TIn,TState,ValueTask&lt;TOut&gt;&gt;)](DevFast.Net.Extensions.Etc.PipeLine.md#DevFast.Net.Extensions.Etc.PipeLine.Pipe_TIn,TState,TOut_(thisSystem.Func_TState,TIn_,System.Func_TIn,TState,System.Threading.Tasks.ValueTask_TOut__) 'DevFast.Net.Extensions.Etc.PipeLine.Pipe<TIn,TState,TOut>(this System.Func<TState,TIn>, System.Func<TIn,TState,System.Threading.Tasks.ValueTask<TOut>>)')**
+  - **[Pipe&lt;TIn,TState,TOut&gt;(this Func&lt;TState,TIn&gt;, Func&lt;TIn,TState,TOut&gt;)](DevFast.Net.Extensions.Etc.PipeLine.md#DevFast.Net.Extensions.Etc.PipeLine.Pipe_TIn,TState,TOut_(thisSystem.Func_TState,TIn_,System.Func_TIn,TState,TOut_) 'DevFast.Net.Extensions.Etc.PipeLine.Pipe<TIn,TState,TOut>(this System.Func<TState,TIn>, System.Func<TIn,TState,TOut>)')**
+  - **[Pipe&lt;TIn,TState,TOut&gt;(this Task&lt;TIn&gt;, Func&lt;TIn,TState,Task&lt;TOut&gt;&gt;)](DevFast.Net.Extensions.Etc.PipeLine.md#DevFast.Net.Extensions.Etc.PipeLine.Pipe_TIn,TState,TOut_(thisSystem.Threading.Tasks.Task_TIn_,System.Func_TIn,TState,System.Threading.Tasks.Task_TOut__) 'DevFast.Net.Extensions.Etc.PipeLine.Pipe<TIn,TState,TOut>(this System.Threading.Tasks.Task<TIn>, System.Func<TIn,TState,System.Threading.Tasks.Task<TOut>>)')**
+  - **[Pipe&lt;TIn,TState,TOut&gt;(this TIn, Func&lt;TIn,TState,TOut&gt;)](DevFast.Net.Extensions.Etc.PipeLine.md#DevFast.Net.Extensions.Etc.PipeLine.Pipe_TIn,TState,TOut_(thisTIn,System.Func_TIn,TState,TOut_) 'DevFast.Net.Extensions.Etc.PipeLine.Pipe<TIn,TState,TOut>(this TIn, System.Func<TIn,TState,TOut>)')**
 
 ## PipeLine Class
 
@@ -1771,7 +1785,7 @@ public static System.Func<TState,System.Threading.Tasks.Task<T>> Pipe<T,TState>(
 
 `task` [System.Threading.Tasks.Task&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Threading.Tasks.Task-1 'System.Threading.Tasks.Task`1')[T](DevFast.Net.Extensions.Etc.PipeLine.md#DevFast.Net.Extensions.Etc.PipeLine.Pipe_T,TState_(thisSystem.Threading.Tasks.Task_T_,System.Func_T,TState,System.Threading.Tasks.Task_T__,bool).T 'DevFast.Net.Extensions.Etc.PipeLine.Pipe<T,TState>(this System.Threading.Tasks.Task<T>, System.Func<T,TState,System.Threading.Tasks.Task<T>>, bool).T')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Threading.Tasks.Task-1 'System.Threading.Tasks.Task`1')
 
-Source lambda to which the tandem operation would be applied.
+Task to which the tandem operation would be applied.
 
 <a name='DevFast.Net.Extensions.Etc.PipeLine.Pipe_T,TState_(thisSystem.Threading.Tasks.Task_T_,System.Func_T,TState,System.Threading.Tasks.Task_T__,bool).tandemLambda'></a>
 
@@ -1909,3 +1923,576 @@ Adapter lambda
 
 #### Returns
 [TOut](DevFast.Net.Extensions.Etc.PipeLine.md#DevFast.Net.Extensions.Etc.PipeLine.Pipe_TIn,TOut_(thisTIn,System.Func_TIn,TOut_).TOut 'DevFast.Net.Extensions.Etc.PipeLine.Pipe<TIn,TOut>(this TIn, System.Func<TIn,TOut>).TOut')
+
+<a name='DevFast.Net.Extensions.Etc.PipeLine.Pipe_TIn,TState,TOut_(thisSystem.Func_System.Threading.Tasks.Task_TIn__,System.Func_TIn,TState,System.Threading.Tasks.Task_TOut__)'></a>
+
+## PipeLine.Pipe<TIn,TState,TOut>(this Func<Task<TIn>>, Func<TIn,TState,Task<TOut>>) Method
+
+Provides a lambda, which upon execution, feeds the output of
+[sourceLambda](DevFast.Net.Extensions.Etc.PipeLine.md#DevFast.Net.Extensions.Etc.PipeLine.Pipe_TIn,TState,TOut_(thisSystem.Func_System.Threading.Tasks.Task_TIn__,System.Func_TIn,TState,System.Threading.Tasks.Task_TOut__).sourceLambda 'DevFast.Net.Extensions.Etc.PipeLine.Pipe<TIn,TState,TOut>(this System.Func<System.Threading.Tasks.Task<TIn>>, System.Func<TIn,TState,System.Threading.Tasks.Task<TOut>>).sourceLambda') to the [tandemLambda](DevFast.Net.Extensions.Etc.PipeLine.md#DevFast.Net.Extensions.Etc.PipeLine.Pipe_TIn,TState,TOut_(thisSystem.Func_System.Threading.Tasks.Task_TIn__,System.Func_TIn,TState,System.Threading.Tasks.Task_TOut__).tandemLambda 'DevFast.Net.Extensions.Etc.PipeLine.Pipe<TIn,TState,TOut>(this System.Func<System.Threading.Tasks.Task<TIn>>, System.Func<TIn,TState,System.Threading.Tasks.Task<TOut>>).tandemLambda') and returns the output obtained
+from [tandemLambda](DevFast.Net.Extensions.Etc.PipeLine.md#DevFast.Net.Extensions.Etc.PipeLine.Pipe_TIn,TState,TOut_(thisSystem.Func_System.Threading.Tasks.Task_TIn__,System.Func_TIn,TState,System.Threading.Tasks.Task_TOut__).tandemLambda 'DevFast.Net.Extensions.Etc.PipeLine.Pipe<TIn,TState,TOut>(this System.Func<System.Threading.Tasks.Task<TIn>>, System.Func<TIn,TState,System.Threading.Tasks.Task<TOut>>).tandemLambda').
+
+```csharp
+public static System.Func<TState,System.Threading.Tasks.Task<TOut>> Pipe<TIn,TState,TOut>(this System.Func<System.Threading.Tasks.Task<TIn>> sourceLambda, System.Func<TIn,TState,System.Threading.Tasks.Task<TOut>> tandemLambda);
+```
+#### Type parameters
+
+<a name='DevFast.Net.Extensions.Etc.PipeLine.Pipe_TIn,TState,TOut_(thisSystem.Func_System.Threading.Tasks.Task_TIn__,System.Func_TIn,TState,System.Threading.Tasks.Task_TOut__).TIn'></a>
+
+`TIn`
+
+<a name='DevFast.Net.Extensions.Etc.PipeLine.Pipe_TIn,TState,TOut_(thisSystem.Func_System.Threading.Tasks.Task_TIn__,System.Func_TIn,TState,System.Threading.Tasks.Task_TOut__).TState'></a>
+
+`TState`
+
+<a name='DevFast.Net.Extensions.Etc.PipeLine.Pipe_TIn,TState,TOut_(thisSystem.Func_System.Threading.Tasks.Task_TIn__,System.Func_TIn,TState,System.Threading.Tasks.Task_TOut__).TOut'></a>
+
+`TOut`
+#### Parameters
+
+<a name='DevFast.Net.Extensions.Etc.PipeLine.Pipe_TIn,TState,TOut_(thisSystem.Func_System.Threading.Tasks.Task_TIn__,System.Func_TIn,TState,System.Threading.Tasks.Task_TOut__).sourceLambda'></a>
+
+`sourceLambda` [System.Func&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Func-1 'System.Func`1')[System.Threading.Tasks.Task&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Threading.Tasks.Task-1 'System.Threading.Tasks.Task`1')[TIn](DevFast.Net.Extensions.Etc.PipeLine.md#DevFast.Net.Extensions.Etc.PipeLine.Pipe_TIn,TState,TOut_(thisSystem.Func_System.Threading.Tasks.Task_TIn__,System.Func_TIn,TState,System.Threading.Tasks.Task_TOut__).TIn 'DevFast.Net.Extensions.Etc.PipeLine.Pipe<TIn,TState,TOut>(this System.Func<System.Threading.Tasks.Task<TIn>>, System.Func<TIn,TState,System.Threading.Tasks.Task<TOut>>).TIn')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Threading.Tasks.Task-1 'System.Threading.Tasks.Task`1')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Func-1 'System.Func`1')
+
+Source lambda to which the tandem operation would be applied.
+
+<a name='DevFast.Net.Extensions.Etc.PipeLine.Pipe_TIn,TState,TOut_(thisSystem.Func_System.Threading.Tasks.Task_TIn__,System.Func_TIn,TState,System.Threading.Tasks.Task_TOut__).tandemLambda'></a>
+
+`tandemLambda` [System.Func&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Func-3 'System.Func`3')[TIn](DevFast.Net.Extensions.Etc.PipeLine.md#DevFast.Net.Extensions.Etc.PipeLine.Pipe_TIn,TState,TOut_(thisSystem.Func_System.Threading.Tasks.Task_TIn__,System.Func_TIn,TState,System.Threading.Tasks.Task_TOut__).TIn 'DevFast.Net.Extensions.Etc.PipeLine.Pipe<TIn,TState,TOut>(this System.Func<System.Threading.Tasks.Task<TIn>>, System.Func<TIn,TState,System.Threading.Tasks.Task<TOut>>).TIn')[,](https://docs.microsoft.com/en-us/dotnet/api/System.Func-3 'System.Func`3')[TState](DevFast.Net.Extensions.Etc.PipeLine.md#DevFast.Net.Extensions.Etc.PipeLine.Pipe_TIn,TState,TOut_(thisSystem.Func_System.Threading.Tasks.Task_TIn__,System.Func_TIn,TState,System.Threading.Tasks.Task_TOut__).TState 'DevFast.Net.Extensions.Etc.PipeLine.Pipe<TIn,TState,TOut>(this System.Func<System.Threading.Tasks.Task<TIn>>, System.Func<TIn,TState,System.Threading.Tasks.Task<TOut>>).TState')[,](https://docs.microsoft.com/en-us/dotnet/api/System.Func-3 'System.Func`3')[System.Threading.Tasks.Task&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Threading.Tasks.Task-1 'System.Threading.Tasks.Task`1')[TOut](DevFast.Net.Extensions.Etc.PipeLine.md#DevFast.Net.Extensions.Etc.PipeLine.Pipe_TIn,TState,TOut_(thisSystem.Func_System.Threading.Tasks.Task_TIn__,System.Func_TIn,TState,System.Threading.Tasks.Task_TOut__).TOut 'DevFast.Net.Extensions.Etc.PipeLine.Pipe<TIn,TState,TOut>(this System.Func<System.Threading.Tasks.Task<TIn>>, System.Func<TIn,TState,System.Threading.Tasks.Task<TOut>>).TOut')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Threading.Tasks.Task-1 'System.Threading.Tasks.Task`1')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Func-3 'System.Func`3')
+
+Tandem lambda that would consume the value.
+
+#### Returns
+[System.Func&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Func-2 'System.Func`2')[TState](DevFast.Net.Extensions.Etc.PipeLine.md#DevFast.Net.Extensions.Etc.PipeLine.Pipe_TIn,TState,TOut_(thisSystem.Func_System.Threading.Tasks.Task_TIn__,System.Func_TIn,TState,System.Threading.Tasks.Task_TOut__).TState 'DevFast.Net.Extensions.Etc.PipeLine.Pipe<TIn,TState,TOut>(this System.Func<System.Threading.Tasks.Task<TIn>>, System.Func<TIn,TState,System.Threading.Tasks.Task<TOut>>).TState')[,](https://docs.microsoft.com/en-us/dotnet/api/System.Func-2 'System.Func`2')[System.Threading.Tasks.Task&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Threading.Tasks.Task-1 'System.Threading.Tasks.Task`1')[TOut](DevFast.Net.Extensions.Etc.PipeLine.md#DevFast.Net.Extensions.Etc.PipeLine.Pipe_TIn,TState,TOut_(thisSystem.Func_System.Threading.Tasks.Task_TIn__,System.Func_TIn,TState,System.Threading.Tasks.Task_TOut__).TOut 'DevFast.Net.Extensions.Etc.PipeLine.Pipe<TIn,TState,TOut>(this System.Func<System.Threading.Tasks.Task<TIn>>, System.Func<TIn,TState,System.Threading.Tasks.Task<TOut>>).TOut')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Threading.Tasks.Task-1 'System.Threading.Tasks.Task`1')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Func-2 'System.Func`2')
+
+<a name='DevFast.Net.Extensions.Etc.PipeLine.Pipe_TIn,TState,TOut_(thisSystem.Func_System.Threading.Tasks.ValueTask_TIn__,System.Func_TIn,TState,System.Threading.Tasks.Task_TOut__)'></a>
+
+## PipeLine.Pipe<TIn,TState,TOut>(this Func<ValueTask<TIn>>, Func<TIn,TState,Task<TOut>>) Method
+
+Provides a lambda, which upon execution, feeds the output of
+[sourceLambda](DevFast.Net.Extensions.Etc.PipeLine.md#DevFast.Net.Extensions.Etc.PipeLine.Pipe_TIn,TState,TOut_(thisSystem.Func_System.Threading.Tasks.ValueTask_TIn__,System.Func_TIn,TState,System.Threading.Tasks.Task_TOut__).sourceLambda 'DevFast.Net.Extensions.Etc.PipeLine.Pipe<TIn,TState,TOut>(this System.Func<System.Threading.Tasks.ValueTask<TIn>>, System.Func<TIn,TState,System.Threading.Tasks.Task<TOut>>).sourceLambda') to the [tandemLambda](DevFast.Net.Extensions.Etc.PipeLine.md#DevFast.Net.Extensions.Etc.PipeLine.Pipe_TIn,TState,TOut_(thisSystem.Func_System.Threading.Tasks.ValueTask_TIn__,System.Func_TIn,TState,System.Threading.Tasks.Task_TOut__).tandemLambda 'DevFast.Net.Extensions.Etc.PipeLine.Pipe<TIn,TState,TOut>(this System.Func<System.Threading.Tasks.ValueTask<TIn>>, System.Func<TIn,TState,System.Threading.Tasks.Task<TOut>>).tandemLambda') and returns the output obtained
+from [tandemLambda](DevFast.Net.Extensions.Etc.PipeLine.md#DevFast.Net.Extensions.Etc.PipeLine.Pipe_TIn,TState,TOut_(thisSystem.Func_System.Threading.Tasks.ValueTask_TIn__,System.Func_TIn,TState,System.Threading.Tasks.Task_TOut__).tandemLambda 'DevFast.Net.Extensions.Etc.PipeLine.Pipe<TIn,TState,TOut>(this System.Func<System.Threading.Tasks.ValueTask<TIn>>, System.Func<TIn,TState,System.Threading.Tasks.Task<TOut>>).tandemLambda').
+
+```csharp
+public static System.Func<TState,System.Threading.Tasks.Task<TOut>> Pipe<TIn,TState,TOut>(this System.Func<System.Threading.Tasks.ValueTask<TIn>> sourceLambda, System.Func<TIn,TState,System.Threading.Tasks.Task<TOut>> tandemLambda);
+```
+#### Type parameters
+
+<a name='DevFast.Net.Extensions.Etc.PipeLine.Pipe_TIn,TState,TOut_(thisSystem.Func_System.Threading.Tasks.ValueTask_TIn__,System.Func_TIn,TState,System.Threading.Tasks.Task_TOut__).TIn'></a>
+
+`TIn`
+
+<a name='DevFast.Net.Extensions.Etc.PipeLine.Pipe_TIn,TState,TOut_(thisSystem.Func_System.Threading.Tasks.ValueTask_TIn__,System.Func_TIn,TState,System.Threading.Tasks.Task_TOut__).TState'></a>
+
+`TState`
+
+<a name='DevFast.Net.Extensions.Etc.PipeLine.Pipe_TIn,TState,TOut_(thisSystem.Func_System.Threading.Tasks.ValueTask_TIn__,System.Func_TIn,TState,System.Threading.Tasks.Task_TOut__).TOut'></a>
+
+`TOut`
+#### Parameters
+
+<a name='DevFast.Net.Extensions.Etc.PipeLine.Pipe_TIn,TState,TOut_(thisSystem.Func_System.Threading.Tasks.ValueTask_TIn__,System.Func_TIn,TState,System.Threading.Tasks.Task_TOut__).sourceLambda'></a>
+
+`sourceLambda` [System.Func&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Func-1 'System.Func`1')[System.Threading.Tasks.ValueTask&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Threading.Tasks.ValueTask-1 'System.Threading.Tasks.ValueTask`1')[TIn](DevFast.Net.Extensions.Etc.PipeLine.md#DevFast.Net.Extensions.Etc.PipeLine.Pipe_TIn,TState,TOut_(thisSystem.Func_System.Threading.Tasks.ValueTask_TIn__,System.Func_TIn,TState,System.Threading.Tasks.Task_TOut__).TIn 'DevFast.Net.Extensions.Etc.PipeLine.Pipe<TIn,TState,TOut>(this System.Func<System.Threading.Tasks.ValueTask<TIn>>, System.Func<TIn,TState,System.Threading.Tasks.Task<TOut>>).TIn')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Threading.Tasks.ValueTask-1 'System.Threading.Tasks.ValueTask`1')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Func-1 'System.Func`1')
+
+Source lambda to which the tandem operation would be applied.
+
+<a name='DevFast.Net.Extensions.Etc.PipeLine.Pipe_TIn,TState,TOut_(thisSystem.Func_System.Threading.Tasks.ValueTask_TIn__,System.Func_TIn,TState,System.Threading.Tasks.Task_TOut__).tandemLambda'></a>
+
+`tandemLambda` [System.Func&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Func-3 'System.Func`3')[TIn](DevFast.Net.Extensions.Etc.PipeLine.md#DevFast.Net.Extensions.Etc.PipeLine.Pipe_TIn,TState,TOut_(thisSystem.Func_System.Threading.Tasks.ValueTask_TIn__,System.Func_TIn,TState,System.Threading.Tasks.Task_TOut__).TIn 'DevFast.Net.Extensions.Etc.PipeLine.Pipe<TIn,TState,TOut>(this System.Func<System.Threading.Tasks.ValueTask<TIn>>, System.Func<TIn,TState,System.Threading.Tasks.Task<TOut>>).TIn')[,](https://docs.microsoft.com/en-us/dotnet/api/System.Func-3 'System.Func`3')[TState](DevFast.Net.Extensions.Etc.PipeLine.md#DevFast.Net.Extensions.Etc.PipeLine.Pipe_TIn,TState,TOut_(thisSystem.Func_System.Threading.Tasks.ValueTask_TIn__,System.Func_TIn,TState,System.Threading.Tasks.Task_TOut__).TState 'DevFast.Net.Extensions.Etc.PipeLine.Pipe<TIn,TState,TOut>(this System.Func<System.Threading.Tasks.ValueTask<TIn>>, System.Func<TIn,TState,System.Threading.Tasks.Task<TOut>>).TState')[,](https://docs.microsoft.com/en-us/dotnet/api/System.Func-3 'System.Func`3')[System.Threading.Tasks.Task&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Threading.Tasks.Task-1 'System.Threading.Tasks.Task`1')[TOut](DevFast.Net.Extensions.Etc.PipeLine.md#DevFast.Net.Extensions.Etc.PipeLine.Pipe_TIn,TState,TOut_(thisSystem.Func_System.Threading.Tasks.ValueTask_TIn__,System.Func_TIn,TState,System.Threading.Tasks.Task_TOut__).TOut 'DevFast.Net.Extensions.Etc.PipeLine.Pipe<TIn,TState,TOut>(this System.Func<System.Threading.Tasks.ValueTask<TIn>>, System.Func<TIn,TState,System.Threading.Tasks.Task<TOut>>).TOut')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Threading.Tasks.Task-1 'System.Threading.Tasks.Task`1')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Func-3 'System.Func`3')
+
+Tandem lambda that would consume the value.
+
+#### Returns
+[System.Func&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Func-2 'System.Func`2')[TState](DevFast.Net.Extensions.Etc.PipeLine.md#DevFast.Net.Extensions.Etc.PipeLine.Pipe_TIn,TState,TOut_(thisSystem.Func_System.Threading.Tasks.ValueTask_TIn__,System.Func_TIn,TState,System.Threading.Tasks.Task_TOut__).TState 'DevFast.Net.Extensions.Etc.PipeLine.Pipe<TIn,TState,TOut>(this System.Func<System.Threading.Tasks.ValueTask<TIn>>, System.Func<TIn,TState,System.Threading.Tasks.Task<TOut>>).TState')[,](https://docs.microsoft.com/en-us/dotnet/api/System.Func-2 'System.Func`2')[System.Threading.Tasks.Task&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Threading.Tasks.Task-1 'System.Threading.Tasks.Task`1')[TOut](DevFast.Net.Extensions.Etc.PipeLine.md#DevFast.Net.Extensions.Etc.PipeLine.Pipe_TIn,TState,TOut_(thisSystem.Func_System.Threading.Tasks.ValueTask_TIn__,System.Func_TIn,TState,System.Threading.Tasks.Task_TOut__).TOut 'DevFast.Net.Extensions.Etc.PipeLine.Pipe<TIn,TState,TOut>(this System.Func<System.Threading.Tasks.ValueTask<TIn>>, System.Func<TIn,TState,System.Threading.Tasks.Task<TOut>>).TOut')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Threading.Tasks.Task-1 'System.Threading.Tasks.Task`1')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Func-2 'System.Func`2')
+
+<a name='DevFast.Net.Extensions.Etc.PipeLine.Pipe_TIn,TState,TOut_(thisSystem.Func_System.Threading.Tasks.ValueTask_TIn__,System.Func_TIn,TState,System.Threading.Tasks.ValueTask_TOut__)'></a>
+
+## PipeLine.Pipe<TIn,TState,TOut>(this Func<ValueTask<TIn>>, Func<TIn,TState,ValueTask<TOut>>) Method
+
+Provides a lambda, which upon execution, feeds the output of
+[sourceLambda](DevFast.Net.Extensions.Etc.PipeLine.md#DevFast.Net.Extensions.Etc.PipeLine.Pipe_TIn,TState,TOut_(thisSystem.Func_System.Threading.Tasks.ValueTask_TIn__,System.Func_TIn,TState,System.Threading.Tasks.ValueTask_TOut__).sourceLambda 'DevFast.Net.Extensions.Etc.PipeLine.Pipe<TIn,TState,TOut>(this System.Func<System.Threading.Tasks.ValueTask<TIn>>, System.Func<TIn,TState,System.Threading.Tasks.ValueTask<TOut>>).sourceLambda') to the [tandemLambda](DevFast.Net.Extensions.Etc.PipeLine.md#DevFast.Net.Extensions.Etc.PipeLine.Pipe_TIn,TState,TOut_(thisSystem.Func_System.Threading.Tasks.ValueTask_TIn__,System.Func_TIn,TState,System.Threading.Tasks.ValueTask_TOut__).tandemLambda 'DevFast.Net.Extensions.Etc.PipeLine.Pipe<TIn,TState,TOut>(this System.Func<System.Threading.Tasks.ValueTask<TIn>>, System.Func<TIn,TState,System.Threading.Tasks.ValueTask<TOut>>).tandemLambda') and returns the output obtained
+from [tandemLambda](DevFast.Net.Extensions.Etc.PipeLine.md#DevFast.Net.Extensions.Etc.PipeLine.Pipe_TIn,TState,TOut_(thisSystem.Func_System.Threading.Tasks.ValueTask_TIn__,System.Func_TIn,TState,System.Threading.Tasks.ValueTask_TOut__).tandemLambda 'DevFast.Net.Extensions.Etc.PipeLine.Pipe<TIn,TState,TOut>(this System.Func<System.Threading.Tasks.ValueTask<TIn>>, System.Func<TIn,TState,System.Threading.Tasks.ValueTask<TOut>>).tandemLambda').
+
+```csharp
+public static System.Func<TState,System.Threading.Tasks.ValueTask<TOut>> Pipe<TIn,TState,TOut>(this System.Func<System.Threading.Tasks.ValueTask<TIn>> sourceLambda, System.Func<TIn,TState,System.Threading.Tasks.ValueTask<TOut>> tandemLambda);
+```
+#### Type parameters
+
+<a name='DevFast.Net.Extensions.Etc.PipeLine.Pipe_TIn,TState,TOut_(thisSystem.Func_System.Threading.Tasks.ValueTask_TIn__,System.Func_TIn,TState,System.Threading.Tasks.ValueTask_TOut__).TIn'></a>
+
+`TIn`
+
+<a name='DevFast.Net.Extensions.Etc.PipeLine.Pipe_TIn,TState,TOut_(thisSystem.Func_System.Threading.Tasks.ValueTask_TIn__,System.Func_TIn,TState,System.Threading.Tasks.ValueTask_TOut__).TState'></a>
+
+`TState`
+
+<a name='DevFast.Net.Extensions.Etc.PipeLine.Pipe_TIn,TState,TOut_(thisSystem.Func_System.Threading.Tasks.ValueTask_TIn__,System.Func_TIn,TState,System.Threading.Tasks.ValueTask_TOut__).TOut'></a>
+
+`TOut`
+#### Parameters
+
+<a name='DevFast.Net.Extensions.Etc.PipeLine.Pipe_TIn,TState,TOut_(thisSystem.Func_System.Threading.Tasks.ValueTask_TIn__,System.Func_TIn,TState,System.Threading.Tasks.ValueTask_TOut__).sourceLambda'></a>
+
+`sourceLambda` [System.Func&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Func-1 'System.Func`1')[System.Threading.Tasks.ValueTask&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Threading.Tasks.ValueTask-1 'System.Threading.Tasks.ValueTask`1')[TIn](DevFast.Net.Extensions.Etc.PipeLine.md#DevFast.Net.Extensions.Etc.PipeLine.Pipe_TIn,TState,TOut_(thisSystem.Func_System.Threading.Tasks.ValueTask_TIn__,System.Func_TIn,TState,System.Threading.Tasks.ValueTask_TOut__).TIn 'DevFast.Net.Extensions.Etc.PipeLine.Pipe<TIn,TState,TOut>(this System.Func<System.Threading.Tasks.ValueTask<TIn>>, System.Func<TIn,TState,System.Threading.Tasks.ValueTask<TOut>>).TIn')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Threading.Tasks.ValueTask-1 'System.Threading.Tasks.ValueTask`1')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Func-1 'System.Func`1')
+
+Source lambda to which the tandem operation would be applied.
+
+<a name='DevFast.Net.Extensions.Etc.PipeLine.Pipe_TIn,TState,TOut_(thisSystem.Func_System.Threading.Tasks.ValueTask_TIn__,System.Func_TIn,TState,System.Threading.Tasks.ValueTask_TOut__).tandemLambda'></a>
+
+`tandemLambda` [System.Func&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Func-3 'System.Func`3')[TIn](DevFast.Net.Extensions.Etc.PipeLine.md#DevFast.Net.Extensions.Etc.PipeLine.Pipe_TIn,TState,TOut_(thisSystem.Func_System.Threading.Tasks.ValueTask_TIn__,System.Func_TIn,TState,System.Threading.Tasks.ValueTask_TOut__).TIn 'DevFast.Net.Extensions.Etc.PipeLine.Pipe<TIn,TState,TOut>(this System.Func<System.Threading.Tasks.ValueTask<TIn>>, System.Func<TIn,TState,System.Threading.Tasks.ValueTask<TOut>>).TIn')[,](https://docs.microsoft.com/en-us/dotnet/api/System.Func-3 'System.Func`3')[TState](DevFast.Net.Extensions.Etc.PipeLine.md#DevFast.Net.Extensions.Etc.PipeLine.Pipe_TIn,TState,TOut_(thisSystem.Func_System.Threading.Tasks.ValueTask_TIn__,System.Func_TIn,TState,System.Threading.Tasks.ValueTask_TOut__).TState 'DevFast.Net.Extensions.Etc.PipeLine.Pipe<TIn,TState,TOut>(this System.Func<System.Threading.Tasks.ValueTask<TIn>>, System.Func<TIn,TState,System.Threading.Tasks.ValueTask<TOut>>).TState')[,](https://docs.microsoft.com/en-us/dotnet/api/System.Func-3 'System.Func`3')[System.Threading.Tasks.ValueTask&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Threading.Tasks.ValueTask-1 'System.Threading.Tasks.ValueTask`1')[TOut](DevFast.Net.Extensions.Etc.PipeLine.md#DevFast.Net.Extensions.Etc.PipeLine.Pipe_TIn,TState,TOut_(thisSystem.Func_System.Threading.Tasks.ValueTask_TIn__,System.Func_TIn,TState,System.Threading.Tasks.ValueTask_TOut__).TOut 'DevFast.Net.Extensions.Etc.PipeLine.Pipe<TIn,TState,TOut>(this System.Func<System.Threading.Tasks.ValueTask<TIn>>, System.Func<TIn,TState,System.Threading.Tasks.ValueTask<TOut>>).TOut')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Threading.Tasks.ValueTask-1 'System.Threading.Tasks.ValueTask`1')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Func-3 'System.Func`3')
+
+Tandem lambda that would consume the value.
+
+#### Returns
+[System.Func&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Func-2 'System.Func`2')[TState](DevFast.Net.Extensions.Etc.PipeLine.md#DevFast.Net.Extensions.Etc.PipeLine.Pipe_TIn,TState,TOut_(thisSystem.Func_System.Threading.Tasks.ValueTask_TIn__,System.Func_TIn,TState,System.Threading.Tasks.ValueTask_TOut__).TState 'DevFast.Net.Extensions.Etc.PipeLine.Pipe<TIn,TState,TOut>(this System.Func<System.Threading.Tasks.ValueTask<TIn>>, System.Func<TIn,TState,System.Threading.Tasks.ValueTask<TOut>>).TState')[,](https://docs.microsoft.com/en-us/dotnet/api/System.Func-2 'System.Func`2')[System.Threading.Tasks.ValueTask&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Threading.Tasks.ValueTask-1 'System.Threading.Tasks.ValueTask`1')[TOut](DevFast.Net.Extensions.Etc.PipeLine.md#DevFast.Net.Extensions.Etc.PipeLine.Pipe_TIn,TState,TOut_(thisSystem.Func_System.Threading.Tasks.ValueTask_TIn__,System.Func_TIn,TState,System.Threading.Tasks.ValueTask_TOut__).TOut 'DevFast.Net.Extensions.Etc.PipeLine.Pipe<TIn,TState,TOut>(this System.Func<System.Threading.Tasks.ValueTask<TIn>>, System.Func<TIn,TState,System.Threading.Tasks.ValueTask<TOut>>).TOut')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Threading.Tasks.ValueTask-1 'System.Threading.Tasks.ValueTask`1')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Func-2 'System.Func`2')
+
+<a name='DevFast.Net.Extensions.Etc.PipeLine.Pipe_TIn,TState,TOut_(thisSystem.Func_TIn_,System.Func_TIn,TState,TOut_)'></a>
+
+## PipeLine.Pipe<TIn,TState,TOut>(this Func<TIn>, Func<TIn,TState,TOut>) Method
+
+Provides a lambda, which upon execution, feeds the output of
+[sourceLambda](DevFast.Net.Extensions.Etc.PipeLine.md#DevFast.Net.Extensions.Etc.PipeLine.Pipe_TIn,TState,TOut_(thisSystem.Func_TIn_,System.Func_TIn,TState,TOut_).sourceLambda 'DevFast.Net.Extensions.Etc.PipeLine.Pipe<TIn,TState,TOut>(this System.Func<TIn>, System.Func<TIn,TState,TOut>).sourceLambda') to the [tandemLambda](DevFast.Net.Extensions.Etc.PipeLine.md#DevFast.Net.Extensions.Etc.PipeLine.Pipe_TIn,TState,TOut_(thisSystem.Func_TIn_,System.Func_TIn,TState,TOut_).tandemLambda 'DevFast.Net.Extensions.Etc.PipeLine.Pipe<TIn,TState,TOut>(this System.Func<TIn>, System.Func<TIn,TState,TOut>).tandemLambda') and returns the output obtained
+from [tandemLambda](DevFast.Net.Extensions.Etc.PipeLine.md#DevFast.Net.Extensions.Etc.PipeLine.Pipe_TIn,TState,TOut_(thisSystem.Func_TIn_,System.Func_TIn,TState,TOut_).tandemLambda 'DevFast.Net.Extensions.Etc.PipeLine.Pipe<TIn,TState,TOut>(this System.Func<TIn>, System.Func<TIn,TState,TOut>).tandemLambda').
+
+```csharp
+public static System.Func<TState,TOut> Pipe<TIn,TState,TOut>(this System.Func<TIn> sourceLambda, System.Func<TIn,TState,TOut> tandemLambda);
+```
+#### Type parameters
+
+<a name='DevFast.Net.Extensions.Etc.PipeLine.Pipe_TIn,TState,TOut_(thisSystem.Func_TIn_,System.Func_TIn,TState,TOut_).TIn'></a>
+
+`TIn`
+
+<a name='DevFast.Net.Extensions.Etc.PipeLine.Pipe_TIn,TState,TOut_(thisSystem.Func_TIn_,System.Func_TIn,TState,TOut_).TState'></a>
+
+`TState`
+
+<a name='DevFast.Net.Extensions.Etc.PipeLine.Pipe_TIn,TState,TOut_(thisSystem.Func_TIn_,System.Func_TIn,TState,TOut_).TOut'></a>
+
+`TOut`
+#### Parameters
+
+<a name='DevFast.Net.Extensions.Etc.PipeLine.Pipe_TIn,TState,TOut_(thisSystem.Func_TIn_,System.Func_TIn,TState,TOut_).sourceLambda'></a>
+
+`sourceLambda` [System.Func&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Func-1 'System.Func`1')[TIn](DevFast.Net.Extensions.Etc.PipeLine.md#DevFast.Net.Extensions.Etc.PipeLine.Pipe_TIn,TState,TOut_(thisSystem.Func_TIn_,System.Func_TIn,TState,TOut_).TIn 'DevFast.Net.Extensions.Etc.PipeLine.Pipe<TIn,TState,TOut>(this System.Func<TIn>, System.Func<TIn,TState,TOut>).TIn')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Func-1 'System.Func`1')
+
+Source lambda to which the tandem operation would be applied.
+
+<a name='DevFast.Net.Extensions.Etc.PipeLine.Pipe_TIn,TState,TOut_(thisSystem.Func_TIn_,System.Func_TIn,TState,TOut_).tandemLambda'></a>
+
+`tandemLambda` [System.Func&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Func-3 'System.Func`3')[TIn](DevFast.Net.Extensions.Etc.PipeLine.md#DevFast.Net.Extensions.Etc.PipeLine.Pipe_TIn,TState,TOut_(thisSystem.Func_TIn_,System.Func_TIn,TState,TOut_).TIn 'DevFast.Net.Extensions.Etc.PipeLine.Pipe<TIn,TState,TOut>(this System.Func<TIn>, System.Func<TIn,TState,TOut>).TIn')[,](https://docs.microsoft.com/en-us/dotnet/api/System.Func-3 'System.Func`3')[TState](DevFast.Net.Extensions.Etc.PipeLine.md#DevFast.Net.Extensions.Etc.PipeLine.Pipe_TIn,TState,TOut_(thisSystem.Func_TIn_,System.Func_TIn,TState,TOut_).TState 'DevFast.Net.Extensions.Etc.PipeLine.Pipe<TIn,TState,TOut>(this System.Func<TIn>, System.Func<TIn,TState,TOut>).TState')[,](https://docs.microsoft.com/en-us/dotnet/api/System.Func-3 'System.Func`3')[TOut](DevFast.Net.Extensions.Etc.PipeLine.md#DevFast.Net.Extensions.Etc.PipeLine.Pipe_TIn,TState,TOut_(thisSystem.Func_TIn_,System.Func_TIn,TState,TOut_).TOut 'DevFast.Net.Extensions.Etc.PipeLine.Pipe<TIn,TState,TOut>(this System.Func<TIn>, System.Func<TIn,TState,TOut>).TOut')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Func-3 'System.Func`3')
+
+Tandem lambda that would consume the value.
+
+#### Returns
+[System.Func&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Func-2 'System.Func`2')[TState](DevFast.Net.Extensions.Etc.PipeLine.md#DevFast.Net.Extensions.Etc.PipeLine.Pipe_TIn,TState,TOut_(thisSystem.Func_TIn_,System.Func_TIn,TState,TOut_).TState 'DevFast.Net.Extensions.Etc.PipeLine.Pipe<TIn,TState,TOut>(this System.Func<TIn>, System.Func<TIn,TState,TOut>).TState')[,](https://docs.microsoft.com/en-us/dotnet/api/System.Func-2 'System.Func`2')[TOut](DevFast.Net.Extensions.Etc.PipeLine.md#DevFast.Net.Extensions.Etc.PipeLine.Pipe_TIn,TState,TOut_(thisSystem.Func_TIn_,System.Func_TIn,TState,TOut_).TOut 'DevFast.Net.Extensions.Etc.PipeLine.Pipe<TIn,TState,TOut>(this System.Func<TIn>, System.Func<TIn,TState,TOut>).TOut')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Func-2 'System.Func`2')
+
+<a name='DevFast.Net.Extensions.Etc.PipeLine.Pipe_TIn,TState,TOut_(thisSystem.Func_TState,System.Threading.Tasks.Task_TIn__,System.Func_TIn,TState,System.Threading.Tasks.Task_TOut__)'></a>
+
+## PipeLine.Pipe<TIn,TState,TOut>(this Func<TState,Task<TIn>>, Func<TIn,TState,Task<TOut>>) Method
+
+Provides a lambda, which upon execution, feeds the output of
+[sourceLambda](DevFast.Net.Extensions.Etc.PipeLine.md#DevFast.Net.Extensions.Etc.PipeLine.Pipe_TIn,TState,TOut_(thisSystem.Func_TState,System.Threading.Tasks.Task_TIn__,System.Func_TIn,TState,System.Threading.Tasks.Task_TOut__).sourceLambda 'DevFast.Net.Extensions.Etc.PipeLine.Pipe<TIn,TState,TOut>(this System.Func<TState,System.Threading.Tasks.Task<TIn>>, System.Func<TIn,TState,System.Threading.Tasks.Task<TOut>>).sourceLambda') to the [tandemLambda](DevFast.Net.Extensions.Etc.PipeLine.md#DevFast.Net.Extensions.Etc.PipeLine.Pipe_TIn,TState,TOut_(thisSystem.Func_TState,System.Threading.Tasks.Task_TIn__,System.Func_TIn,TState,System.Threading.Tasks.Task_TOut__).tandemLambda 'DevFast.Net.Extensions.Etc.PipeLine.Pipe<TIn,TState,TOut>(this System.Func<TState,System.Threading.Tasks.Task<TIn>>, System.Func<TIn,TState,System.Threading.Tasks.Task<TOut>>).tandemLambda') and returns the output obtained
+from [tandemLambda](DevFast.Net.Extensions.Etc.PipeLine.md#DevFast.Net.Extensions.Etc.PipeLine.Pipe_TIn,TState,TOut_(thisSystem.Func_TState,System.Threading.Tasks.Task_TIn__,System.Func_TIn,TState,System.Threading.Tasks.Task_TOut__).tandemLambda 'DevFast.Net.Extensions.Etc.PipeLine.Pipe<TIn,TState,TOut>(this System.Func<TState,System.Threading.Tasks.Task<TIn>>, System.Func<TIn,TState,System.Threading.Tasks.Task<TOut>>).tandemLambda').
+
+```csharp
+public static System.Func<TState,System.Threading.Tasks.Task<TOut>> Pipe<TIn,TState,TOut>(this System.Func<TState,System.Threading.Tasks.Task<TIn>> sourceLambda, System.Func<TIn,TState,System.Threading.Tasks.Task<TOut>> tandemLambda);
+```
+#### Type parameters
+
+<a name='DevFast.Net.Extensions.Etc.PipeLine.Pipe_TIn,TState,TOut_(thisSystem.Func_TState,System.Threading.Tasks.Task_TIn__,System.Func_TIn,TState,System.Threading.Tasks.Task_TOut__).TIn'></a>
+
+`TIn`
+
+<a name='DevFast.Net.Extensions.Etc.PipeLine.Pipe_TIn,TState,TOut_(thisSystem.Func_TState,System.Threading.Tasks.Task_TIn__,System.Func_TIn,TState,System.Threading.Tasks.Task_TOut__).TState'></a>
+
+`TState`
+
+<a name='DevFast.Net.Extensions.Etc.PipeLine.Pipe_TIn,TState,TOut_(thisSystem.Func_TState,System.Threading.Tasks.Task_TIn__,System.Func_TIn,TState,System.Threading.Tasks.Task_TOut__).TOut'></a>
+
+`TOut`
+#### Parameters
+
+<a name='DevFast.Net.Extensions.Etc.PipeLine.Pipe_TIn,TState,TOut_(thisSystem.Func_TState,System.Threading.Tasks.Task_TIn__,System.Func_TIn,TState,System.Threading.Tasks.Task_TOut__).sourceLambda'></a>
+
+`sourceLambda` [System.Func&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Func-2 'System.Func`2')[TState](DevFast.Net.Extensions.Etc.PipeLine.md#DevFast.Net.Extensions.Etc.PipeLine.Pipe_TIn,TState,TOut_(thisSystem.Func_TState,System.Threading.Tasks.Task_TIn__,System.Func_TIn,TState,System.Threading.Tasks.Task_TOut__).TState 'DevFast.Net.Extensions.Etc.PipeLine.Pipe<TIn,TState,TOut>(this System.Func<TState,System.Threading.Tasks.Task<TIn>>, System.Func<TIn,TState,System.Threading.Tasks.Task<TOut>>).TState')[,](https://docs.microsoft.com/en-us/dotnet/api/System.Func-2 'System.Func`2')[System.Threading.Tasks.Task&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Threading.Tasks.Task-1 'System.Threading.Tasks.Task`1')[TIn](DevFast.Net.Extensions.Etc.PipeLine.md#DevFast.Net.Extensions.Etc.PipeLine.Pipe_TIn,TState,TOut_(thisSystem.Func_TState,System.Threading.Tasks.Task_TIn__,System.Func_TIn,TState,System.Threading.Tasks.Task_TOut__).TIn 'DevFast.Net.Extensions.Etc.PipeLine.Pipe<TIn,TState,TOut>(this System.Func<TState,System.Threading.Tasks.Task<TIn>>, System.Func<TIn,TState,System.Threading.Tasks.Task<TOut>>).TIn')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Threading.Tasks.Task-1 'System.Threading.Tasks.Task`1')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Func-2 'System.Func`2')
+
+Source lambda to which the tandem operation would be applied.
+
+<a name='DevFast.Net.Extensions.Etc.PipeLine.Pipe_TIn,TState,TOut_(thisSystem.Func_TState,System.Threading.Tasks.Task_TIn__,System.Func_TIn,TState,System.Threading.Tasks.Task_TOut__).tandemLambda'></a>
+
+`tandemLambda` [System.Func&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Func-3 'System.Func`3')[TIn](DevFast.Net.Extensions.Etc.PipeLine.md#DevFast.Net.Extensions.Etc.PipeLine.Pipe_TIn,TState,TOut_(thisSystem.Func_TState,System.Threading.Tasks.Task_TIn__,System.Func_TIn,TState,System.Threading.Tasks.Task_TOut__).TIn 'DevFast.Net.Extensions.Etc.PipeLine.Pipe<TIn,TState,TOut>(this System.Func<TState,System.Threading.Tasks.Task<TIn>>, System.Func<TIn,TState,System.Threading.Tasks.Task<TOut>>).TIn')[,](https://docs.microsoft.com/en-us/dotnet/api/System.Func-3 'System.Func`3')[TState](DevFast.Net.Extensions.Etc.PipeLine.md#DevFast.Net.Extensions.Etc.PipeLine.Pipe_TIn,TState,TOut_(thisSystem.Func_TState,System.Threading.Tasks.Task_TIn__,System.Func_TIn,TState,System.Threading.Tasks.Task_TOut__).TState 'DevFast.Net.Extensions.Etc.PipeLine.Pipe<TIn,TState,TOut>(this System.Func<TState,System.Threading.Tasks.Task<TIn>>, System.Func<TIn,TState,System.Threading.Tasks.Task<TOut>>).TState')[,](https://docs.microsoft.com/en-us/dotnet/api/System.Func-3 'System.Func`3')[System.Threading.Tasks.Task&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Threading.Tasks.Task-1 'System.Threading.Tasks.Task`1')[TOut](DevFast.Net.Extensions.Etc.PipeLine.md#DevFast.Net.Extensions.Etc.PipeLine.Pipe_TIn,TState,TOut_(thisSystem.Func_TState,System.Threading.Tasks.Task_TIn__,System.Func_TIn,TState,System.Threading.Tasks.Task_TOut__).TOut 'DevFast.Net.Extensions.Etc.PipeLine.Pipe<TIn,TState,TOut>(this System.Func<TState,System.Threading.Tasks.Task<TIn>>, System.Func<TIn,TState,System.Threading.Tasks.Task<TOut>>).TOut')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Threading.Tasks.Task-1 'System.Threading.Tasks.Task`1')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Func-3 'System.Func`3')
+
+Tandem lambda that would consume the value.
+
+#### Returns
+[System.Func&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Func-2 'System.Func`2')[TState](DevFast.Net.Extensions.Etc.PipeLine.md#DevFast.Net.Extensions.Etc.PipeLine.Pipe_TIn,TState,TOut_(thisSystem.Func_TState,System.Threading.Tasks.Task_TIn__,System.Func_TIn,TState,System.Threading.Tasks.Task_TOut__).TState 'DevFast.Net.Extensions.Etc.PipeLine.Pipe<TIn,TState,TOut>(this System.Func<TState,System.Threading.Tasks.Task<TIn>>, System.Func<TIn,TState,System.Threading.Tasks.Task<TOut>>).TState')[,](https://docs.microsoft.com/en-us/dotnet/api/System.Func-2 'System.Func`2')[System.Threading.Tasks.Task&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Threading.Tasks.Task-1 'System.Threading.Tasks.Task`1')[TOut](DevFast.Net.Extensions.Etc.PipeLine.md#DevFast.Net.Extensions.Etc.PipeLine.Pipe_TIn,TState,TOut_(thisSystem.Func_TState,System.Threading.Tasks.Task_TIn__,System.Func_TIn,TState,System.Threading.Tasks.Task_TOut__).TOut 'DevFast.Net.Extensions.Etc.PipeLine.Pipe<TIn,TState,TOut>(this System.Func<TState,System.Threading.Tasks.Task<TIn>>, System.Func<TIn,TState,System.Threading.Tasks.Task<TOut>>).TOut')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Threading.Tasks.Task-1 'System.Threading.Tasks.Task`1')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Func-2 'System.Func`2')
+
+<a name='DevFast.Net.Extensions.Etc.PipeLine.Pipe_TIn,TState,TOut_(thisSystem.Func_TState,System.Threading.Tasks.Task_TIn__,System.Func_TIn,TState,TOut_)'></a>
+
+## PipeLine.Pipe<TIn,TState,TOut>(this Func<TState,Task<TIn>>, Func<TIn,TState,TOut>) Method
+
+Provides a lambda, which upon execution, feeds the output of
+[sourceLambda](DevFast.Net.Extensions.Etc.PipeLine.md#DevFast.Net.Extensions.Etc.PipeLine.Pipe_TIn,TState,TOut_(thisSystem.Func_TState,System.Threading.Tasks.Task_TIn__,System.Func_TIn,TState,TOut_).sourceLambda 'DevFast.Net.Extensions.Etc.PipeLine.Pipe<TIn,TState,TOut>(this System.Func<TState,System.Threading.Tasks.Task<TIn>>, System.Func<TIn,TState,TOut>).sourceLambda') to the [tandemLambda](DevFast.Net.Extensions.Etc.PipeLine.md#DevFast.Net.Extensions.Etc.PipeLine.Pipe_TIn,TState,TOut_(thisSystem.Func_TState,System.Threading.Tasks.Task_TIn__,System.Func_TIn,TState,TOut_).tandemLambda 'DevFast.Net.Extensions.Etc.PipeLine.Pipe<TIn,TState,TOut>(this System.Func<TState,System.Threading.Tasks.Task<TIn>>, System.Func<TIn,TState,TOut>).tandemLambda') and returns the output obtained
+from [tandemLambda](DevFast.Net.Extensions.Etc.PipeLine.md#DevFast.Net.Extensions.Etc.PipeLine.Pipe_TIn,TState,TOut_(thisSystem.Func_TState,System.Threading.Tasks.Task_TIn__,System.Func_TIn,TState,TOut_).tandemLambda 'DevFast.Net.Extensions.Etc.PipeLine.Pipe<TIn,TState,TOut>(this System.Func<TState,System.Threading.Tasks.Task<TIn>>, System.Func<TIn,TState,TOut>).tandemLambda').
+
+```csharp
+public static System.Func<TState,System.Threading.Tasks.Task<TOut>> Pipe<TIn,TState,TOut>(this System.Func<TState,System.Threading.Tasks.Task<TIn>> sourceLambda, System.Func<TIn,TState,TOut> tandemLambda);
+```
+#### Type parameters
+
+<a name='DevFast.Net.Extensions.Etc.PipeLine.Pipe_TIn,TState,TOut_(thisSystem.Func_TState,System.Threading.Tasks.Task_TIn__,System.Func_TIn,TState,TOut_).TIn'></a>
+
+`TIn`
+
+<a name='DevFast.Net.Extensions.Etc.PipeLine.Pipe_TIn,TState,TOut_(thisSystem.Func_TState,System.Threading.Tasks.Task_TIn__,System.Func_TIn,TState,TOut_).TState'></a>
+
+`TState`
+
+<a name='DevFast.Net.Extensions.Etc.PipeLine.Pipe_TIn,TState,TOut_(thisSystem.Func_TState,System.Threading.Tasks.Task_TIn__,System.Func_TIn,TState,TOut_).TOut'></a>
+
+`TOut`
+#### Parameters
+
+<a name='DevFast.Net.Extensions.Etc.PipeLine.Pipe_TIn,TState,TOut_(thisSystem.Func_TState,System.Threading.Tasks.Task_TIn__,System.Func_TIn,TState,TOut_).sourceLambda'></a>
+
+`sourceLambda` [System.Func&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Func-2 'System.Func`2')[TState](DevFast.Net.Extensions.Etc.PipeLine.md#DevFast.Net.Extensions.Etc.PipeLine.Pipe_TIn,TState,TOut_(thisSystem.Func_TState,System.Threading.Tasks.Task_TIn__,System.Func_TIn,TState,TOut_).TState 'DevFast.Net.Extensions.Etc.PipeLine.Pipe<TIn,TState,TOut>(this System.Func<TState,System.Threading.Tasks.Task<TIn>>, System.Func<TIn,TState,TOut>).TState')[,](https://docs.microsoft.com/en-us/dotnet/api/System.Func-2 'System.Func`2')[System.Threading.Tasks.Task&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Threading.Tasks.Task-1 'System.Threading.Tasks.Task`1')[TIn](DevFast.Net.Extensions.Etc.PipeLine.md#DevFast.Net.Extensions.Etc.PipeLine.Pipe_TIn,TState,TOut_(thisSystem.Func_TState,System.Threading.Tasks.Task_TIn__,System.Func_TIn,TState,TOut_).TIn 'DevFast.Net.Extensions.Etc.PipeLine.Pipe<TIn,TState,TOut>(this System.Func<TState,System.Threading.Tasks.Task<TIn>>, System.Func<TIn,TState,TOut>).TIn')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Threading.Tasks.Task-1 'System.Threading.Tasks.Task`1')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Func-2 'System.Func`2')
+
+Source lambda to which the tandem operation would be applied.
+
+<a name='DevFast.Net.Extensions.Etc.PipeLine.Pipe_TIn,TState,TOut_(thisSystem.Func_TState,System.Threading.Tasks.Task_TIn__,System.Func_TIn,TState,TOut_).tandemLambda'></a>
+
+`tandemLambda` [System.Func&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Func-3 'System.Func`3')[TIn](DevFast.Net.Extensions.Etc.PipeLine.md#DevFast.Net.Extensions.Etc.PipeLine.Pipe_TIn,TState,TOut_(thisSystem.Func_TState,System.Threading.Tasks.Task_TIn__,System.Func_TIn,TState,TOut_).TIn 'DevFast.Net.Extensions.Etc.PipeLine.Pipe<TIn,TState,TOut>(this System.Func<TState,System.Threading.Tasks.Task<TIn>>, System.Func<TIn,TState,TOut>).TIn')[,](https://docs.microsoft.com/en-us/dotnet/api/System.Func-3 'System.Func`3')[TState](DevFast.Net.Extensions.Etc.PipeLine.md#DevFast.Net.Extensions.Etc.PipeLine.Pipe_TIn,TState,TOut_(thisSystem.Func_TState,System.Threading.Tasks.Task_TIn__,System.Func_TIn,TState,TOut_).TState 'DevFast.Net.Extensions.Etc.PipeLine.Pipe<TIn,TState,TOut>(this System.Func<TState,System.Threading.Tasks.Task<TIn>>, System.Func<TIn,TState,TOut>).TState')[,](https://docs.microsoft.com/en-us/dotnet/api/System.Func-3 'System.Func`3')[TOut](DevFast.Net.Extensions.Etc.PipeLine.md#DevFast.Net.Extensions.Etc.PipeLine.Pipe_TIn,TState,TOut_(thisSystem.Func_TState,System.Threading.Tasks.Task_TIn__,System.Func_TIn,TState,TOut_).TOut 'DevFast.Net.Extensions.Etc.PipeLine.Pipe<TIn,TState,TOut>(this System.Func<TState,System.Threading.Tasks.Task<TIn>>, System.Func<TIn,TState,TOut>).TOut')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Func-3 'System.Func`3')
+
+Tandem lambda that would consume the value.
+
+#### Returns
+[System.Func&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Func-2 'System.Func`2')[TState](DevFast.Net.Extensions.Etc.PipeLine.md#DevFast.Net.Extensions.Etc.PipeLine.Pipe_TIn,TState,TOut_(thisSystem.Func_TState,System.Threading.Tasks.Task_TIn__,System.Func_TIn,TState,TOut_).TState 'DevFast.Net.Extensions.Etc.PipeLine.Pipe<TIn,TState,TOut>(this System.Func<TState,System.Threading.Tasks.Task<TIn>>, System.Func<TIn,TState,TOut>).TState')[,](https://docs.microsoft.com/en-us/dotnet/api/System.Func-2 'System.Func`2')[System.Threading.Tasks.Task&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Threading.Tasks.Task-1 'System.Threading.Tasks.Task`1')[TOut](DevFast.Net.Extensions.Etc.PipeLine.md#DevFast.Net.Extensions.Etc.PipeLine.Pipe_TIn,TState,TOut_(thisSystem.Func_TState,System.Threading.Tasks.Task_TIn__,System.Func_TIn,TState,TOut_).TOut 'DevFast.Net.Extensions.Etc.PipeLine.Pipe<TIn,TState,TOut>(this System.Func<TState,System.Threading.Tasks.Task<TIn>>, System.Func<TIn,TState,TOut>).TOut')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Threading.Tasks.Task-1 'System.Threading.Tasks.Task`1')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Func-2 'System.Func`2')
+
+<a name='DevFast.Net.Extensions.Etc.PipeLine.Pipe_TIn,TState,TOut_(thisSystem.Func_TState,System.Threading.Tasks.ValueTask_TIn__,System.Func_TIn,TState,System.Threading.Tasks.Task_TOut__)'></a>
+
+## PipeLine.Pipe<TIn,TState,TOut>(this Func<TState,ValueTask<TIn>>, Func<TIn,TState,Task<TOut>>) Method
+
+Provides a lambda, which upon execution, feeds the output of
+[sourceLambda](DevFast.Net.Extensions.Etc.PipeLine.md#DevFast.Net.Extensions.Etc.PipeLine.Pipe_TIn,TState,TOut_(thisSystem.Func_TState,System.Threading.Tasks.ValueTask_TIn__,System.Func_TIn,TState,System.Threading.Tasks.Task_TOut__).sourceLambda 'DevFast.Net.Extensions.Etc.PipeLine.Pipe<TIn,TState,TOut>(this System.Func<TState,System.Threading.Tasks.ValueTask<TIn>>, System.Func<TIn,TState,System.Threading.Tasks.Task<TOut>>).sourceLambda') to the [tandemLambda](DevFast.Net.Extensions.Etc.PipeLine.md#DevFast.Net.Extensions.Etc.PipeLine.Pipe_TIn,TState,TOut_(thisSystem.Func_TState,System.Threading.Tasks.ValueTask_TIn__,System.Func_TIn,TState,System.Threading.Tasks.Task_TOut__).tandemLambda 'DevFast.Net.Extensions.Etc.PipeLine.Pipe<TIn,TState,TOut>(this System.Func<TState,System.Threading.Tasks.ValueTask<TIn>>, System.Func<TIn,TState,System.Threading.Tasks.Task<TOut>>).tandemLambda') and returns the output obtained
+from [tandemLambda](DevFast.Net.Extensions.Etc.PipeLine.md#DevFast.Net.Extensions.Etc.PipeLine.Pipe_TIn,TState,TOut_(thisSystem.Func_TState,System.Threading.Tasks.ValueTask_TIn__,System.Func_TIn,TState,System.Threading.Tasks.Task_TOut__).tandemLambda 'DevFast.Net.Extensions.Etc.PipeLine.Pipe<TIn,TState,TOut>(this System.Func<TState,System.Threading.Tasks.ValueTask<TIn>>, System.Func<TIn,TState,System.Threading.Tasks.Task<TOut>>).tandemLambda').
+
+```csharp
+public static System.Func<TState,System.Threading.Tasks.Task<TOut>> Pipe<TIn,TState,TOut>(this System.Func<TState,System.Threading.Tasks.ValueTask<TIn>> sourceLambda, System.Func<TIn,TState,System.Threading.Tasks.Task<TOut>> tandemLambda);
+```
+#### Type parameters
+
+<a name='DevFast.Net.Extensions.Etc.PipeLine.Pipe_TIn,TState,TOut_(thisSystem.Func_TState,System.Threading.Tasks.ValueTask_TIn__,System.Func_TIn,TState,System.Threading.Tasks.Task_TOut__).TIn'></a>
+
+`TIn`
+
+<a name='DevFast.Net.Extensions.Etc.PipeLine.Pipe_TIn,TState,TOut_(thisSystem.Func_TState,System.Threading.Tasks.ValueTask_TIn__,System.Func_TIn,TState,System.Threading.Tasks.Task_TOut__).TState'></a>
+
+`TState`
+
+<a name='DevFast.Net.Extensions.Etc.PipeLine.Pipe_TIn,TState,TOut_(thisSystem.Func_TState,System.Threading.Tasks.ValueTask_TIn__,System.Func_TIn,TState,System.Threading.Tasks.Task_TOut__).TOut'></a>
+
+`TOut`
+#### Parameters
+
+<a name='DevFast.Net.Extensions.Etc.PipeLine.Pipe_TIn,TState,TOut_(thisSystem.Func_TState,System.Threading.Tasks.ValueTask_TIn__,System.Func_TIn,TState,System.Threading.Tasks.Task_TOut__).sourceLambda'></a>
+
+`sourceLambda` [System.Func&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Func-2 'System.Func`2')[TState](DevFast.Net.Extensions.Etc.PipeLine.md#DevFast.Net.Extensions.Etc.PipeLine.Pipe_TIn,TState,TOut_(thisSystem.Func_TState,System.Threading.Tasks.ValueTask_TIn__,System.Func_TIn,TState,System.Threading.Tasks.Task_TOut__).TState 'DevFast.Net.Extensions.Etc.PipeLine.Pipe<TIn,TState,TOut>(this System.Func<TState,System.Threading.Tasks.ValueTask<TIn>>, System.Func<TIn,TState,System.Threading.Tasks.Task<TOut>>).TState')[,](https://docs.microsoft.com/en-us/dotnet/api/System.Func-2 'System.Func`2')[System.Threading.Tasks.ValueTask&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Threading.Tasks.ValueTask-1 'System.Threading.Tasks.ValueTask`1')[TIn](DevFast.Net.Extensions.Etc.PipeLine.md#DevFast.Net.Extensions.Etc.PipeLine.Pipe_TIn,TState,TOut_(thisSystem.Func_TState,System.Threading.Tasks.ValueTask_TIn__,System.Func_TIn,TState,System.Threading.Tasks.Task_TOut__).TIn 'DevFast.Net.Extensions.Etc.PipeLine.Pipe<TIn,TState,TOut>(this System.Func<TState,System.Threading.Tasks.ValueTask<TIn>>, System.Func<TIn,TState,System.Threading.Tasks.Task<TOut>>).TIn')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Threading.Tasks.ValueTask-1 'System.Threading.Tasks.ValueTask`1')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Func-2 'System.Func`2')
+
+Source lambda to which the tandem operation would be applied.
+
+<a name='DevFast.Net.Extensions.Etc.PipeLine.Pipe_TIn,TState,TOut_(thisSystem.Func_TState,System.Threading.Tasks.ValueTask_TIn__,System.Func_TIn,TState,System.Threading.Tasks.Task_TOut__).tandemLambda'></a>
+
+`tandemLambda` [System.Func&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Func-3 'System.Func`3')[TIn](DevFast.Net.Extensions.Etc.PipeLine.md#DevFast.Net.Extensions.Etc.PipeLine.Pipe_TIn,TState,TOut_(thisSystem.Func_TState,System.Threading.Tasks.ValueTask_TIn__,System.Func_TIn,TState,System.Threading.Tasks.Task_TOut__).TIn 'DevFast.Net.Extensions.Etc.PipeLine.Pipe<TIn,TState,TOut>(this System.Func<TState,System.Threading.Tasks.ValueTask<TIn>>, System.Func<TIn,TState,System.Threading.Tasks.Task<TOut>>).TIn')[,](https://docs.microsoft.com/en-us/dotnet/api/System.Func-3 'System.Func`3')[TState](DevFast.Net.Extensions.Etc.PipeLine.md#DevFast.Net.Extensions.Etc.PipeLine.Pipe_TIn,TState,TOut_(thisSystem.Func_TState,System.Threading.Tasks.ValueTask_TIn__,System.Func_TIn,TState,System.Threading.Tasks.Task_TOut__).TState 'DevFast.Net.Extensions.Etc.PipeLine.Pipe<TIn,TState,TOut>(this System.Func<TState,System.Threading.Tasks.ValueTask<TIn>>, System.Func<TIn,TState,System.Threading.Tasks.Task<TOut>>).TState')[,](https://docs.microsoft.com/en-us/dotnet/api/System.Func-3 'System.Func`3')[System.Threading.Tasks.Task&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Threading.Tasks.Task-1 'System.Threading.Tasks.Task`1')[TOut](DevFast.Net.Extensions.Etc.PipeLine.md#DevFast.Net.Extensions.Etc.PipeLine.Pipe_TIn,TState,TOut_(thisSystem.Func_TState,System.Threading.Tasks.ValueTask_TIn__,System.Func_TIn,TState,System.Threading.Tasks.Task_TOut__).TOut 'DevFast.Net.Extensions.Etc.PipeLine.Pipe<TIn,TState,TOut>(this System.Func<TState,System.Threading.Tasks.ValueTask<TIn>>, System.Func<TIn,TState,System.Threading.Tasks.Task<TOut>>).TOut')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Threading.Tasks.Task-1 'System.Threading.Tasks.Task`1')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Func-3 'System.Func`3')
+
+Tandem lambda that would consume the value.
+
+#### Returns
+[System.Func&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Func-2 'System.Func`2')[TState](DevFast.Net.Extensions.Etc.PipeLine.md#DevFast.Net.Extensions.Etc.PipeLine.Pipe_TIn,TState,TOut_(thisSystem.Func_TState,System.Threading.Tasks.ValueTask_TIn__,System.Func_TIn,TState,System.Threading.Tasks.Task_TOut__).TState 'DevFast.Net.Extensions.Etc.PipeLine.Pipe<TIn,TState,TOut>(this System.Func<TState,System.Threading.Tasks.ValueTask<TIn>>, System.Func<TIn,TState,System.Threading.Tasks.Task<TOut>>).TState')[,](https://docs.microsoft.com/en-us/dotnet/api/System.Func-2 'System.Func`2')[System.Threading.Tasks.Task&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Threading.Tasks.Task-1 'System.Threading.Tasks.Task`1')[TOut](DevFast.Net.Extensions.Etc.PipeLine.md#DevFast.Net.Extensions.Etc.PipeLine.Pipe_TIn,TState,TOut_(thisSystem.Func_TState,System.Threading.Tasks.ValueTask_TIn__,System.Func_TIn,TState,System.Threading.Tasks.Task_TOut__).TOut 'DevFast.Net.Extensions.Etc.PipeLine.Pipe<TIn,TState,TOut>(this System.Func<TState,System.Threading.Tasks.ValueTask<TIn>>, System.Func<TIn,TState,System.Threading.Tasks.Task<TOut>>).TOut')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Threading.Tasks.Task-1 'System.Threading.Tasks.Task`1')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Func-2 'System.Func`2')
+
+<a name='DevFast.Net.Extensions.Etc.PipeLine.Pipe_TIn,TState,TOut_(thisSystem.Func_TState,System.Threading.Tasks.ValueTask_TIn__,System.Func_TIn,TState,System.Threading.Tasks.ValueTask_TOut__)'></a>
+
+## PipeLine.Pipe<TIn,TState,TOut>(this Func<TState,ValueTask<TIn>>, Func<TIn,TState,ValueTask<TOut>>) Method
+
+Provides a lambda, which upon execution, feeds the output of
+[sourceLambda](DevFast.Net.Extensions.Etc.PipeLine.md#DevFast.Net.Extensions.Etc.PipeLine.Pipe_TIn,TState,TOut_(thisSystem.Func_TState,System.Threading.Tasks.ValueTask_TIn__,System.Func_TIn,TState,System.Threading.Tasks.ValueTask_TOut__).sourceLambda 'DevFast.Net.Extensions.Etc.PipeLine.Pipe<TIn,TState,TOut>(this System.Func<TState,System.Threading.Tasks.ValueTask<TIn>>, System.Func<TIn,TState,System.Threading.Tasks.ValueTask<TOut>>).sourceLambda') to the [tandemLambda](DevFast.Net.Extensions.Etc.PipeLine.md#DevFast.Net.Extensions.Etc.PipeLine.Pipe_TIn,TState,TOut_(thisSystem.Func_TState,System.Threading.Tasks.ValueTask_TIn__,System.Func_TIn,TState,System.Threading.Tasks.ValueTask_TOut__).tandemLambda 'DevFast.Net.Extensions.Etc.PipeLine.Pipe<TIn,TState,TOut>(this System.Func<TState,System.Threading.Tasks.ValueTask<TIn>>, System.Func<TIn,TState,System.Threading.Tasks.ValueTask<TOut>>).tandemLambda') and returns the output obtained
+from [tandemLambda](DevFast.Net.Extensions.Etc.PipeLine.md#DevFast.Net.Extensions.Etc.PipeLine.Pipe_TIn,TState,TOut_(thisSystem.Func_TState,System.Threading.Tasks.ValueTask_TIn__,System.Func_TIn,TState,System.Threading.Tasks.ValueTask_TOut__).tandemLambda 'DevFast.Net.Extensions.Etc.PipeLine.Pipe<TIn,TState,TOut>(this System.Func<TState,System.Threading.Tasks.ValueTask<TIn>>, System.Func<TIn,TState,System.Threading.Tasks.ValueTask<TOut>>).tandemLambda').
+
+```csharp
+public static System.Func<TState,System.Threading.Tasks.ValueTask<TOut>> Pipe<TIn,TState,TOut>(this System.Func<TState,System.Threading.Tasks.ValueTask<TIn>> sourceLambda, System.Func<TIn,TState,System.Threading.Tasks.ValueTask<TOut>> tandemLambda);
+```
+#### Type parameters
+
+<a name='DevFast.Net.Extensions.Etc.PipeLine.Pipe_TIn,TState,TOut_(thisSystem.Func_TState,System.Threading.Tasks.ValueTask_TIn__,System.Func_TIn,TState,System.Threading.Tasks.ValueTask_TOut__).TIn'></a>
+
+`TIn`
+
+<a name='DevFast.Net.Extensions.Etc.PipeLine.Pipe_TIn,TState,TOut_(thisSystem.Func_TState,System.Threading.Tasks.ValueTask_TIn__,System.Func_TIn,TState,System.Threading.Tasks.ValueTask_TOut__).TState'></a>
+
+`TState`
+
+<a name='DevFast.Net.Extensions.Etc.PipeLine.Pipe_TIn,TState,TOut_(thisSystem.Func_TState,System.Threading.Tasks.ValueTask_TIn__,System.Func_TIn,TState,System.Threading.Tasks.ValueTask_TOut__).TOut'></a>
+
+`TOut`
+#### Parameters
+
+<a name='DevFast.Net.Extensions.Etc.PipeLine.Pipe_TIn,TState,TOut_(thisSystem.Func_TState,System.Threading.Tasks.ValueTask_TIn__,System.Func_TIn,TState,System.Threading.Tasks.ValueTask_TOut__).sourceLambda'></a>
+
+`sourceLambda` [System.Func&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Func-2 'System.Func`2')[TState](DevFast.Net.Extensions.Etc.PipeLine.md#DevFast.Net.Extensions.Etc.PipeLine.Pipe_TIn,TState,TOut_(thisSystem.Func_TState,System.Threading.Tasks.ValueTask_TIn__,System.Func_TIn,TState,System.Threading.Tasks.ValueTask_TOut__).TState 'DevFast.Net.Extensions.Etc.PipeLine.Pipe<TIn,TState,TOut>(this System.Func<TState,System.Threading.Tasks.ValueTask<TIn>>, System.Func<TIn,TState,System.Threading.Tasks.ValueTask<TOut>>).TState')[,](https://docs.microsoft.com/en-us/dotnet/api/System.Func-2 'System.Func`2')[System.Threading.Tasks.ValueTask&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Threading.Tasks.ValueTask-1 'System.Threading.Tasks.ValueTask`1')[TIn](DevFast.Net.Extensions.Etc.PipeLine.md#DevFast.Net.Extensions.Etc.PipeLine.Pipe_TIn,TState,TOut_(thisSystem.Func_TState,System.Threading.Tasks.ValueTask_TIn__,System.Func_TIn,TState,System.Threading.Tasks.ValueTask_TOut__).TIn 'DevFast.Net.Extensions.Etc.PipeLine.Pipe<TIn,TState,TOut>(this System.Func<TState,System.Threading.Tasks.ValueTask<TIn>>, System.Func<TIn,TState,System.Threading.Tasks.ValueTask<TOut>>).TIn')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Threading.Tasks.ValueTask-1 'System.Threading.Tasks.ValueTask`1')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Func-2 'System.Func`2')
+
+Source lambda to which the tandem operation would be applied.
+
+<a name='DevFast.Net.Extensions.Etc.PipeLine.Pipe_TIn,TState,TOut_(thisSystem.Func_TState,System.Threading.Tasks.ValueTask_TIn__,System.Func_TIn,TState,System.Threading.Tasks.ValueTask_TOut__).tandemLambda'></a>
+
+`tandemLambda` [System.Func&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Func-3 'System.Func`3')[TIn](DevFast.Net.Extensions.Etc.PipeLine.md#DevFast.Net.Extensions.Etc.PipeLine.Pipe_TIn,TState,TOut_(thisSystem.Func_TState,System.Threading.Tasks.ValueTask_TIn__,System.Func_TIn,TState,System.Threading.Tasks.ValueTask_TOut__).TIn 'DevFast.Net.Extensions.Etc.PipeLine.Pipe<TIn,TState,TOut>(this System.Func<TState,System.Threading.Tasks.ValueTask<TIn>>, System.Func<TIn,TState,System.Threading.Tasks.ValueTask<TOut>>).TIn')[,](https://docs.microsoft.com/en-us/dotnet/api/System.Func-3 'System.Func`3')[TState](DevFast.Net.Extensions.Etc.PipeLine.md#DevFast.Net.Extensions.Etc.PipeLine.Pipe_TIn,TState,TOut_(thisSystem.Func_TState,System.Threading.Tasks.ValueTask_TIn__,System.Func_TIn,TState,System.Threading.Tasks.ValueTask_TOut__).TState 'DevFast.Net.Extensions.Etc.PipeLine.Pipe<TIn,TState,TOut>(this System.Func<TState,System.Threading.Tasks.ValueTask<TIn>>, System.Func<TIn,TState,System.Threading.Tasks.ValueTask<TOut>>).TState')[,](https://docs.microsoft.com/en-us/dotnet/api/System.Func-3 'System.Func`3')[System.Threading.Tasks.ValueTask&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Threading.Tasks.ValueTask-1 'System.Threading.Tasks.ValueTask`1')[TOut](DevFast.Net.Extensions.Etc.PipeLine.md#DevFast.Net.Extensions.Etc.PipeLine.Pipe_TIn,TState,TOut_(thisSystem.Func_TState,System.Threading.Tasks.ValueTask_TIn__,System.Func_TIn,TState,System.Threading.Tasks.ValueTask_TOut__).TOut 'DevFast.Net.Extensions.Etc.PipeLine.Pipe<TIn,TState,TOut>(this System.Func<TState,System.Threading.Tasks.ValueTask<TIn>>, System.Func<TIn,TState,System.Threading.Tasks.ValueTask<TOut>>).TOut')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Threading.Tasks.ValueTask-1 'System.Threading.Tasks.ValueTask`1')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Func-3 'System.Func`3')
+
+Tandem lambda that would consume the value.
+
+#### Returns
+[System.Func&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Func-2 'System.Func`2')[TState](DevFast.Net.Extensions.Etc.PipeLine.md#DevFast.Net.Extensions.Etc.PipeLine.Pipe_TIn,TState,TOut_(thisSystem.Func_TState,System.Threading.Tasks.ValueTask_TIn__,System.Func_TIn,TState,System.Threading.Tasks.ValueTask_TOut__).TState 'DevFast.Net.Extensions.Etc.PipeLine.Pipe<TIn,TState,TOut>(this System.Func<TState,System.Threading.Tasks.ValueTask<TIn>>, System.Func<TIn,TState,System.Threading.Tasks.ValueTask<TOut>>).TState')[,](https://docs.microsoft.com/en-us/dotnet/api/System.Func-2 'System.Func`2')[System.Threading.Tasks.ValueTask&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Threading.Tasks.ValueTask-1 'System.Threading.Tasks.ValueTask`1')[TOut](DevFast.Net.Extensions.Etc.PipeLine.md#DevFast.Net.Extensions.Etc.PipeLine.Pipe_TIn,TState,TOut_(thisSystem.Func_TState,System.Threading.Tasks.ValueTask_TIn__,System.Func_TIn,TState,System.Threading.Tasks.ValueTask_TOut__).TOut 'DevFast.Net.Extensions.Etc.PipeLine.Pipe<TIn,TState,TOut>(this System.Func<TState,System.Threading.Tasks.ValueTask<TIn>>, System.Func<TIn,TState,System.Threading.Tasks.ValueTask<TOut>>).TOut')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Threading.Tasks.ValueTask-1 'System.Threading.Tasks.ValueTask`1')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Func-2 'System.Func`2')
+
+<a name='DevFast.Net.Extensions.Etc.PipeLine.Pipe_TIn,TState,TOut_(thisSystem.Func_TState,System.Threading.Tasks.ValueTask_TIn__,System.Func_TIn,TState,TOut_)'></a>
+
+## PipeLine.Pipe<TIn,TState,TOut>(this Func<TState,ValueTask<TIn>>, Func<TIn,TState,TOut>) Method
+
+Provides a lambda, which upon execution, feeds the output of
+[sourceLambda](DevFast.Net.Extensions.Etc.PipeLine.md#DevFast.Net.Extensions.Etc.PipeLine.Pipe_TIn,TState,TOut_(thisSystem.Func_TState,System.Threading.Tasks.ValueTask_TIn__,System.Func_TIn,TState,TOut_).sourceLambda 'DevFast.Net.Extensions.Etc.PipeLine.Pipe<TIn,TState,TOut>(this System.Func<TState,System.Threading.Tasks.ValueTask<TIn>>, System.Func<TIn,TState,TOut>).sourceLambda') to the [tandemLambda](DevFast.Net.Extensions.Etc.PipeLine.md#DevFast.Net.Extensions.Etc.PipeLine.Pipe_TIn,TState,TOut_(thisSystem.Func_TState,System.Threading.Tasks.ValueTask_TIn__,System.Func_TIn,TState,TOut_).tandemLambda 'DevFast.Net.Extensions.Etc.PipeLine.Pipe<TIn,TState,TOut>(this System.Func<TState,System.Threading.Tasks.ValueTask<TIn>>, System.Func<TIn,TState,TOut>).tandemLambda') and returns the output obtained
+from [tandemLambda](DevFast.Net.Extensions.Etc.PipeLine.md#DevFast.Net.Extensions.Etc.PipeLine.Pipe_TIn,TState,TOut_(thisSystem.Func_TState,System.Threading.Tasks.ValueTask_TIn__,System.Func_TIn,TState,TOut_).tandemLambda 'DevFast.Net.Extensions.Etc.PipeLine.Pipe<TIn,TState,TOut>(this System.Func<TState,System.Threading.Tasks.ValueTask<TIn>>, System.Func<TIn,TState,TOut>).tandemLambda').
+
+```csharp
+public static System.Func<TState,System.Threading.Tasks.ValueTask<TOut>> Pipe<TIn,TState,TOut>(this System.Func<TState,System.Threading.Tasks.ValueTask<TIn>> sourceLambda, System.Func<TIn,TState,TOut> tandemLambda);
+```
+#### Type parameters
+
+<a name='DevFast.Net.Extensions.Etc.PipeLine.Pipe_TIn,TState,TOut_(thisSystem.Func_TState,System.Threading.Tasks.ValueTask_TIn__,System.Func_TIn,TState,TOut_).TIn'></a>
+
+`TIn`
+
+<a name='DevFast.Net.Extensions.Etc.PipeLine.Pipe_TIn,TState,TOut_(thisSystem.Func_TState,System.Threading.Tasks.ValueTask_TIn__,System.Func_TIn,TState,TOut_).TState'></a>
+
+`TState`
+
+<a name='DevFast.Net.Extensions.Etc.PipeLine.Pipe_TIn,TState,TOut_(thisSystem.Func_TState,System.Threading.Tasks.ValueTask_TIn__,System.Func_TIn,TState,TOut_).TOut'></a>
+
+`TOut`
+#### Parameters
+
+<a name='DevFast.Net.Extensions.Etc.PipeLine.Pipe_TIn,TState,TOut_(thisSystem.Func_TState,System.Threading.Tasks.ValueTask_TIn__,System.Func_TIn,TState,TOut_).sourceLambda'></a>
+
+`sourceLambda` [System.Func&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Func-2 'System.Func`2')[TState](DevFast.Net.Extensions.Etc.PipeLine.md#DevFast.Net.Extensions.Etc.PipeLine.Pipe_TIn,TState,TOut_(thisSystem.Func_TState,System.Threading.Tasks.ValueTask_TIn__,System.Func_TIn,TState,TOut_).TState 'DevFast.Net.Extensions.Etc.PipeLine.Pipe<TIn,TState,TOut>(this System.Func<TState,System.Threading.Tasks.ValueTask<TIn>>, System.Func<TIn,TState,TOut>).TState')[,](https://docs.microsoft.com/en-us/dotnet/api/System.Func-2 'System.Func`2')[System.Threading.Tasks.ValueTask&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Threading.Tasks.ValueTask-1 'System.Threading.Tasks.ValueTask`1')[TIn](DevFast.Net.Extensions.Etc.PipeLine.md#DevFast.Net.Extensions.Etc.PipeLine.Pipe_TIn,TState,TOut_(thisSystem.Func_TState,System.Threading.Tasks.ValueTask_TIn__,System.Func_TIn,TState,TOut_).TIn 'DevFast.Net.Extensions.Etc.PipeLine.Pipe<TIn,TState,TOut>(this System.Func<TState,System.Threading.Tasks.ValueTask<TIn>>, System.Func<TIn,TState,TOut>).TIn')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Threading.Tasks.ValueTask-1 'System.Threading.Tasks.ValueTask`1')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Func-2 'System.Func`2')
+
+Source lambda to which the tandem operation would be applied.
+
+<a name='DevFast.Net.Extensions.Etc.PipeLine.Pipe_TIn,TState,TOut_(thisSystem.Func_TState,System.Threading.Tasks.ValueTask_TIn__,System.Func_TIn,TState,TOut_).tandemLambda'></a>
+
+`tandemLambda` [System.Func&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Func-3 'System.Func`3')[TIn](DevFast.Net.Extensions.Etc.PipeLine.md#DevFast.Net.Extensions.Etc.PipeLine.Pipe_TIn,TState,TOut_(thisSystem.Func_TState,System.Threading.Tasks.ValueTask_TIn__,System.Func_TIn,TState,TOut_).TIn 'DevFast.Net.Extensions.Etc.PipeLine.Pipe<TIn,TState,TOut>(this System.Func<TState,System.Threading.Tasks.ValueTask<TIn>>, System.Func<TIn,TState,TOut>).TIn')[,](https://docs.microsoft.com/en-us/dotnet/api/System.Func-3 'System.Func`3')[TState](DevFast.Net.Extensions.Etc.PipeLine.md#DevFast.Net.Extensions.Etc.PipeLine.Pipe_TIn,TState,TOut_(thisSystem.Func_TState,System.Threading.Tasks.ValueTask_TIn__,System.Func_TIn,TState,TOut_).TState 'DevFast.Net.Extensions.Etc.PipeLine.Pipe<TIn,TState,TOut>(this System.Func<TState,System.Threading.Tasks.ValueTask<TIn>>, System.Func<TIn,TState,TOut>).TState')[,](https://docs.microsoft.com/en-us/dotnet/api/System.Func-3 'System.Func`3')[TOut](DevFast.Net.Extensions.Etc.PipeLine.md#DevFast.Net.Extensions.Etc.PipeLine.Pipe_TIn,TState,TOut_(thisSystem.Func_TState,System.Threading.Tasks.ValueTask_TIn__,System.Func_TIn,TState,TOut_).TOut 'DevFast.Net.Extensions.Etc.PipeLine.Pipe<TIn,TState,TOut>(this System.Func<TState,System.Threading.Tasks.ValueTask<TIn>>, System.Func<TIn,TState,TOut>).TOut')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Func-3 'System.Func`3')
+
+Tandem lambda that would consume the value.
+
+#### Returns
+[System.Func&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Func-2 'System.Func`2')[TState](DevFast.Net.Extensions.Etc.PipeLine.md#DevFast.Net.Extensions.Etc.PipeLine.Pipe_TIn,TState,TOut_(thisSystem.Func_TState,System.Threading.Tasks.ValueTask_TIn__,System.Func_TIn,TState,TOut_).TState 'DevFast.Net.Extensions.Etc.PipeLine.Pipe<TIn,TState,TOut>(this System.Func<TState,System.Threading.Tasks.ValueTask<TIn>>, System.Func<TIn,TState,TOut>).TState')[,](https://docs.microsoft.com/en-us/dotnet/api/System.Func-2 'System.Func`2')[System.Threading.Tasks.ValueTask&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Threading.Tasks.ValueTask-1 'System.Threading.Tasks.ValueTask`1')[TOut](DevFast.Net.Extensions.Etc.PipeLine.md#DevFast.Net.Extensions.Etc.PipeLine.Pipe_TIn,TState,TOut_(thisSystem.Func_TState,System.Threading.Tasks.ValueTask_TIn__,System.Func_TIn,TState,TOut_).TOut 'DevFast.Net.Extensions.Etc.PipeLine.Pipe<TIn,TState,TOut>(this System.Func<TState,System.Threading.Tasks.ValueTask<TIn>>, System.Func<TIn,TState,TOut>).TOut')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Threading.Tasks.ValueTask-1 'System.Threading.Tasks.ValueTask`1')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Func-2 'System.Func`2')
+
+<a name='DevFast.Net.Extensions.Etc.PipeLine.Pipe_TIn,TState,TOut_(thisSystem.Func_TState,TIn_,System.Func_TIn,TState,System.Threading.Tasks.Task_TOut__)'></a>
+
+## PipeLine.Pipe<TIn,TState,TOut>(this Func<TState,TIn>, Func<TIn,TState,Task<TOut>>) Method
+
+Provides a lambda, which upon execution, feeds the output of
+[sourceLambda](DevFast.Net.Extensions.Etc.PipeLine.md#DevFast.Net.Extensions.Etc.PipeLine.Pipe_TIn,TState,TOut_(thisSystem.Func_TState,TIn_,System.Func_TIn,TState,System.Threading.Tasks.Task_TOut__).sourceLambda 'DevFast.Net.Extensions.Etc.PipeLine.Pipe<TIn,TState,TOut>(this System.Func<TState,TIn>, System.Func<TIn,TState,System.Threading.Tasks.Task<TOut>>).sourceLambda') to the [tandemLambda](DevFast.Net.Extensions.Etc.PipeLine.md#DevFast.Net.Extensions.Etc.PipeLine.Pipe_TIn,TState,TOut_(thisSystem.Func_TState,TIn_,System.Func_TIn,TState,System.Threading.Tasks.Task_TOut__).tandemLambda 'DevFast.Net.Extensions.Etc.PipeLine.Pipe<TIn,TState,TOut>(this System.Func<TState,TIn>, System.Func<TIn,TState,System.Threading.Tasks.Task<TOut>>).tandemLambda') and returns the output obtained
+from [tandemLambda](DevFast.Net.Extensions.Etc.PipeLine.md#DevFast.Net.Extensions.Etc.PipeLine.Pipe_TIn,TState,TOut_(thisSystem.Func_TState,TIn_,System.Func_TIn,TState,System.Threading.Tasks.Task_TOut__).tandemLambda 'DevFast.Net.Extensions.Etc.PipeLine.Pipe<TIn,TState,TOut>(this System.Func<TState,TIn>, System.Func<TIn,TState,System.Threading.Tasks.Task<TOut>>).tandemLambda').
+
+```csharp
+public static System.Func<TState,System.Threading.Tasks.Task<TOut>> Pipe<TIn,TState,TOut>(this System.Func<TState,TIn> sourceLambda, System.Func<TIn,TState,System.Threading.Tasks.Task<TOut>> tandemLambda);
+```
+#### Type parameters
+
+<a name='DevFast.Net.Extensions.Etc.PipeLine.Pipe_TIn,TState,TOut_(thisSystem.Func_TState,TIn_,System.Func_TIn,TState,System.Threading.Tasks.Task_TOut__).TIn'></a>
+
+`TIn`
+
+<a name='DevFast.Net.Extensions.Etc.PipeLine.Pipe_TIn,TState,TOut_(thisSystem.Func_TState,TIn_,System.Func_TIn,TState,System.Threading.Tasks.Task_TOut__).TState'></a>
+
+`TState`
+
+<a name='DevFast.Net.Extensions.Etc.PipeLine.Pipe_TIn,TState,TOut_(thisSystem.Func_TState,TIn_,System.Func_TIn,TState,System.Threading.Tasks.Task_TOut__).TOut'></a>
+
+`TOut`
+#### Parameters
+
+<a name='DevFast.Net.Extensions.Etc.PipeLine.Pipe_TIn,TState,TOut_(thisSystem.Func_TState,TIn_,System.Func_TIn,TState,System.Threading.Tasks.Task_TOut__).sourceLambda'></a>
+
+`sourceLambda` [System.Func&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Func-2 'System.Func`2')[TState](DevFast.Net.Extensions.Etc.PipeLine.md#DevFast.Net.Extensions.Etc.PipeLine.Pipe_TIn,TState,TOut_(thisSystem.Func_TState,TIn_,System.Func_TIn,TState,System.Threading.Tasks.Task_TOut__).TState 'DevFast.Net.Extensions.Etc.PipeLine.Pipe<TIn,TState,TOut>(this System.Func<TState,TIn>, System.Func<TIn,TState,System.Threading.Tasks.Task<TOut>>).TState')[,](https://docs.microsoft.com/en-us/dotnet/api/System.Func-2 'System.Func`2')[TIn](DevFast.Net.Extensions.Etc.PipeLine.md#DevFast.Net.Extensions.Etc.PipeLine.Pipe_TIn,TState,TOut_(thisSystem.Func_TState,TIn_,System.Func_TIn,TState,System.Threading.Tasks.Task_TOut__).TIn 'DevFast.Net.Extensions.Etc.PipeLine.Pipe<TIn,TState,TOut>(this System.Func<TState,TIn>, System.Func<TIn,TState,System.Threading.Tasks.Task<TOut>>).TIn')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Func-2 'System.Func`2')
+
+Source lambda to which the tandem operation would be applied.
+
+<a name='DevFast.Net.Extensions.Etc.PipeLine.Pipe_TIn,TState,TOut_(thisSystem.Func_TState,TIn_,System.Func_TIn,TState,System.Threading.Tasks.Task_TOut__).tandemLambda'></a>
+
+`tandemLambda` [System.Func&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Func-3 'System.Func`3')[TIn](DevFast.Net.Extensions.Etc.PipeLine.md#DevFast.Net.Extensions.Etc.PipeLine.Pipe_TIn,TState,TOut_(thisSystem.Func_TState,TIn_,System.Func_TIn,TState,System.Threading.Tasks.Task_TOut__).TIn 'DevFast.Net.Extensions.Etc.PipeLine.Pipe<TIn,TState,TOut>(this System.Func<TState,TIn>, System.Func<TIn,TState,System.Threading.Tasks.Task<TOut>>).TIn')[,](https://docs.microsoft.com/en-us/dotnet/api/System.Func-3 'System.Func`3')[TState](DevFast.Net.Extensions.Etc.PipeLine.md#DevFast.Net.Extensions.Etc.PipeLine.Pipe_TIn,TState,TOut_(thisSystem.Func_TState,TIn_,System.Func_TIn,TState,System.Threading.Tasks.Task_TOut__).TState 'DevFast.Net.Extensions.Etc.PipeLine.Pipe<TIn,TState,TOut>(this System.Func<TState,TIn>, System.Func<TIn,TState,System.Threading.Tasks.Task<TOut>>).TState')[,](https://docs.microsoft.com/en-us/dotnet/api/System.Func-3 'System.Func`3')[System.Threading.Tasks.Task&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Threading.Tasks.Task-1 'System.Threading.Tasks.Task`1')[TOut](DevFast.Net.Extensions.Etc.PipeLine.md#DevFast.Net.Extensions.Etc.PipeLine.Pipe_TIn,TState,TOut_(thisSystem.Func_TState,TIn_,System.Func_TIn,TState,System.Threading.Tasks.Task_TOut__).TOut 'DevFast.Net.Extensions.Etc.PipeLine.Pipe<TIn,TState,TOut>(this System.Func<TState,TIn>, System.Func<TIn,TState,System.Threading.Tasks.Task<TOut>>).TOut')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Threading.Tasks.Task-1 'System.Threading.Tasks.Task`1')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Func-3 'System.Func`3')
+
+Tandem lambda that would consume the value.
+
+#### Returns
+[System.Func&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Func-2 'System.Func`2')[TState](DevFast.Net.Extensions.Etc.PipeLine.md#DevFast.Net.Extensions.Etc.PipeLine.Pipe_TIn,TState,TOut_(thisSystem.Func_TState,TIn_,System.Func_TIn,TState,System.Threading.Tasks.Task_TOut__).TState 'DevFast.Net.Extensions.Etc.PipeLine.Pipe<TIn,TState,TOut>(this System.Func<TState,TIn>, System.Func<TIn,TState,System.Threading.Tasks.Task<TOut>>).TState')[,](https://docs.microsoft.com/en-us/dotnet/api/System.Func-2 'System.Func`2')[System.Threading.Tasks.Task&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Threading.Tasks.Task-1 'System.Threading.Tasks.Task`1')[TOut](DevFast.Net.Extensions.Etc.PipeLine.md#DevFast.Net.Extensions.Etc.PipeLine.Pipe_TIn,TState,TOut_(thisSystem.Func_TState,TIn_,System.Func_TIn,TState,System.Threading.Tasks.Task_TOut__).TOut 'DevFast.Net.Extensions.Etc.PipeLine.Pipe<TIn,TState,TOut>(this System.Func<TState,TIn>, System.Func<TIn,TState,System.Threading.Tasks.Task<TOut>>).TOut')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Threading.Tasks.Task-1 'System.Threading.Tasks.Task`1')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Func-2 'System.Func`2')
+
+<a name='DevFast.Net.Extensions.Etc.PipeLine.Pipe_TIn,TState,TOut_(thisSystem.Func_TState,TIn_,System.Func_TIn,TState,System.Threading.Tasks.ValueTask_TOut__)'></a>
+
+## PipeLine.Pipe<TIn,TState,TOut>(this Func<TState,TIn>, Func<TIn,TState,ValueTask<TOut>>) Method
+
+Provides a lambda, which upon execution, feeds the output of
+[sourceLambda](DevFast.Net.Extensions.Etc.PipeLine.md#DevFast.Net.Extensions.Etc.PipeLine.Pipe_TIn,TState,TOut_(thisSystem.Func_TState,TIn_,System.Func_TIn,TState,System.Threading.Tasks.ValueTask_TOut__).sourceLambda 'DevFast.Net.Extensions.Etc.PipeLine.Pipe<TIn,TState,TOut>(this System.Func<TState,TIn>, System.Func<TIn,TState,System.Threading.Tasks.ValueTask<TOut>>).sourceLambda') to the [tandemLambda](DevFast.Net.Extensions.Etc.PipeLine.md#DevFast.Net.Extensions.Etc.PipeLine.Pipe_TIn,TState,TOut_(thisSystem.Func_TState,TIn_,System.Func_TIn,TState,System.Threading.Tasks.ValueTask_TOut__).tandemLambda 'DevFast.Net.Extensions.Etc.PipeLine.Pipe<TIn,TState,TOut>(this System.Func<TState,TIn>, System.Func<TIn,TState,System.Threading.Tasks.ValueTask<TOut>>).tandemLambda') and returns the output obtained
+from [tandemLambda](DevFast.Net.Extensions.Etc.PipeLine.md#DevFast.Net.Extensions.Etc.PipeLine.Pipe_TIn,TState,TOut_(thisSystem.Func_TState,TIn_,System.Func_TIn,TState,System.Threading.Tasks.ValueTask_TOut__).tandemLambda 'DevFast.Net.Extensions.Etc.PipeLine.Pipe<TIn,TState,TOut>(this System.Func<TState,TIn>, System.Func<TIn,TState,System.Threading.Tasks.ValueTask<TOut>>).tandemLambda').
+
+```csharp
+public static System.Func<TState,System.Threading.Tasks.ValueTask<TOut>> Pipe<TIn,TState,TOut>(this System.Func<TState,TIn> sourceLambda, System.Func<TIn,TState,System.Threading.Tasks.ValueTask<TOut>> tandemLambda);
+```
+#### Type parameters
+
+<a name='DevFast.Net.Extensions.Etc.PipeLine.Pipe_TIn,TState,TOut_(thisSystem.Func_TState,TIn_,System.Func_TIn,TState,System.Threading.Tasks.ValueTask_TOut__).TIn'></a>
+
+`TIn`
+
+<a name='DevFast.Net.Extensions.Etc.PipeLine.Pipe_TIn,TState,TOut_(thisSystem.Func_TState,TIn_,System.Func_TIn,TState,System.Threading.Tasks.ValueTask_TOut__).TState'></a>
+
+`TState`
+
+<a name='DevFast.Net.Extensions.Etc.PipeLine.Pipe_TIn,TState,TOut_(thisSystem.Func_TState,TIn_,System.Func_TIn,TState,System.Threading.Tasks.ValueTask_TOut__).TOut'></a>
+
+`TOut`
+#### Parameters
+
+<a name='DevFast.Net.Extensions.Etc.PipeLine.Pipe_TIn,TState,TOut_(thisSystem.Func_TState,TIn_,System.Func_TIn,TState,System.Threading.Tasks.ValueTask_TOut__).sourceLambda'></a>
+
+`sourceLambda` [System.Func&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Func-2 'System.Func`2')[TState](DevFast.Net.Extensions.Etc.PipeLine.md#DevFast.Net.Extensions.Etc.PipeLine.Pipe_TIn,TState,TOut_(thisSystem.Func_TState,TIn_,System.Func_TIn,TState,System.Threading.Tasks.ValueTask_TOut__).TState 'DevFast.Net.Extensions.Etc.PipeLine.Pipe<TIn,TState,TOut>(this System.Func<TState,TIn>, System.Func<TIn,TState,System.Threading.Tasks.ValueTask<TOut>>).TState')[,](https://docs.microsoft.com/en-us/dotnet/api/System.Func-2 'System.Func`2')[TIn](DevFast.Net.Extensions.Etc.PipeLine.md#DevFast.Net.Extensions.Etc.PipeLine.Pipe_TIn,TState,TOut_(thisSystem.Func_TState,TIn_,System.Func_TIn,TState,System.Threading.Tasks.ValueTask_TOut__).TIn 'DevFast.Net.Extensions.Etc.PipeLine.Pipe<TIn,TState,TOut>(this System.Func<TState,TIn>, System.Func<TIn,TState,System.Threading.Tasks.ValueTask<TOut>>).TIn')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Func-2 'System.Func`2')
+
+Source lambda to which the tandem operation would be applied.
+
+<a name='DevFast.Net.Extensions.Etc.PipeLine.Pipe_TIn,TState,TOut_(thisSystem.Func_TState,TIn_,System.Func_TIn,TState,System.Threading.Tasks.ValueTask_TOut__).tandemLambda'></a>
+
+`tandemLambda` [System.Func&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Func-3 'System.Func`3')[TIn](DevFast.Net.Extensions.Etc.PipeLine.md#DevFast.Net.Extensions.Etc.PipeLine.Pipe_TIn,TState,TOut_(thisSystem.Func_TState,TIn_,System.Func_TIn,TState,System.Threading.Tasks.ValueTask_TOut__).TIn 'DevFast.Net.Extensions.Etc.PipeLine.Pipe<TIn,TState,TOut>(this System.Func<TState,TIn>, System.Func<TIn,TState,System.Threading.Tasks.ValueTask<TOut>>).TIn')[,](https://docs.microsoft.com/en-us/dotnet/api/System.Func-3 'System.Func`3')[TState](DevFast.Net.Extensions.Etc.PipeLine.md#DevFast.Net.Extensions.Etc.PipeLine.Pipe_TIn,TState,TOut_(thisSystem.Func_TState,TIn_,System.Func_TIn,TState,System.Threading.Tasks.ValueTask_TOut__).TState 'DevFast.Net.Extensions.Etc.PipeLine.Pipe<TIn,TState,TOut>(this System.Func<TState,TIn>, System.Func<TIn,TState,System.Threading.Tasks.ValueTask<TOut>>).TState')[,](https://docs.microsoft.com/en-us/dotnet/api/System.Func-3 'System.Func`3')[System.Threading.Tasks.ValueTask&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Threading.Tasks.ValueTask-1 'System.Threading.Tasks.ValueTask`1')[TOut](DevFast.Net.Extensions.Etc.PipeLine.md#DevFast.Net.Extensions.Etc.PipeLine.Pipe_TIn,TState,TOut_(thisSystem.Func_TState,TIn_,System.Func_TIn,TState,System.Threading.Tasks.ValueTask_TOut__).TOut 'DevFast.Net.Extensions.Etc.PipeLine.Pipe<TIn,TState,TOut>(this System.Func<TState,TIn>, System.Func<TIn,TState,System.Threading.Tasks.ValueTask<TOut>>).TOut')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Threading.Tasks.ValueTask-1 'System.Threading.Tasks.ValueTask`1')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Func-3 'System.Func`3')
+
+Tandem lambda that would consume the value.
+
+#### Returns
+[System.Func&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Func-2 'System.Func`2')[TState](DevFast.Net.Extensions.Etc.PipeLine.md#DevFast.Net.Extensions.Etc.PipeLine.Pipe_TIn,TState,TOut_(thisSystem.Func_TState,TIn_,System.Func_TIn,TState,System.Threading.Tasks.ValueTask_TOut__).TState 'DevFast.Net.Extensions.Etc.PipeLine.Pipe<TIn,TState,TOut>(this System.Func<TState,TIn>, System.Func<TIn,TState,System.Threading.Tasks.ValueTask<TOut>>).TState')[,](https://docs.microsoft.com/en-us/dotnet/api/System.Func-2 'System.Func`2')[System.Threading.Tasks.ValueTask&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Threading.Tasks.ValueTask-1 'System.Threading.Tasks.ValueTask`1')[TOut](DevFast.Net.Extensions.Etc.PipeLine.md#DevFast.Net.Extensions.Etc.PipeLine.Pipe_TIn,TState,TOut_(thisSystem.Func_TState,TIn_,System.Func_TIn,TState,System.Threading.Tasks.ValueTask_TOut__).TOut 'DevFast.Net.Extensions.Etc.PipeLine.Pipe<TIn,TState,TOut>(this System.Func<TState,TIn>, System.Func<TIn,TState,System.Threading.Tasks.ValueTask<TOut>>).TOut')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Threading.Tasks.ValueTask-1 'System.Threading.Tasks.ValueTask`1')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Func-2 'System.Func`2')
+
+<a name='DevFast.Net.Extensions.Etc.PipeLine.Pipe_TIn,TState,TOut_(thisSystem.Func_TState,TIn_,System.Func_TIn,TState,TOut_)'></a>
+
+## PipeLine.Pipe<TIn,TState,TOut>(this Func<TState,TIn>, Func<TIn,TState,TOut>) Method
+
+Provides a lambda, which upon execution, feeds the output of
+[sourceLambda](DevFast.Net.Extensions.Etc.PipeLine.md#DevFast.Net.Extensions.Etc.PipeLine.Pipe_TIn,TState,TOut_(thisSystem.Func_TState,TIn_,System.Func_TIn,TState,TOut_).sourceLambda 'DevFast.Net.Extensions.Etc.PipeLine.Pipe<TIn,TState,TOut>(this System.Func<TState,TIn>, System.Func<TIn,TState,TOut>).sourceLambda') to the [tandemLambda](DevFast.Net.Extensions.Etc.PipeLine.md#DevFast.Net.Extensions.Etc.PipeLine.Pipe_TIn,TState,TOut_(thisSystem.Func_TState,TIn_,System.Func_TIn,TState,TOut_).tandemLambda 'DevFast.Net.Extensions.Etc.PipeLine.Pipe<TIn,TState,TOut>(this System.Func<TState,TIn>, System.Func<TIn,TState,TOut>).tandemLambda') and returns the output obtained
+from [tandemLambda](DevFast.Net.Extensions.Etc.PipeLine.md#DevFast.Net.Extensions.Etc.PipeLine.Pipe_TIn,TState,TOut_(thisSystem.Func_TState,TIn_,System.Func_TIn,TState,TOut_).tandemLambda 'DevFast.Net.Extensions.Etc.PipeLine.Pipe<TIn,TState,TOut>(this System.Func<TState,TIn>, System.Func<TIn,TState,TOut>).tandemLambda').
+
+```csharp
+public static System.Func<TState,TOut> Pipe<TIn,TState,TOut>(this System.Func<TState,TIn> sourceLambda, System.Func<TIn,TState,TOut> tandemLambda);
+```
+#### Type parameters
+
+<a name='DevFast.Net.Extensions.Etc.PipeLine.Pipe_TIn,TState,TOut_(thisSystem.Func_TState,TIn_,System.Func_TIn,TState,TOut_).TIn'></a>
+
+`TIn`
+
+<a name='DevFast.Net.Extensions.Etc.PipeLine.Pipe_TIn,TState,TOut_(thisSystem.Func_TState,TIn_,System.Func_TIn,TState,TOut_).TState'></a>
+
+`TState`
+
+<a name='DevFast.Net.Extensions.Etc.PipeLine.Pipe_TIn,TState,TOut_(thisSystem.Func_TState,TIn_,System.Func_TIn,TState,TOut_).TOut'></a>
+
+`TOut`
+#### Parameters
+
+<a name='DevFast.Net.Extensions.Etc.PipeLine.Pipe_TIn,TState,TOut_(thisSystem.Func_TState,TIn_,System.Func_TIn,TState,TOut_).sourceLambda'></a>
+
+`sourceLambda` [System.Func&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Func-2 'System.Func`2')[TState](DevFast.Net.Extensions.Etc.PipeLine.md#DevFast.Net.Extensions.Etc.PipeLine.Pipe_TIn,TState,TOut_(thisSystem.Func_TState,TIn_,System.Func_TIn,TState,TOut_).TState 'DevFast.Net.Extensions.Etc.PipeLine.Pipe<TIn,TState,TOut>(this System.Func<TState,TIn>, System.Func<TIn,TState,TOut>).TState')[,](https://docs.microsoft.com/en-us/dotnet/api/System.Func-2 'System.Func`2')[TIn](DevFast.Net.Extensions.Etc.PipeLine.md#DevFast.Net.Extensions.Etc.PipeLine.Pipe_TIn,TState,TOut_(thisSystem.Func_TState,TIn_,System.Func_TIn,TState,TOut_).TIn 'DevFast.Net.Extensions.Etc.PipeLine.Pipe<TIn,TState,TOut>(this System.Func<TState,TIn>, System.Func<TIn,TState,TOut>).TIn')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Func-2 'System.Func`2')
+
+Source lambda to which the tandem operation would be applied.
+
+<a name='DevFast.Net.Extensions.Etc.PipeLine.Pipe_TIn,TState,TOut_(thisSystem.Func_TState,TIn_,System.Func_TIn,TState,TOut_).tandemLambda'></a>
+
+`tandemLambda` [System.Func&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Func-3 'System.Func`3')[TIn](DevFast.Net.Extensions.Etc.PipeLine.md#DevFast.Net.Extensions.Etc.PipeLine.Pipe_TIn,TState,TOut_(thisSystem.Func_TState,TIn_,System.Func_TIn,TState,TOut_).TIn 'DevFast.Net.Extensions.Etc.PipeLine.Pipe<TIn,TState,TOut>(this System.Func<TState,TIn>, System.Func<TIn,TState,TOut>).TIn')[,](https://docs.microsoft.com/en-us/dotnet/api/System.Func-3 'System.Func`3')[TState](DevFast.Net.Extensions.Etc.PipeLine.md#DevFast.Net.Extensions.Etc.PipeLine.Pipe_TIn,TState,TOut_(thisSystem.Func_TState,TIn_,System.Func_TIn,TState,TOut_).TState 'DevFast.Net.Extensions.Etc.PipeLine.Pipe<TIn,TState,TOut>(this System.Func<TState,TIn>, System.Func<TIn,TState,TOut>).TState')[,](https://docs.microsoft.com/en-us/dotnet/api/System.Func-3 'System.Func`3')[TOut](DevFast.Net.Extensions.Etc.PipeLine.md#DevFast.Net.Extensions.Etc.PipeLine.Pipe_TIn,TState,TOut_(thisSystem.Func_TState,TIn_,System.Func_TIn,TState,TOut_).TOut 'DevFast.Net.Extensions.Etc.PipeLine.Pipe<TIn,TState,TOut>(this System.Func<TState,TIn>, System.Func<TIn,TState,TOut>).TOut')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Func-3 'System.Func`3')
+
+Tandem lambda that would consume the value.
+
+#### Returns
+[System.Func&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Func-2 'System.Func`2')[TState](DevFast.Net.Extensions.Etc.PipeLine.md#DevFast.Net.Extensions.Etc.PipeLine.Pipe_TIn,TState,TOut_(thisSystem.Func_TState,TIn_,System.Func_TIn,TState,TOut_).TState 'DevFast.Net.Extensions.Etc.PipeLine.Pipe<TIn,TState,TOut>(this System.Func<TState,TIn>, System.Func<TIn,TState,TOut>).TState')[,](https://docs.microsoft.com/en-us/dotnet/api/System.Func-2 'System.Func`2')[TOut](DevFast.Net.Extensions.Etc.PipeLine.md#DevFast.Net.Extensions.Etc.PipeLine.Pipe_TIn,TState,TOut_(thisSystem.Func_TState,TIn_,System.Func_TIn,TState,TOut_).TOut 'DevFast.Net.Extensions.Etc.PipeLine.Pipe<TIn,TState,TOut>(this System.Func<TState,TIn>, System.Func<TIn,TState,TOut>).TOut')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Func-2 'System.Func`2')
+
+<a name='DevFast.Net.Extensions.Etc.PipeLine.Pipe_TIn,TState,TOut_(thisSystem.Threading.Tasks.Task_TIn_,System.Func_TIn,TState,System.Threading.Tasks.Task_TOut__)'></a>
+
+## PipeLine.Pipe<TIn,TState,TOut>(this Task<TIn>, Func<TIn,TState,Task<TOut>>) Method
+
+Provides a lambda, which upon execution, feeds the output of
+[task](DevFast.Net.Extensions.Etc.PipeLine.md#DevFast.Net.Extensions.Etc.PipeLine.Pipe_TIn,TState,TOut_(thisSystem.Threading.Tasks.Task_TIn_,System.Func_TIn,TState,System.Threading.Tasks.Task_TOut__).task 'DevFast.Net.Extensions.Etc.PipeLine.Pipe<TIn,TState,TOut>(this System.Threading.Tasks.Task<TIn>, System.Func<TIn,TState,System.Threading.Tasks.Task<TOut>>).task') to the [tandemLambda](DevFast.Net.Extensions.Etc.PipeLine.md#DevFast.Net.Extensions.Etc.PipeLine.Pipe_TIn,TState,TOut_(thisSystem.Threading.Tasks.Task_TIn_,System.Func_TIn,TState,System.Threading.Tasks.Task_TOut__).tandemLambda 'DevFast.Net.Extensions.Etc.PipeLine.Pipe<TIn,TState,TOut>(this System.Threading.Tasks.Task<TIn>, System.Func<TIn,TState,System.Threading.Tasks.Task<TOut>>).tandemLambda') and returns the output obtained
+from [tandemLambda](DevFast.Net.Extensions.Etc.PipeLine.md#DevFast.Net.Extensions.Etc.PipeLine.Pipe_TIn,TState,TOut_(thisSystem.Threading.Tasks.Task_TIn_,System.Func_TIn,TState,System.Threading.Tasks.Task_TOut__).tandemLambda 'DevFast.Net.Extensions.Etc.PipeLine.Pipe<TIn,TState,TOut>(this System.Threading.Tasks.Task<TIn>, System.Func<TIn,TState,System.Threading.Tasks.Task<TOut>>).tandemLambda').
+
+```csharp
+public static System.Func<TState,System.Threading.Tasks.Task<TOut>> Pipe<TIn,TState,TOut>(this System.Threading.Tasks.Task<TIn> task, System.Func<TIn,TState,System.Threading.Tasks.Task<TOut>> tandemLambda);
+```
+#### Type parameters
+
+<a name='DevFast.Net.Extensions.Etc.PipeLine.Pipe_TIn,TState,TOut_(thisSystem.Threading.Tasks.Task_TIn_,System.Func_TIn,TState,System.Threading.Tasks.Task_TOut__).TIn'></a>
+
+`TIn`
+
+<a name='DevFast.Net.Extensions.Etc.PipeLine.Pipe_TIn,TState,TOut_(thisSystem.Threading.Tasks.Task_TIn_,System.Func_TIn,TState,System.Threading.Tasks.Task_TOut__).TState'></a>
+
+`TState`
+
+<a name='DevFast.Net.Extensions.Etc.PipeLine.Pipe_TIn,TState,TOut_(thisSystem.Threading.Tasks.Task_TIn_,System.Func_TIn,TState,System.Threading.Tasks.Task_TOut__).TOut'></a>
+
+`TOut`
+#### Parameters
+
+<a name='DevFast.Net.Extensions.Etc.PipeLine.Pipe_TIn,TState,TOut_(thisSystem.Threading.Tasks.Task_TIn_,System.Func_TIn,TState,System.Threading.Tasks.Task_TOut__).task'></a>
+
+`task` [System.Threading.Tasks.Task&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Threading.Tasks.Task-1 'System.Threading.Tasks.Task`1')[TIn](DevFast.Net.Extensions.Etc.PipeLine.md#DevFast.Net.Extensions.Etc.PipeLine.Pipe_TIn,TState,TOut_(thisSystem.Threading.Tasks.Task_TIn_,System.Func_TIn,TState,System.Threading.Tasks.Task_TOut__).TIn 'DevFast.Net.Extensions.Etc.PipeLine.Pipe<TIn,TState,TOut>(this System.Threading.Tasks.Task<TIn>, System.Func<TIn,TState,System.Threading.Tasks.Task<TOut>>).TIn')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Threading.Tasks.Task-1 'System.Threading.Tasks.Task`1')
+
+Task to which the tandem operation would be applied.
+
+<a name='DevFast.Net.Extensions.Etc.PipeLine.Pipe_TIn,TState,TOut_(thisSystem.Threading.Tasks.Task_TIn_,System.Func_TIn,TState,System.Threading.Tasks.Task_TOut__).tandemLambda'></a>
+
+`tandemLambda` [System.Func&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Func-3 'System.Func`3')[TIn](DevFast.Net.Extensions.Etc.PipeLine.md#DevFast.Net.Extensions.Etc.PipeLine.Pipe_TIn,TState,TOut_(thisSystem.Threading.Tasks.Task_TIn_,System.Func_TIn,TState,System.Threading.Tasks.Task_TOut__).TIn 'DevFast.Net.Extensions.Etc.PipeLine.Pipe<TIn,TState,TOut>(this System.Threading.Tasks.Task<TIn>, System.Func<TIn,TState,System.Threading.Tasks.Task<TOut>>).TIn')[,](https://docs.microsoft.com/en-us/dotnet/api/System.Func-3 'System.Func`3')[TState](DevFast.Net.Extensions.Etc.PipeLine.md#DevFast.Net.Extensions.Etc.PipeLine.Pipe_TIn,TState,TOut_(thisSystem.Threading.Tasks.Task_TIn_,System.Func_TIn,TState,System.Threading.Tasks.Task_TOut__).TState 'DevFast.Net.Extensions.Etc.PipeLine.Pipe<TIn,TState,TOut>(this System.Threading.Tasks.Task<TIn>, System.Func<TIn,TState,System.Threading.Tasks.Task<TOut>>).TState')[,](https://docs.microsoft.com/en-us/dotnet/api/System.Func-3 'System.Func`3')[System.Threading.Tasks.Task&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Threading.Tasks.Task-1 'System.Threading.Tasks.Task`1')[TOut](DevFast.Net.Extensions.Etc.PipeLine.md#DevFast.Net.Extensions.Etc.PipeLine.Pipe_TIn,TState,TOut_(thisSystem.Threading.Tasks.Task_TIn_,System.Func_TIn,TState,System.Threading.Tasks.Task_TOut__).TOut 'DevFast.Net.Extensions.Etc.PipeLine.Pipe<TIn,TState,TOut>(this System.Threading.Tasks.Task<TIn>, System.Func<TIn,TState,System.Threading.Tasks.Task<TOut>>).TOut')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Threading.Tasks.Task-1 'System.Threading.Tasks.Task`1')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Func-3 'System.Func`3')
+
+Tandem lambda that would consume the value.
+
+#### Returns
+[System.Func&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Func-2 'System.Func`2')[TState](DevFast.Net.Extensions.Etc.PipeLine.md#DevFast.Net.Extensions.Etc.PipeLine.Pipe_TIn,TState,TOut_(thisSystem.Threading.Tasks.Task_TIn_,System.Func_TIn,TState,System.Threading.Tasks.Task_TOut__).TState 'DevFast.Net.Extensions.Etc.PipeLine.Pipe<TIn,TState,TOut>(this System.Threading.Tasks.Task<TIn>, System.Func<TIn,TState,System.Threading.Tasks.Task<TOut>>).TState')[,](https://docs.microsoft.com/en-us/dotnet/api/System.Func-2 'System.Func`2')[System.Threading.Tasks.Task&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Threading.Tasks.Task-1 'System.Threading.Tasks.Task`1')[TOut](DevFast.Net.Extensions.Etc.PipeLine.md#DevFast.Net.Extensions.Etc.PipeLine.Pipe_TIn,TState,TOut_(thisSystem.Threading.Tasks.Task_TIn_,System.Func_TIn,TState,System.Threading.Tasks.Task_TOut__).TOut 'DevFast.Net.Extensions.Etc.PipeLine.Pipe<TIn,TState,TOut>(this System.Threading.Tasks.Task<TIn>, System.Func<TIn,TState,System.Threading.Tasks.Task<TOut>>).TOut')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Threading.Tasks.Task-1 'System.Threading.Tasks.Task`1')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Func-2 'System.Func`2')
+
+<a name='DevFast.Net.Extensions.Etc.PipeLine.Pipe_TIn,TState,TOut_(thisTIn,System.Func_TIn,TState,TOut_)'></a>
+
+## PipeLine.Pipe<TIn,TState,TOut>(this TIn, Func<TIn,TState,TOut>) Method
+
+Provides a lambda, which upon execution, feeds [value](DevFast.Net.Extensions.Etc.PipeLine.md#DevFast.Net.Extensions.Etc.PipeLine.Pipe_TIn,TState,TOut_(thisTIn,System.Func_TIn,TState,TOut_).value 'DevFast.Net.Extensions.Etc.PipeLine.Pipe<TIn,TState,TOut>(this TIn, System.Func<TIn,TState,TOut>).value')
+to the [tandemLambda](DevFast.Net.Extensions.Etc.PipeLine.md#DevFast.Net.Extensions.Etc.PipeLine.Pipe_TIn,TState,TOut_(thisTIn,System.Func_TIn,TState,TOut_).tandemLambda 'DevFast.Net.Extensions.Etc.PipeLine.Pipe<TIn,TState,TOut>(this TIn, System.Func<TIn,TState,TOut>).tandemLambda') and returns its output.
+
+```csharp
+public static System.Func<TState,TOut> Pipe<TIn,TState,TOut>(this TIn value, System.Func<TIn,TState,TOut> tandemLambda);
+```
+#### Type parameters
+
+<a name='DevFast.Net.Extensions.Etc.PipeLine.Pipe_TIn,TState,TOut_(thisTIn,System.Func_TIn,TState,TOut_).TIn'></a>
+
+`TIn`
+
+<a name='DevFast.Net.Extensions.Etc.PipeLine.Pipe_TIn,TState,TOut_(thisTIn,System.Func_TIn,TState,TOut_).TState'></a>
+
+`TState`
+
+<a name='DevFast.Net.Extensions.Etc.PipeLine.Pipe_TIn,TState,TOut_(thisTIn,System.Func_TIn,TState,TOut_).TOut'></a>
+
+`TOut`
+#### Parameters
+
+<a name='DevFast.Net.Extensions.Etc.PipeLine.Pipe_TIn,TState,TOut_(thisTIn,System.Func_TIn,TState,TOut_).value'></a>
+
+`value` [TIn](DevFast.Net.Extensions.Etc.PipeLine.md#DevFast.Net.Extensions.Etc.PipeLine.Pipe_TIn,TState,TOut_(thisTIn,System.Func_TIn,TState,TOut_).TIn 'DevFast.Net.Extensions.Etc.PipeLine.Pipe<TIn,TState,TOut>(this TIn, System.Func<TIn,TState,TOut>).TIn')
+
+Value to feed
+
+<a name='DevFast.Net.Extensions.Etc.PipeLine.Pipe_TIn,TState,TOut_(thisTIn,System.Func_TIn,TState,TOut_).tandemLambda'></a>
+
+`tandemLambda` [System.Func&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Func-3 'System.Func`3')[TIn](DevFast.Net.Extensions.Etc.PipeLine.md#DevFast.Net.Extensions.Etc.PipeLine.Pipe_TIn,TState,TOut_(thisTIn,System.Func_TIn,TState,TOut_).TIn 'DevFast.Net.Extensions.Etc.PipeLine.Pipe<TIn,TState,TOut>(this TIn, System.Func<TIn,TState,TOut>).TIn')[,](https://docs.microsoft.com/en-us/dotnet/api/System.Func-3 'System.Func`3')[TState](DevFast.Net.Extensions.Etc.PipeLine.md#DevFast.Net.Extensions.Etc.PipeLine.Pipe_TIn,TState,TOut_(thisTIn,System.Func_TIn,TState,TOut_).TState 'DevFast.Net.Extensions.Etc.PipeLine.Pipe<TIn,TState,TOut>(this TIn, System.Func<TIn,TState,TOut>).TState')[,](https://docs.microsoft.com/en-us/dotnet/api/System.Func-3 'System.Func`3')[TOut](DevFast.Net.Extensions.Etc.PipeLine.md#DevFast.Net.Extensions.Etc.PipeLine.Pipe_TIn,TState,TOut_(thisTIn,System.Func_TIn,TState,TOut_).TOut 'DevFast.Net.Extensions.Etc.PipeLine.Pipe<TIn,TState,TOut>(this TIn, System.Func<TIn,TState,TOut>).TOut')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Func-3 'System.Func`3')
+
+Tandem lambda that would consume the value.
+
+#### Returns
+[System.Func&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Func-2 'System.Func`2')[TState](DevFast.Net.Extensions.Etc.PipeLine.md#DevFast.Net.Extensions.Etc.PipeLine.Pipe_TIn,TState,TOut_(thisTIn,System.Func_TIn,TState,TOut_).TState 'DevFast.Net.Extensions.Etc.PipeLine.Pipe<TIn,TState,TOut>(this TIn, System.Func<TIn,TState,TOut>).TState')[,](https://docs.microsoft.com/en-us/dotnet/api/System.Func-2 'System.Func`2')[TOut](DevFast.Net.Extensions.Etc.PipeLine.md#DevFast.Net.Extensions.Etc.PipeLine.Pipe_TIn,TState,TOut_(thisTIn,System.Func_TIn,TState,TOut_).TOut 'DevFast.Net.Extensions.Etc.PipeLine.Pipe<TIn,TState,TOut>(this TIn, System.Func<TIn,TState,TOut>).TOut')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Func-2 'System.Func`2')

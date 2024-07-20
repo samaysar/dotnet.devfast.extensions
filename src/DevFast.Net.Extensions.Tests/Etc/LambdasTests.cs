@@ -460,7 +460,7 @@ public class LambdasTests
         That(ReferenceEquals(err, ex), Is.EqualTo(true));
     }
 
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_0_OR_GREATER || NET5_0_OR_GREATER
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_0_OR_GREATER
 
     [Test]
     public async Task ExecuteAsync_On_FuncValueTask_Works_As_Expected()
@@ -500,7 +500,7 @@ public class LambdasTests
         That(ReferenceEquals(err, ex), Is.EqualTo(true));
     }
 
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_0_OR_GREATER || NET5_0_OR_GREATER
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_0_OR_GREATER
 
     [Test]
     public async Task ExecuteAsync_On_FuncTInValueTask_Works_As_Expected()
@@ -536,7 +536,7 @@ public class LambdasTests
         That(ReferenceEquals(err, ex), Is.EqualTo(true));
     }
 
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_0_OR_GREATER || NET5_0_OR_GREATER
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_0_OR_GREATER
 
     [Test]
     public async Task ExecuteAsync_On_FuncValueTaskTOut_Works_As_Expected()
@@ -566,7 +566,7 @@ public class LambdasTests
         That(ReferenceEquals(err, ex), Is.EqualTo(true));
     }
 
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_0_OR_GREATER || NET5_0_OR_GREATER
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_0_OR_GREATER
 
     [Test]
     public async Task ExecuteAsync_On_FuncTInValueTaskTOut_Works_As_Expected()
@@ -632,7 +632,7 @@ public class LambdasTests
         That(finallyCount, Is.EqualTo(3));
     }
 
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_0_OR_GREATER || NET5_0_OR_GREATER
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_0_OR_GREATER
 
     [Test]
     public async Task ExecuteAsync_On_FuncValueTask_With_ErrorHandler_Works_As_Expected()
@@ -738,7 +738,7 @@ public class LambdasTests
         That(finallyCount, Is.EqualTo(3));
     }
 
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_0_OR_GREATER || NET5_0_OR_GREATER
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_0_OR_GREATER
 
     [Test]
     public async Task ExecuteAsync_On_FuncTInValueTask_With_ErrorHandler_Works_As_Expected()
@@ -837,7 +837,7 @@ public class LambdasTests
         That(finallyCount, Is.EqualTo(3));
     }
 
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_0_OR_GREATER || NET5_0_OR_GREATER
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_0_OR_GREATER
 
     [Test]
     public async Task ExecuteAsync_On_FuncTInValueTask_With_ErrorHandler_N_FinallyT_Works_As_Expected()
@@ -928,7 +928,7 @@ public class LambdasTests
         That(finallyCount, Is.EqualTo(3));
     }
 
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_0_OR_GREATER || NET5_0_OR_GREATER
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_0_OR_GREATER
 
     [Test]
     public async Task ExecuteAsync_On_FuncValueTaskTOut_With_ErrorHandler_Works_As_Expected()
@@ -1016,7 +1016,7 @@ public class LambdasTests
         That(finallyCount, Is.EqualTo(3));
     }
 
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_0_OR_GREATER || NET5_0_OR_GREATER
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_0_OR_GREATER
 
     [Test]
     public async Task ExecuteAsync_On_FuncTInValueTaskTOut_With_ErrorHandler_Works_As_Expected()
@@ -1097,7 +1097,7 @@ public class LambdasTests
         That(finallyCount, Is.EqualTo(3));
     }
 
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_0_OR_GREATER || NET5_0_OR_GREATER
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_0_OR_GREATER
 
     [Test]
     public async Task ExecuteAsync_On_FuncTInValueTaskTOut_With_ErrorHandler_N_FinallyT_Works_As_Expected()
@@ -1163,7 +1163,7 @@ public class LambdasTests
         That(finallyCount, Is.EqualTo(2));
     }
 
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_0_OR_GREATER || NET5_0_OR_GREATER
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_0_OR_GREATER
 
     [Test]
     public async Task ExecuteAsync_On_FuncValueTask_With_Finally_Works_As_Expected()
@@ -1219,7 +1219,7 @@ public class LambdasTests
         That(finallyCount, Is.EqualTo(2));
     }
 
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_0_OR_GREATER || NET5_0_OR_GREATER
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_0_OR_GREATER
 
     [Test]
     public async Task ExecuteAsync_On_FuncTInValueTask_With_Finally_Works_As_Expected()
@@ -1276,7 +1276,7 @@ public class LambdasTests
         That(finallyCount, Is.EqualTo(2));
     }
 
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_0_OR_GREATER || NET5_0_OR_GREATER
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_0_OR_GREATER
 
     [Test]
     public async Task ExecuteAsync_On_FuncTInValueTask_FinallyT_Works_As_Expected()
@@ -1328,7 +1328,7 @@ public class LambdasTests
         That(finallyCount, Is.EqualTo(2));
     }
 
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_0_OR_GREATER || NET5_0_OR_GREATER
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_0_OR_GREATER
 
     [Test]
     public async Task ExecuteAsync_On_FuncValueTaskTOut_With_Finally_Works_As_Expected()
@@ -1373,7 +1373,7 @@ public class LambdasTests
         That(finallyCount, Is.EqualTo(2));
     }
 
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_0_OR_GREATER || NET5_0_OR_GREATER
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_0_OR_GREATER
 
     [Test]
     public async Task ExecuteAsync_On_FuncTInValueTaskTOut_With_Finally_Works_As_Expected()
@@ -1418,7 +1418,7 @@ public class LambdasTests
         That(finallyCount, Is.EqualTo(2));
     }
 
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_0_OR_GREATER || NET5_0_OR_GREATER
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_0_OR_GREATER
 
     [Test]
     public async Task ExecuteAsync_On_FuncTInValueTaskTOut_With_FinallyT_Works_As_Expected()

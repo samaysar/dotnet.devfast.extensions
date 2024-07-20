@@ -161,7 +161,7 @@ public class PipeLineTests
         That(calledWith, Is.EqualTo(useAdapter ? 1 : 0));
     }
 
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_0_OR_GREATER || NET5_0_OR_GREATER
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_0_OR_GREATER
 
     [Test]
     [TestCase(true)]
@@ -277,7 +277,7 @@ public class PipeLineTests
         That(calledWith, Is.EqualTo(useAdapter ? 1 : 0));
     }
 
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_0_OR_GREATER || NET5_0_OR_GREATER
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_0_OR_GREATER
 
     [Test]
     [TestCase(true)]
@@ -329,7 +329,7 @@ public class PipeLineTests
         That(calledWith, Is.EqualTo(useAdapter ? 1 : 0));
     }
 
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_0_OR_GREATER || NET5_0_OR_GREATER
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_0_OR_GREATER
 
     [Test]
     [TestCase(true)]
@@ -409,7 +409,7 @@ public class PipeLineTests
         That(state.CalledWith, Is.EqualTo(useAdapter ? 1 : 0));
     }
 
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_0_OR_GREATER || NET5_0_OR_GREATER
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_0_OR_GREATER
 
     [Test]
     [TestCase(true)]
@@ -461,7 +461,7 @@ public class PipeLineTests
         That(state.CalledWith, Is.EqualTo(useAdapter ? 1 : 0));
     }
 
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_0_OR_GREATER || NET5_0_OR_GREATER
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_0_OR_GREATER
 
     [Test]
     [TestCase(true)]
@@ -537,7 +537,7 @@ public class PipeLineTests
         That(state.CalledWith, Is.EqualTo(useAdapter ? 1 : 0));
     }
 
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_0_OR_GREATER || NET5_0_OR_GREATER
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_0_OR_GREATER
 
     [Test]
     [TestCase(true)]
@@ -606,7 +606,7 @@ public class PipeLineTests
         await src.Pipe(Tandem).ExecuteAsync(Token.None);
     }
 
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_0_OR_GREATER || NET5_0_OR_GREATER
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_0_OR_GREATER
 
     [Test]
     public async ValueTask Pipe_T_TState_FuncTStateT_Combines_ValueTaskLambda()
@@ -666,7 +666,7 @@ public class PipeLineTests
         await src.Pipe(Tandem).ExecuteAsync(Token.None);
     }
 
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_0_OR_GREATER || NET5_0_OR_GREATER
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_0_OR_GREATER
 
     [Test]
     public async Task Pipe_T_TState_FuncTStateValueTaskT_Combines_VoidLambda()
@@ -773,7 +773,7 @@ public class PipeLineTests
         That(state.CalledWith, Is.EqualTo(1));
     }
 
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_0_OR_GREATER || NET5_0_OR_GREATER
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_0_OR_GREATER
 
     [Test]
     public async ValueTask Pipe_T_TSrcState_TTanState_FuncTStateT_Combines_ValueTaskLambda()
@@ -842,7 +842,7 @@ public class PipeLineTests
         That(state.CalledWith, Is.EqualTo(1));
     }
 
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_0_OR_GREATER || NET5_0_OR_GREATER
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_0_OR_GREATER
 
     [Test]
     public async Task Pipe_T_TSrcState_TTanState_FuncTStateValueTaskT_Combines_VoidLambda()
@@ -912,6 +912,168 @@ public class PipeLineTests
 #endif
 
     #endregion Conditional Pipes To Void Lambda (T, TTanState <> TSrcState)
+
+    #region Pipes (TIn, TState, TOut)
+
+    [Test]
+    public void Pipe_TInStateTOut_On_TIn_Combines_Tandem()
+    {
+        Token t = new Cts().Token;
+        int calledWith = 0;
+        decimal Tandem(int i, Token state)
+        {
+            That(state, Is.EqualTo(t));
+            That(i, Is.EqualTo(1));
+            calledWith = i;
+            return i * 2.0m;
+        }
+
+        That(1.Pipe((Func<int, Token, decimal>)Tandem).Execute(t), Is.EqualTo(2.0m));
+        That(calledWith, Is.EqualTo(1));
+    }
+
+    [Test]
+    public void Pipe_TInStateTOut_On_FuncTIn_Combines_Tandem()
+    {
+        Token t = new Cts().Token;
+        int calledWith = 0;
+        Func<int> source = () => 1;
+        decimal Tandem(int i, Token state)
+        {
+            That(state, Is.EqualTo(t));
+            That(i, Is.EqualTo(1));
+            calledWith = i;
+            return i * 2.0m;
+        }
+
+        That(source.Pipe((Func<int, Token, decimal>)Tandem).Execute(t), Is.EqualTo(2.0m));
+        That(calledWith, Is.EqualTo(1));
+    }
+
+    [Test]
+    public void Pipe_TInStateTOut_On_FuncTStateTIn_Combines_Tandem()
+    {
+        Token t = new Cts().Token;
+        int calledWith = 0;
+        Func<Token, int> source = state =>
+        {
+            That(state, Is.EqualTo(t));
+            return 1;
+        };
+        decimal Tandem(int i, Token state)
+        {
+            That(state, Is.EqualTo(t));
+            That(i, Is.EqualTo(1));
+            calledWith = i;
+            return i * 2.0m;
+        }
+
+        That(source.Pipe(Tandem).Execute(t), Is.EqualTo(2.0m));
+        That(calledWith, Is.EqualTo(1));
+    }
+
+    [Test]
+    public async Task Pipe_TInStateTOut_On_TaskTIn_Combines_Tandem()
+    {
+        Token t = new Cts().Token;
+        int calledWith = 0;
+        Task<decimal> Tandem(int i, Token state)
+        {
+            That(state, Is.EqualTo(t));
+            That(i, Is.EqualTo(1));
+            calledWith = i;
+            return Task.FromResult(i * 2.0m);
+        }
+
+        That(await Task.FromResult(1).Pipe((Func<int, Token, Task<decimal>>)Tandem).ExecuteAsync(t), Is.EqualTo(2.0m));
+        That(calledWith, Is.EqualTo(1));
+    }
+
+    [Test]
+    public async Task Pipe_TInStateTOut_On_FuncTaskTIn_Combines_Tandem()
+    {
+        Token t = new Cts().Token;
+        int calledWith = 0;
+        Func<Task<int>> source = () => Task.FromResult(1);
+        Task<decimal> Tandem(int i, Token state)
+        {
+            That(state, Is.EqualTo(t));
+            That(i, Is.EqualTo(1));
+            calledWith = i;
+            return Task.FromResult(i * 2.0m);
+        }
+
+        That(await source.Pipe((Func<int, Token, Task<decimal>>)Tandem).ExecuteAsync(t), Is.EqualTo(2.0m));
+        That(calledWith, Is.EqualTo(1));
+    }
+
+    [Test]
+    public async Task Pipe_TInStateTOut_On_FuncTStateTaskTIn_Combines_Tandem()
+    {
+        Token t = new Cts().Token;
+        int calledWith = 0;
+        Func<Token, Task<int>> source = state =>
+        {
+            That(state, Is.EqualTo(t));
+            return Task.FromResult(1);
+        };
+        Task<decimal> Tandem(int i, Token state)
+        {
+            That(state, Is.EqualTo(t));
+            That(i, Is.EqualTo(1));
+            calledWith = i;
+            return Task.FromResult(i * 2.0m);
+        }
+
+        That(await source.Pipe(Tandem).ExecuteAsync(t), Is.EqualTo(2.0m));
+        That(calledWith, Is.EqualTo(1));
+    }
+
+    [Test]
+    public async Task Pipe_TInStateTOut_On_FuncTStateTIn_Combines_Async_Tandem()
+    {
+        Token t = new Cts().Token;
+        int calledWith = 0;
+        Func<Token, int> source = state =>
+        {
+            That(state, Is.EqualTo(t));
+            return 1;
+        };
+        Task<decimal> Tandem(int i, Token state)
+        {
+            That(state, Is.EqualTo(t));
+            That(i, Is.EqualTo(1));
+            calledWith = i;
+            return Task.FromResult(i * 2.0m);
+        }
+
+        That(await source.Pipe(Tandem).ExecuteAsync(t), Is.EqualTo(2.0m));
+        That(calledWith, Is.EqualTo(1));
+    }
+
+    [Test]
+    public async Task Pipe_TInStateTOut_On_FuncTStateTaskTIn_Combines_Sync_Tandem()
+    {
+        Token t = new Cts().Token;
+        int calledWith = 0;
+        Func<Token, Task<int>> source = state =>
+        {
+            That(state, Is.EqualTo(t));
+            return Task.FromResult(1);
+        };
+        decimal Tandem(int i, Token state)
+        {
+            That(state, Is.EqualTo(t));
+            That(i, Is.EqualTo(1));
+            calledWith = i;
+            return i * 2.0m;
+        }
+
+        That(await source.Pipe(Tandem).ExecuteAsync(t), Is.EqualTo(2.0m));
+        That(calledWith, Is.EqualTo(1));
+    }
+
+    #endregion Pipes (TIn, TState, TOut)
 
     private class StateObj
     {
