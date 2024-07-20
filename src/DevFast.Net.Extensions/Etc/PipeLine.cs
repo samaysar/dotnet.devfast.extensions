@@ -1098,6 +1098,138 @@ public static class PipeLine
 
     #endregion Pipes (TIn, TState, TOut)
 
+    #region Pipes (TIn, TTanState <> TSrcState, TOut)
+
+    /// <summary>
+    /// Provides a lambda, which upon execution, feeds the output of
+    /// <paramref name="sourceLambda"/> to the <paramref name="tandemLambda"/> and returns the output obtained
+    /// from <paramref name="tandemLambda"/>.
+    /// </summary>
+    /// <param name="sourceLambda">Source lambda to which the tandem operation would be applied.</param>
+    /// <param name="tandemLambda">Tandem lambda that would consume the value.</param>
+    /// <param name="stateAdapter">Lambda for state manipulation.</param>
+    public static Func<TTanState, TOut> Pipe<TIn, TSrcState, TTanState, TOut>(this Func<TSrcState, TIn> sourceLambda,
+        Func<TIn, TTanState, TOut> tandemLambda,
+        Func<TTanState, TSrcState> stateAdapter)
+    {
+        return sourceLambda.Adapter(stateAdapter).Pipe(tandemLambda);
+    }
+
+    /// <summary>
+    /// Provides a lambda, which upon execution, feeds the output of
+    /// <paramref name="sourceLambda"/> to the <paramref name="tandemLambda"/> and returns the output obtained
+    /// from <paramref name="tandemLambda"/>.
+    /// </summary>
+    /// <param name="sourceLambda">Source lambda to which the tandem operation would be applied.</param>
+    /// <param name="tandemLambda">Tandem lambda that would consume the value.</param>
+    /// <param name="stateAdapter">Lambda for state manipulation.</param>
+    public static Func<TTanState, Task<TOut>> Pipe<TIn, TSrcState, TTanState, TOut>(this Func<TSrcState, Task<TIn>> sourceLambda,
+        Func<TIn, TTanState, Task<TOut>> tandemLambda,
+        Func<TTanState, TSrcState> stateAdapter)
+    {
+        return sourceLambda.Adapter(stateAdapter).Pipe(tandemLambda);
+    }
+
+    /// <summary>
+    /// Provides a lambda, which upon execution, feeds the output of
+    /// <paramref name="sourceLambda"/> to the <paramref name="tandemLambda"/> and returns the output obtained
+    /// from <paramref name="tandemLambda"/>.
+    /// </summary>
+    /// <param name="sourceLambda">Source lambda to which the tandem operation would be applied.</param>
+    /// <param name="tandemLambda">Tandem lambda that would consume the value.</param>
+    /// <param name="stateAdapter">Lambda for state manipulation.</param>
+    public static Func<TTanState, Task<TOut>> Pipe<TIn, TSrcState, TTanState, TOut>(this Func<TSrcState, TIn> sourceLambda,
+        Func<TIn, TTanState, Task<TOut>> tandemLambda,
+        Func<TTanState, TSrcState> stateAdapter)
+    {
+        return sourceLambda.Adapter(stateAdapter).Pipe(tandemLambda);
+    }
+
+    /// <summary>
+    /// Provides a lambda, which upon execution, feeds the output of
+    /// <paramref name="sourceLambda"/> to the <paramref name="tandemLambda"/> and returns the output obtained
+    /// from <paramref name="tandemLambda"/>.
+    /// </summary>
+    /// <param name="sourceLambda">Source lambda to which the tandem operation would be applied.</param>
+    /// <param name="tandemLambda">Tandem lambda that would consume the value.</param>
+    /// <param name="stateAdapter">Lambda for state manipulation.</param>
+    public static Func<TTanState, Task<TOut>> Pipe<TIn, TSrcState, TTanState, TOut>(this Func<TSrcState, Task<TIn>> sourceLambda,
+        Func<TIn, TTanState, TOut> tandemLambda,
+        Func<TTanState, TSrcState> stateAdapter)
+    {
+        return sourceLambda.Adapter(stateAdapter).Pipe(tandemLambda);
+    }
+
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_0_OR_GREATER
+
+    /// <summary>
+    /// Provides a lambda, which upon execution, feeds the output of
+    /// <paramref name="sourceLambda"/> to the <paramref name="tandemLambda"/> and returns the output obtained
+    /// from <paramref name="tandemLambda"/>.
+    /// </summary>
+    /// <param name="sourceLambda">Source lambda to which the tandem operation would be applied.</param>
+    /// <param name="tandemLambda">Tandem lambda that would consume the value.</param>
+    /// <param name="stateAdapter">Lambda for state manipulation.</param>
+    public static Func<TTanState, ValueTask<TOut>> Pipe<TIn, TSrcState, TTanState, TOut>(this Func<TSrcState, ValueTask<TIn>> sourceLambda,
+        Func<TIn, TTanState, ValueTask<TOut>> tandemLambda,
+        Func<TTanState, TSrcState> stateAdapter)
+    {
+        return sourceLambda.Adapter(stateAdapter).Pipe(tandemLambda);
+    }
+
+    /// <summary>
+    /// Provides a lambda, which upon execution, feeds the output of
+    /// <paramref name="sourceLambda"/> to the <paramref name="tandemLambda"/> and returns the output obtained
+    /// from <paramref name="tandemLambda"/>.
+    /// </summary>
+    /// <param name="sourceLambda">Source lambda to which the tandem operation would be applied.</param>
+    /// <param name="tandemLambda">Tandem lambda that would consume the value.</param>
+    /// <param name="stateAdapter">Lambda for state manipulation.</param>
+    public static Func<TTanState, Task<TOut>> Pipe<TIn, TSrcState, TTanState, TOut>(this Func<TSrcState, ValueTask<TIn>> sourceLambda,
+        Func<TIn, TTanState, Task<TOut>> tandemLambda,
+        Func<TTanState, TSrcState> stateAdapter)
+    {
+        return sourceLambda.CrossAdapter(stateAdapter).Pipe(tandemLambda);
+    }
+
+#if NET5_0_OR_GREATER
+
+    /// <summary>
+    /// Provides a lambda, which upon execution, feeds the output of
+    /// <paramref name="sourceLambda"/> to the <paramref name="tandemLambda"/> and returns the output obtained
+    /// from <paramref name="tandemLambda"/>.
+    /// </summary>
+    /// <param name="sourceLambda">Source lambda to which the tandem operation would be applied.</param>
+    /// <param name="tandemLambda">Tandem lambda that would consume the value.</param>
+    /// <param name="stateAdapter">Lambda for state manipulation.</param>
+    public static Func<TTanState, ValueTask<TOut>> Pipe<TIn, TSrcState, TTanState, TOut>(this Func<TSrcState, TIn> sourceLambda,
+        Func<TIn, TTanState, ValueTask<TOut>> tandemLambda,
+        Func<TTanState, TSrcState> stateAdapter)
+    {
+        return sourceLambda.Adapter(stateAdapter).Pipe(tandemLambda);
+    }
+
+#endif
+
+    /// <summary>
+    /// Provides a lambda, which upon execution, feeds the output of
+    /// <paramref name="sourceLambda"/> to the <paramref name="tandemLambda"/> and returns the output obtained
+    /// from <paramref name="tandemLambda"/>.
+    /// </summary>
+    /// <param name="sourceLambda">Source lambda to which the tandem operation would be applied.</param>
+    /// <param name="tandemLambda">Tandem lambda that would consume the value.</param>
+    /// <param name="stateAdapter">Lambda for state manipulation.</param>
+    public static Func<TTanState, ValueTask<TOut>> Pipe<TIn, TSrcState, TTanState, TOut>(this Func<TSrcState, ValueTask<TIn>> sourceLambda,
+        Func<TIn, TTanState, TOut> tandemLambda,
+        Func<TTanState, TSrcState> stateAdapter)
+    {
+        return sourceLambda.Adapter(stateAdapter).Pipe(tandemLambda);
+    }
+
+#endif
+
+    #endregion Pipes (TIn, TTanState <> TSrcState, TOut)
+
     //    //-------------------------------------------->>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
     //    /// <summary>
