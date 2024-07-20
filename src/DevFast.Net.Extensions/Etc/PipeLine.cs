@@ -61,11 +61,15 @@ public static class PipeLine
 
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_0_OR_GREATER
 
+#if NET5_0_OR_GREATER
+
     private static Func<Func<TState, TIn>, Func<TState, ValueTask<TOut>>> SyncAdapter<TIn, TState, TOut>(
         this Func<TIn, TState, ValueTask<TOut>> tandem)
     {
         return src => async state => await tandem(src(state), state).ConfigureAwait(false);
     }
+
+#endif
 
     private static Func<Func<TState, ValueTask<TIn>>, Func<TState, ValueTask<TOut>>> Adapter<TIn, TState, TOut>(
         this Func<TIn, TState, ValueTask<TOut>> tandem)
@@ -594,7 +598,7 @@ public static class PipeLine
         Func<T, ValueTask<T>> tandemLambda,
         bool flag)
     {
-        return flag ? sourceLambda.Pipe(tandemLambda) : () => ValueTask.FromResult(sourceLambda()); ;
+        return flag ? sourceLambda.Pipe(tandemLambda) : () => ValueTask.FromResult(sourceLambda());
     }
 
 #endif

@@ -68,7 +68,7 @@ public class PipeLineTests
     public async Task Pipe_TInTOut_TIn_Uses_Task_Tandem()
     {
         int calledWith = 0;
-        int src = 2;
+        const int src = 2;
         Task<double> Adapter(int i)
         {
             calledWith = i;
@@ -130,7 +130,7 @@ public class PipeLineTests
     public async ValueTask Pipe_TInTOut_TIn_Uses_ValueTask_Tandem()
     {
         int calledWith = 0;
-        int src = 2;
+        const int src = 2;
         ValueTask<double> Adapter(int i)
         {
             calledWith = i;
@@ -202,6 +202,7 @@ public class PipeLineTests
     }
 
 #endif
+
     #endregion Pipe (TIn, TOut)
 
     #region Conditional Pipe (T)
@@ -238,6 +239,197 @@ public class PipeLineTests
         That(src.Pipe(Adapter, useAdapter).Execute(), Is.EqualTo(!useAdapter ? 2 : 0));
         That(calledWith, Is.EqualTo(useAdapter ? 2 : 0));
     }
+
+    [Test]
+    [TestCase(true)]
+    [TestCase(false)]
+    public async Task Pipe_T_TaskT_Uses_Tandem(bool useAdapter)
+    {
+        int calledWith = 0;
+        Task<int> src = Task.FromResult(2);
+        Task<int> Adapter(int i)
+        {
+            calledWith = i;
+            return Task.FromResult(0);
+        }
+
+        That(await src.Pipe(Adapter, useAdapter).ExecuteAsync(), Is.EqualTo(!useAdapter ? 2 : 0));
+        That(calledWith, Is.EqualTo(useAdapter ? 2 : 0));
+    }
+
+    [Test]
+    [TestCase(true)]
+    [TestCase(false)]
+    public async Task Pipe_T_TaskT_Uses_Sync_Tandem(bool useAdapter)
+    {
+        int calledWith = 0;
+        Task<int> src = Task.FromResult(2);
+        int Adapter(int i)
+        {
+            calledWith = i;
+            return 0;
+        }
+
+        That(await src.Pipe(Adapter, useAdapter).ExecuteAsync(), Is.EqualTo(!useAdapter ? 2 : 0));
+        That(calledWith, Is.EqualTo(useAdapter ? 2 : 0));
+    }
+
+    [Test]
+    [TestCase(true)]
+    [TestCase(false)]
+    public async Task Pipe_T_T_Uses_Task_Tandem(bool useAdapter)
+    {
+        int calledWith = 0;
+        const int src = 2;
+        Task<int> Adapter(int i)
+        {
+            calledWith = i;
+            return Task.FromResult(0);
+        }
+
+        That(await src.Pipe(Adapter, useAdapter).ExecuteAsync(), Is.EqualTo(!useAdapter ? 2 : 0));
+        That(calledWith, Is.EqualTo(useAdapter ? 2 : 0));
+    }
+
+    [Test]
+    [TestCase(true)]
+    [TestCase(false)]
+    public async Task Pipe_T_FuncTaskT_Uses_Tandem(bool useAdapter)
+    {
+        int calledWith = 0;
+        Func<Task<int>> src = () => Task.FromResult(2);
+        Task<int> Adapter(int i)
+        {
+            calledWith = i;
+            return Task.FromResult(0);
+        }
+
+        That(await src.Pipe(Adapter, useAdapter).ExecuteAsync(), Is.EqualTo(!useAdapter ? 2 : 0));
+        That(calledWith, Is.EqualTo(useAdapter ? 2 : 0));
+    }
+
+    [Test]
+    [TestCase(true)]
+    [TestCase(false)]
+    public async Task Pipe_T_FuncTaskT_Uses_Sync_Tandem(bool useAdapter)
+    {
+        int calledWith = 0;
+        Func<Task<int>> src = () => Task.FromResult(2);
+        int Adapter(int i)
+        {
+            calledWith = i;
+            return 0;
+        }
+
+        That(await src.Pipe(Adapter, useAdapter).ExecuteAsync(), Is.EqualTo(!useAdapter ? 2 : 0));
+        That(calledWith, Is.EqualTo(useAdapter ? 2 : 0));
+    }
+
+    [Test]
+    [TestCase(true)]
+    [TestCase(false)]
+    public async Task Pipe_T_FuncT_Uses_Task_Tandem(bool useAdapter)
+    {
+        int calledWith = 0;
+        Func<int> src = () => 2;
+        Task<int> Adapter(int i)
+        {
+            calledWith = i;
+            return Task.FromResult(0);
+        }
+
+        That(await src.Pipe(Adapter, useAdapter).ExecuteAsync(), Is.EqualTo(!useAdapter ? 2 : 0));
+        That(calledWith, Is.EqualTo(useAdapter ? 2 : 0));
+    }
+
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_0_OR_GREATER
+
+    [Test]
+    [TestCase(true)]
+    [TestCase(false)]
+    public async ValueTask Pipe_T_T_Uses_ValueTask_Tandem(bool useAdapter)
+    {
+        int calledWith = 0;
+        const int src = 2;
+        ValueTask<int> Adapter(int i)
+        {
+            calledWith = i;
+            return ValueTask.FromResult(0);
+        }
+
+        That(await src.Pipe(Adapter, useAdapter).ExecuteAsync(), Is.EqualTo(!useAdapter ? 2 : 0));
+        That(calledWith, Is.EqualTo(useAdapter ? 2 : 0));
+    }
+
+    [Test]
+    [TestCase(true)]
+    [TestCase(false)]
+    public async ValueTask Pipe_T_FuncValueTaskT_Uses_Tandem(bool useAdapter)
+    {
+        int calledWith = 0;
+        Func<ValueTask<int>> src = () => ValueTask.FromResult(2);
+        ValueTask<int> Adapter(int i)
+        {
+            calledWith = i;
+            return ValueTask.FromResult(0);
+        }
+
+        That(await src.Pipe(Adapter, useAdapter).ExecuteAsync(), Is.EqualTo(!useAdapter ? 2 : 0));
+        That(calledWith, Is.EqualTo(useAdapter ? 2 : 0));
+    }
+
+    [Test]
+    [TestCase(true)]
+    [TestCase(false)]
+    public async Task Pipe_T_FuncValueTaskT_Uses_Task_Tandem(bool useAdapter)
+    {
+        int calledWith = 0;
+        Func<ValueTask<int>> src = () => ValueTask.FromResult(2);
+        Task<int> Adapter(int i)
+        {
+            calledWith = i;
+            return Task.FromResult(0);
+        }
+
+        That(await src.Pipe(Adapter, useAdapter).ExecuteAsync(), Is.EqualTo(!useAdapter ? 2 : 0));
+        That(calledWith, Is.EqualTo(useAdapter ? 2 : 0));
+    }
+
+    [Test]
+    [TestCase(true)]
+    [TestCase(false)]
+    public async ValueTask Pipe_T_FuncValueTaskT_Uses_Sync_Tandem(bool useAdapter)
+    {
+        int calledWith = 0;
+        Func<ValueTask<int>> src = () => ValueTask.FromResult(2);
+        int Adapter(int i)
+        {
+            calledWith = i;
+            return 0;
+        }
+
+        That(await src.Pipe(Adapter, useAdapter).ExecuteAsync(), Is.EqualTo(!useAdapter ? 2 : 0));
+        That(calledWith, Is.EqualTo(useAdapter ? 2 : 0));
+    }
+
+    [Test]
+    [TestCase(true)]
+    [TestCase(false)]
+    public async ValueTask Pipe_T_FuncT_Uses_ValueTask_Tandem(bool useAdapter)
+    {
+        int calledWith = 0;
+        Func<int> src = () => 2;
+        ValueTask<int> Adapter(int i)
+        {
+            calledWith = i;
+            return ValueTask.FromResult(0);
+        }
+
+        That(await src.Pipe(Adapter, useAdapter).ExecuteAsync(), Is.EqualTo(!useAdapter ? 2 : 0));
+        That(calledWith, Is.EqualTo(useAdapter ? 2 : 0));
+    }
+
+#endif
 
     #endregion Conditional Pipe (T)
 

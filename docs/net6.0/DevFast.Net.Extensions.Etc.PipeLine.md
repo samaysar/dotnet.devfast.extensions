@@ -1885,7 +1885,13 @@ Conditional flag dictating whether [tandemLambda](DevFast.Net.Extensions.Etc.Pip
 
 ## PipeLine.Pipe<T>(this Func<Task<T>>, Func<T,Task<T>>, bool) Method
 
-Conditionally applies [tandemLambda](DevFast.Net.Extensions.Etc.PipeLine.md#DevFast.Net.Extensions.Etc.PipeLine.Pipe_T_(thisSystem.Func_System.Threading.Tasks.Task_T__,System.Func_T,System.Threading.Tasks.Task_T__,bool).tandemLambda 'DevFast.Net.Extensions.Etc.PipeLine.Pipe<T>(this System.Func<System.Threading.Tasks.Task<T>>, System.Func<T,System.Threading.Tasks.Task<T>>, bool).tandemLambda') on the output of [sourceLambda](DevFast.Net.Extensions.Etc.PipeLine.md#DevFast.Net.Extensions.Etc.PipeLine.Pipe_T_(thisSystem.Func_System.Threading.Tasks.Task_T__,System.Func_T,System.Threading.Tasks.Task_T__,bool).sourceLambda 'DevFast.Net.Extensions.Etc.PipeLine.Pipe<T>(this System.Func<System.Threading.Tasks.Task<T>>, System.Func<T,System.Threading.Tasks.Task<T>>, bool).sourceLambda').
+Provides a conditional lambda, which upon execution:
+
+1. If [flag](DevFast.Net.Extensions.Etc.PipeLine.md#DevFast.Net.Extensions.Etc.PipeLine.Pipe_T_(thisSystem.Func_System.Threading.Tasks.Task_T__,System.Func_T,System.Threading.Tasks.Task_T__,bool).flag 'DevFast.Net.Extensions.Etc.PipeLine.Pipe<T>(this System.Func<System.Threading.Tasks.Task<T>>, System.Func<T,System.Threading.Tasks.Task<T>>, bool).flag') is [true](https://docs.microsoft.com/en-us/dotnet/csharp/language-reference/builtin-types/bool 'https://docs.microsoft.com/en-us/dotnet/csharp/language-reference/builtin-types/bool'), feeds the output of
+[sourceLambda](DevFast.Net.Extensions.Etc.PipeLine.md#DevFast.Net.Extensions.Etc.PipeLine.Pipe_T_(thisSystem.Func_System.Threading.Tasks.Task_T__,System.Func_T,System.Threading.Tasks.Task_T__,bool).sourceLambda 'DevFast.Net.Extensions.Etc.PipeLine.Pipe<T>(this System.Func<System.Threading.Tasks.Task<T>>, System.Func<T,System.Threading.Tasks.Task<T>>, bool).sourceLambda') to the [tandemLambda](DevFast.Net.Extensions.Etc.PipeLine.md#DevFast.Net.Extensions.Etc.PipeLine.Pipe_T_(thisSystem.Func_System.Threading.Tasks.Task_T__,System.Func_T,System.Threading.Tasks.Task_T__,bool).tandemLambda 'DevFast.Net.Extensions.Etc.PipeLine.Pipe<T>(this System.Func<System.Threading.Tasks.Task<T>>, System.Func<T,System.Threading.Tasks.Task<T>>, bool).tandemLambda') and returns the output obtained
+from [tandemLambda](DevFast.Net.Extensions.Etc.PipeLine.md#DevFast.Net.Extensions.Etc.PipeLine.Pipe_T_(thisSystem.Func_System.Threading.Tasks.Task_T__,System.Func_T,System.Threading.Tasks.Task_T__,bool).tandemLambda 'DevFast.Net.Extensions.Etc.PipeLine.Pipe<T>(this System.Func<System.Threading.Tasks.Task<T>>, System.Func<T,System.Threading.Tasks.Task<T>>, bool).tandemLambda').
+2. If [flag](DevFast.Net.Extensions.Etc.PipeLine.md#DevFast.Net.Extensions.Etc.PipeLine.Pipe_T_(thisSystem.Func_System.Threading.Tasks.Task_T__,System.Func_T,System.Threading.Tasks.Task_T__,bool).flag 'DevFast.Net.Extensions.Etc.PipeLine.Pipe<T>(this System.Func<System.Threading.Tasks.Task<T>>, System.Func<T,System.Threading.Tasks.Task<T>>, bool).flag') is [false](https://docs.microsoft.com/en-us/dotnet/csharp/language-reference/builtin-types/bool 'https://docs.microsoft.com/en-us/dotnet/csharp/language-reference/builtin-types/bool'), returns the output of the original
+[sourceLambda](DevFast.Net.Extensions.Etc.PipeLine.md#DevFast.Net.Extensions.Etc.PipeLine.Pipe_T_(thisSystem.Func_System.Threading.Tasks.Task_T__,System.Func_T,System.Threading.Tasks.Task_T__,bool).sourceLambda 'DevFast.Net.Extensions.Etc.PipeLine.Pipe<T>(this System.Func<System.Threading.Tasks.Task<T>>, System.Func<T,System.Threading.Tasks.Task<T>>, bool).sourceLambda').
 
 ```csharp
 public static System.Func<System.Threading.Tasks.Task<T>> Pipe<T>(this System.Func<System.Threading.Tasks.Task<T>> sourceLambda, System.Func<T,System.Threading.Tasks.Task<T>> tandemLambda, bool flag);
@@ -1901,19 +1907,19 @@ public static System.Func<System.Threading.Tasks.Task<T>> Pipe<T>(this System.Fu
 
 `sourceLambda` [System.Func&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Func-1 'System.Func`1')[System.Threading.Tasks.Task&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Threading.Tasks.Task-1 'System.Threading.Tasks.Task`1')[T](DevFast.Net.Extensions.Etc.PipeLine.md#DevFast.Net.Extensions.Etc.PipeLine.Pipe_T_(thisSystem.Func_System.Threading.Tasks.Task_T__,System.Func_T,System.Threading.Tasks.Task_T__,bool).T 'DevFast.Net.Extensions.Etc.PipeLine.Pipe<T>(this System.Func<System.Threading.Tasks.Task<T>>, System.Func<T,System.Threading.Tasks.Task<T>>, bool).T')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Threading.Tasks.Task-1 'System.Threading.Tasks.Task`1')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Func-1 'System.Func`1')
 
-Lambda on which tandem lambda will be applied
+Source lambda to which the tandem operation would be applied.
 
 <a name='DevFast.Net.Extensions.Etc.PipeLine.Pipe_T_(thisSystem.Func_System.Threading.Tasks.Task_T__,System.Func_T,System.Threading.Tasks.Task_T__,bool).tandemLambda'></a>
 
 `tandemLambda` [System.Func&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Func-2 'System.Func`2')[T](DevFast.Net.Extensions.Etc.PipeLine.md#DevFast.Net.Extensions.Etc.PipeLine.Pipe_T_(thisSystem.Func_System.Threading.Tasks.Task_T__,System.Func_T,System.Threading.Tasks.Task_T__,bool).T 'DevFast.Net.Extensions.Etc.PipeLine.Pipe<T>(this System.Func<System.Threading.Tasks.Task<T>>, System.Func<T,System.Threading.Tasks.Task<T>>, bool).T')[,](https://docs.microsoft.com/en-us/dotnet/api/System.Func-2 'System.Func`2')[System.Threading.Tasks.Task&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Threading.Tasks.Task-1 'System.Threading.Tasks.Task`1')[T](DevFast.Net.Extensions.Etc.PipeLine.md#DevFast.Net.Extensions.Etc.PipeLine.Pipe_T_(thisSystem.Func_System.Threading.Tasks.Task_T__,System.Func_T,System.Threading.Tasks.Task_T__,bool).T 'DevFast.Net.Extensions.Etc.PipeLine.Pipe<T>(this System.Func<System.Threading.Tasks.Task<T>>, System.Func<T,System.Threading.Tasks.Task<T>>, bool).T')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Threading.Tasks.Task-1 'System.Threading.Tasks.Task`1')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Func-2 'System.Func`2')
 
-Tandem lambda to apply
+Tandem lambda that would consume the output of [sourceLambda](DevFast.Net.Extensions.Etc.PipeLine.md#DevFast.Net.Extensions.Etc.PipeLine.Pipe_T_(thisSystem.Func_System.Threading.Tasks.Task_T__,System.Func_T,System.Threading.Tasks.Task_T__,bool).sourceLambda 'DevFast.Net.Extensions.Etc.PipeLine.Pipe<T>(this System.Func<System.Threading.Tasks.Task<T>>, System.Func<T,System.Threading.Tasks.Task<T>>, bool).sourceLambda').
 
 <a name='DevFast.Net.Extensions.Etc.PipeLine.Pipe_T_(thisSystem.Func_System.Threading.Tasks.Task_T__,System.Func_T,System.Threading.Tasks.Task_T__,bool).flag'></a>
 
 `flag` [System.Boolean](https://docs.microsoft.com/en-us/dotnet/api/System.Boolean 'System.Boolean')
 
-Flag which dictate whether to apply tandem lambda or not
+Conditional flag dictating whether [tandemLambda](DevFast.Net.Extensions.Etc.PipeLine.md#DevFast.Net.Extensions.Etc.PipeLine.Pipe_T_(thisSystem.Func_System.Threading.Tasks.Task_T__,System.Func_T,System.Threading.Tasks.Task_T__,bool).tandemLambda 'DevFast.Net.Extensions.Etc.PipeLine.Pipe<T>(this System.Func<System.Threading.Tasks.Task<T>>, System.Func<T,System.Threading.Tasks.Task<T>>, bool).tandemLambda') should be applied or not
 
 #### Returns
 [System.Func&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Func-1 'System.Func`1')[System.Threading.Tasks.Task&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Threading.Tasks.Task-1 'System.Threading.Tasks.Task`1')[T](DevFast.Net.Extensions.Etc.PipeLine.md#DevFast.Net.Extensions.Etc.PipeLine.Pipe_T_(thisSystem.Func_System.Threading.Tasks.Task_T__,System.Func_T,System.Threading.Tasks.Task_T__,bool).T 'DevFast.Net.Extensions.Etc.PipeLine.Pipe<T>(this System.Func<System.Threading.Tasks.Task<T>>, System.Func<T,System.Threading.Tasks.Task<T>>, bool).T')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Threading.Tasks.Task-1 'System.Threading.Tasks.Task`1')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Func-1 'System.Func`1')
@@ -1922,7 +1928,13 @@ Flag which dictate whether to apply tandem lambda or not
 
 ## PipeLine.Pipe<T>(this Func<Task<T>>, Func<T,T>, bool) Method
 
-Applies [tandemLambda](DevFast.Net.Extensions.Etc.PipeLine.md#DevFast.Net.Extensions.Etc.PipeLine.Pipe_T_(thisSystem.Func_System.Threading.Tasks.Task_T__,System.Func_T,T_,bool).tandemLambda 'DevFast.Net.Extensions.Etc.PipeLine.Pipe<T>(this System.Func<System.Threading.Tasks.Task<T>>, System.Func<T,T>, bool).tandemLambda') on the output of [sourceLambda](DevFast.Net.Extensions.Etc.PipeLine.md#DevFast.Net.Extensions.Etc.PipeLine.Pipe_T_(thisSystem.Func_System.Threading.Tasks.Task_T__,System.Func_T,T_,bool).sourceLambda 'DevFast.Net.Extensions.Etc.PipeLine.Pipe<T>(this System.Func<System.Threading.Tasks.Task<T>>, System.Func<T,T>, bool).sourceLambda').
+Provides a conditional lambda, which upon execution:
+
+1. If [flag](DevFast.Net.Extensions.Etc.PipeLine.md#DevFast.Net.Extensions.Etc.PipeLine.Pipe_T_(thisSystem.Func_System.Threading.Tasks.Task_T__,System.Func_T,T_,bool).flag 'DevFast.Net.Extensions.Etc.PipeLine.Pipe<T>(this System.Func<System.Threading.Tasks.Task<T>>, System.Func<T,T>, bool).flag') is [true](https://docs.microsoft.com/en-us/dotnet/csharp/language-reference/builtin-types/bool 'https://docs.microsoft.com/en-us/dotnet/csharp/language-reference/builtin-types/bool'), feeds the output of
+[sourceLambda](DevFast.Net.Extensions.Etc.PipeLine.md#DevFast.Net.Extensions.Etc.PipeLine.Pipe_T_(thisSystem.Func_System.Threading.Tasks.Task_T__,System.Func_T,T_,bool).sourceLambda 'DevFast.Net.Extensions.Etc.PipeLine.Pipe<T>(this System.Func<System.Threading.Tasks.Task<T>>, System.Func<T,T>, bool).sourceLambda') to the [tandemLambda](DevFast.Net.Extensions.Etc.PipeLine.md#DevFast.Net.Extensions.Etc.PipeLine.Pipe_T_(thisSystem.Func_System.Threading.Tasks.Task_T__,System.Func_T,T_,bool).tandemLambda 'DevFast.Net.Extensions.Etc.PipeLine.Pipe<T>(this System.Func<System.Threading.Tasks.Task<T>>, System.Func<T,T>, bool).tandemLambda') and returns the output obtained
+from [tandemLambda](DevFast.Net.Extensions.Etc.PipeLine.md#DevFast.Net.Extensions.Etc.PipeLine.Pipe_T_(thisSystem.Func_System.Threading.Tasks.Task_T__,System.Func_T,T_,bool).tandemLambda 'DevFast.Net.Extensions.Etc.PipeLine.Pipe<T>(this System.Func<System.Threading.Tasks.Task<T>>, System.Func<T,T>, bool).tandemLambda').
+2. If [flag](DevFast.Net.Extensions.Etc.PipeLine.md#DevFast.Net.Extensions.Etc.PipeLine.Pipe_T_(thisSystem.Func_System.Threading.Tasks.Task_T__,System.Func_T,T_,bool).flag 'DevFast.Net.Extensions.Etc.PipeLine.Pipe<T>(this System.Func<System.Threading.Tasks.Task<T>>, System.Func<T,T>, bool).flag') is [false](https://docs.microsoft.com/en-us/dotnet/csharp/language-reference/builtin-types/bool 'https://docs.microsoft.com/en-us/dotnet/csharp/language-reference/builtin-types/bool'), returns the output of the original
+[sourceLambda](DevFast.Net.Extensions.Etc.PipeLine.md#DevFast.Net.Extensions.Etc.PipeLine.Pipe_T_(thisSystem.Func_System.Threading.Tasks.Task_T__,System.Func_T,T_,bool).sourceLambda 'DevFast.Net.Extensions.Etc.PipeLine.Pipe<T>(this System.Func<System.Threading.Tasks.Task<T>>, System.Func<T,T>, bool).sourceLambda').
 
 ```csharp
 public static System.Func<System.Threading.Tasks.Task<T>> Pipe<T>(this System.Func<System.Threading.Tasks.Task<T>> sourceLambda, System.Func<T,T> tandemLambda, bool flag);
@@ -1938,19 +1950,19 @@ public static System.Func<System.Threading.Tasks.Task<T>> Pipe<T>(this System.Fu
 
 `sourceLambda` [System.Func&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Func-1 'System.Func`1')[System.Threading.Tasks.Task&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Threading.Tasks.Task-1 'System.Threading.Tasks.Task`1')[T](DevFast.Net.Extensions.Etc.PipeLine.md#DevFast.Net.Extensions.Etc.PipeLine.Pipe_T_(thisSystem.Func_System.Threading.Tasks.Task_T__,System.Func_T,T_,bool).T 'DevFast.Net.Extensions.Etc.PipeLine.Pipe<T>(this System.Func<System.Threading.Tasks.Task<T>>, System.Func<T,T>, bool).T')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Threading.Tasks.Task-1 'System.Threading.Tasks.Task`1')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Func-1 'System.Func`1')
 
-Lambda on which tandem lambda will be applied
+Source lambda to which the tandem operation would be applied.
 
 <a name='DevFast.Net.Extensions.Etc.PipeLine.Pipe_T_(thisSystem.Func_System.Threading.Tasks.Task_T__,System.Func_T,T_,bool).tandemLambda'></a>
 
 `tandemLambda` [System.Func&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Func-2 'System.Func`2')[T](DevFast.Net.Extensions.Etc.PipeLine.md#DevFast.Net.Extensions.Etc.PipeLine.Pipe_T_(thisSystem.Func_System.Threading.Tasks.Task_T__,System.Func_T,T_,bool).T 'DevFast.Net.Extensions.Etc.PipeLine.Pipe<T>(this System.Func<System.Threading.Tasks.Task<T>>, System.Func<T,T>, bool).T')[,](https://docs.microsoft.com/en-us/dotnet/api/System.Func-2 'System.Func`2')[T](DevFast.Net.Extensions.Etc.PipeLine.md#DevFast.Net.Extensions.Etc.PipeLine.Pipe_T_(thisSystem.Func_System.Threading.Tasks.Task_T__,System.Func_T,T_,bool).T 'DevFast.Net.Extensions.Etc.PipeLine.Pipe<T>(this System.Func<System.Threading.Tasks.Task<T>>, System.Func<T,T>, bool).T')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Func-2 'System.Func`2')
 
-Tandem lambda to apply
+Tandem lambda that would consume the output of [sourceLambda](DevFast.Net.Extensions.Etc.PipeLine.md#DevFast.Net.Extensions.Etc.PipeLine.Pipe_T_(thisSystem.Func_System.Threading.Tasks.Task_T__,System.Func_T,T_,bool).sourceLambda 'DevFast.Net.Extensions.Etc.PipeLine.Pipe<T>(this System.Func<System.Threading.Tasks.Task<T>>, System.Func<T,T>, bool).sourceLambda').
 
 <a name='DevFast.Net.Extensions.Etc.PipeLine.Pipe_T_(thisSystem.Func_System.Threading.Tasks.Task_T__,System.Func_T,T_,bool).flag'></a>
 
 `flag` [System.Boolean](https://docs.microsoft.com/en-us/dotnet/api/System.Boolean 'System.Boolean')
 
-Flag which dictate whether to apply tandem lambda or not
+Conditional flag dictating whether [tandemLambda](DevFast.Net.Extensions.Etc.PipeLine.md#DevFast.Net.Extensions.Etc.PipeLine.Pipe_T_(thisSystem.Func_System.Threading.Tasks.Task_T__,System.Func_T,T_,bool).tandemLambda 'DevFast.Net.Extensions.Etc.PipeLine.Pipe<T>(this System.Func<System.Threading.Tasks.Task<T>>, System.Func<T,T>, bool).tandemLambda') should be applied or not
 
 #### Returns
 [System.Func&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Func-1 'System.Func`1')[System.Threading.Tasks.Task&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Threading.Tasks.Task-1 'System.Threading.Tasks.Task`1')[T](DevFast.Net.Extensions.Etc.PipeLine.md#DevFast.Net.Extensions.Etc.PipeLine.Pipe_T_(thisSystem.Func_System.Threading.Tasks.Task_T__,System.Func_T,T_,bool).T 'DevFast.Net.Extensions.Etc.PipeLine.Pipe<T>(this System.Func<System.Threading.Tasks.Task<T>>, System.Func<T,T>, bool).T')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Threading.Tasks.Task-1 'System.Threading.Tasks.Task`1')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Func-1 'System.Func`1')
@@ -1996,7 +2008,13 @@ Flag which dictate whether to apply tandem lambda or not
 
 ## PipeLine.Pipe<T>(this Func<ValueTask<T>>, Func<T,ValueTask<T>>, bool) Method
 
-Conditionally applies [tandemLambda](DevFast.Net.Extensions.Etc.PipeLine.md#DevFast.Net.Extensions.Etc.PipeLine.Pipe_T_(thisSystem.Func_System.Threading.Tasks.ValueTask_T__,System.Func_T,System.Threading.Tasks.ValueTask_T__,bool).tandemLambda 'DevFast.Net.Extensions.Etc.PipeLine.Pipe<T>(this System.Func<System.Threading.Tasks.ValueTask<T>>, System.Func<T,System.Threading.Tasks.ValueTask<T>>, bool).tandemLambda') on the output of [sourceLambda](DevFast.Net.Extensions.Etc.PipeLine.md#DevFast.Net.Extensions.Etc.PipeLine.Pipe_T_(thisSystem.Func_System.Threading.Tasks.ValueTask_T__,System.Func_T,System.Threading.Tasks.ValueTask_T__,bool).sourceLambda 'DevFast.Net.Extensions.Etc.PipeLine.Pipe<T>(this System.Func<System.Threading.Tasks.ValueTask<T>>, System.Func<T,System.Threading.Tasks.ValueTask<T>>, bool).sourceLambda').
+Provides a conditional lambda, which upon execution:
+
+1. If [flag](DevFast.Net.Extensions.Etc.PipeLine.md#DevFast.Net.Extensions.Etc.PipeLine.Pipe_T_(thisSystem.Func_System.Threading.Tasks.ValueTask_T__,System.Func_T,System.Threading.Tasks.ValueTask_T__,bool).flag 'DevFast.Net.Extensions.Etc.PipeLine.Pipe<T>(this System.Func<System.Threading.Tasks.ValueTask<T>>, System.Func<T,System.Threading.Tasks.ValueTask<T>>, bool).flag') is [true](https://docs.microsoft.com/en-us/dotnet/csharp/language-reference/builtin-types/bool 'https://docs.microsoft.com/en-us/dotnet/csharp/language-reference/builtin-types/bool'), feeds the output of
+[sourceLambda](DevFast.Net.Extensions.Etc.PipeLine.md#DevFast.Net.Extensions.Etc.PipeLine.Pipe_T_(thisSystem.Func_System.Threading.Tasks.ValueTask_T__,System.Func_T,System.Threading.Tasks.ValueTask_T__,bool).sourceLambda 'DevFast.Net.Extensions.Etc.PipeLine.Pipe<T>(this System.Func<System.Threading.Tasks.ValueTask<T>>, System.Func<T,System.Threading.Tasks.ValueTask<T>>, bool).sourceLambda') to the [tandemLambda](DevFast.Net.Extensions.Etc.PipeLine.md#DevFast.Net.Extensions.Etc.PipeLine.Pipe_T_(thisSystem.Func_System.Threading.Tasks.ValueTask_T__,System.Func_T,System.Threading.Tasks.ValueTask_T__,bool).tandemLambda 'DevFast.Net.Extensions.Etc.PipeLine.Pipe<T>(this System.Func<System.Threading.Tasks.ValueTask<T>>, System.Func<T,System.Threading.Tasks.ValueTask<T>>, bool).tandemLambda') and returns the output obtained
+from [tandemLambda](DevFast.Net.Extensions.Etc.PipeLine.md#DevFast.Net.Extensions.Etc.PipeLine.Pipe_T_(thisSystem.Func_System.Threading.Tasks.ValueTask_T__,System.Func_T,System.Threading.Tasks.ValueTask_T__,bool).tandemLambda 'DevFast.Net.Extensions.Etc.PipeLine.Pipe<T>(this System.Func<System.Threading.Tasks.ValueTask<T>>, System.Func<T,System.Threading.Tasks.ValueTask<T>>, bool).tandemLambda').
+2. If [flag](DevFast.Net.Extensions.Etc.PipeLine.md#DevFast.Net.Extensions.Etc.PipeLine.Pipe_T_(thisSystem.Func_System.Threading.Tasks.ValueTask_T__,System.Func_T,System.Threading.Tasks.ValueTask_T__,bool).flag 'DevFast.Net.Extensions.Etc.PipeLine.Pipe<T>(this System.Func<System.Threading.Tasks.ValueTask<T>>, System.Func<T,System.Threading.Tasks.ValueTask<T>>, bool).flag') is [false](https://docs.microsoft.com/en-us/dotnet/csharp/language-reference/builtin-types/bool 'https://docs.microsoft.com/en-us/dotnet/csharp/language-reference/builtin-types/bool'), returns the output of the original
+[sourceLambda](DevFast.Net.Extensions.Etc.PipeLine.md#DevFast.Net.Extensions.Etc.PipeLine.Pipe_T_(thisSystem.Func_System.Threading.Tasks.ValueTask_T__,System.Func_T,System.Threading.Tasks.ValueTask_T__,bool).sourceLambda 'DevFast.Net.Extensions.Etc.PipeLine.Pipe<T>(this System.Func<System.Threading.Tasks.ValueTask<T>>, System.Func<T,System.Threading.Tasks.ValueTask<T>>, bool).sourceLambda').
 
 ```csharp
 public static System.Func<System.Threading.Tasks.ValueTask<T>> Pipe<T>(this System.Func<System.Threading.Tasks.ValueTask<T>> sourceLambda, System.Func<T,System.Threading.Tasks.ValueTask<T>> tandemLambda, bool flag);
@@ -2012,19 +2030,19 @@ public static System.Func<System.Threading.Tasks.ValueTask<T>> Pipe<T>(this Syst
 
 `sourceLambda` [System.Func&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Func-1 'System.Func`1')[System.Threading.Tasks.ValueTask&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Threading.Tasks.ValueTask-1 'System.Threading.Tasks.ValueTask`1')[T](DevFast.Net.Extensions.Etc.PipeLine.md#DevFast.Net.Extensions.Etc.PipeLine.Pipe_T_(thisSystem.Func_System.Threading.Tasks.ValueTask_T__,System.Func_T,System.Threading.Tasks.ValueTask_T__,bool).T 'DevFast.Net.Extensions.Etc.PipeLine.Pipe<T>(this System.Func<System.Threading.Tasks.ValueTask<T>>, System.Func<T,System.Threading.Tasks.ValueTask<T>>, bool).T')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Threading.Tasks.ValueTask-1 'System.Threading.Tasks.ValueTask`1')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Func-1 'System.Func`1')
 
-Lambda on which tandem lambda will be applied
+Source lambda to which the tandem operation would be applied.
 
 <a name='DevFast.Net.Extensions.Etc.PipeLine.Pipe_T_(thisSystem.Func_System.Threading.Tasks.ValueTask_T__,System.Func_T,System.Threading.Tasks.ValueTask_T__,bool).tandemLambda'></a>
 
 `tandemLambda` [System.Func&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Func-2 'System.Func`2')[T](DevFast.Net.Extensions.Etc.PipeLine.md#DevFast.Net.Extensions.Etc.PipeLine.Pipe_T_(thisSystem.Func_System.Threading.Tasks.ValueTask_T__,System.Func_T,System.Threading.Tasks.ValueTask_T__,bool).T 'DevFast.Net.Extensions.Etc.PipeLine.Pipe<T>(this System.Func<System.Threading.Tasks.ValueTask<T>>, System.Func<T,System.Threading.Tasks.ValueTask<T>>, bool).T')[,](https://docs.microsoft.com/en-us/dotnet/api/System.Func-2 'System.Func`2')[System.Threading.Tasks.ValueTask&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Threading.Tasks.ValueTask-1 'System.Threading.Tasks.ValueTask`1')[T](DevFast.Net.Extensions.Etc.PipeLine.md#DevFast.Net.Extensions.Etc.PipeLine.Pipe_T_(thisSystem.Func_System.Threading.Tasks.ValueTask_T__,System.Func_T,System.Threading.Tasks.ValueTask_T__,bool).T 'DevFast.Net.Extensions.Etc.PipeLine.Pipe<T>(this System.Func<System.Threading.Tasks.ValueTask<T>>, System.Func<T,System.Threading.Tasks.ValueTask<T>>, bool).T')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Threading.Tasks.ValueTask-1 'System.Threading.Tasks.ValueTask`1')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Func-2 'System.Func`2')
 
-Tandem lambda to apply
+Tandem lambda that would consume the output of [sourceLambda](DevFast.Net.Extensions.Etc.PipeLine.md#DevFast.Net.Extensions.Etc.PipeLine.Pipe_T_(thisSystem.Func_System.Threading.Tasks.ValueTask_T__,System.Func_T,System.Threading.Tasks.ValueTask_T__,bool).sourceLambda 'DevFast.Net.Extensions.Etc.PipeLine.Pipe<T>(this System.Func<System.Threading.Tasks.ValueTask<T>>, System.Func<T,System.Threading.Tasks.ValueTask<T>>, bool).sourceLambda').
 
 <a name='DevFast.Net.Extensions.Etc.PipeLine.Pipe_T_(thisSystem.Func_System.Threading.Tasks.ValueTask_T__,System.Func_T,System.Threading.Tasks.ValueTask_T__,bool).flag'></a>
 
 `flag` [System.Boolean](https://docs.microsoft.com/en-us/dotnet/api/System.Boolean 'System.Boolean')
 
-Flag which dictate whether to apply tandem lambda or not
+Conditional flag dictating whether [tandemLambda](DevFast.Net.Extensions.Etc.PipeLine.md#DevFast.Net.Extensions.Etc.PipeLine.Pipe_T_(thisSystem.Func_System.Threading.Tasks.ValueTask_T__,System.Func_T,System.Threading.Tasks.ValueTask_T__,bool).tandemLambda 'DevFast.Net.Extensions.Etc.PipeLine.Pipe<T>(this System.Func<System.Threading.Tasks.ValueTask<T>>, System.Func<T,System.Threading.Tasks.ValueTask<T>>, bool).tandemLambda') should be applied or not
 
 #### Returns
 [System.Func&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Func-1 'System.Func`1')[System.Threading.Tasks.ValueTask&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Threading.Tasks.ValueTask-1 'System.Threading.Tasks.ValueTask`1')[T](DevFast.Net.Extensions.Etc.PipeLine.md#DevFast.Net.Extensions.Etc.PipeLine.Pipe_T_(thisSystem.Func_System.Threading.Tasks.ValueTask_T__,System.Func_T,System.Threading.Tasks.ValueTask_T__,bool).T 'DevFast.Net.Extensions.Etc.PipeLine.Pipe<T>(this System.Func<System.Threading.Tasks.ValueTask<T>>, System.Func<T,System.Threading.Tasks.ValueTask<T>>, bool).T')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Threading.Tasks.ValueTask-1 'System.Threading.Tasks.ValueTask`1')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Func-1 'System.Func`1')
@@ -2033,7 +2051,13 @@ Flag which dictate whether to apply tandem lambda or not
 
 ## PipeLine.Pipe<T>(this Func<ValueTask<T>>, Func<T,T>, bool) Method
 
-Conditionally applies [tandemLambda](DevFast.Net.Extensions.Etc.PipeLine.md#DevFast.Net.Extensions.Etc.PipeLine.Pipe_T_(thisSystem.Func_System.Threading.Tasks.ValueTask_T__,System.Func_T,T_,bool).tandemLambda 'DevFast.Net.Extensions.Etc.PipeLine.Pipe<T>(this System.Func<System.Threading.Tasks.ValueTask<T>>, System.Func<T,T>, bool).tandemLambda') on the output of [sourceLambda](DevFast.Net.Extensions.Etc.PipeLine.md#DevFast.Net.Extensions.Etc.PipeLine.Pipe_T_(thisSystem.Func_System.Threading.Tasks.ValueTask_T__,System.Func_T,T_,bool).sourceLambda 'DevFast.Net.Extensions.Etc.PipeLine.Pipe<T>(this System.Func<System.Threading.Tasks.ValueTask<T>>, System.Func<T,T>, bool).sourceLambda').
+Provides a conditional lambda, which upon execution:
+
+1. If [flag](DevFast.Net.Extensions.Etc.PipeLine.md#DevFast.Net.Extensions.Etc.PipeLine.Pipe_T_(thisSystem.Func_System.Threading.Tasks.ValueTask_T__,System.Func_T,T_,bool).flag 'DevFast.Net.Extensions.Etc.PipeLine.Pipe<T>(this System.Func<System.Threading.Tasks.ValueTask<T>>, System.Func<T,T>, bool).flag') is [true](https://docs.microsoft.com/en-us/dotnet/csharp/language-reference/builtin-types/bool 'https://docs.microsoft.com/en-us/dotnet/csharp/language-reference/builtin-types/bool'), feeds the output of
+[sourceLambda](DevFast.Net.Extensions.Etc.PipeLine.md#DevFast.Net.Extensions.Etc.PipeLine.Pipe_T_(thisSystem.Func_System.Threading.Tasks.ValueTask_T__,System.Func_T,T_,bool).sourceLambda 'DevFast.Net.Extensions.Etc.PipeLine.Pipe<T>(this System.Func<System.Threading.Tasks.ValueTask<T>>, System.Func<T,T>, bool).sourceLambda') to the [tandemLambda](DevFast.Net.Extensions.Etc.PipeLine.md#DevFast.Net.Extensions.Etc.PipeLine.Pipe_T_(thisSystem.Func_System.Threading.Tasks.ValueTask_T__,System.Func_T,T_,bool).tandemLambda 'DevFast.Net.Extensions.Etc.PipeLine.Pipe<T>(this System.Func<System.Threading.Tasks.ValueTask<T>>, System.Func<T,T>, bool).tandemLambda') and returns the output obtained
+from [tandemLambda](DevFast.Net.Extensions.Etc.PipeLine.md#DevFast.Net.Extensions.Etc.PipeLine.Pipe_T_(thisSystem.Func_System.Threading.Tasks.ValueTask_T__,System.Func_T,T_,bool).tandemLambda 'DevFast.Net.Extensions.Etc.PipeLine.Pipe<T>(this System.Func<System.Threading.Tasks.ValueTask<T>>, System.Func<T,T>, bool).tandemLambda').
+2. If [flag](DevFast.Net.Extensions.Etc.PipeLine.md#DevFast.Net.Extensions.Etc.PipeLine.Pipe_T_(thisSystem.Func_System.Threading.Tasks.ValueTask_T__,System.Func_T,T_,bool).flag 'DevFast.Net.Extensions.Etc.PipeLine.Pipe<T>(this System.Func<System.Threading.Tasks.ValueTask<T>>, System.Func<T,T>, bool).flag') is [false](https://docs.microsoft.com/en-us/dotnet/csharp/language-reference/builtin-types/bool 'https://docs.microsoft.com/en-us/dotnet/csharp/language-reference/builtin-types/bool'), returns the output of the original
+[sourceLambda](DevFast.Net.Extensions.Etc.PipeLine.md#DevFast.Net.Extensions.Etc.PipeLine.Pipe_T_(thisSystem.Func_System.Threading.Tasks.ValueTask_T__,System.Func_T,T_,bool).sourceLambda 'DevFast.Net.Extensions.Etc.PipeLine.Pipe<T>(this System.Func<System.Threading.Tasks.ValueTask<T>>, System.Func<T,T>, bool).sourceLambda').
 
 ```csharp
 public static System.Func<System.Threading.Tasks.ValueTask<T>> Pipe<T>(this System.Func<System.Threading.Tasks.ValueTask<T>> sourceLambda, System.Func<T,T> tandemLambda, bool flag);
@@ -2049,19 +2073,19 @@ public static System.Func<System.Threading.Tasks.ValueTask<T>> Pipe<T>(this Syst
 
 `sourceLambda` [System.Func&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Func-1 'System.Func`1')[System.Threading.Tasks.ValueTask&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Threading.Tasks.ValueTask-1 'System.Threading.Tasks.ValueTask`1')[T](DevFast.Net.Extensions.Etc.PipeLine.md#DevFast.Net.Extensions.Etc.PipeLine.Pipe_T_(thisSystem.Func_System.Threading.Tasks.ValueTask_T__,System.Func_T,T_,bool).T 'DevFast.Net.Extensions.Etc.PipeLine.Pipe<T>(this System.Func<System.Threading.Tasks.ValueTask<T>>, System.Func<T,T>, bool).T')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Threading.Tasks.ValueTask-1 'System.Threading.Tasks.ValueTask`1')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Func-1 'System.Func`1')
 
-Lambda on which tandem lambda will be applied
+Source lambda to which the tandem operation would be applied.
 
 <a name='DevFast.Net.Extensions.Etc.PipeLine.Pipe_T_(thisSystem.Func_System.Threading.Tasks.ValueTask_T__,System.Func_T,T_,bool).tandemLambda'></a>
 
 `tandemLambda` [System.Func&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Func-2 'System.Func`2')[T](DevFast.Net.Extensions.Etc.PipeLine.md#DevFast.Net.Extensions.Etc.PipeLine.Pipe_T_(thisSystem.Func_System.Threading.Tasks.ValueTask_T__,System.Func_T,T_,bool).T 'DevFast.Net.Extensions.Etc.PipeLine.Pipe<T>(this System.Func<System.Threading.Tasks.ValueTask<T>>, System.Func<T,T>, bool).T')[,](https://docs.microsoft.com/en-us/dotnet/api/System.Func-2 'System.Func`2')[T](DevFast.Net.Extensions.Etc.PipeLine.md#DevFast.Net.Extensions.Etc.PipeLine.Pipe_T_(thisSystem.Func_System.Threading.Tasks.ValueTask_T__,System.Func_T,T_,bool).T 'DevFast.Net.Extensions.Etc.PipeLine.Pipe<T>(this System.Func<System.Threading.Tasks.ValueTask<T>>, System.Func<T,T>, bool).T')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Func-2 'System.Func`2')
 
-Tandem lambda to apply
+Tandem lambda that would consume the output of [sourceLambda](DevFast.Net.Extensions.Etc.PipeLine.md#DevFast.Net.Extensions.Etc.PipeLine.Pipe_T_(thisSystem.Func_System.Threading.Tasks.ValueTask_T__,System.Func_T,T_,bool).sourceLambda 'DevFast.Net.Extensions.Etc.PipeLine.Pipe<T>(this System.Func<System.Threading.Tasks.ValueTask<T>>, System.Func<T,T>, bool).sourceLambda').
 
 <a name='DevFast.Net.Extensions.Etc.PipeLine.Pipe_T_(thisSystem.Func_System.Threading.Tasks.ValueTask_T__,System.Func_T,T_,bool).flag'></a>
 
 `flag` [System.Boolean](https://docs.microsoft.com/en-us/dotnet/api/System.Boolean 'System.Boolean')
 
-Flag which dictate whether to apply tandem lambda or not
+Conditional flag dictating whether [tandemLambda](DevFast.Net.Extensions.Etc.PipeLine.md#DevFast.Net.Extensions.Etc.PipeLine.Pipe_T_(thisSystem.Func_System.Threading.Tasks.ValueTask_T__,System.Func_T,T_,bool).tandemLambda 'DevFast.Net.Extensions.Etc.PipeLine.Pipe<T>(this System.Func<System.Threading.Tasks.ValueTask<T>>, System.Func<T,T>, bool).tandemLambda') should be applied or not
 
 #### Returns
 [System.Func&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Func-1 'System.Func`1')[System.Threading.Tasks.ValueTask&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Threading.Tasks.ValueTask-1 'System.Threading.Tasks.ValueTask`1')[T](DevFast.Net.Extensions.Etc.PipeLine.md#DevFast.Net.Extensions.Etc.PipeLine.Pipe_T_(thisSystem.Func_System.Threading.Tasks.ValueTask_T__,System.Func_T,T_,bool).T 'DevFast.Net.Extensions.Etc.PipeLine.Pipe<T>(this System.Func<System.Threading.Tasks.ValueTask<T>>, System.Func<T,T>, bool).T')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Threading.Tasks.ValueTask-1 'System.Threading.Tasks.ValueTask`1')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Func-1 'System.Func`1')
@@ -2070,7 +2094,13 @@ Flag which dictate whether to apply tandem lambda or not
 
 ## PipeLine.Pipe<T>(this Func<T>, Func<T,Task<T>>, bool) Method
 
-Conditionally applies [tandemLambda](DevFast.Net.Extensions.Etc.PipeLine.md#DevFast.Net.Extensions.Etc.PipeLine.Pipe_T_(thisSystem.Func_T_,System.Func_T,System.Threading.Tasks.Task_T__,bool).tandemLambda 'DevFast.Net.Extensions.Etc.PipeLine.Pipe<T>(this System.Func<T>, System.Func<T,System.Threading.Tasks.Task<T>>, bool).tandemLambda') on the output of [sourceLambda](DevFast.Net.Extensions.Etc.PipeLine.md#DevFast.Net.Extensions.Etc.PipeLine.Pipe_T_(thisSystem.Func_T_,System.Func_T,System.Threading.Tasks.Task_T__,bool).sourceLambda 'DevFast.Net.Extensions.Etc.PipeLine.Pipe<T>(this System.Func<T>, System.Func<T,System.Threading.Tasks.Task<T>>, bool).sourceLambda').
+Provides a conditional lambda, which upon execution:
+
+1. If [flag](DevFast.Net.Extensions.Etc.PipeLine.md#DevFast.Net.Extensions.Etc.PipeLine.Pipe_T_(thisSystem.Func_T_,System.Func_T,System.Threading.Tasks.Task_T__,bool).flag 'DevFast.Net.Extensions.Etc.PipeLine.Pipe<T>(this System.Func<T>, System.Func<T,System.Threading.Tasks.Task<T>>, bool).flag') is [true](https://docs.microsoft.com/en-us/dotnet/csharp/language-reference/builtin-types/bool 'https://docs.microsoft.com/en-us/dotnet/csharp/language-reference/builtin-types/bool'), feeds the output of
+[sourceLambda](DevFast.Net.Extensions.Etc.PipeLine.md#DevFast.Net.Extensions.Etc.PipeLine.Pipe_T_(thisSystem.Func_T_,System.Func_T,System.Threading.Tasks.Task_T__,bool).sourceLambda 'DevFast.Net.Extensions.Etc.PipeLine.Pipe<T>(this System.Func<T>, System.Func<T,System.Threading.Tasks.Task<T>>, bool).sourceLambda') to the [tandemLambda](DevFast.Net.Extensions.Etc.PipeLine.md#DevFast.Net.Extensions.Etc.PipeLine.Pipe_T_(thisSystem.Func_T_,System.Func_T,System.Threading.Tasks.Task_T__,bool).tandemLambda 'DevFast.Net.Extensions.Etc.PipeLine.Pipe<T>(this System.Func<T>, System.Func<T,System.Threading.Tasks.Task<T>>, bool).tandemLambda') and returns the output obtained
+from [tandemLambda](DevFast.Net.Extensions.Etc.PipeLine.md#DevFast.Net.Extensions.Etc.PipeLine.Pipe_T_(thisSystem.Func_T_,System.Func_T,System.Threading.Tasks.Task_T__,bool).tandemLambda 'DevFast.Net.Extensions.Etc.PipeLine.Pipe<T>(this System.Func<T>, System.Func<T,System.Threading.Tasks.Task<T>>, bool).tandemLambda').
+2. If [flag](DevFast.Net.Extensions.Etc.PipeLine.md#DevFast.Net.Extensions.Etc.PipeLine.Pipe_T_(thisSystem.Func_T_,System.Func_T,System.Threading.Tasks.Task_T__,bool).flag 'DevFast.Net.Extensions.Etc.PipeLine.Pipe<T>(this System.Func<T>, System.Func<T,System.Threading.Tasks.Task<T>>, bool).flag') is [false](https://docs.microsoft.com/en-us/dotnet/csharp/language-reference/builtin-types/bool 'https://docs.microsoft.com/en-us/dotnet/csharp/language-reference/builtin-types/bool'), returns the output of the original
+[sourceLambda](DevFast.Net.Extensions.Etc.PipeLine.md#DevFast.Net.Extensions.Etc.PipeLine.Pipe_T_(thisSystem.Func_T_,System.Func_T,System.Threading.Tasks.Task_T__,bool).sourceLambda 'DevFast.Net.Extensions.Etc.PipeLine.Pipe<T>(this System.Func<T>, System.Func<T,System.Threading.Tasks.Task<T>>, bool).sourceLambda').
 
 ```csharp
 public static System.Func<System.Threading.Tasks.Task<T>> Pipe<T>(this System.Func<T> sourceLambda, System.Func<T,System.Threading.Tasks.Task<T>> tandemLambda, bool flag);
@@ -2086,19 +2116,19 @@ public static System.Func<System.Threading.Tasks.Task<T>> Pipe<T>(this System.Fu
 
 `sourceLambda` [System.Func&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Func-1 'System.Func`1')[T](DevFast.Net.Extensions.Etc.PipeLine.md#DevFast.Net.Extensions.Etc.PipeLine.Pipe_T_(thisSystem.Func_T_,System.Func_T,System.Threading.Tasks.Task_T__,bool).T 'DevFast.Net.Extensions.Etc.PipeLine.Pipe<T>(this System.Func<T>, System.Func<T,System.Threading.Tasks.Task<T>>, bool).T')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Func-1 'System.Func`1')
 
-Lambda on which tandem lambda will be applied
+Source lambda to which the tandem operation would be applied.
 
 <a name='DevFast.Net.Extensions.Etc.PipeLine.Pipe_T_(thisSystem.Func_T_,System.Func_T,System.Threading.Tasks.Task_T__,bool).tandemLambda'></a>
 
 `tandemLambda` [System.Func&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Func-2 'System.Func`2')[T](DevFast.Net.Extensions.Etc.PipeLine.md#DevFast.Net.Extensions.Etc.PipeLine.Pipe_T_(thisSystem.Func_T_,System.Func_T,System.Threading.Tasks.Task_T__,bool).T 'DevFast.Net.Extensions.Etc.PipeLine.Pipe<T>(this System.Func<T>, System.Func<T,System.Threading.Tasks.Task<T>>, bool).T')[,](https://docs.microsoft.com/en-us/dotnet/api/System.Func-2 'System.Func`2')[System.Threading.Tasks.Task&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Threading.Tasks.Task-1 'System.Threading.Tasks.Task`1')[T](DevFast.Net.Extensions.Etc.PipeLine.md#DevFast.Net.Extensions.Etc.PipeLine.Pipe_T_(thisSystem.Func_T_,System.Func_T,System.Threading.Tasks.Task_T__,bool).T 'DevFast.Net.Extensions.Etc.PipeLine.Pipe<T>(this System.Func<T>, System.Func<T,System.Threading.Tasks.Task<T>>, bool).T')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Threading.Tasks.Task-1 'System.Threading.Tasks.Task`1')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Func-2 'System.Func`2')
 
-Tandem lambda to apply
+Tandem lambda that would consume the output of [sourceLambda](DevFast.Net.Extensions.Etc.PipeLine.md#DevFast.Net.Extensions.Etc.PipeLine.Pipe_T_(thisSystem.Func_T_,System.Func_T,System.Threading.Tasks.Task_T__,bool).sourceLambda 'DevFast.Net.Extensions.Etc.PipeLine.Pipe<T>(this System.Func<T>, System.Func<T,System.Threading.Tasks.Task<T>>, bool).sourceLambda').
 
 <a name='DevFast.Net.Extensions.Etc.PipeLine.Pipe_T_(thisSystem.Func_T_,System.Func_T,System.Threading.Tasks.Task_T__,bool).flag'></a>
 
 `flag` [System.Boolean](https://docs.microsoft.com/en-us/dotnet/api/System.Boolean 'System.Boolean')
 
-Flag which dictate whether to apply tandem lambda or not
+Conditional flag dictating whether [tandemLambda](DevFast.Net.Extensions.Etc.PipeLine.md#DevFast.Net.Extensions.Etc.PipeLine.Pipe_T_(thisSystem.Func_T_,System.Func_T,System.Threading.Tasks.Task_T__,bool).tandemLambda 'DevFast.Net.Extensions.Etc.PipeLine.Pipe<T>(this System.Func<T>, System.Func<T,System.Threading.Tasks.Task<T>>, bool).tandemLambda') should be applied or not
 
 #### Returns
 [System.Func&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Func-1 'System.Func`1')[System.Threading.Tasks.Task&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Threading.Tasks.Task-1 'System.Threading.Tasks.Task`1')[T](DevFast.Net.Extensions.Etc.PipeLine.md#DevFast.Net.Extensions.Etc.PipeLine.Pipe_T_(thisSystem.Func_T_,System.Func_T,System.Threading.Tasks.Task_T__,bool).T 'DevFast.Net.Extensions.Etc.PipeLine.Pipe<T>(this System.Func<T>, System.Func<T,System.Threading.Tasks.Task<T>>, bool).T')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Threading.Tasks.Task-1 'System.Threading.Tasks.Task`1')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Func-1 'System.Func`1')
@@ -2107,7 +2137,13 @@ Flag which dictate whether to apply tandem lambda or not
 
 ## PipeLine.Pipe<T>(this Func<T>, Func<T,ValueTask<T>>, bool) Method
 
-Conditionally applies [tandemLambda](DevFast.Net.Extensions.Etc.PipeLine.md#DevFast.Net.Extensions.Etc.PipeLine.Pipe_T_(thisSystem.Func_T_,System.Func_T,System.Threading.Tasks.ValueTask_T__,bool).tandemLambda 'DevFast.Net.Extensions.Etc.PipeLine.Pipe<T>(this System.Func<T>, System.Func<T,System.Threading.Tasks.ValueTask<T>>, bool).tandemLambda') on the output of [sourceLambda](DevFast.Net.Extensions.Etc.PipeLine.md#DevFast.Net.Extensions.Etc.PipeLine.Pipe_T_(thisSystem.Func_T_,System.Func_T,System.Threading.Tasks.ValueTask_T__,bool).sourceLambda 'DevFast.Net.Extensions.Etc.PipeLine.Pipe<T>(this System.Func<T>, System.Func<T,System.Threading.Tasks.ValueTask<T>>, bool).sourceLambda').
+Provides a conditional lambda, which upon execution:
+
+1. If [flag](DevFast.Net.Extensions.Etc.PipeLine.md#DevFast.Net.Extensions.Etc.PipeLine.Pipe_T_(thisSystem.Func_T_,System.Func_T,System.Threading.Tasks.ValueTask_T__,bool).flag 'DevFast.Net.Extensions.Etc.PipeLine.Pipe<T>(this System.Func<T>, System.Func<T,System.Threading.Tasks.ValueTask<T>>, bool).flag') is [true](https://docs.microsoft.com/en-us/dotnet/csharp/language-reference/builtin-types/bool 'https://docs.microsoft.com/en-us/dotnet/csharp/language-reference/builtin-types/bool'), feeds the output of
+[sourceLambda](DevFast.Net.Extensions.Etc.PipeLine.md#DevFast.Net.Extensions.Etc.PipeLine.Pipe_T_(thisSystem.Func_T_,System.Func_T,System.Threading.Tasks.ValueTask_T__,bool).sourceLambda 'DevFast.Net.Extensions.Etc.PipeLine.Pipe<T>(this System.Func<T>, System.Func<T,System.Threading.Tasks.ValueTask<T>>, bool).sourceLambda') to the [tandemLambda](DevFast.Net.Extensions.Etc.PipeLine.md#DevFast.Net.Extensions.Etc.PipeLine.Pipe_T_(thisSystem.Func_T_,System.Func_T,System.Threading.Tasks.ValueTask_T__,bool).tandemLambda 'DevFast.Net.Extensions.Etc.PipeLine.Pipe<T>(this System.Func<T>, System.Func<T,System.Threading.Tasks.ValueTask<T>>, bool).tandemLambda') and returns the output obtained
+from [tandemLambda](DevFast.Net.Extensions.Etc.PipeLine.md#DevFast.Net.Extensions.Etc.PipeLine.Pipe_T_(thisSystem.Func_T_,System.Func_T,System.Threading.Tasks.ValueTask_T__,bool).tandemLambda 'DevFast.Net.Extensions.Etc.PipeLine.Pipe<T>(this System.Func<T>, System.Func<T,System.Threading.Tasks.ValueTask<T>>, bool).tandemLambda').
+2. If [flag](DevFast.Net.Extensions.Etc.PipeLine.md#DevFast.Net.Extensions.Etc.PipeLine.Pipe_T_(thisSystem.Func_T_,System.Func_T,System.Threading.Tasks.ValueTask_T__,bool).flag 'DevFast.Net.Extensions.Etc.PipeLine.Pipe<T>(this System.Func<T>, System.Func<T,System.Threading.Tasks.ValueTask<T>>, bool).flag') is [false](https://docs.microsoft.com/en-us/dotnet/csharp/language-reference/builtin-types/bool 'https://docs.microsoft.com/en-us/dotnet/csharp/language-reference/builtin-types/bool'), returns the output of the original
+[sourceLambda](DevFast.Net.Extensions.Etc.PipeLine.md#DevFast.Net.Extensions.Etc.PipeLine.Pipe_T_(thisSystem.Func_T_,System.Func_T,System.Threading.Tasks.ValueTask_T__,bool).sourceLambda 'DevFast.Net.Extensions.Etc.PipeLine.Pipe<T>(this System.Func<T>, System.Func<T,System.Threading.Tasks.ValueTask<T>>, bool).sourceLambda').
 
 ```csharp
 public static System.Func<System.Threading.Tasks.ValueTask<T>> Pipe<T>(this System.Func<T> sourceLambda, System.Func<T,System.Threading.Tasks.ValueTask<T>> tandemLambda, bool flag);
@@ -2123,19 +2159,19 @@ public static System.Func<System.Threading.Tasks.ValueTask<T>> Pipe<T>(this Syst
 
 `sourceLambda` [System.Func&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Func-1 'System.Func`1')[T](DevFast.Net.Extensions.Etc.PipeLine.md#DevFast.Net.Extensions.Etc.PipeLine.Pipe_T_(thisSystem.Func_T_,System.Func_T,System.Threading.Tasks.ValueTask_T__,bool).T 'DevFast.Net.Extensions.Etc.PipeLine.Pipe<T>(this System.Func<T>, System.Func<T,System.Threading.Tasks.ValueTask<T>>, bool).T')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Func-1 'System.Func`1')
 
-Lambda on which tandem lambda will be applied
+Source lambda to which the tandem operation would be applied.
 
 <a name='DevFast.Net.Extensions.Etc.PipeLine.Pipe_T_(thisSystem.Func_T_,System.Func_T,System.Threading.Tasks.ValueTask_T__,bool).tandemLambda'></a>
 
 `tandemLambda` [System.Func&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Func-2 'System.Func`2')[T](DevFast.Net.Extensions.Etc.PipeLine.md#DevFast.Net.Extensions.Etc.PipeLine.Pipe_T_(thisSystem.Func_T_,System.Func_T,System.Threading.Tasks.ValueTask_T__,bool).T 'DevFast.Net.Extensions.Etc.PipeLine.Pipe<T>(this System.Func<T>, System.Func<T,System.Threading.Tasks.ValueTask<T>>, bool).T')[,](https://docs.microsoft.com/en-us/dotnet/api/System.Func-2 'System.Func`2')[System.Threading.Tasks.ValueTask&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Threading.Tasks.ValueTask-1 'System.Threading.Tasks.ValueTask`1')[T](DevFast.Net.Extensions.Etc.PipeLine.md#DevFast.Net.Extensions.Etc.PipeLine.Pipe_T_(thisSystem.Func_T_,System.Func_T,System.Threading.Tasks.ValueTask_T__,bool).T 'DevFast.Net.Extensions.Etc.PipeLine.Pipe<T>(this System.Func<T>, System.Func<T,System.Threading.Tasks.ValueTask<T>>, bool).T')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Threading.Tasks.ValueTask-1 'System.Threading.Tasks.ValueTask`1')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Func-2 'System.Func`2')
 
-Tandem lambda to apply
+Tandem lambda that would consume the output of [sourceLambda](DevFast.Net.Extensions.Etc.PipeLine.md#DevFast.Net.Extensions.Etc.PipeLine.Pipe_T_(thisSystem.Func_T_,System.Func_T,System.Threading.Tasks.ValueTask_T__,bool).sourceLambda 'DevFast.Net.Extensions.Etc.PipeLine.Pipe<T>(this System.Func<T>, System.Func<T,System.Threading.Tasks.ValueTask<T>>, bool).sourceLambda').
 
 <a name='DevFast.Net.Extensions.Etc.PipeLine.Pipe_T_(thisSystem.Func_T_,System.Func_T,System.Threading.Tasks.ValueTask_T__,bool).flag'></a>
 
 `flag` [System.Boolean](https://docs.microsoft.com/en-us/dotnet/api/System.Boolean 'System.Boolean')
 
-Flag which dictate whether to apply tandem lambda or not
+Conditional flag dictating whether [tandemLambda](DevFast.Net.Extensions.Etc.PipeLine.md#DevFast.Net.Extensions.Etc.PipeLine.Pipe_T_(thisSystem.Func_T_,System.Func_T,System.Threading.Tasks.ValueTask_T__,bool).tandemLambda 'DevFast.Net.Extensions.Etc.PipeLine.Pipe<T>(this System.Func<T>, System.Func<T,System.Threading.Tasks.ValueTask<T>>, bool).tandemLambda') should be applied or not
 
 #### Returns
 [System.Func&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Func-1 'System.Func`1')[System.Threading.Tasks.ValueTask&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Threading.Tasks.ValueTask-1 'System.Threading.Tasks.ValueTask`1')[T](DevFast.Net.Extensions.Etc.PipeLine.md#DevFast.Net.Extensions.Etc.PipeLine.Pipe_T_(thisSystem.Func_T_,System.Func_T,System.Threading.Tasks.ValueTask_T__,bool).T 'DevFast.Net.Extensions.Etc.PipeLine.Pipe<T>(this System.Func<T>, System.Func<T,System.Threading.Tasks.ValueTask<T>>, bool).T')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Threading.Tasks.ValueTask-1 'System.Threading.Tasks.ValueTask`1')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Func-1 'System.Func`1')
@@ -2144,10 +2180,13 @@ Flag which dictate whether to apply tandem lambda or not
 
 ## PipeLine.Pipe<T>(this Func<T>, Func<T,T>, bool) Method
 
-Conditionally applies [tandemLambda](DevFast.Net.Extensions.Etc.PipeLine.md#DevFast.Net.Extensions.Etc.PipeLine.Pipe_T_(thisSystem.Func_T_,System.Func_T,T_,bool).tandemLambda 'DevFast.Net.Extensions.Etc.PipeLine.Pipe<T>(this System.Func<T>, System.Func<T,T>, bool).tandemLambda') on the out of
-[sourceLambda](DevFast.Net.Extensions.Etc.PipeLine.md#DevFast.Net.Extensions.Etc.PipeLine.Pipe_T_(thisSystem.Func_T_,System.Func_T,T_,bool).sourceLambda 'DevFast.Net.Extensions.Etc.PipeLine.Pipe<T>(this System.Func<T>, System.Func<T,T>, bool).sourceLambda') when [flag](DevFast.Net.Extensions.Etc.PipeLine.md#DevFast.Net.Extensions.Etc.PipeLine.Pipe_T_(thisSystem.Func_T_,System.Func_T,T_,bool).flag 'DevFast.Net.Extensions.Etc.PipeLine.Pipe<T>(this System.Func<T>, System.Func<T,T>, bool).flag') is
-[true](https://docs.microsoft.com/en-us/dotnet/csharp/language-reference/builtin-types/bool 'https://docs.microsoft.com/en-us/dotnet/csharp/language-reference/builtin-types/bool');
-otherwise, returns back the original [sourceLambda](DevFast.Net.Extensions.Etc.PipeLine.md#DevFast.Net.Extensions.Etc.PipeLine.Pipe_T_(thisSystem.Func_T_,System.Func_T,T_,bool).sourceLambda 'DevFast.Net.Extensions.Etc.PipeLine.Pipe<T>(this System.Func<T>, System.Func<T,T>, bool).sourceLambda').
+Provides a conditional lambda, which upon execution:
+
+1. If [flag](DevFast.Net.Extensions.Etc.PipeLine.md#DevFast.Net.Extensions.Etc.PipeLine.Pipe_T_(thisSystem.Func_T_,System.Func_T,T_,bool).flag 'DevFast.Net.Extensions.Etc.PipeLine.Pipe<T>(this System.Func<T>, System.Func<T,T>, bool).flag') is [true](https://docs.microsoft.com/en-us/dotnet/csharp/language-reference/builtin-types/bool 'https://docs.microsoft.com/en-us/dotnet/csharp/language-reference/builtin-types/bool'), feeds the output of
+[sourceLambda](DevFast.Net.Extensions.Etc.PipeLine.md#DevFast.Net.Extensions.Etc.PipeLine.Pipe_T_(thisSystem.Func_T_,System.Func_T,T_,bool).sourceLambda 'DevFast.Net.Extensions.Etc.PipeLine.Pipe<T>(this System.Func<T>, System.Func<T,T>, bool).sourceLambda') to the [tandemLambda](DevFast.Net.Extensions.Etc.PipeLine.md#DevFast.Net.Extensions.Etc.PipeLine.Pipe_T_(thisSystem.Func_T_,System.Func_T,T_,bool).tandemLambda 'DevFast.Net.Extensions.Etc.PipeLine.Pipe<T>(this System.Func<T>, System.Func<T,T>, bool).tandemLambda') and returns the output obtained
+from [tandemLambda](DevFast.Net.Extensions.Etc.PipeLine.md#DevFast.Net.Extensions.Etc.PipeLine.Pipe_T_(thisSystem.Func_T_,System.Func_T,T_,bool).tandemLambda 'DevFast.Net.Extensions.Etc.PipeLine.Pipe<T>(this System.Func<T>, System.Func<T,T>, bool).tandemLambda').
+2. If [flag](DevFast.Net.Extensions.Etc.PipeLine.md#DevFast.Net.Extensions.Etc.PipeLine.Pipe_T_(thisSystem.Func_T_,System.Func_T,T_,bool).flag 'DevFast.Net.Extensions.Etc.PipeLine.Pipe<T>(this System.Func<T>, System.Func<T,T>, bool).flag') is [false](https://docs.microsoft.com/en-us/dotnet/csharp/language-reference/builtin-types/bool 'https://docs.microsoft.com/en-us/dotnet/csharp/language-reference/builtin-types/bool'), returns the output of the original
+[sourceLambda](DevFast.Net.Extensions.Etc.PipeLine.md#DevFast.Net.Extensions.Etc.PipeLine.Pipe_T_(thisSystem.Func_T_,System.Func_T,T_,bool).sourceLambda 'DevFast.Net.Extensions.Etc.PipeLine.Pipe<T>(this System.Func<T>, System.Func<T,T>, bool).sourceLambda').
 
 ```csharp
 public static System.Func<T> Pipe<T>(this System.Func<T> sourceLambda, System.Func<T,T> tandemLambda, bool flag);
@@ -2163,19 +2202,19 @@ public static System.Func<T> Pipe<T>(this System.Func<T> sourceLambda, System.Fu
 
 `sourceLambda` [System.Func&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Func-1 'System.Func`1')[T](DevFast.Net.Extensions.Etc.PipeLine.md#DevFast.Net.Extensions.Etc.PipeLine.Pipe_T_(thisSystem.Func_T_,System.Func_T,T_,bool).T 'DevFast.Net.Extensions.Etc.PipeLine.Pipe<T>(this System.Func<T>, System.Func<T,T>, bool).T')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Func-1 'System.Func`1')
 
-Source lambda on which tandem lambda will be applied
+Source lambda to which the tandem operation would be applied.
 
 <a name='DevFast.Net.Extensions.Etc.PipeLine.Pipe_T_(thisSystem.Func_T_,System.Func_T,T_,bool).tandemLambda'></a>
 
 `tandemLambda` [System.Func&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Func-2 'System.Func`2')[T](DevFast.Net.Extensions.Etc.PipeLine.md#DevFast.Net.Extensions.Etc.PipeLine.Pipe_T_(thisSystem.Func_T_,System.Func_T,T_,bool).T 'DevFast.Net.Extensions.Etc.PipeLine.Pipe<T>(this System.Func<T>, System.Func<T,T>, bool).T')[,](https://docs.microsoft.com/en-us/dotnet/api/System.Func-2 'System.Func`2')[T](DevFast.Net.Extensions.Etc.PipeLine.md#DevFast.Net.Extensions.Etc.PipeLine.Pipe_T_(thisSystem.Func_T_,System.Func_T,T_,bool).T 'DevFast.Net.Extensions.Etc.PipeLine.Pipe<T>(this System.Func<T>, System.Func<T,T>, bool).T')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Func-2 'System.Func`2')
 
-Tandem lambda to apply
+Tandem lambda that would consume the output of [sourceLambda](DevFast.Net.Extensions.Etc.PipeLine.md#DevFast.Net.Extensions.Etc.PipeLine.Pipe_T_(thisSystem.Func_T_,System.Func_T,T_,bool).sourceLambda 'DevFast.Net.Extensions.Etc.PipeLine.Pipe<T>(this System.Func<T>, System.Func<T,T>, bool).sourceLambda').
 
 <a name='DevFast.Net.Extensions.Etc.PipeLine.Pipe_T_(thisSystem.Func_T_,System.Func_T,T_,bool).flag'></a>
 
 `flag` [System.Boolean](https://docs.microsoft.com/en-us/dotnet/api/System.Boolean 'System.Boolean')
 
-Flag which dictate whether to apply tandem lambda or not
+Conditional flag dictating whether [tandemLambda](DevFast.Net.Extensions.Etc.PipeLine.md#DevFast.Net.Extensions.Etc.PipeLine.Pipe_T_(thisSystem.Func_T_,System.Func_T,T_,bool).tandemLambda 'DevFast.Net.Extensions.Etc.PipeLine.Pipe<T>(this System.Func<T>, System.Func<T,T>, bool).tandemLambda') should be applied or not
 
 #### Returns
 [System.Func&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Func-1 'System.Func`1')[T](DevFast.Net.Extensions.Etc.PipeLine.md#DevFast.Net.Extensions.Etc.PipeLine.Pipe_T_(thisSystem.Func_T_,System.Func_T,T_,bool).T 'DevFast.Net.Extensions.Etc.PipeLine.Pipe<T>(this System.Func<T>, System.Func<T,T>, bool).T')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Func-1 'System.Func`1')
@@ -2184,7 +2223,17 @@ Flag which dictate whether to apply tandem lambda or not
 
 ## PipeLine.Pipe<T>(this Task<T>, Func<T,Task<T>>, bool) Method
 
-Conditionally applies [tandemLambda](DevFast.Net.Extensions.Etc.PipeLine.md#DevFast.Net.Extensions.Etc.PipeLine.Pipe_T_(thisSystem.Threading.Tasks.Task_T_,System.Func_T,System.Threading.Tasks.Task_T__,bool).tandemLambda 'DevFast.Net.Extensions.Etc.PipeLine.Pipe<T>(this System.Threading.Tasks.Task<T>, System.Func<T,System.Threading.Tasks.Task<T>>, bool).tandemLambda') on the output of [task](DevFast.Net.Extensions.Etc.PipeLine.md#DevFast.Net.Extensions.Etc.PipeLine.Pipe_T_(thisSystem.Threading.Tasks.Task_T_,System.Func_T,System.Threading.Tasks.Task_T__,bool).task 'DevFast.Net.Extensions.Etc.PipeLine.Pipe<T>(this System.Threading.Tasks.Task<T>, System.Func<T,System.Threading.Tasks.Task<T>>, bool).task').
+Provides a conditional asynchronous lambda, which upon execution:
+
+1. If [flag](DevFast.Net.Extensions.Etc.PipeLine.md#DevFast.Net.Extensions.Etc.PipeLine.Pipe_T_(thisSystem.Threading.Tasks.Task_T_,System.Func_T,System.Threading.Tasks.Task_T__,bool).flag 'DevFast.Net.Extensions.Etc.PipeLine.Pipe<T>(this System.Threading.Tasks.Task<T>, System.Func<T,System.Threading.Tasks.Task<T>>, bool).flag') is [true](https://docs.microsoft.com/en-us/dotnet/csharp/language-reference/builtin-types/bool 'https://docs.microsoft.com/en-us/dotnet/csharp/language-reference/builtin-types/bool'), feeds the output of
+[task](DevFast.Net.Extensions.Etc.PipeLine.md#DevFast.Net.Extensions.Etc.PipeLine.Pipe_T_(thisSystem.Threading.Tasks.Task_T_,System.Func_T,System.Threading.Tasks.Task_T__,bool).task 'DevFast.Net.Extensions.Etc.PipeLine.Pipe<T>(this System.Threading.Tasks.Task<T>, System.Func<T,System.Threading.Tasks.Task<T>>, bool).task') to the [tandemLambda](DevFast.Net.Extensions.Etc.PipeLine.md#DevFast.Net.Extensions.Etc.PipeLine.Pipe_T_(thisSystem.Threading.Tasks.Task_T_,System.Func_T,System.Threading.Tasks.Task_T__,bool).tandemLambda 'DevFast.Net.Extensions.Etc.PipeLine.Pipe<T>(this System.Threading.Tasks.Task<T>, System.Func<T,System.Threading.Tasks.Task<T>>, bool).tandemLambda') and returns the output obtained
+from [tandemLambda](DevFast.Net.Extensions.Etc.PipeLine.md#DevFast.Net.Extensions.Etc.PipeLine.Pipe_T_(thisSystem.Threading.Tasks.Task_T_,System.Func_T,System.Threading.Tasks.Task_T__,bool).tandemLambda 'DevFast.Net.Extensions.Etc.PipeLine.Pipe<T>(this System.Threading.Tasks.Task<T>, System.Func<T,System.Threading.Tasks.Task<T>>, bool).tandemLambda').
+2. If [flag](DevFast.Net.Extensions.Etc.PipeLine.md#DevFast.Net.Extensions.Etc.PipeLine.Pipe_T_(thisSystem.Threading.Tasks.Task_T_,System.Func_T,System.Threading.Tasks.Task_T__,bool).flag 'DevFast.Net.Extensions.Etc.PipeLine.Pipe<T>(this System.Threading.Tasks.Task<T>, System.Func<T,System.Threading.Tasks.Task<T>>, bool).flag') is [false](https://docs.microsoft.com/en-us/dotnet/csharp/language-reference/builtin-types/bool 'https://docs.microsoft.com/en-us/dotnet/csharp/language-reference/builtin-types/bool'), returns the output of the original
+[task](DevFast.Net.Extensions.Etc.PipeLine.md#DevFast.Net.Extensions.Etc.PipeLine.Pipe_T_(thisSystem.Threading.Tasks.Task_T_,System.Func_T,System.Threading.Tasks.Task_T__,bool).task 'DevFast.Net.Extensions.Etc.PipeLine.Pipe<T>(this System.Threading.Tasks.Task<T>, System.Func<T,System.Threading.Tasks.Task<T>>, bool).task').
+
+IMPLEMENTATION NOTE: As the purpose of pipelines is to executes everything as lazily as possible,
+calling this method on a non-running [System.Threading.Tasks.Task](https://docs.microsoft.com/en-us/dotnet/api/System.Threading.Tasks.Task 'System.Threading.Tasks.Task') is advisable, though NOT necessary.
+Irrespective to the state of the [task](DevFast.Net.Extensions.Etc.PipeLine.md#DevFast.Net.Extensions.Etc.PipeLine.Pipe_T_(thisSystem.Threading.Tasks.Task_T_,System.Func_T,System.Threading.Tasks.Task_T__,bool).task 'DevFast.Net.Extensions.Etc.PipeLine.Pipe<T>(this System.Threading.Tasks.Task<T>, System.Func<T,System.Threading.Tasks.Task<T>>, bool).task') outcome would be identical.
 
 ```csharp
 public static System.Func<System.Threading.Tasks.Task<T>> Pipe<T>(this System.Threading.Tasks.Task<T> task, System.Func<T,System.Threading.Tasks.Task<T>> tandemLambda, bool flag);
@@ -2200,19 +2249,19 @@ public static System.Func<System.Threading.Tasks.Task<T>> Pipe<T>(this System.Th
 
 `task` [System.Threading.Tasks.Task&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Threading.Tasks.Task-1 'System.Threading.Tasks.Task`1')[T](DevFast.Net.Extensions.Etc.PipeLine.md#DevFast.Net.Extensions.Etc.PipeLine.Pipe_T_(thisSystem.Threading.Tasks.Task_T_,System.Func_T,System.Threading.Tasks.Task_T__,bool).T 'DevFast.Net.Extensions.Etc.PipeLine.Pipe<T>(this System.Threading.Tasks.Task<T>, System.Func<T,System.Threading.Tasks.Task<T>>, bool).T')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Threading.Tasks.Task-1 'System.Threading.Tasks.Task`1')
 
-Task on which tandem lambda will be applied
+Task to which the tandem operation would be applied.
 
 <a name='DevFast.Net.Extensions.Etc.PipeLine.Pipe_T_(thisSystem.Threading.Tasks.Task_T_,System.Func_T,System.Threading.Tasks.Task_T__,bool).tandemLambda'></a>
 
 `tandemLambda` [System.Func&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Func-2 'System.Func`2')[T](DevFast.Net.Extensions.Etc.PipeLine.md#DevFast.Net.Extensions.Etc.PipeLine.Pipe_T_(thisSystem.Threading.Tasks.Task_T_,System.Func_T,System.Threading.Tasks.Task_T__,bool).T 'DevFast.Net.Extensions.Etc.PipeLine.Pipe<T>(this System.Threading.Tasks.Task<T>, System.Func<T,System.Threading.Tasks.Task<T>>, bool).T')[,](https://docs.microsoft.com/en-us/dotnet/api/System.Func-2 'System.Func`2')[System.Threading.Tasks.Task&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Threading.Tasks.Task-1 'System.Threading.Tasks.Task`1')[T](DevFast.Net.Extensions.Etc.PipeLine.md#DevFast.Net.Extensions.Etc.PipeLine.Pipe_T_(thisSystem.Threading.Tasks.Task_T_,System.Func_T,System.Threading.Tasks.Task_T__,bool).T 'DevFast.Net.Extensions.Etc.PipeLine.Pipe<T>(this System.Threading.Tasks.Task<T>, System.Func<T,System.Threading.Tasks.Task<T>>, bool).T')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Threading.Tasks.Task-1 'System.Threading.Tasks.Task`1')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Func-2 'System.Func`2')
 
-Tandem lambda to apply
+Tandem lambda that would consume the output of [task](DevFast.Net.Extensions.Etc.PipeLine.md#DevFast.Net.Extensions.Etc.PipeLine.Pipe_T_(thisSystem.Threading.Tasks.Task_T_,System.Func_T,System.Threading.Tasks.Task_T__,bool).task 'DevFast.Net.Extensions.Etc.PipeLine.Pipe<T>(this System.Threading.Tasks.Task<T>, System.Func<T,System.Threading.Tasks.Task<T>>, bool).task').
 
 <a name='DevFast.Net.Extensions.Etc.PipeLine.Pipe_T_(thisSystem.Threading.Tasks.Task_T_,System.Func_T,System.Threading.Tasks.Task_T__,bool).flag'></a>
 
 `flag` [System.Boolean](https://docs.microsoft.com/en-us/dotnet/api/System.Boolean 'System.Boolean')
 
-Flag which dictate whether to apply tandem lambda or not
+Conditional flag dictating whether [tandemLambda](DevFast.Net.Extensions.Etc.PipeLine.md#DevFast.Net.Extensions.Etc.PipeLine.Pipe_T_(thisSystem.Threading.Tasks.Task_T_,System.Func_T,System.Threading.Tasks.Task_T__,bool).tandemLambda 'DevFast.Net.Extensions.Etc.PipeLine.Pipe<T>(this System.Threading.Tasks.Task<T>, System.Func<T,System.Threading.Tasks.Task<T>>, bool).tandemLambda') should be applied or not
 
 #### Returns
 [System.Func&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Func-1 'System.Func`1')[System.Threading.Tasks.Task&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Threading.Tasks.Task-1 'System.Threading.Tasks.Task`1')[T](DevFast.Net.Extensions.Etc.PipeLine.md#DevFast.Net.Extensions.Etc.PipeLine.Pipe_T_(thisSystem.Threading.Tasks.Task_T_,System.Func_T,System.Threading.Tasks.Task_T__,bool).T 'DevFast.Net.Extensions.Etc.PipeLine.Pipe<T>(this System.Threading.Tasks.Task<T>, System.Func<T,System.Threading.Tasks.Task<T>>, bool).T')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Threading.Tasks.Task-1 'System.Threading.Tasks.Task`1')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Func-1 'System.Func`1')
@@ -2221,7 +2270,17 @@ Flag which dictate whether to apply tandem lambda or not
 
 ## PipeLine.Pipe<T>(this Task<T>, Func<T,T>, bool) Method
 
-Conditionally applies [tandemLambda](DevFast.Net.Extensions.Etc.PipeLine.md#DevFast.Net.Extensions.Etc.PipeLine.Pipe_T_(thisSystem.Threading.Tasks.Task_T_,System.Func_T,T_,bool).tandemLambda 'DevFast.Net.Extensions.Etc.PipeLine.Pipe<T>(this System.Threading.Tasks.Task<T>, System.Func<T,T>, bool).tandemLambda') on the output of [task](DevFast.Net.Extensions.Etc.PipeLine.md#DevFast.Net.Extensions.Etc.PipeLine.Pipe_T_(thisSystem.Threading.Tasks.Task_T_,System.Func_T,T_,bool).task 'DevFast.Net.Extensions.Etc.PipeLine.Pipe<T>(this System.Threading.Tasks.Task<T>, System.Func<T,T>, bool).task').
+Provides a conditional asynchronous lambda, which upon execution:
+
+1. If [flag](DevFast.Net.Extensions.Etc.PipeLine.md#DevFast.Net.Extensions.Etc.PipeLine.Pipe_T_(thisSystem.Threading.Tasks.Task_T_,System.Func_T,T_,bool).flag 'DevFast.Net.Extensions.Etc.PipeLine.Pipe<T>(this System.Threading.Tasks.Task<T>, System.Func<T,T>, bool).flag') is [true](https://docs.microsoft.com/en-us/dotnet/csharp/language-reference/builtin-types/bool 'https://docs.microsoft.com/en-us/dotnet/csharp/language-reference/builtin-types/bool'), feeds the output of
+[task](DevFast.Net.Extensions.Etc.PipeLine.md#DevFast.Net.Extensions.Etc.PipeLine.Pipe_T_(thisSystem.Threading.Tasks.Task_T_,System.Func_T,T_,bool).task 'DevFast.Net.Extensions.Etc.PipeLine.Pipe<T>(this System.Threading.Tasks.Task<T>, System.Func<T,T>, bool).task') to the [tandemLambda](DevFast.Net.Extensions.Etc.PipeLine.md#DevFast.Net.Extensions.Etc.PipeLine.Pipe_T_(thisSystem.Threading.Tasks.Task_T_,System.Func_T,T_,bool).tandemLambda 'DevFast.Net.Extensions.Etc.PipeLine.Pipe<T>(this System.Threading.Tasks.Task<T>, System.Func<T,T>, bool).tandemLambda') and returns the output obtained
+from [tandemLambda](DevFast.Net.Extensions.Etc.PipeLine.md#DevFast.Net.Extensions.Etc.PipeLine.Pipe_T_(thisSystem.Threading.Tasks.Task_T_,System.Func_T,T_,bool).tandemLambda 'DevFast.Net.Extensions.Etc.PipeLine.Pipe<T>(this System.Threading.Tasks.Task<T>, System.Func<T,T>, bool).tandemLambda').
+2. If [flag](DevFast.Net.Extensions.Etc.PipeLine.md#DevFast.Net.Extensions.Etc.PipeLine.Pipe_T_(thisSystem.Threading.Tasks.Task_T_,System.Func_T,T_,bool).flag 'DevFast.Net.Extensions.Etc.PipeLine.Pipe<T>(this System.Threading.Tasks.Task<T>, System.Func<T,T>, bool).flag') is [false](https://docs.microsoft.com/en-us/dotnet/csharp/language-reference/builtin-types/bool 'https://docs.microsoft.com/en-us/dotnet/csharp/language-reference/builtin-types/bool'), returns the output of the original
+[task](DevFast.Net.Extensions.Etc.PipeLine.md#DevFast.Net.Extensions.Etc.PipeLine.Pipe_T_(thisSystem.Threading.Tasks.Task_T_,System.Func_T,T_,bool).task 'DevFast.Net.Extensions.Etc.PipeLine.Pipe<T>(this System.Threading.Tasks.Task<T>, System.Func<T,T>, bool).task').
+
+IMPLEMENTATION NOTE: As the purpose of pipelines is to executes everything as lazily as possible,
+calling this method on a non-running [System.Threading.Tasks.Task](https://docs.microsoft.com/en-us/dotnet/api/System.Threading.Tasks.Task 'System.Threading.Tasks.Task') is advisable, though NOT necessary.
+Irrespective to the state of the [task](DevFast.Net.Extensions.Etc.PipeLine.md#DevFast.Net.Extensions.Etc.PipeLine.Pipe_T_(thisSystem.Threading.Tasks.Task_T_,System.Func_T,T_,bool).task 'DevFast.Net.Extensions.Etc.PipeLine.Pipe<T>(this System.Threading.Tasks.Task<T>, System.Func<T,T>, bool).task') outcome would be identical.
 
 ```csharp
 public static System.Func<System.Threading.Tasks.Task<T>> Pipe<T>(this System.Threading.Tasks.Task<T> task, System.Func<T,T> tandemLambda, bool flag);
@@ -2237,19 +2296,19 @@ public static System.Func<System.Threading.Tasks.Task<T>> Pipe<T>(this System.Th
 
 `task` [System.Threading.Tasks.Task&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Threading.Tasks.Task-1 'System.Threading.Tasks.Task`1')[T](DevFast.Net.Extensions.Etc.PipeLine.md#DevFast.Net.Extensions.Etc.PipeLine.Pipe_T_(thisSystem.Threading.Tasks.Task_T_,System.Func_T,T_,bool).T 'DevFast.Net.Extensions.Etc.PipeLine.Pipe<T>(this System.Threading.Tasks.Task<T>, System.Func<T,T>, bool).T')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Threading.Tasks.Task-1 'System.Threading.Tasks.Task`1')
 
-Task on which tandem lambda will be applied
+Task to which the tandem operation would be applied.
 
 <a name='DevFast.Net.Extensions.Etc.PipeLine.Pipe_T_(thisSystem.Threading.Tasks.Task_T_,System.Func_T,T_,bool).tandemLambda'></a>
 
 `tandemLambda` [System.Func&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Func-2 'System.Func`2')[T](DevFast.Net.Extensions.Etc.PipeLine.md#DevFast.Net.Extensions.Etc.PipeLine.Pipe_T_(thisSystem.Threading.Tasks.Task_T_,System.Func_T,T_,bool).T 'DevFast.Net.Extensions.Etc.PipeLine.Pipe<T>(this System.Threading.Tasks.Task<T>, System.Func<T,T>, bool).T')[,](https://docs.microsoft.com/en-us/dotnet/api/System.Func-2 'System.Func`2')[T](DevFast.Net.Extensions.Etc.PipeLine.md#DevFast.Net.Extensions.Etc.PipeLine.Pipe_T_(thisSystem.Threading.Tasks.Task_T_,System.Func_T,T_,bool).T 'DevFast.Net.Extensions.Etc.PipeLine.Pipe<T>(this System.Threading.Tasks.Task<T>, System.Func<T,T>, bool).T')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Func-2 'System.Func`2')
 
-Tandem lambda to apply
+Tandem lambda that would consume the output of [task](DevFast.Net.Extensions.Etc.PipeLine.md#DevFast.Net.Extensions.Etc.PipeLine.Pipe_T_(thisSystem.Threading.Tasks.Task_T_,System.Func_T,T_,bool).task 'DevFast.Net.Extensions.Etc.PipeLine.Pipe<T>(this System.Threading.Tasks.Task<T>, System.Func<T,T>, bool).task').
 
 <a name='DevFast.Net.Extensions.Etc.PipeLine.Pipe_T_(thisSystem.Threading.Tasks.Task_T_,System.Func_T,T_,bool).flag'></a>
 
 `flag` [System.Boolean](https://docs.microsoft.com/en-us/dotnet/api/System.Boolean 'System.Boolean')
 
-Flag which dictate whether to apply tandem lambda or not
+Conditional flag dictating whether [tandemLambda](DevFast.Net.Extensions.Etc.PipeLine.md#DevFast.Net.Extensions.Etc.PipeLine.Pipe_T_(thisSystem.Threading.Tasks.Task_T_,System.Func_T,T_,bool).tandemLambda 'DevFast.Net.Extensions.Etc.PipeLine.Pipe<T>(this System.Threading.Tasks.Task<T>, System.Func<T,T>, bool).tandemLambda') should be applied or not
 
 #### Returns
 [System.Func&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Func-1 'System.Func`1')[System.Threading.Tasks.Task&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Threading.Tasks.Task-1 'System.Threading.Tasks.Task`1')[T](DevFast.Net.Extensions.Etc.PipeLine.md#DevFast.Net.Extensions.Etc.PipeLine.Pipe_T_(thisSystem.Threading.Tasks.Task_T_,System.Func_T,T_,bool).T 'DevFast.Net.Extensions.Etc.PipeLine.Pipe<T>(this System.Threading.Tasks.Task<T>, System.Func<T,T>, bool).T')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Threading.Tasks.Task-1 'System.Threading.Tasks.Task`1')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Func-1 'System.Func`1')
@@ -2258,7 +2317,12 @@ Flag which dictate whether to apply tandem lambda or not
 
 ## PipeLine.Pipe<T>(this T, Func<T,Task<T>>, bool) Method
 
-Conditionally applies [tandemLambda](DevFast.Net.Extensions.Etc.PipeLine.md#DevFast.Net.Extensions.Etc.PipeLine.Pipe_T_(thisT,System.Func_T,System.Threading.Tasks.Task_T__,bool).tandemLambda 'DevFast.Net.Extensions.Etc.PipeLine.Pipe<T>(this T, System.Func<T,System.Threading.Tasks.Task<T>>, bool).tandemLambda') on [value](DevFast.Net.Extensions.Etc.PipeLine.md#DevFast.Net.Extensions.Etc.PipeLine.Pipe_T_(thisT,System.Func_T,System.Threading.Tasks.Task_T__,bool).value 'DevFast.Net.Extensions.Etc.PipeLine.Pipe<T>(this T, System.Func<T,System.Threading.Tasks.Task<T>>, bool).value').
+Provides a conditional asynchronous lambda, which upon execution:
+
+1. If [flag](DevFast.Net.Extensions.Etc.PipeLine.md#DevFast.Net.Extensions.Etc.PipeLine.Pipe_T_(thisT,System.Func_T,System.Threading.Tasks.Task_T__,bool).flag 'DevFast.Net.Extensions.Etc.PipeLine.Pipe<T>(this T, System.Func<T,System.Threading.Tasks.Task<T>>, bool).flag') is [true](https://docs.microsoft.com/en-us/dotnet/csharp/language-reference/builtin-types/bool 'https://docs.microsoft.com/en-us/dotnet/csharp/language-reference/builtin-types/bool'), feeds
+[value](DevFast.Net.Extensions.Etc.PipeLine.md#DevFast.Net.Extensions.Etc.PipeLine.Pipe_T_(thisT,System.Func_T,System.Threading.Tasks.Task_T__,bool).value 'DevFast.Net.Extensions.Etc.PipeLine.Pipe<T>(this T, System.Func<T,System.Threading.Tasks.Task<T>>, bool).value') to the [tandemLambda](DevFast.Net.Extensions.Etc.PipeLine.md#DevFast.Net.Extensions.Etc.PipeLine.Pipe_T_(thisT,System.Func_T,System.Threading.Tasks.Task_T__,bool).tandemLambda 'DevFast.Net.Extensions.Etc.PipeLine.Pipe<T>(this T, System.Func<T,System.Threading.Tasks.Task<T>>, bool).tandemLambda') and returns the output obtained
+from [tandemLambda](DevFast.Net.Extensions.Etc.PipeLine.md#DevFast.Net.Extensions.Etc.PipeLine.Pipe_T_(thisT,System.Func_T,System.Threading.Tasks.Task_T__,bool).tandemLambda 'DevFast.Net.Extensions.Etc.PipeLine.Pipe<T>(this T, System.Func<T,System.Threading.Tasks.Task<T>>, bool).tandemLambda').
+2. If [flag](DevFast.Net.Extensions.Etc.PipeLine.md#DevFast.Net.Extensions.Etc.PipeLine.Pipe_T_(thisT,System.Func_T,System.Threading.Tasks.Task_T__,bool).flag 'DevFast.Net.Extensions.Etc.PipeLine.Pipe<T>(this T, System.Func<T,System.Threading.Tasks.Task<T>>, bool).flag') is [false](https://docs.microsoft.com/en-us/dotnet/csharp/language-reference/builtin-types/bool 'https://docs.microsoft.com/en-us/dotnet/csharp/language-reference/builtin-types/bool'), returns [value](DevFast.Net.Extensions.Etc.PipeLine.md#DevFast.Net.Extensions.Etc.PipeLine.Pipe_T_(thisT,System.Func_T,System.Threading.Tasks.Task_T__,bool).value 'DevFast.Net.Extensions.Etc.PipeLine.Pipe<T>(this T, System.Func<T,System.Threading.Tasks.Task<T>>, bool).value').
 
 ```csharp
 public static System.Func<System.Threading.Tasks.Task<T>> Pipe<T>(this T value, System.Func<T,System.Threading.Tasks.Task<T>> tandemLambda, bool flag);
@@ -2274,19 +2338,19 @@ public static System.Func<System.Threading.Tasks.Task<T>> Pipe<T>(this T value, 
 
 `value` [T](DevFast.Net.Extensions.Etc.PipeLine.md#DevFast.Net.Extensions.Etc.PipeLine.Pipe_T_(thisT,System.Func_T,System.Threading.Tasks.Task_T__,bool).T 'DevFast.Net.Extensions.Etc.PipeLine.Pipe<T>(this T, System.Func<T,System.Threading.Tasks.Task<T>>, bool).T')
 
-Value on which tandem lambda will be applied
+Value to which the tandem operation would be applied.
 
 <a name='DevFast.Net.Extensions.Etc.PipeLine.Pipe_T_(thisT,System.Func_T,System.Threading.Tasks.Task_T__,bool).tandemLambda'></a>
 
 `tandemLambda` [System.Func&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Func-2 'System.Func`2')[T](DevFast.Net.Extensions.Etc.PipeLine.md#DevFast.Net.Extensions.Etc.PipeLine.Pipe_T_(thisT,System.Func_T,System.Threading.Tasks.Task_T__,bool).T 'DevFast.Net.Extensions.Etc.PipeLine.Pipe<T>(this T, System.Func<T,System.Threading.Tasks.Task<T>>, bool).T')[,](https://docs.microsoft.com/en-us/dotnet/api/System.Func-2 'System.Func`2')[System.Threading.Tasks.Task&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Threading.Tasks.Task-1 'System.Threading.Tasks.Task`1')[T](DevFast.Net.Extensions.Etc.PipeLine.md#DevFast.Net.Extensions.Etc.PipeLine.Pipe_T_(thisT,System.Func_T,System.Threading.Tasks.Task_T__,bool).T 'DevFast.Net.Extensions.Etc.PipeLine.Pipe<T>(this T, System.Func<T,System.Threading.Tasks.Task<T>>, bool).T')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Threading.Tasks.Task-1 'System.Threading.Tasks.Task`1')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Func-2 'System.Func`2')
 
-Tandem lambda to apply
+Tandem lambda that would consume [value](DevFast.Net.Extensions.Etc.PipeLine.md#DevFast.Net.Extensions.Etc.PipeLine.Pipe_T_(thisT,System.Func_T,System.Threading.Tasks.Task_T__,bool).value 'DevFast.Net.Extensions.Etc.PipeLine.Pipe<T>(this T, System.Func<T,System.Threading.Tasks.Task<T>>, bool).value').
 
 <a name='DevFast.Net.Extensions.Etc.PipeLine.Pipe_T_(thisT,System.Func_T,System.Threading.Tasks.Task_T__,bool).flag'></a>
 
 `flag` [System.Boolean](https://docs.microsoft.com/en-us/dotnet/api/System.Boolean 'System.Boolean')
 
-Flag which dictate whether to apply tandem lambda or not
+Conditional flag dictating whether [tandemLambda](DevFast.Net.Extensions.Etc.PipeLine.md#DevFast.Net.Extensions.Etc.PipeLine.Pipe_T_(thisT,System.Func_T,System.Threading.Tasks.Task_T__,bool).tandemLambda 'DevFast.Net.Extensions.Etc.PipeLine.Pipe<T>(this T, System.Func<T,System.Threading.Tasks.Task<T>>, bool).tandemLambda') should be applied or not
 
 #### Returns
 [System.Func&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Func-1 'System.Func`1')[System.Threading.Tasks.Task&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Threading.Tasks.Task-1 'System.Threading.Tasks.Task`1')[T](DevFast.Net.Extensions.Etc.PipeLine.md#DevFast.Net.Extensions.Etc.PipeLine.Pipe_T_(thisT,System.Func_T,System.Threading.Tasks.Task_T__,bool).T 'DevFast.Net.Extensions.Etc.PipeLine.Pipe<T>(this T, System.Func<T,System.Threading.Tasks.Task<T>>, bool).T')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Threading.Tasks.Task-1 'System.Threading.Tasks.Task`1')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Func-1 'System.Func`1')
@@ -2295,7 +2359,12 @@ Flag which dictate whether to apply tandem lambda or not
 
 ## PipeLine.Pipe<T>(this T, Func<T,ValueTask<T>>, bool) Method
 
-Conditionally applies [tandemLambda](DevFast.Net.Extensions.Etc.PipeLine.md#DevFast.Net.Extensions.Etc.PipeLine.Pipe_T_(thisT,System.Func_T,System.Threading.Tasks.ValueTask_T__,bool).tandemLambda 'DevFast.Net.Extensions.Etc.PipeLine.Pipe<T>(this T, System.Func<T,System.Threading.Tasks.ValueTask<T>>, bool).tandemLambda') on [value](DevFast.Net.Extensions.Etc.PipeLine.md#DevFast.Net.Extensions.Etc.PipeLine.Pipe_T_(thisT,System.Func_T,System.Threading.Tasks.ValueTask_T__,bool).value 'DevFast.Net.Extensions.Etc.PipeLine.Pipe<T>(this T, System.Func<T,System.Threading.Tasks.ValueTask<T>>, bool).value').
+Provides a conditional asynchronous lambda, which upon execution:
+
+1. If [flag](DevFast.Net.Extensions.Etc.PipeLine.md#DevFast.Net.Extensions.Etc.PipeLine.Pipe_T_(thisT,System.Func_T,System.Threading.Tasks.ValueTask_T__,bool).flag 'DevFast.Net.Extensions.Etc.PipeLine.Pipe<T>(this T, System.Func<T,System.Threading.Tasks.ValueTask<T>>, bool).flag') is [true](https://docs.microsoft.com/en-us/dotnet/csharp/language-reference/builtin-types/bool 'https://docs.microsoft.com/en-us/dotnet/csharp/language-reference/builtin-types/bool'), feeds
+[value](DevFast.Net.Extensions.Etc.PipeLine.md#DevFast.Net.Extensions.Etc.PipeLine.Pipe_T_(thisT,System.Func_T,System.Threading.Tasks.ValueTask_T__,bool).value 'DevFast.Net.Extensions.Etc.PipeLine.Pipe<T>(this T, System.Func<T,System.Threading.Tasks.ValueTask<T>>, bool).value') to the [tandemLambda](DevFast.Net.Extensions.Etc.PipeLine.md#DevFast.Net.Extensions.Etc.PipeLine.Pipe_T_(thisT,System.Func_T,System.Threading.Tasks.ValueTask_T__,bool).tandemLambda 'DevFast.Net.Extensions.Etc.PipeLine.Pipe<T>(this T, System.Func<T,System.Threading.Tasks.ValueTask<T>>, bool).tandemLambda') and returns the output obtained
+from [tandemLambda](DevFast.Net.Extensions.Etc.PipeLine.md#DevFast.Net.Extensions.Etc.PipeLine.Pipe_T_(thisT,System.Func_T,System.Threading.Tasks.ValueTask_T__,bool).tandemLambda 'DevFast.Net.Extensions.Etc.PipeLine.Pipe<T>(this T, System.Func<T,System.Threading.Tasks.ValueTask<T>>, bool).tandemLambda').
+2. If [flag](DevFast.Net.Extensions.Etc.PipeLine.md#DevFast.Net.Extensions.Etc.PipeLine.Pipe_T_(thisT,System.Func_T,System.Threading.Tasks.ValueTask_T__,bool).flag 'DevFast.Net.Extensions.Etc.PipeLine.Pipe<T>(this T, System.Func<T,System.Threading.Tasks.ValueTask<T>>, bool).flag') is [false](https://docs.microsoft.com/en-us/dotnet/csharp/language-reference/builtin-types/bool 'https://docs.microsoft.com/en-us/dotnet/csharp/language-reference/builtin-types/bool'), returns [value](DevFast.Net.Extensions.Etc.PipeLine.md#DevFast.Net.Extensions.Etc.PipeLine.Pipe_T_(thisT,System.Func_T,System.Threading.Tasks.ValueTask_T__,bool).value 'DevFast.Net.Extensions.Etc.PipeLine.Pipe<T>(this T, System.Func<T,System.Threading.Tasks.ValueTask<T>>, bool).value').
 
 ```csharp
 public static System.Func<System.Threading.Tasks.ValueTask<T>> Pipe<T>(this T value, System.Func<T,System.Threading.Tasks.ValueTask<T>> tandemLambda, bool flag);
@@ -2311,19 +2380,19 @@ public static System.Func<System.Threading.Tasks.ValueTask<T>> Pipe<T>(this T va
 
 `value` [T](DevFast.Net.Extensions.Etc.PipeLine.md#DevFast.Net.Extensions.Etc.PipeLine.Pipe_T_(thisT,System.Func_T,System.Threading.Tasks.ValueTask_T__,bool).T 'DevFast.Net.Extensions.Etc.PipeLine.Pipe<T>(this T, System.Func<T,System.Threading.Tasks.ValueTask<T>>, bool).T')
 
-Value on which tandem lambda will be applied
+Value to which the tandem operation would be applied.
 
 <a name='DevFast.Net.Extensions.Etc.PipeLine.Pipe_T_(thisT,System.Func_T,System.Threading.Tasks.ValueTask_T__,bool).tandemLambda'></a>
 
 `tandemLambda` [System.Func&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Func-2 'System.Func`2')[T](DevFast.Net.Extensions.Etc.PipeLine.md#DevFast.Net.Extensions.Etc.PipeLine.Pipe_T_(thisT,System.Func_T,System.Threading.Tasks.ValueTask_T__,bool).T 'DevFast.Net.Extensions.Etc.PipeLine.Pipe<T>(this T, System.Func<T,System.Threading.Tasks.ValueTask<T>>, bool).T')[,](https://docs.microsoft.com/en-us/dotnet/api/System.Func-2 'System.Func`2')[System.Threading.Tasks.ValueTask&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Threading.Tasks.ValueTask-1 'System.Threading.Tasks.ValueTask`1')[T](DevFast.Net.Extensions.Etc.PipeLine.md#DevFast.Net.Extensions.Etc.PipeLine.Pipe_T_(thisT,System.Func_T,System.Threading.Tasks.ValueTask_T__,bool).T 'DevFast.Net.Extensions.Etc.PipeLine.Pipe<T>(this T, System.Func<T,System.Threading.Tasks.ValueTask<T>>, bool).T')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Threading.Tasks.ValueTask-1 'System.Threading.Tasks.ValueTask`1')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Func-2 'System.Func`2')
 
-Tandem lambda to apply
+Tandem lambda that would consume [value](DevFast.Net.Extensions.Etc.PipeLine.md#DevFast.Net.Extensions.Etc.PipeLine.Pipe_T_(thisT,System.Func_T,System.Threading.Tasks.ValueTask_T__,bool).value 'DevFast.Net.Extensions.Etc.PipeLine.Pipe<T>(this T, System.Func<T,System.Threading.Tasks.ValueTask<T>>, bool).value').
 
 <a name='DevFast.Net.Extensions.Etc.PipeLine.Pipe_T_(thisT,System.Func_T,System.Threading.Tasks.ValueTask_T__,bool).flag'></a>
 
 `flag` [System.Boolean](https://docs.microsoft.com/en-us/dotnet/api/System.Boolean 'System.Boolean')
 
-Flag which dictate whether to apply tandem lambda or not
+Conditional flag dictating whether [tandemLambda](DevFast.Net.Extensions.Etc.PipeLine.md#DevFast.Net.Extensions.Etc.PipeLine.Pipe_T_(thisT,System.Func_T,System.Threading.Tasks.ValueTask_T__,bool).tandemLambda 'DevFast.Net.Extensions.Etc.PipeLine.Pipe<T>(this T, System.Func<T,System.Threading.Tasks.ValueTask<T>>, bool).tandemLambda') should be applied or not
 
 #### Returns
 [System.Func&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Func-1 'System.Func`1')[System.Threading.Tasks.ValueTask&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Threading.Tasks.ValueTask-1 'System.Threading.Tasks.ValueTask`1')[T](DevFast.Net.Extensions.Etc.PipeLine.md#DevFast.Net.Extensions.Etc.PipeLine.Pipe_T_(thisT,System.Func_T,System.Threading.Tasks.ValueTask_T__,bool).T 'DevFast.Net.Extensions.Etc.PipeLine.Pipe<T>(this T, System.Func<T,System.Threading.Tasks.ValueTask<T>>, bool).T')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Threading.Tasks.ValueTask-1 'System.Threading.Tasks.ValueTask`1')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Func-1 'System.Func`1')
@@ -2332,9 +2401,13 @@ Flag which dictate whether to apply tandem lambda or not
 
 ## PipeLine.Pipe<T>(this T, Func<T,T>, bool) Method
 
-Applies [tandemLambda](DevFast.Net.Extensions.Etc.PipeLine.md#DevFast.Net.Extensions.Etc.PipeLine.Pipe_T_(thisT,System.Func_T,T_,bool).tandemLambda 'DevFast.Net.Extensions.Etc.PipeLine.Pipe<T>(this T, System.Func<T,T>, bool).tandemLambda') on the [input](DevFast.Net.Extensions.Etc.PipeLine.md#DevFast.Net.Extensions.Etc.PipeLine.Pipe_T_(thisT,System.Func_T,T_,bool).input 'DevFast.Net.Extensions.Etc.PipeLine.Pipe<T>(this T, System.Func<T,T>, bool).input')
-when [flag](DevFast.Net.Extensions.Etc.PipeLine.md#DevFast.Net.Extensions.Etc.PipeLine.Pipe_T_(thisT,System.Func_T,T_,bool).flag 'DevFast.Net.Extensions.Etc.PipeLine.Pipe<T>(this T, System.Func<T,T>, bool).flag') is [true](https://docs.microsoft.com/en-us/dotnet/csharp/language-reference/builtin-types/bool 'https://docs.microsoft.com/en-us/dotnet/csharp/language-reference/builtin-types/bool') and returns the result;
-otherwise, returns back the original [input](DevFast.Net.Extensions.Etc.PipeLine.md#DevFast.Net.Extensions.Etc.PipeLine.Pipe_T_(thisT,System.Func_T,T_,bool).input 'DevFast.Net.Extensions.Etc.PipeLine.Pipe<T>(this T, System.Func<T,T>, bool).input').
+Provides a conditional lambda, which upon execution:
+
+1. If [flag](DevFast.Net.Extensions.Etc.PipeLine.md#DevFast.Net.Extensions.Etc.PipeLine.Pipe_T_(thisT,System.Func_T,T_,bool).flag 'DevFast.Net.Extensions.Etc.PipeLine.Pipe<T>(this T, System.Func<T,T>, bool).flag') is [true](https://docs.microsoft.com/en-us/dotnet/csharp/language-reference/builtin-types/bool 'https://docs.microsoft.com/en-us/dotnet/csharp/language-reference/builtin-types/bool'), feeds [input](DevFast.Net.Extensions.Etc.PipeLine.md#DevFast.Net.Extensions.Etc.PipeLine.Pipe_T_(thisT,System.Func_T,T_,bool).input 'DevFast.Net.Extensions.Etc.PipeLine.Pipe<T>(this T, System.Func<T,T>, bool).input')
+to the [tandemLambda](DevFast.Net.Extensions.Etc.PipeLine.md#DevFast.Net.Extensions.Etc.PipeLine.Pipe_T_(thisT,System.Func_T,T_,bool).tandemLambda 'DevFast.Net.Extensions.Etc.PipeLine.Pipe<T>(this T, System.Func<T,T>, bool).tandemLambda') and returns the output obtained
+from [tandemLambda](DevFast.Net.Extensions.Etc.PipeLine.md#DevFast.Net.Extensions.Etc.PipeLine.Pipe_T_(thisT,System.Func_T,T_,bool).tandemLambda 'DevFast.Net.Extensions.Etc.PipeLine.Pipe<T>(this T, System.Func<T,T>, bool).tandemLambda').
+2. If [flag](DevFast.Net.Extensions.Etc.PipeLine.md#DevFast.Net.Extensions.Etc.PipeLine.Pipe_T_(thisT,System.Func_T,T_,bool).flag 'DevFast.Net.Extensions.Etc.PipeLine.Pipe<T>(this T, System.Func<T,T>, bool).flag') is [false](https://docs.microsoft.com/en-us/dotnet/csharp/language-reference/builtin-types/bool 'https://docs.microsoft.com/en-us/dotnet/csharp/language-reference/builtin-types/bool'), returns the original
+[input](DevFast.Net.Extensions.Etc.PipeLine.md#DevFast.Net.Extensions.Etc.PipeLine.Pipe_T_(thisT,System.Func_T,T_,bool).input 'DevFast.Net.Extensions.Etc.PipeLine.Pipe<T>(this T, System.Func<T,T>, bool).input').
 
 ```csharp
 public static T Pipe<T>(this T input, System.Func<T,T> tandemLambda, bool flag);
@@ -2350,19 +2423,19 @@ public static T Pipe<T>(this T input, System.Func<T,T> tandemLambda, bool flag);
 
 `input` [T](DevFast.Net.Extensions.Etc.PipeLine.md#DevFast.Net.Extensions.Etc.PipeLine.Pipe_T_(thisT,System.Func_T,T_,bool).T 'DevFast.Net.Extensions.Etc.PipeLine.Pipe<T>(this T, System.Func<T,T>, bool).T')
 
-Source on which the adapter is applied.
+Value to feed
 
 <a name='DevFast.Net.Extensions.Etc.PipeLine.Pipe_T_(thisT,System.Func_T,T_,bool).tandemLambda'></a>
 
 `tandemLambda` [System.Func&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Func-2 'System.Func`2')[T](DevFast.Net.Extensions.Etc.PipeLine.md#DevFast.Net.Extensions.Etc.PipeLine.Pipe_T_(thisT,System.Func_T,T_,bool).T 'DevFast.Net.Extensions.Etc.PipeLine.Pipe<T>(this T, System.Func<T,T>, bool).T')[,](https://docs.microsoft.com/en-us/dotnet/api/System.Func-2 'System.Func`2')[T](DevFast.Net.Extensions.Etc.PipeLine.md#DevFast.Net.Extensions.Etc.PipeLine.Pipe_T_(thisT,System.Func_T,T_,bool).T 'DevFast.Net.Extensions.Etc.PipeLine.Pipe<T>(this T, System.Func<T,T>, bool).T')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Func-2 'System.Func`2')
 
-Tandem lambda
+Tandem lambda that would consume the value.
 
 <a name='DevFast.Net.Extensions.Etc.PipeLine.Pipe_T_(thisT,System.Func_T,T_,bool).flag'></a>
 
 `flag` [System.Boolean](https://docs.microsoft.com/en-us/dotnet/api/System.Boolean 'System.Boolean')
 
-Flag dictating whether should be applied or not
+Conditional flag dictating whether [tandemLambda](DevFast.Net.Extensions.Etc.PipeLine.md#DevFast.Net.Extensions.Etc.PipeLine.Pipe_T_(thisT,System.Func_T,T_,bool).tandemLambda 'DevFast.Net.Extensions.Etc.PipeLine.Pipe<T>(this T, System.Func<T,T>, bool).tandemLambda') should be applied or not
 
 #### Returns
 [T](DevFast.Net.Extensions.Etc.PipeLine.md#DevFast.Net.Extensions.Etc.PipeLine.Pipe_T_(thisT,System.Func_T,T_,bool).T 'DevFast.Net.Extensions.Etc.PipeLine.Pipe<T>(this T, System.Func<T,T>, bool).T')
