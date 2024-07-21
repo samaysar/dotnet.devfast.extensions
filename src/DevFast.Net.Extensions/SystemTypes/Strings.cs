@@ -12,11 +12,7 @@ public static class Strings
     /// Checks whether <paramref name="input"/> is NullOrWhiteSpace string.
     /// </summary>
     /// <param name="input">string to check</param>
-    public static bool IsNows(
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_0_OR_GREATER
-        [NotNullWhen(false)]
-#endif
-    this string? input)
+    public static bool IsNows([NotNullWhen(false)] this string? input)
     {
         return string.IsNullOrWhiteSpace(input);
     }
@@ -25,11 +21,7 @@ public static class Strings
     /// Checks whether <paramref name="input"/> is NOT NullOrWhiteSpace string.
     /// </summary>
     /// <param name="input">string to check</param>
-    public static bool IsNotNows(
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_0_OR_GREATER
-        [NotNullWhen(false)]
-#endif
-    this string? input)
+    public static bool IsNotNows([NotNullWhen(false)] this string? input)
     {
         return !input.IsNows();
     }
@@ -105,11 +97,7 @@ public static class Strings
     /// </summary>
     /// <param name="input">string to parse</param>
     /// <param name="value">parsed value</param>
-    public static bool TryTo(
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_0_OR_GREATER
-        [NotNullWhen(false)]
-#endif
-    this string? input, out bool value)
+    public static bool TryTo([NotNullWhen(false)] this string? input, out bool value)
     {
         return bool.TryParse(input, out value);
     }
@@ -120,11 +108,7 @@ public static class Strings
     /// </summary>
     /// <param name="input">string to parse</param>
     /// <param name="value">parsed value</param>
-    public static bool TryTo(
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_0_OR_GREATER
-        [NotNullWhen(false)]
-#endif
-    this string? input, out Guid value)
+    public static bool TryTo([NotNullWhen(false)] this string? input, out Guid value)
     {
         return Guid.TryParse(input, out value);
     }
@@ -137,11 +121,7 @@ public static class Strings
     /// <param name="value">parsed value</param>
     /// <param name="style">style to use during parsing</param>
     /// <param name="formatProvider">format provider</param>
-    public static bool TryTo(
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_0_OR_GREATER
-        [NotNullWhen(false)]
-#endif
-    this string? input, out int value, NumberStyles style = NumberStyles.Any,
+    public static bool TryTo([NotNullWhen(false)] this string? input, out int value, NumberStyles style = NumberStyles.Any,
         IFormatProvider? formatProvider = null)
     {
         return int.TryParse(input, style, formatProvider, out value);
@@ -155,11 +135,7 @@ public static class Strings
     /// <param name="value">parsed value</param>
     /// <param name="style">style to use during parsing</param>
     /// <param name="formatProvider">format provider</param>
-    public static bool TryTo(
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_0_OR_GREATER
-        [NotNullWhen(false)]
-#endif
-    this string? input, out long value, NumberStyles style = NumberStyles.Any,
+    public static bool TryTo([NotNullWhen(false)] this string? input, out long value, NumberStyles style = NumberStyles.Any,
         IFormatProvider? formatProvider = null)
     {
         return long.TryParse(input, style, formatProvider, out value);
@@ -173,11 +149,7 @@ public static class Strings
     /// <param name="value">parsed value</param>
     /// <param name="style">style to use during parsing</param>
     /// <param name="formatProvider">format provider</param>
-    public static bool TryTo(
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_0_OR_GREATER
-        [NotNullWhen(false)]
-#endif
-    this string? input, out byte value, NumberStyles style = NumberStyles.Any,
+    public static bool TryTo([NotNullWhen(false)] this string? input, out byte value, NumberStyles style = NumberStyles.Any,
         IFormatProvider? formatProvider = null)
     {
         return byte.TryParse(input, style, formatProvider, out value);
@@ -191,11 +163,7 @@ public static class Strings
     /// <param name="value">parsed value</param>
     /// <param name="style">style to use during parsing</param>
     /// <param name="formatProvider">format provider</param>
-    public static bool TryTo(
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_0_OR_GREATER
-        [NotNullWhen(false)]
-#endif
-    this string? input, out sbyte value, NumberStyles style = NumberStyles.Any,
+    public static bool TryTo([NotNullWhen(false)] this string? input, out sbyte value, NumberStyles style = NumberStyles.Any,
         IFormatProvider? formatProvider = null)
     {
         return sbyte.TryParse(input, style, formatProvider, out value);
@@ -209,11 +177,7 @@ public static class Strings
     /// <param name="value">parsed value</param>
     /// <param name="style">style to use during parsing</param>
     /// <param name="formatProvider">format provider</param>
-    public static bool TryTo(
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_0_OR_GREATER
-        [NotNullWhen(false)]
-#endif
-    this string? input, out short value, NumberStyles style = NumberStyles.Any,
+    public static bool TryTo([NotNullWhen(false)] this string? input, out short value, NumberStyles style = NumberStyles.Any,
         IFormatProvider? formatProvider = null)
     {
         return short.TryParse(input, style, formatProvider, out value);
@@ -227,11 +191,7 @@ public static class Strings
     /// <param name="value">parsed value</param>
     /// <param name="style">style to use during parsing</param>
     /// <param name="formatProvider">format provider</param>
-    public static bool TryTo(
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_0_OR_GREATER
-        [NotNullWhen(false)]
-#endif
-    this string? input, out ushort value, NumberStyles style = NumberStyles.Any,
+    public static bool TryTo([NotNullWhen(false)] this string? input, out ushort value, NumberStyles style = NumberStyles.Any,
         IFormatProvider? formatProvider = null)
     {
         return ushort.TryParse(input, style, formatProvider, out value);
@@ -245,11 +205,7 @@ public static class Strings
     /// <param name="value">parsed value</param>
     /// <param name="style">style to use during parsing</param>
     /// <param name="formatProvider">format provider</param>
-    public static bool TryTo(
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_0_OR_GREATER
-        [NotNullWhen(false)]
-#endif
-    this string? input, out uint value, NumberStyles style = NumberStyles.Any,
+    public static bool TryTo([NotNullWhen(false)] this string? input, out uint value, NumberStyles style = NumberStyles.Any,
         IFormatProvider? formatProvider = null)
     {
         return uint.TryParse(input, style, formatProvider, out value);
@@ -263,11 +219,7 @@ public static class Strings
     /// <param name="value">parsed value</param>
     /// <param name="style">style to use during parsing</param>
     /// <param name="formatProvider">format provider</param>
-    public static bool TryTo(
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_0_OR_GREATER
-        [NotNullWhen(false)]
-#endif
-    this string? input, out ulong value, NumberStyles style = NumberStyles.Any,
+    public static bool TryTo([NotNullWhen(false)] this string? input, out ulong value, NumberStyles style = NumberStyles.Any,
         IFormatProvider? formatProvider = null)
     {
         return ulong.TryParse(input, style, formatProvider, out value);
@@ -281,11 +233,7 @@ public static class Strings
     /// <param name="value">parsed value</param>
     /// <param name="style">style to use during parsing</param>
     /// <param name="formatProvider">format provider</param>
-    public static bool TryTo(
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_0_OR_GREATER
-        [NotNullWhen(false)]
-#endif
-    this string? input, out float value, NumberStyles style = NumberStyles.Any,
+    public static bool TryTo([NotNullWhen(false)] this string? input, out float value, NumberStyles style = NumberStyles.Any,
         IFormatProvider? formatProvider = null)
     {
         return float.TryParse(input, style, formatProvider, out value);
@@ -299,11 +247,7 @@ public static class Strings
     /// <param name="value">parsed value</param>
     /// <param name="style">style to use during parsing</param>
     /// <param name="formatProvider">format provider</param>
-    public static bool TryTo(
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_0_OR_GREATER
-        [NotNullWhen(false)]
-#endif
-    this string? input, out double value, NumberStyles style = NumberStyles.Any,
+    public static bool TryTo([NotNullWhen(false)] this string? input, out double value, NumberStyles style = NumberStyles.Any,
         IFormatProvider? formatProvider = null)
     {
         return double.TryParse(input, style, formatProvider, out value);
@@ -317,11 +261,7 @@ public static class Strings
     /// <param name="value">parsed value</param>
     /// <param name="style">style to use during parsing</param>
     /// <param name="formatProvider">format provider</param>
-    public static bool TryTo(
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_0_OR_GREATER
-        [NotNullWhen(false)]
-#endif
-    this string? input, out decimal value, NumberStyles style = NumberStyles.Any,
+    public static bool TryTo([NotNullWhen(false)] this string? input, out decimal value, NumberStyles style = NumberStyles.Any,
         IFormatProvider? formatProvider = null)
     {
         return decimal.TryParse(input, style, formatProvider, out value);
@@ -427,11 +367,7 @@ public static class Strings
     /// <param name="value">parsed value</param>
     /// <param name="style">style to use during parsing</param>
     /// <param name="formatProvider">format provider</param>
-    public static bool TryTo(
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_0_OR_GREATER
-        [NotNullWhen(false)]
-#endif
-    this string? input, out DateTime value, DateTimeStyles style = DateTimeStyles.None,
+    public static bool TryTo([NotNullWhen(false)] this string? input, out DateTime value, DateTimeStyles style = DateTimeStyles.None,
         IFormatProvider? formatProvider = null)
     {
         return DateTime.TryParse(input, formatProvider, style, out value);
@@ -446,11 +382,7 @@ public static class Strings
     /// <param name="format">DateTime format to use.</param>
     /// <param name="style">style to use during parsing</param>
     /// <param name="formatProvider">format provider</param>
-    public static bool TryTo(
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_0_OR_GREATER
-        [NotNullWhen(false)]
-#endif
-    this string? input, out DateTime value, string format,
+    public static bool TryTo([NotNullWhen(false)] this string? input, out DateTime value, string format,
         DateTimeStyles style = DateTimeStyles.None, IFormatProvider? formatProvider = null)
     {
         return DateTime.TryParseExact(input, format, formatProvider, style, out value);
@@ -465,11 +397,7 @@ public static class Strings
     /// <param name="formats">DateTime formats to use.</param>
     /// <param name="style">style to use during parsing</param>
     /// <param name="formatProvider">format provider</param>
-    public static bool TryTo(
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_0_OR_GREATER
-        [NotNullWhen(false)]
-#endif
-    this string? input, out DateTime value, string[] formats,
+    public static bool TryTo([NotNullWhen(false)] this string? input, out DateTime value, string[] formats,
         DateTimeStyles style = DateTimeStyles.None, IFormatProvider? formatProvider = null)
     {
         return DateTime.TryParseExact(input, formats, formatProvider, style, out value);

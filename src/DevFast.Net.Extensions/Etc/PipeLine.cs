@@ -59,17 +59,11 @@ public static class PipeLine
         return src => async state => tandem(await src(state).Run().ConfigureAwait(false), state);
     }
 
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_0_OR_GREATER
-
-#if NET5_0_OR_GREATER
-
     private static Func<Func<TState, TIn>, Func<TState, ValueTask<TOut>>> SyncAdapter<TIn, TState, TOut>(
         this Func<TIn, TState, ValueTask<TOut>> tandem)
     {
         return src => async state => await tandem(src(state), state).ConfigureAwait(false);
     }
-
-#endif
 
     private static Func<Func<TState, ValueTask<TIn>>, Func<TState, ValueTask<TOut>>> Adapter<TIn, TState, TOut>(
         this Func<TIn, TState, ValueTask<TOut>> tandem)
@@ -82,8 +76,6 @@ public static class PipeLine
     {
         return src => async state => tandem(await src(state).ConfigureAwait(false), state);
     }
-
-#endif
 
     #endregion Tandem Adapter
 
@@ -126,8 +118,6 @@ public static class PipeLine
         return state => Task.FromResult(lambda(state));
     }
 
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_0_OR_GREATER
-
     private static Func<TState, ValueTask<T>> Adapter<T, TState>(this Func<ValueTask<T>> lambda)
     {
         return async _ => await lambda().ConfigureAwait(false);
@@ -143,14 +133,10 @@ public static class PipeLine
         return async state => await lambda(state).ConfigureAwait(false);
     }
 
-#if NET5_0_OR_GREATER
-
     private static Func<TState, ValueTask<T>> ValueAdapter<T, TState>(this Func<TState, T> lambda)
     {
-        return state => ValueTask.FromResult(lambda(state));
+        return state => Asynchro.FromResult(lambda(state));
     }
-
-#endif
 
     private static Func<TInState, ValueTask<T>> Adapter<T, TInState, TState>(this Func<TState, ValueTask<T>> lambda,
         Func<TInState, TState> stateAdapter)
@@ -163,8 +149,6 @@ public static class PipeLine
     {
         return async state => await lambda(stateAdapter(state)).ConfigureAwait(false);
     }
-
-#endif
 
     #endregion Source Adapter
 
@@ -269,8 +253,6 @@ public static class PipeLine
         return async () => await tandemLambda(sourceLambda()).Run().ConfigureAwait(false);
     }
 
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_0_OR_GREATER
-
     /// <summary>
     /// Applies <paramref name="tandemLambda"/> on <paramref name="value"/>.
     /// </summary>
@@ -325,8 +307,6 @@ public static class PipeLine
     {
         return async () => await tandemLambda(sourceLambda()).ConfigureAwait(false);
     }
-
-#endif
 
     #endregion Pipe (TIn, TOut)
 
@@ -501,10 +481,6 @@ public static class PipeLine
         return flag ? sourceLambda.Pipe(tandemLambda) : () => Task.FromResult(sourceLambda());
     }
 
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_0_OR_GREATER
-
-#if NET5_0_OR_GREATER
-
     /// <summary>
     /// Provides a conditional asynchronous lambda, which upon execution:
     /// <para>
@@ -521,10 +497,8 @@ public static class PipeLine
         Func<T, ValueTask<T>> tandemLambda,
         bool flag)
     {
-        return flag ? value.Pipe(tandemLambda) : () => ValueTask.FromResult(value);
+        return flag ? value.Pipe(tandemLambda) : () => Asynchro.FromResult(value);
     }
-
-#endif
 
     /// <summary>
     /// Provides a conditional lambda, which upon execution:
@@ -579,8 +553,6 @@ public static class PipeLine
         return flag ? sourceLambda.Pipe(tandemLambda) : sourceLambda;
     }
 
-#if NET5_0_OR_GREATER
-
     /// <summary>
     /// Provides a conditional lambda, which upon execution:
     /// <para>
@@ -598,12 +570,8 @@ public static class PipeLine
         Func<T, ValueTask<T>> tandemLambda,
         bool flag)
     {
-        return flag ? sourceLambda.Pipe(tandemLambda) : () => ValueTask.FromResult(sourceLambda());
+        return flag ? sourceLambda.Pipe(tandemLambda) : () => Asynchro.FromResult(sourceLambda());
     }
-
-#endif
-
-#endif
 
     #endregion Conditional Pipe (T)
 
@@ -774,8 +742,6 @@ public static class PipeLine
         return sourceLambda.Pipe(tandemLambda.TaskAdapter(), flag);
     }
 
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_0_OR_GREATER
-
     /// <summary>
     /// Provides a conditional asynchronous lambda, which upon execution:
     /// <para>
@@ -856,8 +822,6 @@ public static class PipeLine
         return sourceLambda.CrossAdapter().Pipe(tandemLambda, flag);
     }
 
-#if NET5_0_OR_GREATER
-
     /// <summary>
     /// Provides a conditional lambda, which upon execution:
     /// <para>
@@ -878,8 +842,6 @@ public static class PipeLine
         return sourceLambda.Pipe(flag ? tandemLambda.SyncAdapter() : static s => s.ValueAdapter());
     }
 
-#endif
-
     /// <summary>
     /// Provides a conditional asynchronous lambda, which upon execution:
     /// <para>
@@ -899,8 +861,6 @@ public static class PipeLine
     {
         return sourceLambda.Pipe(tandemLambda.ValueTaskAdapter(), flag);
     }
-
-#endif
 
     #endregion Conditional Pipes (T, TState)
 
@@ -994,8 +954,6 @@ public static class PipeLine
         return sourceLambda.Adapter(stateAdapter).Pipe(tandemLambda, flag);
     }
 
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_0_OR_GREATER
-
     /// <summary>
     /// Provides a conditional lambda, which upon execution:
     /// <para>
@@ -1040,8 +998,6 @@ public static class PipeLine
         return sourceLambda.CrossAdapter(stateAdapter).Pipe(tandemLambda, flag);
     }
 
-#if NET5_0_OR_GREATER
-
     /// <summary>
     /// Provides a conditional lambda, which upon execution:
     /// <para>
@@ -1064,8 +1020,6 @@ public static class PipeLine
         return sourceLambda.Adapter(stateAdapter).Pipe(tandemLambda, flag);
     }
 
-#endif
-
     /// <summary>
     /// Provides a conditional lambda, which upon execution:
     /// <para>
@@ -1087,8 +1041,6 @@ public static class PipeLine
     {
         return sourceLambda.Adapter(stateAdapter).Pipe(tandemLambda, flag);
     }
-
-#endif
 
     #endregion Conditional Pipes (T, TTanState <> TSrcState)
 
@@ -1142,8 +1094,6 @@ public static class PipeLine
         return async state => await tandemLambda(await sourceLambda(state).Run().ConfigureAwait(false), state).Run().ConfigureAwait(false);
     }
 
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_0_OR_GREATER
-
     /// <summary>
     /// Provides a lambda, which upon execution, feeds the output of <paramref name="sourceLambda"/>
     /// to the <paramref name="tandemLambda"/>.
@@ -1191,8 +1141,6 @@ public static class PipeLine
     {
         return async state => await tandemLambda(await sourceLambda(state).ConfigureAwait(false), state).Run().ConfigureAwait(false);
     }
-
-#endif
 
     #endregion Conditional Pipes To Void Lambda (T, TState)
 
@@ -1254,8 +1202,6 @@ public static class PipeLine
         return sourceLambda.Adapter(stateAdapter).Pipe(tandemLambda);
     }
 
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_0_OR_GREATER
-
     /// <summary>
     /// Provides a lambda, which upon execution, feeds the output of <paramref name="sourceLambda"/>
     /// to the <paramref name="tandemLambda"/>.
@@ -1311,8 +1257,6 @@ public static class PipeLine
     {
         return sourceLambda.Adapter(stateAdapter).Pipe(tandemLambda);
     }
-
-#endif
 
     #endregion Conditional Pipes To Void Lambda (T, TState)
 
@@ -1426,8 +1370,6 @@ public static class PipeLine
         return sourceLambda.Pipe(tandemLambda.TaskAdapter());
     }
 
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_0_OR_GREATER
-
     /// <summary>
     /// Provides a lambda, which upon execution, feeds the output of
     /// <paramref name="sourceLambda"/> to the <paramref name="tandemLambda"/> and returns the output obtained
@@ -1480,8 +1422,6 @@ public static class PipeLine
         return sourceLambda.CrossAdapter().Pipe(tandemLambda);
     }
 
-#if NET5_0_OR_GREATER
-
     /// <summary>
     /// Provides a lambda, which upon execution, feeds the output of
     /// <paramref name="sourceLambda"/> to the <paramref name="tandemLambda"/> and returns the output obtained
@@ -1495,8 +1435,6 @@ public static class PipeLine
         return sourceLambda.Pipe(tandemLambda.SyncAdapter());
     }
 
-#endif
-
     /// <summary>
     /// Provides a lambda, which upon execution, feeds the output of
     /// <paramref name="sourceLambda"/> to the <paramref name="tandemLambda"/> and returns the output obtained
@@ -1509,8 +1447,6 @@ public static class PipeLine
     {
         return sourceLambda.Pipe(tandemLambda.ValueTaskAdapter());
     }
-
-#endif
 
     #endregion Pipes (TIn, TState, TOut)
 
@@ -1576,8 +1512,6 @@ public static class PipeLine
         return sourceLambda.Adapter(stateAdapter).Pipe(tandemLambda);
     }
 
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_0_OR_GREATER
-
     /// <summary>
     /// Provides a lambda, which upon execution, feeds the output of
     /// <paramref name="sourceLambda"/> to the <paramref name="tandemLambda"/> and returns the output obtained
@@ -1608,8 +1542,6 @@ public static class PipeLine
         return sourceLambda.CrossAdapter(stateAdapter).Pipe(tandemLambda);
     }
 
-#if NET5_0_OR_GREATER
-
     /// <summary>
     /// Provides a lambda, which upon execution, feeds the output of
     /// <paramref name="sourceLambda"/> to the <paramref name="tandemLambda"/> and returns the output obtained
@@ -1625,8 +1557,6 @@ public static class PipeLine
         return sourceLambda.Adapter(stateAdapter).Pipe(tandemLambda);
     }
 
-#endif
-
     /// <summary>
     /// Provides a lambda, which upon execution, feeds the output of
     /// <paramref name="sourceLambda"/> to the <paramref name="tandemLambda"/> and returns the output obtained
@@ -1641,8 +1571,6 @@ public static class PipeLine
     {
         return sourceLambda.Adapter(stateAdapter).Pipe(tandemLambda);
     }
-
-#endif
 
     #endregion Pipes (TIn, TTanState <> TSrcState, TOut)
 

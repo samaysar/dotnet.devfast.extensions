@@ -124,8 +124,6 @@ public class PipeLineTests
         That(calledWith, Is.EqualTo(2));
     }
 
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_0_OR_GREATER
-
     [Test]
     public async ValueTask Pipe_TInTOut_TIn_Uses_ValueTask_Tandem()
     {
@@ -134,7 +132,7 @@ public class PipeLineTests
         ValueTask<double> Adapter(int i)
         {
             calledWith = i;
-            return ValueTask.FromResult(0.0);
+            return Asynchro.FromResult(0.0);
         }
 
         That(await src.Pipe(Adapter).ExecuteAsync(), Is.EqualTo(0));
@@ -145,11 +143,11 @@ public class PipeLineTests
     public async ValueTask Pipe_TInTOut_FuncValueTaskTIn_Uses_Tandem()
     {
         int calledWith = 0;
-        Func<ValueTask<int>> src = () => ValueTask.FromResult(2);
+        Func<ValueTask<int>> src = () => Asynchro.FromResult(2);
         ValueTask<double> Adapter(int i)
         {
             calledWith = i;
-            return ValueTask.FromResult(0.0);
+            return Asynchro.FromResult(0.0);
         }
 
         That(await src.Pipe(Adapter).ExecuteAsync(), Is.EqualTo(0));
@@ -160,7 +158,7 @@ public class PipeLineTests
     public async Task Pipe_TInTOut_FuncValueTaskTIn_Uses_Task_Tandem()
     {
         int calledWith = 0;
-        Func<ValueTask<int>> src = () => ValueTask.FromResult(2);
+        Func<ValueTask<int>> src = () => Asynchro.FromResult(2);
         Task<double> Adapter(int i)
         {
             calledWith = i;
@@ -175,7 +173,7 @@ public class PipeLineTests
     public async ValueTask Pipe_TInTOut_FuncValueTaskTIn_Uses_Sync_Tandem()
     {
         int calledWith = 0;
-        Func<ValueTask<int>> src = () => ValueTask.FromResult(2);
+        Func<ValueTask<int>> src = () => Asynchro.FromResult(2);
         double Adapter(int i)
         {
             calledWith = i;
@@ -194,14 +192,12 @@ public class PipeLineTests
         ValueTask<double> Adapter(int i)
         {
             calledWith = i;
-            return ValueTask.FromResult(0.0);
+            return Asynchro.FromResult(0.0);
         }
 
         That(await src.Pipe(Adapter).ExecuteAsync(), Is.EqualTo(0));
         That(calledWith, Is.EqualTo(2));
     }
-
-#endif
 
     #endregion Pipe (TIn, TOut)
 
@@ -342,8 +338,6 @@ public class PipeLineTests
         That(calledWith, Is.EqualTo(useAdapter ? 2 : 0));
     }
 
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_0_OR_GREATER
-
     [Test]
     [TestCase(true)]
     [TestCase(false)]
@@ -354,7 +348,7 @@ public class PipeLineTests
         ValueTask<int> Adapter(int i)
         {
             calledWith = i;
-            return ValueTask.FromResult(0);
+            return Asynchro.FromResult(0);
         }
 
         That(await src.Pipe(Adapter, useAdapter).ExecuteAsync(), Is.EqualTo(!useAdapter ? 2 : 0));
@@ -367,11 +361,11 @@ public class PipeLineTests
     public async ValueTask Pipe_T_FuncValueTaskT_Uses_Tandem(bool useAdapter)
     {
         int calledWith = 0;
-        Func<ValueTask<int>> src = () => ValueTask.FromResult(2);
+        Func<ValueTask<int>> src = () => Asynchro.FromResult(2);
         ValueTask<int> Adapter(int i)
         {
             calledWith = i;
-            return ValueTask.FromResult(0);
+            return Asynchro.FromResult(0);
         }
 
         That(await src.Pipe(Adapter, useAdapter).ExecuteAsync(), Is.EqualTo(!useAdapter ? 2 : 0));
@@ -384,7 +378,7 @@ public class PipeLineTests
     public async Task Pipe_T_FuncValueTaskT_Uses_Task_Tandem(bool useAdapter)
     {
         int calledWith = 0;
-        Func<ValueTask<int>> src = () => ValueTask.FromResult(2);
+        Func<ValueTask<int>> src = () => Asynchro.FromResult(2);
         Task<int> Adapter(int i)
         {
             calledWith = i;
@@ -401,7 +395,7 @@ public class PipeLineTests
     public async ValueTask Pipe_T_FuncValueTaskT_Uses_Sync_Tandem(bool useAdapter)
     {
         int calledWith = 0;
-        Func<ValueTask<int>> src = () => ValueTask.FromResult(2);
+        Func<ValueTask<int>> src = () => Asynchro.FromResult(2);
         int Adapter(int i)
         {
             calledWith = i;
@@ -422,14 +416,12 @@ public class PipeLineTests
         ValueTask<int> Adapter(int i)
         {
             calledWith = i;
-            return ValueTask.FromResult(0);
+            return Asynchro.FromResult(0);
         }
 
         That(await src.Pipe(Adapter, useAdapter).ExecuteAsync(), Is.EqualTo(!useAdapter ? 2 : 0));
         That(calledWith, Is.EqualTo(useAdapter ? 2 : 0));
     }
-
-#endif
 
     #endregion Conditional Pipe (T)
 
@@ -561,8 +553,6 @@ public class PipeLineTests
         That(calledWith, Is.EqualTo(useAdapter ? 1 : 0));
     }
 
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_0_OR_GREATER
-
     [Test]
     [TestCase(true)]
     [TestCase(false)]
@@ -573,14 +563,14 @@ public class PipeLineTests
         Func<Token, ValueTask<int>> src = token =>
         {
             That(token, Is.EqualTo(t));
-            return ValueTask.FromResult(1);
+            return Asynchro.FromResult(1);
         };
         ValueTask<int> Tandem(int i, Token state)
         {
             That(state, Is.EqualTo(t));
             That(i, Is.EqualTo(1));
             calledWith = i;
-            return ValueTask.FromResult(++i);
+            return Asynchro.FromResult(++i);
         }
 
         That(await src.Pipe(Tandem, useAdapter).ExecuteAsync(t), Is.EqualTo(useAdapter ? 2 : 1));
@@ -594,13 +584,13 @@ public class PipeLineTests
     {
         Token t = new Cts().Token;
         int calledWith = 0;
-        Func<ValueTask<int>> src = static () => ValueTask.FromResult(1);
+        Func<ValueTask<int>> src = static () => Asynchro.FromResult(1);
         ValueTask<int> Tandem(int i, Token state)
         {
             That(state, Is.EqualTo(t));
             That(i, Is.EqualTo(1));
             calledWith = i;
-            return ValueTask.FromResult(++i);
+            return Asynchro.FromResult(++i);
         }
 
         That(await src.Pipe((Func<int, Token, ValueTask<int>>)Tandem, useAdapter).ExecuteAsync(t), Is.EqualTo(useAdapter ? 2 : 1));
@@ -614,7 +604,7 @@ public class PipeLineTests
     {
         Token t = new Cts().Token;
         int calledWith = 0;
-        Func<ValueTask<int>> src = static () => ValueTask.FromResult(1);
+        Func<ValueTask<int>> src = static () => Asynchro.FromResult(1);
         Task<int> Tandem(int i, Token state)
         {
             That(state, Is.EqualTo(t));
@@ -637,7 +627,7 @@ public class PipeLineTests
         Func<Token, ValueTask<int>> src = token =>
         {
             That(token, Is.EqualTo(t));
-            return ValueTask.FromResult(1);
+            return Asynchro.FromResult(1);
         };
         Task<int> Tandem(int i, Token state)
         {
@@ -650,8 +640,6 @@ public class PipeLineTests
         That(await src.Pipe(Tandem, useAdapter).ExecuteAsync(t), Is.EqualTo(useAdapter ? 2 : 1));
         That(calledWith, Is.EqualTo(useAdapter ? 1 : 0));
     }
-
-#endif
 
     [Test]
     [TestCase(true)]
@@ -677,8 +665,6 @@ public class PipeLineTests
         That(calledWith, Is.EqualTo(useAdapter ? 1 : 0));
     }
 
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_0_OR_GREATER
-
     [Test]
     [TestCase(true)]
     [TestCase(false)]
@@ -696,14 +682,12 @@ public class PipeLineTests
             That(state, Is.EqualTo(t));
             That(i, Is.EqualTo(1));
             calledWith = i;
-            return ValueTask.FromResult(++i);
+            return Asynchro.FromResult(++i);
         }
 
         That(await src.Pipe(Tandem, useAdapter).ExecuteAsync(t), Is.EqualTo(useAdapter ? 2 : 1));
         That(calledWith, Is.EqualTo(useAdapter ? 1 : 0));
     }
-
-#endif
 
     [Test]
     [TestCase(true)]
@@ -729,8 +713,6 @@ public class PipeLineTests
         That(calledWith, Is.EqualTo(useAdapter ? 1 : 0));
     }
 
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_0_OR_GREATER
-
     [Test]
     [TestCase(true)]
     [TestCase(false)]
@@ -741,7 +723,7 @@ public class PipeLineTests
         Func<Token, ValueTask<int>> src = token =>
         {
             That(token, Is.EqualTo(t));
-            return ValueTask.FromResult(1);
+            return Asynchro.FromResult(1);
         };
         int Tandem(int i, Token state)
         {
@@ -754,8 +736,6 @@ public class PipeLineTests
         That(await src.Pipe(Tandem, useAdapter).ExecuteAsync(t), Is.EqualTo(useAdapter ? 2 : 1));
         That(calledWith, Is.EqualTo(useAdapter ? 1 : 0));
     }
-
-#endif
 
     #endregion Conditional Pipes (T, TState)
 
@@ -809,8 +789,6 @@ public class PipeLineTests
         That(state.CalledWith, Is.EqualTo(useAdapter ? 1 : 0));
     }
 
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_0_OR_GREATER
-
     [Test]
     [TestCase(true)]
     [TestCase(false)]
@@ -827,15 +805,13 @@ public class PipeLineTests
             That(state.Token, Is.EqualTo(Token.None));
             That(state.CalledWith, Is.EqualTo(0));
             state.CalledWith = i;
-            return ValueTask.FromResult(++i);
+            return Asynchro.FromResult(++i);
         }
 
         StateObj state = new() { Token = Token.None, CalledWith = 0 };
         That(await src.Pipe((Func<int, StateObj, ValueTask<int>>)Tandem, static x => x.Token, useAdapter).ExecuteAsync(state), Is.EqualTo(useAdapter ? 2 : 1));
         That(state.CalledWith, Is.EqualTo(useAdapter ? 1 : 0));
     }
-
-#endif
 
     [Test]
     [TestCase(true)]
@@ -861,8 +837,6 @@ public class PipeLineTests
         That(state.CalledWith, Is.EqualTo(useAdapter ? 1 : 0));
     }
 
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_0_OR_GREATER
-
     [Test]
     [TestCase(true)]
     [TestCase(false)]
@@ -871,7 +845,7 @@ public class PipeLineTests
         Func<Token, ValueTask<int>> src = static token =>
         {
             That(token, Is.EqualTo(Token.None));
-            return ValueTask.FromResult(1);
+            return Asynchro.FromResult(1);
         };
 
         static ValueTask<int> Tandem(int i, StateObj state)
@@ -879,7 +853,7 @@ public class PipeLineTests
             That(state.Token, Is.EqualTo(Token.None));
             That(state.CalledWith, Is.EqualTo(0));
             state.CalledWith = i;
-            return ValueTask.FromResult(++i);
+            return Asynchro.FromResult(++i);
         }
 
         StateObj state = new() { Token = Token.None, CalledWith = 0 };
@@ -895,7 +869,7 @@ public class PipeLineTests
         Func<Token, ValueTask<int>> src = static token =>
         {
             That(token, Is.EqualTo(Token.None));
-            return ValueTask.FromResult(1);
+            return Asynchro.FromResult(1);
         };
 
         static Task<int> Tandem(int i, StateObj state)
@@ -910,8 +884,6 @@ public class PipeLineTests
         That(await src.Pipe((Func<int, StateObj, Task<int>>)Tandem, static x => x.Token, useAdapter).ExecuteAsync(state), Is.EqualTo(useAdapter ? 2 : 1));
         That(state.CalledWith, Is.EqualTo(useAdapter ? 1 : 0));
     }
-
-#endif
 
     [Test]
     [TestCase(true)]
@@ -937,8 +909,6 @@ public class PipeLineTests
         That(state.CalledWith, Is.EqualTo(useAdapter ? 1 : 0));
     }
 
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_0_OR_GREATER
-
     [Test]
     [TestCase(true)]
     [TestCase(false)]
@@ -947,7 +917,7 @@ public class PipeLineTests
         Func<Token, ValueTask<int>> src = static token =>
         {
             That(token, Is.EqualTo(Token.None));
-            return ValueTask.FromResult(1);
+            return Asynchro.FromResult(1);
         };
 
         static int Tandem(int i, StateObj state)
@@ -962,8 +932,6 @@ public class PipeLineTests
         That(await src.Pipe((Func<int, StateObj, int>)Tandem, static x => x.Token, useAdapter).ExecuteAsync(state), Is.EqualTo(useAdapter ? 2 : 1));
         That(state.CalledWith, Is.EqualTo(useAdapter ? 1 : 0));
     }
-
-#endif
 
     #endregion Conditional Pipes (T, TTanState <> TSrcState)
 
@@ -1006,8 +974,6 @@ public class PipeLineTests
         await src.Pipe(Tandem).ExecuteAsync(Token.None);
     }
 
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_0_OR_GREATER
-
     [Test]
     public async ValueTask Pipe_T_TState_FuncTStateT_Combines_ValueTaskLambda()
     {
@@ -1021,13 +987,11 @@ public class PipeLineTests
         {
             That(token, Is.EqualTo(Token.None));
             That(i, Is.EqualTo(1));
-            return ValueTask.CompletedTask;
+            return Asynchro.CompletedTask;
         }
 
         await src.Pipe(Tandem).ExecuteAsync(Token.None);
     }
-
-#endif
 
     [Test]
     public async Task Pipe_T_TState_FuncTStateTaskT_Combines_VoidLambda()
@@ -1066,15 +1030,13 @@ public class PipeLineTests
         await src.Pipe(Tandem).ExecuteAsync(Token.None);
     }
 
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_0_OR_GREATER
-
     [Test]
     public async Task Pipe_T_TState_FuncTStateValueTaskT_Combines_VoidLambda()
     {
         Func<Token, ValueTask<int>> src = static token =>
         {
             That(token, Is.EqualTo(Token.None));
-            return ValueTask.FromResult(1);
+            return Asynchro.FromResult(1);
         };
 
         static void Tandem(int i, Token token)
@@ -1092,14 +1054,14 @@ public class PipeLineTests
         Func<Token, ValueTask<int>> src = static token =>
         {
             That(token, Is.EqualTo(Token.None));
-            return ValueTask.FromResult(1);
+            return Asynchro.FromResult(1);
         };
 
         static ValueTask Tandem(int i, Token token)
         {
             That(token, Is.EqualTo(Token.None));
             That(i, Is.EqualTo(1));
-            return ValueTask.CompletedTask;
+            return Asynchro.CompletedTask;
         }
 
         await src.Pipe(Tandem).ExecuteAsync(Token.None);
@@ -1111,7 +1073,7 @@ public class PipeLineTests
         Func<Token, ValueTask<int>> src = static token =>
         {
             That(token, Is.EqualTo(Token.None));
-            return ValueTask.FromResult(1);
+            return Asynchro.FromResult(1);
         };
 
         static Task Tandem(int i, Token token)
@@ -1123,8 +1085,6 @@ public class PipeLineTests
 
         await src.Pipe(Tandem).ExecuteAsync(Token.None);
     }
-
-#endif
 
     #endregion Conditional Pipes To Void Lambda (T, TState)
 
@@ -1173,8 +1133,6 @@ public class PipeLineTests
         That(state.CalledWith, Is.EqualTo(1));
     }
 
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_0_OR_GREATER
-
     [Test]
     public async ValueTask Pipe_T_TSrcState_TTanState_FuncTStateT_Combines_ValueTaskLambda()
     {
@@ -1189,15 +1147,13 @@ public class PipeLineTests
             That(state.Token, Is.EqualTo(Token.None));
             That(state.CalledWith, Is.EqualTo(0));
             state.CalledWith = i;
-            return ValueTask.CompletedTask;
+            return Asynchro.CompletedTask;
         }
 
         StateObj state = new() { Token = Token.None, CalledWith = 0 };
         await src.Pipe((Func<int, StateObj, ValueTask>)Tandem, static x => x.Token).ExecuteAsync(state);
         That(state.CalledWith, Is.EqualTo(1));
     }
-
-#endif
 
     [Test]
     public async Task Pipe_T_TSrcState_TTanState_FuncTStateTaskT_Combines_VoidLambda()
@@ -1242,15 +1198,13 @@ public class PipeLineTests
         That(state.CalledWith, Is.EqualTo(1));
     }
 
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_0_OR_GREATER
-
     [Test]
     public async Task Pipe_T_TSrcState_TTanState_FuncTStateValueTaskT_Combines_VoidLambda()
     {
         Func<Token, ValueTask<int>> src = static token =>
         {
             That(token, Is.EqualTo(Token.None));
-            return ValueTask.FromResult(1);
+            return Asynchro.FromResult(1);
         };
 
         static void Tandem(int i, StateObj state)
@@ -1271,7 +1225,7 @@ public class PipeLineTests
         Func<Token, ValueTask<int>> src = static token =>
         {
             That(token, Is.EqualTo(Token.None));
-            return ValueTask.FromResult(1);
+            return Asynchro.FromResult(1);
         };
 
         static ValueTask Tandem(int i, StateObj state)
@@ -1279,7 +1233,7 @@ public class PipeLineTests
             That(state.Token, Is.EqualTo(Token.None));
             That(state.CalledWith, Is.EqualTo(0));
             state.CalledWith = i;
-            return ValueTask.CompletedTask;
+            return Asynchro.CompletedTask;
         }
 
         StateObj state = new() { Token = Token.None, CalledWith = 0 };
@@ -1293,7 +1247,7 @@ public class PipeLineTests
         Func<Token, ValueTask<int>> src = static token =>
         {
             That(token, Is.EqualTo(Token.None));
-            return ValueTask.FromResult(1);
+            return Asynchro.FromResult(1);
         };
 
         static Task Tandem(int i, StateObj state)
@@ -1308,8 +1262,6 @@ public class PipeLineTests
         await src.Pipe((Func<int, StateObj, Task>)Tandem, static x => x.Token).ExecuteAsync(state);
         That(state.CalledWith, Is.EqualTo(1));
     }
-
-#endif
 
     #endregion Conditional Pipes To Void Lambda (T, TTanState <> TSrcState)
 
@@ -1473,20 +1425,18 @@ public class PipeLineTests
         That(calledWith, Is.EqualTo(1));
     }
 
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_0_OR_GREATER
-
     [Test]
     public async ValueTask Pipe_TInStateTOut_On_ValueTaskTIn_Combines_Tandem()
     {
         Token t = new Cts().Token;
         int calledWith = 0;
-        Func<ValueTask<int>> source = () => ValueTask.FromResult(1);
+        Func<ValueTask<int>> source = () => Asynchro.FromResult(1);
         ValueTask<decimal> Tandem(int i, Token state)
         {
             That(state, Is.EqualTo(t));
             That(i, Is.EqualTo(1));
             calledWith = i;
-            return ValueTask.FromResult(i * 2.0m);
+            return Asynchro.FromResult(i * 2.0m);
         }
 
         That(await source.Pipe((Func<int, Token, ValueTask<decimal>>)Tandem).ExecuteAsync(t), Is.EqualTo(2.0m));
@@ -1501,14 +1451,14 @@ public class PipeLineTests
         Func<Token, ValueTask<int>> source = state =>
         {
             That(state, Is.EqualTo(t));
-            return ValueTask.FromResult(1);
+            return Asynchro.FromResult(1);
         };
         ValueTask<decimal> Tandem(int i, Token state)
         {
             That(state, Is.EqualTo(t));
             That(i, Is.EqualTo(1));
             calledWith = i;
-            return ValueTask.FromResult(i * 2.0m);
+            return Asynchro.FromResult(i * 2.0m);
         }
 
         That(await source.Pipe(Tandem).ExecuteAsync(t), Is.EqualTo(2.0m));
@@ -1520,7 +1470,7 @@ public class PipeLineTests
     {
         Token t = new Cts().Token;
         int calledWith = 0;
-        Func<ValueTask<int>> source = () => ValueTask.FromResult(1);
+        Func<ValueTask<int>> source = () => Asynchro.FromResult(1);
         Task<decimal> Tandem(int i, Token state)
         {
             That(state, Is.EqualTo(t));
@@ -1541,7 +1491,7 @@ public class PipeLineTests
         Func<Token, ValueTask<int>> source = state =>
         {
             That(state, Is.EqualTo(t));
-            return ValueTask.FromResult(1);
+            return Asynchro.FromResult(1);
         };
         Task<decimal> Tandem(int i, Token state)
         {
@@ -1554,8 +1504,6 @@ public class PipeLineTests
         That(await source.Pipe(Tandem).ExecuteAsync(t), Is.EqualTo(2.0m));
         That(calledWith, Is.EqualTo(1));
     }
-
-#if NET5_0_OR_GREATER
 
     [Test]
     public async ValueTask Pipe_TInStateTOut_On_FuncTStateTIn_Combines_ValueTask_Tandem()
@@ -1572,14 +1520,12 @@ public class PipeLineTests
             That(state, Is.EqualTo(t));
             That(i, Is.EqualTo(1));
             calledWith = i;
-            return ValueTask.FromResult(i * 2.0m);
+            return Asynchro.FromResult(i * 2.0m);
         }
 
         That(await source.Pipe(Tandem).ExecuteAsync(t), Is.EqualTo(2.0m));
         That(calledWith, Is.EqualTo(1));
     }
-
-#endif
 
     [Test]
     public async ValueTask Pipe_TInStateTOut_On_FuncTStateValueTaskTIn_Combines_Sync_Tandem()
@@ -1589,7 +1535,7 @@ public class PipeLineTests
         Func<Token, ValueTask<int>> source = state =>
         {
             That(state, Is.EqualTo(t));
-            return ValueTask.FromResult(1);
+            return Asynchro.FromResult(1);
         };
         decimal Tandem(int i, Token state)
         {
@@ -1602,8 +1548,6 @@ public class PipeLineTests
         That(await source.Pipe(Tandem).ExecuteAsync(t), Is.EqualTo(2.0m));
         That(calledWith, Is.EqualTo(1));
     }
-
-#endif
 
     #endregion Pipes (TIn, TState, TOut)
 
@@ -1697,15 +1641,13 @@ public class PipeLineTests
         That(state.CalledWith, Is.EqualTo(1));
     }
 
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_0_OR_GREATER
-
     [Test]
     public void Pipe_TInTSrcStateTTanStateTOut_On_FuncTSrcStateValueTaskTIn_Combines_Tandem()
     {
         Func<Token, ValueTask<int>> src = static token =>
         {
             That(token, Is.EqualTo(Token.None));
-            return ValueTask.FromResult(1);
+            return Asynchro.FromResult(1);
         };
 
         static ValueTask<decimal> Tandem(int i, StateObj state)
@@ -1713,7 +1655,7 @@ public class PipeLineTests
             Multiple(() => That(state.Token, Is.EqualTo(Token.None)));
             That(state.CalledWith, Is.EqualTo(0));
             state.CalledWith = i;
-            return ValueTask.FromResult(++i * 1.0m);
+            return Asynchro.FromResult(++i * 1.0m);
         }
 
         StateObj state = new() { Token = Token.None, CalledWith = 0 };
@@ -1728,7 +1670,7 @@ public class PipeLineTests
         Func<Token, ValueTask<int>> src = static token =>
         {
             That(token, Is.EqualTo(Token.None));
-            return ValueTask.FromResult(1);
+            return Asynchro.FromResult(1);
         };
 
         static Task<decimal> Tandem(int i, StateObj state)
@@ -1744,8 +1686,6 @@ public class PipeLineTests
         That(state.CalledWith, Is.EqualTo(1));
     }
 
-#if NET5_0_OR_GREATER
-
     [Test]
     public void Pipe_TInTSrcStateTTanStateTOut_On_FuncTSrcStateTIn_Combines_ValueTask_Tandem()
     {
@@ -1760,7 +1700,7 @@ public class PipeLineTests
             Multiple(() => That(state.Token, Is.EqualTo(Token.None)));
             That(state.CalledWith, Is.EqualTo(0));
             state.CalledWith = i;
-            return ValueTask.FromResult(++i * 1.0m);
+            return Asynchro.FromResult(++i * 1.0m);
         }
 
         StateObj state = new() { Token = Token.None, CalledWith = 0 };
@@ -1769,15 +1709,13 @@ public class PipeLineTests
         That(state.CalledWith, Is.EqualTo(1));
     }
 
-#endif
-
     [Test]
     public void Pipe_TInTSrcStateTTanStateTOut_On_FuncTSrcStateValueTaskTIn_Combines_Sync_Tandem()
     {
         Func<Token, ValueTask<int>> src = static token =>
         {
             That(token, Is.EqualTo(Token.None));
-            return ValueTask.FromResult(1);
+            return Asynchro.FromResult(1);
         };
 
         static decimal Tandem(int i, StateObj state)
@@ -1793,8 +1731,6 @@ public class PipeLineTests
 
         That(state.CalledWith, Is.EqualTo(1));
     }
-
-#endif
 
     #endregion Pipes (TIn, TTanState <> TSrcState, TOut)
 

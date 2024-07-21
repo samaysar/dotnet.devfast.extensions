@@ -842,8 +842,6 @@ public static class Lambdas
         }
     }
 
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_0_OR_GREATER
-
     /// <summary>
     /// Executes the given <paramref name="lambda"/> asynchronously.
     /// </summary>
@@ -1263,6 +1261,4 @@ public static class Lambdas
             finallyClause(state);
         }
     }
-
-#endif
 }

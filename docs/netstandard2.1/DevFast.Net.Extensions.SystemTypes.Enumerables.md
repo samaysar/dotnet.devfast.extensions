@@ -19,6 +19,7 @@ public static class Enumerables
   - **[SelectAsync&lt;TIn,TOut&gt;(this IEnumerable&lt;TIn&gt;, Func&lt;TIn,CancellationToken,ValueTask&lt;TOut&gt;&gt;, CancellationToken, bool)](DevFast.Net.Extensions.SystemTypes.Enumerables.md#DevFast.Net.Extensions.SystemTypes.Enumerables.SelectAsync_TIn,TOut_(thisSystem.Collections.Generic.IEnumerable_TIn_,System.Func_TIn,System.Threading.CancellationToken,System.Threading.Tasks.ValueTask_TOut__,System.Threading.CancellationToken,bool) 'DevFast.Net.Extensions.SystemTypes.Enumerables.SelectAsync<TIn,TOut>(this System.Collections.Generic.IEnumerable<TIn>, System.Func<TIn,System.Threading.CancellationToken,System.Threading.Tasks.ValueTask<TOut>>, System.Threading.CancellationToken, bool)')**
   - **[SkipAsync&lt;TIn&gt;(this IAsyncEnumerable&lt;TIn&gt;, int, CancellationToken, bool)](DevFast.Net.Extensions.SystemTypes.Enumerables.md#DevFast.Net.Extensions.SystemTypes.Enumerables.SkipAsync_TIn_(thisSystem.Collections.Generic.IAsyncEnumerable_TIn_,int,System.Threading.CancellationToken,bool) 'DevFast.Net.Extensions.SystemTypes.Enumerables.SkipAsync<TIn>(this System.Collections.Generic.IAsyncEnumerable<TIn>, int, System.Threading.CancellationToken, bool)')**
   - **[TakeAsync&lt;TIn&gt;(this IAsyncEnumerable&lt;TIn&gt;, int, CancellationToken, bool)](DevFast.Net.Extensions.SystemTypes.Enumerables.md#DevFast.Net.Extensions.SystemTypes.Enumerables.TakeAsync_TIn_(thisSystem.Collections.Generic.IAsyncEnumerable_TIn_,int,System.Threading.CancellationToken,bool) 'DevFast.Net.Extensions.SystemTypes.Enumerables.TakeAsync<TIn>(this System.Collections.Generic.IAsyncEnumerable<TIn>, int, System.Threading.CancellationToken, bool)')**
+  - **[ToBlockingEnumerable&lt;T&gt;(this IAsyncEnumerable&lt;T&gt;, CancellationToken)](DevFast.Net.Extensions.SystemTypes.Enumerables.md#DevFast.Net.Extensions.SystemTypes.Enumerables.ToBlockingEnumerable_T_(thisSystem.Collections.Generic.IAsyncEnumerable_T_,System.Threading.CancellationToken) 'DevFast.Net.Extensions.SystemTypes.Enumerables.ToBlockingEnumerable<T>(this System.Collections.Generic.IAsyncEnumerable<T>, System.Threading.CancellationToken)')**
   - **[ToChunksAsync&lt;T&gt;(this IAsyncEnumerable&lt;T&gt;, int, CancellationToken, bool, bool)](DevFast.Net.Extensions.SystemTypes.Enumerables.md#DevFast.Net.Extensions.SystemTypes.Enumerables.ToChunksAsync_T_(thisSystem.Collections.Generic.IAsyncEnumerable_T_,int,System.Threading.CancellationToken,bool,bool) 'DevFast.Net.Extensions.SystemTypes.Enumerables.ToChunksAsync<T>(this System.Collections.Generic.IAsyncEnumerable<T>, int, System.Threading.CancellationToken, bool, bool)')**
   - **[ToListAsync&lt;T&gt;(this IAsyncEnumerable&lt;T&gt;, CancellationToken, bool)](DevFast.Net.Extensions.SystemTypes.Enumerables.md#DevFast.Net.Extensions.SystemTypes.Enumerables.ToListAsync_T_(thisSystem.Collections.Generic.IAsyncEnumerable_T_,System.Threading.CancellationToken,bool) 'DevFast.Net.Extensions.SystemTypes.Enumerables.ToListAsync<T>(this System.Collections.Generic.IAsyncEnumerable<T>, System.Threading.CancellationToken, bool)')**
   - **[WhereAsync&lt;T&gt;(this IAsyncEnumerable&lt;T&gt;, Func&lt;T,CancellationToken,bool&gt;, CancellationToken, bool)](DevFast.Net.Extensions.SystemTypes.Enumerables.md#DevFast.Net.Extensions.SystemTypes.Enumerables.WhereAsync_T_(thisSystem.Collections.Generic.IAsyncEnumerable_T_,System.Func_T,System.Threading.CancellationToken,bool_,System.Threading.CancellationToken,bool) 'DevFast.Net.Extensions.SystemTypes.Enumerables.WhereAsync<T>(this System.Collections.Generic.IAsyncEnumerable<T>, System.Func<T,System.Threading.CancellationToken,bool>, System.Threading.CancellationToken, bool)')**
@@ -483,6 +484,39 @@ Cancellation token for enumerator of [asyncCollection](DevFast.Net.Extensions.Sy
 
 #### Returns
 [System.Collections.Generic.IAsyncEnumerable&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Collections.Generic.IAsyncEnumerable-1 'System.Collections.Generic.IAsyncEnumerable`1')[TIn](DevFast.Net.Extensions.SystemTypes.Enumerables.md#DevFast.Net.Extensions.SystemTypes.Enumerables.TakeAsync_TIn_(thisSystem.Collections.Generic.IAsyncEnumerable_TIn_,int,System.Threading.CancellationToken,bool).TIn 'DevFast.Net.Extensions.SystemTypes.Enumerables.TakeAsync<TIn>(this System.Collections.Generic.IAsyncEnumerable<TIn>, int, System.Threading.CancellationToken, bool).TIn')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Collections.Generic.IAsyncEnumerable-1 'System.Collections.Generic.IAsyncEnumerable`1')
+
+<a name='DevFast.Net.Extensions.SystemTypes.Enumerables.ToBlockingEnumerable_T_(thisSystem.Collections.Generic.IAsyncEnumerable_T_,System.Threading.CancellationToken)'></a>
+
+## Enumerables.ToBlockingEnumerable<T>(this IAsyncEnumerable<T>, CancellationToken) Method
+
+Converts provided [asyncCollection](DevFast.Net.Extensions.SystemTypes.Enumerables.md#DevFast.Net.Extensions.SystemTypes.Enumerables.ToBlockingEnumerable_T_(thisSystem.Collections.Generic.IAsyncEnumerable_T_,System.Threading.CancellationToken).asyncCollection 'DevFast.Net.Extensions.SystemTypes.Enumerables.ToBlockingEnumerable<T>(this System.Collections.Generic.IAsyncEnumerable<T>, System.Threading.CancellationToken).asyncCollection') instance into an [System.Collections.Generic.IEnumerable&lt;&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Collections.Generic.IEnumerable-1 'System.Collections.Generic.IEnumerable`1') that enumerates elements in a blocking manner.
+
+```csharp
+public static System.Collections.Generic.IEnumerable<T> ToBlockingEnumerable<T>(this System.Collections.Generic.IAsyncEnumerable<T> asyncCollection, System.Threading.CancellationToken token=default(System.Threading.CancellationToken));
+```
+#### Type parameters
+
+<a name='DevFast.Net.Extensions.SystemTypes.Enumerables.ToBlockingEnumerable_T_(thisSystem.Collections.Generic.IAsyncEnumerable_T_,System.Threading.CancellationToken).T'></a>
+
+`T`
+
+Input Type
+#### Parameters
+
+<a name='DevFast.Net.Extensions.SystemTypes.Enumerables.ToBlockingEnumerable_T_(thisSystem.Collections.Generic.IAsyncEnumerable_T_,System.Threading.CancellationToken).asyncCollection'></a>
+
+`asyncCollection` [System.Collections.Generic.IAsyncEnumerable&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Collections.Generic.IAsyncEnumerable-1 'System.Collections.Generic.IAsyncEnumerable`1')[T](DevFast.Net.Extensions.SystemTypes.Enumerables.md#DevFast.Net.Extensions.SystemTypes.Enumerables.ToBlockingEnumerable_T_(thisSystem.Collections.Generic.IAsyncEnumerable_T_,System.Threading.CancellationToken).T 'DevFast.Net.Extensions.SystemTypes.Enumerables.ToBlockingEnumerable<T>(this System.Collections.Generic.IAsyncEnumerable<T>, System.Threading.CancellationToken).T')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Collections.Generic.IAsyncEnumerable-1 'System.Collections.Generic.IAsyncEnumerable`1')
+
+Asynchronously Enumerable items
+
+<a name='DevFast.Net.Extensions.SystemTypes.Enumerables.ToBlockingEnumerable_T_(thisSystem.Collections.Generic.IAsyncEnumerable_T_,System.Threading.CancellationToken).token'></a>
+
+`token` [System.Threading.CancellationToken](https://docs.microsoft.com/en-us/dotnet/api/System.Threading.CancellationToken 'System.Threading.CancellationToken')
+
+Cancellation token to pass to enumerator of [asyncCollection](DevFast.Net.Extensions.SystemTypes.Enumerables.md#DevFast.Net.Extensions.SystemTypes.Enumerables.ToBlockingEnumerable_T_(thisSystem.Collections.Generic.IAsyncEnumerable_T_,System.Threading.CancellationToken).asyncCollection 'DevFast.Net.Extensions.SystemTypes.Enumerables.ToBlockingEnumerable<T>(this System.Collections.Generic.IAsyncEnumerable<T>, System.Threading.CancellationToken).asyncCollection')
+
+#### Returns
+[System.Collections.Generic.IEnumerable&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Collections.Generic.IEnumerable-1 'System.Collections.Generic.IEnumerable`1')[T](DevFast.Net.Extensions.SystemTypes.Enumerables.md#DevFast.Net.Extensions.SystemTypes.Enumerables.ToBlockingEnumerable_T_(thisSystem.Collections.Generic.IAsyncEnumerable_T_,System.Threading.CancellationToken).T 'DevFast.Net.Extensions.SystemTypes.Enumerables.ToBlockingEnumerable<T>(this System.Collections.Generic.IAsyncEnumerable<T>, System.Threading.CancellationToken).T')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Collections.Generic.IEnumerable-1 'System.Collections.Generic.IEnumerable`1')
 
 <a name='DevFast.Net.Extensions.SystemTypes.Enumerables.ToChunksAsync_T_(thisSystem.Collections.Generic.IAsyncEnumerable_T_,int,System.Threading.CancellationToken,bool,bool)'></a>
 
