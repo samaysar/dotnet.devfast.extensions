@@ -460,8 +460,6 @@ public class LambdasTests
         That(ReferenceEquals(err, ex), Is.EqualTo(true));
     }
 
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_0_OR_GREATER
-
     [Test]
     public async Task ExecuteAsync_On_FuncValueTask_Works_As_Expected()
     {
@@ -470,7 +468,7 @@ public class LambdasTests
         Func<ValueTask> result = () =>
         {
             _ = Interlocked.Increment(ref lambdaCount);
-            return ValueTask.CompletedTask;
+            return Asynchro.CompletedTask;
         };
         Func<ValueTask> error = () => throw ex;
         await result.ExecuteAsync().ConfigureAwait(false);
@@ -479,8 +477,6 @@ public class LambdasTests
         That(err, Is.Not.Null);
         That(ReferenceEquals(err, ex), Is.EqualTo(true));
     }
-
-#endif
 
     [Test]
     public async Task ExecuteAsync_On_FuncTInTask_Works_As_Expected()
@@ -500,8 +496,6 @@ public class LambdasTests
         That(ReferenceEquals(err, ex), Is.EqualTo(true));
     }
 
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_0_OR_GREATER
-
     [Test]
     public async Task ExecuteAsync_On_FuncTInValueTask_Works_As_Expected()
     {
@@ -510,7 +504,7 @@ public class LambdasTests
         Func<int, ValueTask> result = i =>
         {
             _ = Interlocked.Add(ref lambdaCount, i);
-            return ValueTask.CompletedTask;
+            return Asynchro.CompletedTask;
         };
         Func<int, ValueTask> error = _ => throw ex;
         await result.ExecuteAsync(1).ConfigureAwait(false);
@@ -519,8 +513,6 @@ public class LambdasTests
         That(err, Is.Not.Null);
         That(ReferenceEquals(err, ex), Is.EqualTo(true));
     }
-
-#endif
 
     [Test]
     public async Task ExecuteAsync_On_FuncTaskTOut_Works_As_Expected()
@@ -536,14 +528,12 @@ public class LambdasTests
         That(ReferenceEquals(err, ex), Is.EqualTo(true));
     }
 
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_0_OR_GREATER
-
     [Test]
     public async Task ExecuteAsync_On_FuncValueTaskTOut_Works_As_Expected()
     {
         Exception ex = new("Error");
         int lambdaCount = 0;
-        Func<ValueTask<int>> result = () => ValueTask.FromResult(Interlocked.Increment(ref lambdaCount));
+        Func<ValueTask<int>> result = () => Asynchro.FromResult(Interlocked.Increment(ref lambdaCount));
         Func<ValueTask<int>> error = () => throw ex;
         That(await result.ExecuteAsync().ConfigureAwait(false), Is.EqualTo(1));
         That(lambdaCount, Is.EqualTo(1));
@@ -551,8 +541,6 @@ public class LambdasTests
         That(err, Is.Not.Null);
         That(ReferenceEquals(err, ex), Is.EqualTo(true));
     }
-
-#endif
 
     [Test]
     public async Task ExecuteAsync_On_FuncTInTaskTOut_Works_As_Expected()
@@ -566,21 +554,17 @@ public class LambdasTests
         That(ReferenceEquals(err, ex), Is.EqualTo(true));
     }
 
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_0_OR_GREATER
-
     [Test]
     public async Task ExecuteAsync_On_FuncTInValueTaskTOut_Works_As_Expected()
     {
         Exception ex = new("Error");
-        Func<int, ValueTask<int>> result = static i => ValueTask.FromResult(++i);
+        Func<int, ValueTask<int>> result = static i => Asynchro.FromResult(++i);
         Func<int, ValueTask<int>> error = _ => throw ex;
         That(await result.ExecuteAsync(0).ConfigureAwait(false), Is.EqualTo(1));
         Exception? err = ThrowsAsync<Exception>(async () => await error.ExecuteAsync(0).ConfigureAwait(false));
         That(err, Is.Not.Null);
         That(ReferenceEquals(err, ex), Is.EqualTo(true));
     }
-
-#endif
 
     [Test]
     public async Task ExecuteAsync_On_FuncTask_With_ErrorHandler_Works_As_Expected()
@@ -632,8 +616,6 @@ public class LambdasTests
         That(finallyCount, Is.EqualTo(3));
     }
 
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_0_OR_GREATER
-
     [Test]
     public async Task ExecuteAsync_On_FuncValueTask_With_ErrorHandler_Works_As_Expected()
     {
@@ -642,7 +624,7 @@ public class LambdasTests
         Func<ValueTask> result = () =>
         {
             _ = Interlocked.Increment(ref lambdaCount);
-            return ValueTask.CompletedTask;
+            return Asynchro.CompletedTask;
         };
         Func<ValueTask> error = () => throw ex;
 
@@ -684,8 +666,6 @@ public class LambdasTests
         That(ReferenceEquals(err, ex), Is.EqualTo(true));
         That(finallyCount, Is.EqualTo(3));
     }
-
-#endif
 
     [Test]
     public async Task ExecuteAsync_On_FuncTInTask_With_ErrorHandler_Works_As_Expected()
@@ -738,8 +718,6 @@ public class LambdasTests
         That(finallyCount, Is.EqualTo(3));
     }
 
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_0_OR_GREATER
-
     [Test]
     public async Task ExecuteAsync_On_FuncTInValueTask_With_ErrorHandler_Works_As_Expected()
     {
@@ -748,7 +726,7 @@ public class LambdasTests
         Func<int, ValueTask> result = i =>
         {
             _ = Interlocked.Add(ref lambdaCount, i);
-            return ValueTask.CompletedTask;
+            return Asynchro.CompletedTask;
         };
         Func<int, ValueTask> error = _ => throw ex;
         int finallyCount = 0;
@@ -790,8 +768,6 @@ public class LambdasTests
         That(ReferenceEquals(err, ex), Is.EqualTo(true));
         That(finallyCount, Is.EqualTo(3));
     }
-
-#endif
 
     [Test]
     public async Task ExecuteAsync_On_FuncTInTask_With_ErrorHandler_N_FinallyT_Works_As_Expected()
@@ -837,8 +813,6 @@ public class LambdasTests
         That(finallyCount, Is.EqualTo(3));
     }
 
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_0_OR_GREATER
-
     [Test]
     public async Task ExecuteAsync_On_FuncTInValueTask_With_ErrorHandler_N_FinallyT_Works_As_Expected()
     {
@@ -847,7 +821,7 @@ public class LambdasTests
         Func<int, ValueTask> result = i =>
         {
             _ = Interlocked.Add(ref lambdaCount, i);
-            return ValueTask.CompletedTask;
+            return Asynchro.CompletedTask;
         };
         Func<int, ValueTask> error = _ => throw ex;
         int finallyCount = 0;
@@ -882,8 +856,6 @@ public class LambdasTests
         That(ReferenceEquals(err, ex), Is.EqualTo(true));
         That(finallyCount, Is.EqualTo(3));
     }
-
-#endif
 
     [Test]
     public async Task ExecuteAsync_On_FuncTaskTOut_With_ErrorHandler_Works_As_Expected()
@@ -928,8 +900,6 @@ public class LambdasTests
         That(finallyCount, Is.EqualTo(3));
     }
 
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_0_OR_GREATER
-
     [Test]
     public async Task ExecuteAsync_On_FuncValueTaskTOut_With_ErrorHandler_Works_As_Expected()
     {
@@ -937,7 +907,7 @@ public class LambdasTests
         int lambdaCount = 0;
         int finallyCount = 0;
         int handlerCount = 0;
-        Func<ValueTask<int>> result = () => ValueTask.FromResult(Interlocked.Increment(ref lambdaCount));
+        Func<ValueTask<int>> result = () => Asynchro.FromResult(Interlocked.Increment(ref lambdaCount));
         Func<ValueTask<int>> error = () => throw ex;
         void Finally()
         {
@@ -972,8 +942,6 @@ public class LambdasTests
         That(ReferenceEquals(err, ex), Is.EqualTo(true));
         That(finallyCount, Is.EqualTo(3));
     }
-
-#endif
 
     [Test]
     public async Task ExecuteAsync_On_FuncTInTaskTOut_With_ErrorHandler_Works_As_Expected()
@@ -1016,13 +984,11 @@ public class LambdasTests
         That(finallyCount, Is.EqualTo(3));
     }
 
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_0_OR_GREATER
-
     [Test]
     public async Task ExecuteAsync_On_FuncTInValueTaskTOut_With_ErrorHandler_Works_As_Expected()
     {
         Ae ex = new("Error");
-        Func<int, ValueTask<int>> result = static i => ValueTask.FromResult(++i);
+        Func<int, ValueTask<int>> result = static i => Asynchro.FromResult(++i);
         Func<int, ValueTask<int>> error = _ => throw ex;
         int finallyCount = 0;
         void Finally()
@@ -1058,8 +1024,6 @@ public class LambdasTests
         That(ReferenceEquals(err, ex), Is.EqualTo(true));
         That(finallyCount, Is.EqualTo(3));
     }
-
-#endif
 
     [Test]
     public async Task ExecuteAsync_On_FuncTInTaskTOut_With_ErrorHandler_N_FinallyT_Works_As_Expected()
@@ -1097,13 +1061,11 @@ public class LambdasTests
         That(finallyCount, Is.EqualTo(3));
     }
 
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_0_OR_GREATER
-
     [Test]
     public async Task ExecuteAsync_On_FuncTInValueTaskTOut_With_ErrorHandler_N_FinallyT_Works_As_Expected()
     {
         Ae ex = new("Error");
-        Func<int, ValueTask<int>> result = static i => ValueTask.FromResult(++i);
+        Func<int, ValueTask<int>> result = static i => Asynchro.FromResult(++i);
         Func<int, ValueTask<int>> error = _ => throw ex;
         int finallyCount = 0;
         void Finally(int i)
@@ -1135,8 +1097,6 @@ public class LambdasTests
         That(finallyCount, Is.EqualTo(3));
     }
 
-#endif
-
     [Test]
     public async Task ExecuteAsync_On_FuncTask_With_Finally_Works_As_Expected()
     {
@@ -1163,8 +1123,6 @@ public class LambdasTests
         That(finallyCount, Is.EqualTo(2));
     }
 
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_0_OR_GREATER
-
     [Test]
     public async Task ExecuteAsync_On_FuncValueTask_With_Finally_Works_As_Expected()
     {
@@ -1173,7 +1131,7 @@ public class LambdasTests
         Func<ValueTask> result = () =>
         {
             _ = Interlocked.Increment(ref lambdaCount);
-            return ValueTask.CompletedTask;
+            return Asynchro.CompletedTask;
         };
         Func<ValueTask> error = () => throw ex;
 
@@ -1190,8 +1148,6 @@ public class LambdasTests
         That(ReferenceEquals(err, ex), Is.EqualTo(true));
         That(finallyCount, Is.EqualTo(2));
     }
-
-#endif
 
     [Test]
     public async Task ExecuteAsync_On_FuncTInTask_With_Finally_Works_As_Expected()
@@ -1219,8 +1175,6 @@ public class LambdasTests
         That(finallyCount, Is.EqualTo(2));
     }
 
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_0_OR_GREATER
-
     [Test]
     public async Task ExecuteAsync_On_FuncTInValueTask_With_Finally_Works_As_Expected()
     {
@@ -1229,7 +1183,7 @@ public class LambdasTests
         Func<int, ValueTask> result = i =>
         {
             _ = Interlocked.Add(ref lambdaCount, i);
-            return ValueTask.CompletedTask;
+            return Asynchro.CompletedTask;
         };
         Func<int, ValueTask> error = _ => throw ex;
         int finallyCount = 0;
@@ -1246,8 +1200,6 @@ public class LambdasTests
         That(ReferenceEquals(err, ex), Is.EqualTo(true));
         That(finallyCount, Is.EqualTo(2));
     }
-
-#endif
 
     [Test]
     public async Task ExecuteAsync_On_FuncTInTask_With_FinallyT_Works_As_Expected()
@@ -1276,8 +1228,6 @@ public class LambdasTests
         That(finallyCount, Is.EqualTo(2));
     }
 
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_0_OR_GREATER
-
     [Test]
     public async Task ExecuteAsync_On_FuncTInValueTask_FinallyT_Works_As_Expected()
     {
@@ -1286,7 +1236,7 @@ public class LambdasTests
         Func<int, ValueTask> result = i =>
         {
             _ = Interlocked.Add(ref lambdaCount, i);
-            return ValueTask.CompletedTask;
+            return Asynchro.CompletedTask;
         };
         Func<int, ValueTask> error = _ => throw ex;
         int finallyCount = 0;
@@ -1304,8 +1254,6 @@ public class LambdasTests
         That(ReferenceEquals(err, ex), Is.EqualTo(true));
         That(finallyCount, Is.EqualTo(2));
     }
-
-#endif
 
     [Test]
     public async Task ExecuteAsync_On_FuncTaskTOut_With_Finally_Works_As_Expected()
@@ -1328,15 +1276,13 @@ public class LambdasTests
         That(finallyCount, Is.EqualTo(2));
     }
 
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_0_OR_GREATER
-
     [Test]
     public async Task ExecuteAsync_On_FuncValueTaskTOut_With_Finally_Works_As_Expected()
     {
         Ae ex = new("Error");
         int lambdaCount = 0;
         int finallyCount = 0;
-        Func<ValueTask<int>> result = () => ValueTask.FromResult(Interlocked.Increment(ref lambdaCount));
+        Func<ValueTask<int>> result = () => Asynchro.FromResult(Interlocked.Increment(ref lambdaCount));
         Func<ValueTask<int>> error = () => throw ex;
         void Finally()
         {
@@ -1350,8 +1296,6 @@ public class LambdasTests
         That(ReferenceEquals(err, ex), Is.EqualTo(true));
         That(finallyCount, Is.EqualTo(2));
     }
-
-#endif
 
     [Test]
     public async Task ExecuteAsync_On_FuncTInTaskTOut_With_Finally_Works_As_Expected()
@@ -1373,13 +1317,11 @@ public class LambdasTests
         That(finallyCount, Is.EqualTo(2));
     }
 
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_0_OR_GREATER
-
     [Test]
     public async Task ExecuteAsync_On_FuncTInValueTaskTOut_With_Finally_Works_As_Expected()
     {
         Ae ex = new("Error");
-        Func<int, ValueTask<int>> result = static i => ValueTask.FromResult(++i);
+        Func<int, ValueTask<int>> result = static i => Asynchro.FromResult(++i);
         Func<int, ValueTask<int>> error = _ => throw ex;
         int finallyCount = 0;
         void Finally()
@@ -1394,8 +1336,6 @@ public class LambdasTests
         That(ReferenceEquals(err, ex), Is.EqualTo(true));
         That(finallyCount, Is.EqualTo(2));
     }
-
-#endif
 
     [Test]
     public async Task ExecuteAsync_On_FuncTInTaskTOut_With_FinallyT_Works_As_Expected()
@@ -1418,13 +1358,11 @@ public class LambdasTests
         That(finallyCount, Is.EqualTo(2));
     }
 
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_0_OR_GREATER
-
     [Test]
     public async Task ExecuteAsync_On_FuncTInValueTaskTOut_With_FinallyT_Works_As_Expected()
     {
         Ae ex = new("Error");
-        Func<int, ValueTask<int>> result = static i => ValueTask.FromResult(++i);
+        Func<int, ValueTask<int>> result = static i => Asynchro.FromResult(++i);
         Func<int, ValueTask<int>> error = _ => throw ex;
         int finallyCount = 0;
         void Finally(int i)
@@ -1440,6 +1378,4 @@ public class LambdasTests
         That(ReferenceEquals(err, ex), Is.EqualTo(true));
         That(finallyCount, Is.EqualTo(2));
     }
-
-#endif
 }

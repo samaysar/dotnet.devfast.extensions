@@ -1,14 +1,8 @@
 ﻿namespace DevFast.Net.Extensions.Etc;
 
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_0_OR_GREATER
 /// <summary>
 /// Extension methods on the <see cref="Task"/>, <see cref="ValueTask"/>.
 /// </summary>
-#else
-/// <summary>
-/// Extension methods on the <see cref="Task"/>.
-/// </summary>
-#endif
 public static class Asynchro
 {
     /// <summary>
@@ -24,5 +18,23 @@ public static class Asynchro
         }
 
         return task;
+    }
+
+    /// <summary>
+    /// Gets a task that has already completed successfully.
+    /// </summary>
+#if NETSTANDARD2_0_OR_GREATER
+    public static ValueTask CompletedTask => default;
+#else
+    public static ValueTask CompletedTask => ValueTask.CompletedTask;
+#endif
+
+    /// <summary>Creates a <see cref="ValueTask{TResult}"/> that's completed successfully with the specified result.</summary>
+    /// <typeparam name="TResult">The type of the result returned by the task.</typeparam>
+    /// <param name="result">The result to store into the completed task.</param>
+    /// <returns>The successfully completed task.</returns>
+    public static ValueTask<TResult> FromResult<TResult>(TResult result)
+    {
+        return new(result);
     }
 }

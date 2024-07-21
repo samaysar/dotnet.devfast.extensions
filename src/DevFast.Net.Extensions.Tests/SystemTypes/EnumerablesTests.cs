@@ -7,9 +7,9 @@ public class EnumerablesTests
     public void ForEach_Calls_The_Lambda_With_Given_Token()
     {
         int val = 0;
-        CancellationTokenSource cts = new();
-        CancellationToken token = cts.Token;
-        void lambda(int x, CancellationToken t)
+        Cts cts = new();
+        Token token = cts.Token;
+        void lambda(int x, Token t)
         {
             val = x;
             That(t, Is.EqualTo(token));
@@ -18,19 +18,17 @@ public class EnumerablesTests
         That(val, Is.EqualTo(1));
     }
 
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_0_OR_GREATER
-
     [Test]
     public async Task ForEachAsync_On_Enumerable_Calls_The_Lambda_With_Given_Token()
     {
         int val = 0;
-        CancellationTokenSource cts = new();
-        CancellationToken token = cts.Token;
-        ValueTask lambda(int x, CancellationToken t)
+        Cts cts = new();
+        Token token = cts.Token;
+        ValueTask lambda(int x, Token t)
         {
             val = x;
             That(t, Is.EqualTo(token));
-            return ValueTask.CompletedTask;
+            return Asynchro.CompletedTask;
         }
         await new[] { 1 }.ForEachAsync(lambda, token).ConfigureAwait(false);
         That(val, Is.EqualTo(1));
@@ -40,15 +38,15 @@ public class EnumerablesTests
     public async Task ForEachAsync_On_AsyncEnumerable_Calls_The_Lambda_With_Given_Token()
     {
         int val = 1;
-        CancellationTokenSource cts = new();
-        CancellationToken token = cts.Token;
-        ValueTask lambda(int x, CancellationToken t)
+        Cts cts = new();
+        Token token = cts.Token;
+        ValueTask lambda(int x, Token t)
         {
             val = x;
             That(t, Is.EqualTo(token));
-            return ValueTask.CompletedTask;
+            return Asynchro.CompletedTask;
         }
-        await new[] { 1, 2, 3, 4 }.SelectAsync((x, _) => ValueTask.FromResult(x), token).ForEachAsync(lambda, token).ConfigureAwait(false);
+        await new[] { 1, 2, 3, 4 }.SelectAsync((x, _) => Asynchro.FromResult(x), token).ForEachAsync(lambda, token).ConfigureAwait(false);
         That(val, Is.EqualTo(4));
     }
 
@@ -56,12 +54,12 @@ public class EnumerablesTests
     public async Task SelectAsync_On_Enumerable_Calls_The_Lambda_With_Given_Token()
     {
         int val = 1;
-        CancellationTokenSource cts = new();
-        CancellationToken token = cts.Token;
-        ValueTask lambda(int x, CancellationToken _)
+        Cts cts = new();
+        Token token = cts.Token;
+        ValueTask lambda(int x, Token _)
         {
             That(x, Is.EqualTo(val++));
-            return ValueTask.CompletedTask;
+            return Asynchro.CompletedTask;
         }
         await new[] { 0, 1, 2, 3, 4 }.SelectAsync(async (x, t) =>
         {
@@ -76,12 +74,12 @@ public class EnumerablesTests
     public async Task SelectAsync_On_AsyncEnumerable_Calls_The_Lambda_With_Given_Token()
     {
         int val = 2;
-        CancellationTokenSource cts = new();
-        CancellationToken token = cts.Token;
-        ValueTask lambda(int x, CancellationToken _)
+        Cts cts = new();
+        Token token = cts.Token;
+        ValueTask lambda(int x, Token _)
         {
             That(x, Is.EqualTo(val++));
-            return ValueTask.CompletedTask;
+            return Asynchro.CompletedTask;
         }
         await new[] { 0, 1, 2, 3, 4 }.SelectAsync(async (x, _) =>
         {
@@ -161,8 +159,8 @@ public class EnumerablesTests
     [Test]
     public async Task WhereAsync_Uses_Predicate_With_Given_Token_For_Item_Selection()
     {
-        CancellationTokenSource cts = new();
-        CancellationToken token = cts.Token;
+        Cts cts = new();
+        Token token = cts.Token;
         List<int> l = await new[] { 0, 1, 2, 3, 4 }.SelectAsync(async (x, _) =>
         {
             await Task.CompletedTask;
@@ -170,7 +168,7 @@ public class EnumerablesTests
         }, token).WhereAsync((x, t) =>
         {
             That(t, Is.EqualTo(token));
-            return ValueTask.FromResult(x > 3);
+            return Asynchro.FromResult(x > 3);
         }, token).ToListAsync(token).ConfigureAwait(false);
         Multiple(() =>
         {
@@ -196,8 +194,8 @@ public class EnumerablesTests
     [Test]
     public async Task CountAsync_N_CountLongAsync_Properly_Counts_Elements()
     {
-        CancellationTokenSource cts = new();
-        CancellationToken token = cts.Token;
+        Cts cts = new();
+        Token token = cts.Token;
         int l = await new[] { 0, 1, 2, 3, 4 }.SelectAsync(async (x, _) =>
         {
             await Task.CompletedTask;
@@ -233,8 +231,8 @@ public class EnumerablesTests
     [Test]
     public async Task ToListAsync_Returns_All_The_Elements_As_List()
     {
-        CancellationTokenSource cts = new();
-        CancellationToken token = cts.Token;
+        Cts cts = new();
+        Token token = cts.Token;
         List<int> l = await new[] { 0, 1, 2, 3, 4 }.SelectAsync(async (x, _) =>
         {
             await Task.CompletedTask;
@@ -257,15 +255,15 @@ public class EnumerablesTests
                 await Task.CompletedTask;
                 t.ThrowIfCancellationRequested();
                 return x;
-            }, CancellationToken.None).ToListAsync(token).ConfigureAwait(false));
+            }, Token.None).ToListAsync(token).ConfigureAwait(false));
     }
 
-#if NET6_0
+#if !NET7_0_OR_GREATER
     [Test]
     public void ToBlockingEnumerable_Returns_All_The_Elements_As_Enumerable()
     {
-        CancellationTokenSource cts = new();
-        CancellationToken token = cts.Token;
+        Cts cts = new();
+        Token token = cts.Token;
         List<int> l = new[] { 0, 1, 2, 3, 4 }.SelectAsync(async (x, _) =>
         {
             await Task.CompletedTask;
@@ -282,20 +280,27 @@ public class EnumerablesTests
         });
 
         cts.Cancel();
-        _ = Throws<OperationCanceledException>(() => new[] { 0 }.SelectAsync(
+        _ = Throws<
+
+#if NET
+            OperationCanceledException
+#else
+            TaskCanceledException
+#endif
+            >(() => new[] { 0 }.SelectAsync(
             async (x, t) =>
             {
                 await Task.CompletedTask;
                 t.ThrowIfCancellationRequested();
                 return x;
-            }, CancellationToken.None).ToBlockingEnumerable(token).ToList());
+            }, Token.None).ToBlockingEnumerable(token).ToList());
         That(Array.Empty<int>().SelectAsync(
             async (x, t) =>
             {
                 await Task.CompletedTask;
                 t.ThrowIfCancellationRequested();
                 return x;
-            }, CancellationToken.None).ToBlockingEnumerable(token).ToList(), Is.Empty);
+            }, Token.None).ToBlockingEnumerable(token).ToList(), Is.Empty);
     }
 #endif
 
@@ -374,7 +379,4 @@ public class EnumerablesTests
         }
         That(starting, Is.EqualTo(5));
     }
-
-#endif
-
 }
