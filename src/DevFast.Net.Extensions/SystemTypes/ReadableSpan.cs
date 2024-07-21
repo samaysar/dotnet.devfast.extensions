@@ -7,7 +7,7 @@ namespace DevFast.Net.Extensions.SystemTypes;
 /// <summary>
 /// Extension methods on <see cref="ReadOnlySpan{T}"/>.
 /// </summary>
-public static class ReadOnlySpan
+public static class ReadableSpan
 {
     #region TryTo on ReadOnlySpan<char>
 
