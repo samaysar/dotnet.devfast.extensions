@@ -144,19 +144,6 @@ public static class ByteArrays
 
     private static void LiftNShiftInternal(this byte[] source, byte[] target, int sourcePosition, int total, int targetPosition)
     {
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_0_OR_GREATER
         new ReadOnlySpan<byte>(source, sourcePosition, total).CopyTo(target.AsSpan(targetPosition, target.Length - targetPosition));
-#else
-        unsafe
-        {
-            fixed (byte* s = &source[sourcePosition])
-            {
-                fixed (byte* d = &target[targetPosition])
-                {
-                    Buffer.MemoryCopy(s, d, target.Length - targetPosition, total);
-                }
-            }
-        }
-#endif
     }
 }
