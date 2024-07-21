@@ -1,3 +1,7 @@
+DevFast.Net.Extensions 0.7.2
+
+ 1. New feature - With polyfill, increasing library scope for older .Net versions.
+
 DevFast.Net.Extensions 0.7.1
 
  1. Changes - Changing class name 'DevFast.Net.Extensions.SystemTypes.ReadOnlySpan' to 'DevFast.Net.Extensions.SystemTypes.ReadableSpan' as the ReadOnlySpan was colliding with .Net struct of same name.
