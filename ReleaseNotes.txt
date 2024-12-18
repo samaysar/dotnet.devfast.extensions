@@ -1,3 +1,8 @@
+DevFast.Net.Extensions 0.7.3
+
+ 1. New feature - Added following new extension methods in DevFast.Net.Extensions.SystemTypes.DataCollections:
+			- Chunk<T>(this IList<T>, int, CancellationToken, bool)
+
 DevFast.Net.Extensions 0.7.2
 
  1. New feature - With polyfill, increasing library scope for older .Net versions.

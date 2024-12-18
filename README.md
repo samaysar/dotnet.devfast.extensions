@@ -21,6 +21,6 @@ Similar ".TryTo" also exists on ReadOnlySpan&lt;char&gt; and ReadOnlySpan&lt;byt
  - myByteArray.DoubleByteCapacity() returns new array with initial bytes but twice the capacity
  - myByteArray.CopyToSafe(...) copies bytes to targeted array
  
-#### IEnumerable &amp; IAsyncEnumerable with CancellationToken All the Way
- - ForEach, ForEachAsync, ToBlockingEnumerable with CancellationToken
- - CancellationToken support for SelectAsync, SkipAsync, TakeAsync, WhereAsync, CountAsync, ToChunksAsync etc.
+#### IEnumerable &amp; IAsyncEnumerable with Token All the Way
+ - ForEach, ForEachAsync, ToBlockingEnumerable with Token
+ - Token support for SelectAsync, SkipAsync, TakeAsync, WhereAsync, CountAsync, ToChunksAsync etc.
