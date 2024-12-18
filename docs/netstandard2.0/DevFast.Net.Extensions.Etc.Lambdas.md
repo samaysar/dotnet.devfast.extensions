@@ -27,10 +27,10 @@ public static class Lambdas
   - **[Execute&lt;TState&gt;(this Action&lt;TState&gt;, TState, Action&lt;TState&gt;)](DevFast.Net.Extensions.Etc.Lambdas.md#DevFast.Net.Extensions.Etc.Lambdas.Execute_TState_(thisSystem.Action_TState_,TState,System.Action_TState_) 'DevFast.Net.Extensions.Etc.Lambdas.Execute<TState>(this System.Action<TState>, TState, System.Action<TState>)')**
   - **[ExecuteAsync(this Func&lt;Task&gt;)](DevFast.Net.Extensions.Etc.Lambdas.md#DevFast.Net.Extensions.Etc.Lambdas.ExecuteAsync(thisSystem.Func_System.Threading.Tasks.Task_) 'DevFast.Net.Extensions.Etc.Lambdas.ExecuteAsync(this System.Func<System.Threading.Tasks.Task>)')**
   - **[ExecuteAsync(this Func&lt;Task&gt;, Action)](DevFast.Net.Extensions.Etc.Lambdas.md#DevFast.Net.Extensions.Etc.Lambdas.ExecuteAsync(thisSystem.Func_System.Threading.Tasks.Task_,System.Action) 'DevFast.Net.Extensions.Etc.Lambdas.ExecuteAsync(this System.Func<System.Threading.Tasks.Task>, System.Action)')**
-  - **[ExecuteAsync(this Func&lt;ValueTask&gt;)](DevFast.Net.Extensions.Etc.Lambdas.md#DevFast.Net.Extensions.Etc.Lambdas.ExecuteAsync(thisSystem.Func_ValueTask_) 'DevFast.Net.Extensions.Etc.Lambdas.ExecuteAsync(this System.Func<ValueTask>)')**
-  - **[ExecuteAsync(this Func&lt;ValueTask&gt;, Action)](DevFast.Net.Extensions.Etc.Lambdas.md#DevFast.Net.Extensions.Etc.Lambdas.ExecuteAsync(thisSystem.Func_ValueTask_,System.Action) 'DevFast.Net.Extensions.Etc.Lambdas.ExecuteAsync(this System.Func<ValueTask>, System.Action)')**
+  - **[ExecuteAsync(this Func&lt;ValueTask&gt;)](DevFast.Net.Extensions.Etc.Lambdas.md#DevFast.Net.Extensions.Etc.Lambdas.ExecuteAsync(thisSystem.Func_System.Threading.Tasks.ValueTask_) 'DevFast.Net.Extensions.Etc.Lambdas.ExecuteAsync(this System.Func<System.Threading.Tasks.ValueTask>)')**
+  - **[ExecuteAsync(this Func&lt;ValueTask&gt;, Action)](DevFast.Net.Extensions.Etc.Lambdas.md#DevFast.Net.Extensions.Etc.Lambdas.ExecuteAsync(thisSystem.Func_System.Threading.Tasks.ValueTask_,System.Action) 'DevFast.Net.Extensions.Etc.Lambdas.ExecuteAsync(this System.Func<System.Threading.Tasks.ValueTask>, System.Action)')**
   - **[ExecuteAsync&lt;TError&gt;(this Func&lt;Task&gt;, Action&lt;ExceptionDispatchInfo,TError&gt;, Action)](DevFast.Net.Extensions.Etc.Lambdas.md#DevFast.Net.Extensions.Etc.Lambdas.ExecuteAsync_TError_(thisSystem.Func_System.Threading.Tasks.Task_,System.Action_System.Runtime.ExceptionServices.ExceptionDispatchInfo,TError_,System.Action) 'DevFast.Net.Extensions.Etc.Lambdas.ExecuteAsync<TError>(this System.Func<System.Threading.Tasks.Task>, System.Action<System.Runtime.ExceptionServices.ExceptionDispatchInfo,TError>, System.Action)')**
-  - **[ExecuteAsync&lt;TError&gt;(this Func&lt;ValueTask&gt;, Action&lt;ExceptionDispatchInfo,TError&gt;, Action)](DevFast.Net.Extensions.Etc.Lambdas.md#DevFast.Net.Extensions.Etc.Lambdas.ExecuteAsync_TError_(thisSystem.Func_ValueTask_,System.Action_System.Runtime.ExceptionServices.ExceptionDispatchInfo,TError_,System.Action) 'DevFast.Net.Extensions.Etc.Lambdas.ExecuteAsync<TError>(this System.Func<ValueTask>, System.Action<System.Runtime.ExceptionServices.ExceptionDispatchInfo,TError>, System.Action)')**
+  - **[ExecuteAsync&lt;TError&gt;(this Func&lt;ValueTask&gt;, Action&lt;ExceptionDispatchInfo,TError&gt;, Action)](DevFast.Net.Extensions.Etc.Lambdas.md#DevFast.Net.Extensions.Etc.Lambdas.ExecuteAsync_TError_(thisSystem.Func_System.Threading.Tasks.ValueTask_,System.Action_System.Runtime.ExceptionServices.ExceptionDispatchInfo,TError_,System.Action) 'DevFast.Net.Extensions.Etc.Lambdas.ExecuteAsync<TError>(this System.Func<System.Threading.Tasks.ValueTask>, System.Action<System.Runtime.ExceptionServices.ExceptionDispatchInfo,TError>, System.Action)')**
   - **[ExecuteAsync&lt;TOut,TError&gt;(this Func&lt;Task&lt;TOut&gt;&gt;, Func&lt;ExceptionDispatchInfo,TError,TOut&gt;, Action)](DevFast.Net.Extensions.Etc.Lambdas.md#DevFast.Net.Extensions.Etc.Lambdas.ExecuteAsync_TOut,TError_(thisSystem.Func_System.Threading.Tasks.Task_TOut__,System.Func_System.Runtime.ExceptionServices.ExceptionDispatchInfo,TError,TOut_,System.Action) 'DevFast.Net.Extensions.Etc.Lambdas.ExecuteAsync<TOut,TError>(this System.Func<System.Threading.Tasks.Task<TOut>>, System.Func<System.Runtime.ExceptionServices.ExceptionDispatchInfo,TError,TOut>, System.Action)')**
   - **[ExecuteAsync&lt;TOut,TError&gt;(this Func&lt;ValueTask&lt;TOut&gt;&gt;, Func&lt;ExceptionDispatchInfo,TError,TOut&gt;, Action)](DevFast.Net.Extensions.Etc.Lambdas.md#DevFast.Net.Extensions.Etc.Lambdas.ExecuteAsync_TOut,TError_(thisSystem.Func_System.Threading.Tasks.ValueTask_TOut__,System.Func_System.Runtime.ExceptionServices.ExceptionDispatchInfo,TError,TOut_,System.Action) 'DevFast.Net.Extensions.Etc.Lambdas.ExecuteAsync<TOut,TError>(this System.Func<System.Threading.Tasks.ValueTask<TOut>>, System.Func<System.Runtime.ExceptionServices.ExceptionDispatchInfo,TError,TOut>, System.Action)')**
   - **[ExecuteAsync&lt;TOut&gt;(this Func&lt;Task&lt;TOut&gt;&gt;)](DevFast.Net.Extensions.Etc.Lambdas.md#DevFast.Net.Extensions.Etc.Lambdas.ExecuteAsync_TOut_(thisSystem.Func_System.Threading.Tasks.Task_TOut__) 'DevFast.Net.Extensions.Etc.Lambdas.ExecuteAsync<TOut>(this System.Func<System.Threading.Tasks.Task<TOut>>)')**
@@ -39,8 +39,8 @@ public static class Lambdas
   - **[ExecuteAsync&lt;TOut&gt;(this Func&lt;ValueTask&lt;TOut&gt;&gt;, Action)](DevFast.Net.Extensions.Etc.Lambdas.md#DevFast.Net.Extensions.Etc.Lambdas.ExecuteAsync_TOut_(thisSystem.Func_System.Threading.Tasks.ValueTask_TOut__,System.Action) 'DevFast.Net.Extensions.Etc.Lambdas.ExecuteAsync<TOut>(this System.Func<System.Threading.Tasks.ValueTask<TOut>>, System.Action)')**
   - **[ExecuteAsync&lt;TState,TError&gt;(this Func&lt;TState,Task&gt;, TState, Action&lt;ExceptionDispatchInfo,TError,TState&gt;, Action)](DevFast.Net.Extensions.Etc.Lambdas.md#DevFast.Net.Extensions.Etc.Lambdas.ExecuteAsync_TState,TError_(thisSystem.Func_TState,System.Threading.Tasks.Task_,TState,System.Action_System.Runtime.ExceptionServices.ExceptionDispatchInfo,TError,TState_,System.Action) 'DevFast.Net.Extensions.Etc.Lambdas.ExecuteAsync<TState,TError>(this System.Func<TState,System.Threading.Tasks.Task>, TState, System.Action<System.Runtime.ExceptionServices.ExceptionDispatchInfo,TError,TState>, System.Action)')**
   - **[ExecuteAsync&lt;TState,TError&gt;(this Func&lt;TState,Task&gt;, TState, Action&lt;ExceptionDispatchInfo,TError,TState&gt;, Action&lt;TState&gt;)](DevFast.Net.Extensions.Etc.Lambdas.md#DevFast.Net.Extensions.Etc.Lambdas.ExecuteAsync_TState,TError_(thisSystem.Func_TState,System.Threading.Tasks.Task_,TState,System.Action_System.Runtime.ExceptionServices.ExceptionDispatchInfo,TError,TState_,System.Action_TState_) 'DevFast.Net.Extensions.Etc.Lambdas.ExecuteAsync<TState,TError>(this System.Func<TState,System.Threading.Tasks.Task>, TState, System.Action<System.Runtime.ExceptionServices.ExceptionDispatchInfo,TError,TState>, System.Action<TState>)')**
-  - **[ExecuteAsync&lt;TState,TError&gt;(this Func&lt;TState,ValueTask&gt;, TState, Action&lt;ExceptionDispatchInfo,TError,TState&gt;, Action)](DevFast.Net.Extensions.Etc.Lambdas.md#DevFast.Net.Extensions.Etc.Lambdas.ExecuteAsync_TState,TError_(thisSystem.Func_TState,ValueTask_,TState,System.Action_System.Runtime.ExceptionServices.ExceptionDispatchInfo,TError,TState_,System.Action) 'DevFast.Net.Extensions.Etc.Lambdas.ExecuteAsync<TState,TError>(this System.Func<TState,ValueTask>, TState, System.Action<System.Runtime.ExceptionServices.ExceptionDispatchInfo,TError,TState>, System.Action)')**
-  - **[ExecuteAsync&lt;TState,TError&gt;(this Func&lt;TState,ValueTask&gt;, TState, Action&lt;ExceptionDispatchInfo,TError,TState&gt;, Action&lt;TState&gt;)](DevFast.Net.Extensions.Etc.Lambdas.md#DevFast.Net.Extensions.Etc.Lambdas.ExecuteAsync_TState,TError_(thisSystem.Func_TState,ValueTask_,TState,System.Action_System.Runtime.ExceptionServices.ExceptionDispatchInfo,TError,TState_,System.Action_TState_) 'DevFast.Net.Extensions.Etc.Lambdas.ExecuteAsync<TState,TError>(this System.Func<TState,ValueTask>, TState, System.Action<System.Runtime.ExceptionServices.ExceptionDispatchInfo,TError,TState>, System.Action<TState>)')**
+  - **[ExecuteAsync&lt;TState,TError&gt;(this Func&lt;TState,ValueTask&gt;, TState, Action&lt;ExceptionDispatchInfo,TError,TState&gt;, Action)](DevFast.Net.Extensions.Etc.Lambdas.md#DevFast.Net.Extensions.Etc.Lambdas.ExecuteAsync_TState,TError_(thisSystem.Func_TState,System.Threading.Tasks.ValueTask_,TState,System.Action_System.Runtime.ExceptionServices.ExceptionDispatchInfo,TError,TState_,System.Action) 'DevFast.Net.Extensions.Etc.Lambdas.ExecuteAsync<TState,TError>(this System.Func<TState,System.Threading.Tasks.ValueTask>, TState, System.Action<System.Runtime.ExceptionServices.ExceptionDispatchInfo,TError,TState>, System.Action)')**
+  - **[ExecuteAsync&lt;TState,TError&gt;(this Func&lt;TState,ValueTask&gt;, TState, Action&lt;ExceptionDispatchInfo,TError,TState&gt;, Action&lt;TState&gt;)](DevFast.Net.Extensions.Etc.Lambdas.md#DevFast.Net.Extensions.Etc.Lambdas.ExecuteAsync_TState,TError_(thisSystem.Func_TState,System.Threading.Tasks.ValueTask_,TState,System.Action_System.Runtime.ExceptionServices.ExceptionDispatchInfo,TError,TState_,System.Action_TState_) 'DevFast.Net.Extensions.Etc.Lambdas.ExecuteAsync<TState,TError>(this System.Func<TState,System.Threading.Tasks.ValueTask>, TState, System.Action<System.Runtime.ExceptionServices.ExceptionDispatchInfo,TError,TState>, System.Action<TState>)')**
   - **[ExecuteAsync&lt;TState,TOut,TError&gt;(this Func&lt;TState,Task&lt;TOut&gt;&gt;, TState, Func&lt;ExceptionDispatchInfo,TError,TState,TOut&gt;, Action)](DevFast.Net.Extensions.Etc.Lambdas.md#DevFast.Net.Extensions.Etc.Lambdas.ExecuteAsync_TState,TOut,TError_(thisSystem.Func_TState,System.Threading.Tasks.Task_TOut__,TState,System.Func_System.Runtime.ExceptionServices.ExceptionDispatchInfo,TError,TState,TOut_,System.Action) 'DevFast.Net.Extensions.Etc.Lambdas.ExecuteAsync<TState,TOut,TError>(this System.Func<TState,System.Threading.Tasks.Task<TOut>>, TState, System.Func<System.Runtime.ExceptionServices.ExceptionDispatchInfo,TError,TState,TOut>, System.Action)')**
   - **[ExecuteAsync&lt;TState,TOut,TError&gt;(this Func&lt;TState,Task&lt;TOut&gt;&gt;, TState, Func&lt;ExceptionDispatchInfo,TError,TState,TOut&gt;, Action&lt;TState&gt;)](DevFast.Net.Extensions.Etc.Lambdas.md#DevFast.Net.Extensions.Etc.Lambdas.ExecuteAsync_TState,TOut,TError_(thisSystem.Func_TState,System.Threading.Tasks.Task_TOut__,TState,System.Func_System.Runtime.ExceptionServices.ExceptionDispatchInfo,TError,TState,TOut_,System.Action_TState_) 'DevFast.Net.Extensions.Etc.Lambdas.ExecuteAsync<TState,TOut,TError>(this System.Func<TState,System.Threading.Tasks.Task<TOut>>, TState, System.Func<System.Runtime.ExceptionServices.ExceptionDispatchInfo,TError,TState,TOut>, System.Action<TState>)')**
   - **[ExecuteAsync&lt;TState,TOut,TError&gt;(this Func&lt;TState,ValueTask&lt;TOut&gt;&gt;, TState, Func&lt;ExceptionDispatchInfo,TError,TState,TOut&gt;, Action)](DevFast.Net.Extensions.Etc.Lambdas.md#DevFast.Net.Extensions.Etc.Lambdas.ExecuteAsync_TState,TOut,TError_(thisSystem.Func_TState,System.Threading.Tasks.ValueTask_TOut__,TState,System.Func_System.Runtime.ExceptionServices.ExceptionDispatchInfo,TError,TState,TOut_,System.Action) 'DevFast.Net.Extensions.Etc.Lambdas.ExecuteAsync<TState,TOut,TError>(this System.Func<TState,System.Threading.Tasks.ValueTask<TOut>>, TState, System.Func<System.Runtime.ExceptionServices.ExceptionDispatchInfo,TError,TState,TOut>, System.Action)')**
@@ -54,9 +54,9 @@ public static class Lambdas
   - **[ExecuteAsync&lt;TState&gt;(this Func&lt;TState,Task&gt;, TState)](DevFast.Net.Extensions.Etc.Lambdas.md#DevFast.Net.Extensions.Etc.Lambdas.ExecuteAsync_TState_(thisSystem.Func_TState,System.Threading.Tasks.Task_,TState) 'DevFast.Net.Extensions.Etc.Lambdas.ExecuteAsync<TState>(this System.Func<TState,System.Threading.Tasks.Task>, TState)')**
   - **[ExecuteAsync&lt;TState&gt;(this Func&lt;TState,Task&gt;, TState, Action)](DevFast.Net.Extensions.Etc.Lambdas.md#DevFast.Net.Extensions.Etc.Lambdas.ExecuteAsync_TState_(thisSystem.Func_TState,System.Threading.Tasks.Task_,TState,System.Action) 'DevFast.Net.Extensions.Etc.Lambdas.ExecuteAsync<TState>(this System.Func<TState,System.Threading.Tasks.Task>, TState, System.Action)')**
   - **[ExecuteAsync&lt;TState&gt;(this Func&lt;TState,Task&gt;, TState, Action&lt;TState&gt;)](DevFast.Net.Extensions.Etc.Lambdas.md#DevFast.Net.Extensions.Etc.Lambdas.ExecuteAsync_TState_(thisSystem.Func_TState,System.Threading.Tasks.Task_,TState,System.Action_TState_) 'DevFast.Net.Extensions.Etc.Lambdas.ExecuteAsync<TState>(this System.Func<TState,System.Threading.Tasks.Task>, TState, System.Action<TState>)')**
-  - **[ExecuteAsync&lt;TState&gt;(this Func&lt;TState,ValueTask&gt;, TState)](DevFast.Net.Extensions.Etc.Lambdas.md#DevFast.Net.Extensions.Etc.Lambdas.ExecuteAsync_TState_(thisSystem.Func_TState,ValueTask_,TState) 'DevFast.Net.Extensions.Etc.Lambdas.ExecuteAsync<TState>(this System.Func<TState,ValueTask>, TState)')**
-  - **[ExecuteAsync&lt;TState&gt;(this Func&lt;TState,ValueTask&gt;, TState, Action)](DevFast.Net.Extensions.Etc.Lambdas.md#DevFast.Net.Extensions.Etc.Lambdas.ExecuteAsync_TState_(thisSystem.Func_TState,ValueTask_,TState,System.Action) 'DevFast.Net.Extensions.Etc.Lambdas.ExecuteAsync<TState>(this System.Func<TState,ValueTask>, TState, System.Action)')**
-  - **[ExecuteAsync&lt;TState&gt;(this Func&lt;TState,ValueTask&gt;, TState, Action&lt;TState&gt;)](DevFast.Net.Extensions.Etc.Lambdas.md#DevFast.Net.Extensions.Etc.Lambdas.ExecuteAsync_TState_(thisSystem.Func_TState,ValueTask_,TState,System.Action_TState_) 'DevFast.Net.Extensions.Etc.Lambdas.ExecuteAsync<TState>(this System.Func<TState,ValueTask>, TState, System.Action<TState>)')**
+  - **[ExecuteAsync&lt;TState&gt;(this Func&lt;TState,ValueTask&gt;, TState)](DevFast.Net.Extensions.Etc.Lambdas.md#DevFast.Net.Extensions.Etc.Lambdas.ExecuteAsync_TState_(thisSystem.Func_TState,System.Threading.Tasks.ValueTask_,TState) 'DevFast.Net.Extensions.Etc.Lambdas.ExecuteAsync<TState>(this System.Func<TState,System.Threading.Tasks.ValueTask>, TState)')**
+  - **[ExecuteAsync&lt;TState&gt;(this Func&lt;TState,ValueTask&gt;, TState, Action)](DevFast.Net.Extensions.Etc.Lambdas.md#DevFast.Net.Extensions.Etc.Lambdas.ExecuteAsync_TState_(thisSystem.Func_TState,System.Threading.Tasks.ValueTask_,TState,System.Action) 'DevFast.Net.Extensions.Etc.Lambdas.ExecuteAsync<TState>(this System.Func<TState,System.Threading.Tasks.ValueTask>, TState, System.Action)')**
+  - **[ExecuteAsync&lt;TState&gt;(this Func&lt;TState,ValueTask&gt;, TState, Action&lt;TState&gt;)](DevFast.Net.Extensions.Etc.Lambdas.md#DevFast.Net.Extensions.Etc.Lambdas.ExecuteAsync_TState_(thisSystem.Func_TState,System.Threading.Tasks.ValueTask_,TState,System.Action_TState_) 'DevFast.Net.Extensions.Etc.Lambdas.ExecuteAsync<TState>(this System.Func<TState,System.Threading.Tasks.ValueTask>, TState, System.Action<TState>)')**
 
 ## Lambdas Class
 
@@ -811,18 +811,18 @@ Code to run inside finally clause
 #### Returns
 [System.Threading.Tasks.Task](https://docs.microsoft.com/en-us/dotnet/api/System.Threading.Tasks.Task 'System.Threading.Tasks.Task')
 
-<a name='DevFast.Net.Extensions.Etc.Lambdas.ExecuteAsync(thisSystem.Func_ValueTask_)'></a>
+<a name='DevFast.Net.Extensions.Etc.Lambdas.ExecuteAsync(thisSystem.Func_System.Threading.Tasks.ValueTask_)'></a>
 
 ## Lambdas.ExecuteAsync(this Func<ValueTask>) Method
 
-Executes the given [lambda](DevFast.Net.Extensions.Etc.Lambdas.md#DevFast.Net.Extensions.Etc.Lambdas.ExecuteAsync(thisSystem.Func_ValueTask_).lambda 'DevFast.Net.Extensions.Etc.Lambdas.ExecuteAsync(this System.Func<ValueTask>).lambda') asynchronously.
+Executes the given [lambda](DevFast.Net.Extensions.Etc.Lambdas.md#DevFast.Net.Extensions.Etc.Lambdas.ExecuteAsync(thisSystem.Func_System.Threading.Tasks.ValueTask_).lambda 'DevFast.Net.Extensions.Etc.Lambdas.ExecuteAsync(this System.Func<System.Threading.Tasks.ValueTask>).lambda') asynchronously.
 
 ```csharp
-public static ValueTask ExecuteAsync(this System.Func<ValueTask> lambda);
+public static System.Threading.Tasks.ValueTask ExecuteAsync(this System.Func<System.Threading.Tasks.ValueTask> lambda);
 ```
 #### Parameters
 
-<a name='DevFast.Net.Extensions.Etc.Lambdas.ExecuteAsync(thisSystem.Func_ValueTask_).lambda'></a>
+<a name='DevFast.Net.Extensions.Etc.Lambdas.ExecuteAsync(thisSystem.Func_System.Threading.Tasks.ValueTask_).lambda'></a>
 
 `lambda` [System.Func&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Func-1 'System.Func`1')[System.Threading.Tasks.ValueTask](https://docs.microsoft.com/en-us/dotnet/api/System.Threading.Tasks.ValueTask 'System.Threading.Tasks.ValueTask')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Func-1 'System.Func`1')
 
@@ -831,27 +831,27 @@ Lambda to execute.
 #### Returns
 [System.Threading.Tasks.ValueTask](https://docs.microsoft.com/en-us/dotnet/api/System.Threading.Tasks.ValueTask 'System.Threading.Tasks.ValueTask')
 
-<a name='DevFast.Net.Extensions.Etc.Lambdas.ExecuteAsync(thisSystem.Func_ValueTask_,System.Action)'></a>
+<a name='DevFast.Net.Extensions.Etc.Lambdas.ExecuteAsync(thisSystem.Func_System.Threading.Tasks.ValueTask_,System.Action)'></a>
 
 ## Lambdas.ExecuteAsync(this Func<ValueTask>, Action) Method
 
-Asynchronously executes [asyncLambda](DevFast.Net.Extensions.Etc.Lambdas.md#DevFast.Net.Extensions.Etc.Lambdas.ExecuteAsync(thisSystem.Func_ValueTask_,System.Action).asyncLambda 'DevFast.Net.Extensions.Etc.Lambdas.ExecuteAsync(this System.Func<ValueTask>, System.Action).asyncLambda') inside try block and returns
-after excuting [finallyClause](DevFast.Net.Extensions.Etc.Lambdas.md#DevFast.Net.Extensions.Etc.Lambdas.ExecuteAsync(thisSystem.Func_ValueTask_,System.Action).finallyClause 'DevFast.Net.Extensions.Etc.Lambdas.ExecuteAsync(this System.Func<ValueTask>, System.Action).finallyClause') inside finally.
+Asynchronously executes [asyncLambda](DevFast.Net.Extensions.Etc.Lambdas.md#DevFast.Net.Extensions.Etc.Lambdas.ExecuteAsync(thisSystem.Func_System.Threading.Tasks.ValueTask_,System.Action).asyncLambda 'DevFast.Net.Extensions.Etc.Lambdas.ExecuteAsync(this System.Func<System.Threading.Tasks.ValueTask>, System.Action).asyncLambda') inside try block and returns
+after excuting [finallyClause](DevFast.Net.Extensions.Etc.Lambdas.md#DevFast.Net.Extensions.Etc.Lambdas.ExecuteAsync(thisSystem.Func_System.Threading.Tasks.ValueTask_,System.Action).finallyClause 'DevFast.Net.Extensions.Etc.Lambdas.ExecuteAsync(this System.Func<System.Threading.Tasks.ValueTask>, System.Action).finallyClause') inside finally.
 
 NOTE: The code itself will NOT catch any [System.Exception](https://docs.microsoft.com/en-us/dotnet/api/System.Exception 'System.Exception').
 
 ```csharp
-public static ValueTask ExecuteAsync(this System.Func<ValueTask> asyncLambda, System.Action finallyClause);
+public static System.Threading.Tasks.ValueTask ExecuteAsync(this System.Func<System.Threading.Tasks.ValueTask> asyncLambda, System.Action finallyClause);
 ```
 #### Parameters
 
-<a name='DevFast.Net.Extensions.Etc.Lambdas.ExecuteAsync(thisSystem.Func_ValueTask_,System.Action).asyncLambda'></a>
+<a name='DevFast.Net.Extensions.Etc.Lambdas.ExecuteAsync(thisSystem.Func_System.Threading.Tasks.ValueTask_,System.Action).asyncLambda'></a>
 
 `asyncLambda` [System.Func&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Func-1 'System.Func`1')[System.Threading.Tasks.ValueTask](https://docs.microsoft.com/en-us/dotnet/api/System.Threading.Tasks.ValueTask 'System.Threading.Tasks.ValueTask')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Func-1 'System.Func`1')
 
 Lambda to execute inside try clause
 
-<a name='DevFast.Net.Extensions.Etc.Lambdas.ExecuteAsync(thisSystem.Func_ValueTask_,System.Action).finallyClause'></a>
+<a name='DevFast.Net.Extensions.Etc.Lambdas.ExecuteAsync(thisSystem.Func_System.Threading.Tasks.ValueTask_,System.Action).finallyClause'></a>
 
 `finallyClause` [System.Action](https://docs.microsoft.com/en-us/dotnet/api/System.Action 'System.Action')
 
@@ -908,46 +908,46 @@ Code to run inside finally clause
 #### Returns
 [System.Threading.Tasks.Task](https://docs.microsoft.com/en-us/dotnet/api/System.Threading.Tasks.Task 'System.Threading.Tasks.Task')
 
-<a name='DevFast.Net.Extensions.Etc.Lambdas.ExecuteAsync_TError_(thisSystem.Func_ValueTask_,System.Action_System.Runtime.ExceptionServices.ExceptionDispatchInfo,TError_,System.Action)'></a>
+<a name='DevFast.Net.Extensions.Etc.Lambdas.ExecuteAsync_TError_(thisSystem.Func_System.Threading.Tasks.ValueTask_,System.Action_System.Runtime.ExceptionServices.ExceptionDispatchInfo,TError_,System.Action)'></a>
 
 ## Lambdas.ExecuteAsync<TError>(this Func<ValueTask>, Action<ExceptionDispatchInfo,TError>, Action) Method
 
-Asynchronously executes [asyncLambda](DevFast.Net.Extensions.Etc.Lambdas.md#DevFast.Net.Extensions.Etc.Lambdas.ExecuteAsync_TError_(thisSystem.Func_ValueTask_,System.Action_System.Runtime.ExceptionServices.ExceptionDispatchInfo,TError_,System.Action).asyncLambda 'DevFast.Net.Extensions.Etc.Lambdas.ExecuteAsync<TError>(this System.Func<ValueTask>, System.Action<System.Runtime.ExceptionServices.ExceptionDispatchInfo,TError>, System.Action).asyncLambda') inside try block.
-If any exception of type [TError](DevFast.Net.Extensions.Etc.Lambdas.md#DevFast.Net.Extensions.Etc.Lambdas.ExecuteAsync_TError_(thisSystem.Func_ValueTask_,System.Action_System.Runtime.ExceptionServices.ExceptionDispatchInfo,TError_,System.Action).TError 'DevFast.Net.Extensions.Etc.Lambdas.ExecuteAsync<TError>(this System.Func<ValueTask>, System.Action<System.Runtime.ExceptionServices.ExceptionDispatchInfo,TError>, System.Action).TError') (or
-its derived types) occurs during [asyncLambda](DevFast.Net.Extensions.Etc.Lambdas.md#DevFast.Net.Extensions.Etc.Lambdas.ExecuteAsync_TError_(thisSystem.Func_ValueTask_,System.Action_System.Runtime.ExceptionServices.ExceptionDispatchInfo,TError_,System.Action).asyncLambda 'DevFast.Net.Extensions.Etc.Lambdas.ExecuteAsync<TError>(this System.Func<ValueTask>, System.Action<System.Runtime.ExceptionServices.ExceptionDispatchInfo,TError>, System.Action).asyncLambda')
-execution, relevant information is passed to [errorHandler](DevFast.Net.Extensions.Etc.Lambdas.md#DevFast.Net.Extensions.Etc.Lambdas.ExecuteAsync_TError_(thisSystem.Func_ValueTask_,System.Action_System.Runtime.ExceptionServices.ExceptionDispatchInfo,TError_,System.Action).errorHandler 'DevFast.Net.Extensions.Etc.Lambdas.ExecuteAsync<TError>(this System.Func<ValueTask>, System.Action<System.Runtime.ExceptionServices.ExceptionDispatchInfo,TError>, System.Action).errorHandler').
-If any [finallyClause](DevFast.Net.Extensions.Etc.Lambdas.md#DevFast.Net.Extensions.Etc.Lambdas.ExecuteAsync_TError_(thisSystem.Func_ValueTask_,System.Action_System.Runtime.ExceptionServices.ExceptionDispatchInfo,TError_,System.Action).finallyClause 'DevFast.Net.Extensions.Etc.Lambdas.ExecuteAsync<TError>(this System.Func<ValueTask>, System.Action<System.Runtime.ExceptionServices.ExceptionDispatchInfo,TError>, System.Action).finallyClause') is provided, it will be executed inside finally.
+Asynchronously executes [asyncLambda](DevFast.Net.Extensions.Etc.Lambdas.md#DevFast.Net.Extensions.Etc.Lambdas.ExecuteAsync_TError_(thisSystem.Func_System.Threading.Tasks.ValueTask_,System.Action_System.Runtime.ExceptionServices.ExceptionDispatchInfo,TError_,System.Action).asyncLambda 'DevFast.Net.Extensions.Etc.Lambdas.ExecuteAsync<TError>(this System.Func<System.Threading.Tasks.ValueTask>, System.Action<System.Runtime.ExceptionServices.ExceptionDispatchInfo,TError>, System.Action).asyncLambda') inside try block.
+If any exception of type [TError](DevFast.Net.Extensions.Etc.Lambdas.md#DevFast.Net.Extensions.Etc.Lambdas.ExecuteAsync_TError_(thisSystem.Func_System.Threading.Tasks.ValueTask_,System.Action_System.Runtime.ExceptionServices.ExceptionDispatchInfo,TError_,System.Action).TError 'DevFast.Net.Extensions.Etc.Lambdas.ExecuteAsync<TError>(this System.Func<System.Threading.Tasks.ValueTask>, System.Action<System.Runtime.ExceptionServices.ExceptionDispatchInfo,TError>, System.Action).TError') (or
+its derived types) occurs during [asyncLambda](DevFast.Net.Extensions.Etc.Lambdas.md#DevFast.Net.Extensions.Etc.Lambdas.ExecuteAsync_TError_(thisSystem.Func_System.Threading.Tasks.ValueTask_,System.Action_System.Runtime.ExceptionServices.ExceptionDispatchInfo,TError_,System.Action).asyncLambda 'DevFast.Net.Extensions.Etc.Lambdas.ExecuteAsync<TError>(this System.Func<System.Threading.Tasks.ValueTask>, System.Action<System.Runtime.ExceptionServices.ExceptionDispatchInfo,TError>, System.Action).asyncLambda')
+execution, relevant information is passed to [errorHandler](DevFast.Net.Extensions.Etc.Lambdas.md#DevFast.Net.Extensions.Etc.Lambdas.ExecuteAsync_TError_(thisSystem.Func_System.Threading.Tasks.ValueTask_,System.Action_System.Runtime.ExceptionServices.ExceptionDispatchInfo,TError_,System.Action).errorHandler 'DevFast.Net.Extensions.Etc.Lambdas.ExecuteAsync<TError>(this System.Func<System.Threading.Tasks.ValueTask>, System.Action<System.Runtime.ExceptionServices.ExceptionDispatchInfo,TError>, System.Action).errorHandler').
+If any [finallyClause](DevFast.Net.Extensions.Etc.Lambdas.md#DevFast.Net.Extensions.Etc.Lambdas.ExecuteAsync_TError_(thisSystem.Func_System.Threading.Tasks.ValueTask_,System.Action_System.Runtime.ExceptionServices.ExceptionDispatchInfo,TError_,System.Action).finallyClause 'DevFast.Net.Extensions.Etc.Lambdas.ExecuteAsync<TError>(this System.Func<System.Threading.Tasks.ValueTask>, System.Action<System.Runtime.ExceptionServices.ExceptionDispatchInfo,TError>, System.Action).finallyClause') is provided, it will be executed inside finally.
 
 NOTE: The code itself will NOT re-throw caught exception, but,
-[errorHandler](DevFast.Net.Extensions.Etc.Lambdas.md#DevFast.Net.Extensions.Etc.Lambdas.ExecuteAsync_TError_(thisSystem.Func_ValueTask_,System.Action_System.Runtime.ExceptionServices.ExceptionDispatchInfo,TError_,System.Action).errorHandler 'DevFast.Net.Extensions.Etc.Lambdas.ExecuteAsync<TError>(this System.Func<ValueTask>, System.Action<System.Runtime.ExceptionServices.ExceptionDispatchInfo,TError>, System.Action).errorHandler') may itself re-throw those (e.g.
+[errorHandler](DevFast.Net.Extensions.Etc.Lambdas.md#DevFast.Net.Extensions.Etc.Lambdas.ExecuteAsync_TError_(thisSystem.Func_System.Threading.Tasks.ValueTask_,System.Action_System.Runtime.ExceptionServices.ExceptionDispatchInfo,TError_,System.Action).errorHandler 'DevFast.Net.Extensions.Etc.Lambdas.ExecuteAsync<TError>(this System.Func<System.Threading.Tasks.ValueTask>, System.Action<System.Runtime.ExceptionServices.ExceptionDispatchInfo,TError>, System.Action).errorHandler') may itself re-throw those (e.g.
 [System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw](https://docs.microsoft.com/en-us/dotnet/api/System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw 'System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw')), if needed.
 
 ```csharp
-public static ValueTask ExecuteAsync<TError>(this System.Func<ValueTask> asyncLambda, System.Action<System.Runtime.ExceptionServices.ExceptionDispatchInfo,TError> errorHandler, System.Action? finallyClause=null)
+public static System.Threading.Tasks.ValueTask ExecuteAsync<TError>(this System.Func<System.Threading.Tasks.ValueTask> asyncLambda, System.Action<System.Runtime.ExceptionServices.ExceptionDispatchInfo,TError> errorHandler, System.Action? finallyClause=null)
     where TError : System.Exception;
 ```
 #### Type parameters
 
-<a name='DevFast.Net.Extensions.Etc.Lambdas.ExecuteAsync_TError_(thisSystem.Func_ValueTask_,System.Action_System.Runtime.ExceptionServices.ExceptionDispatchInfo,TError_,System.Action).TError'></a>
+<a name='DevFast.Net.Extensions.Etc.Lambdas.ExecuteAsync_TError_(thisSystem.Func_System.Threading.Tasks.ValueTask_,System.Action_System.Runtime.ExceptionServices.ExceptionDispatchInfo,TError_,System.Action).TError'></a>
 
 `TError`
 
 Exception type
 #### Parameters
 
-<a name='DevFast.Net.Extensions.Etc.Lambdas.ExecuteAsync_TError_(thisSystem.Func_ValueTask_,System.Action_System.Runtime.ExceptionServices.ExceptionDispatchInfo,TError_,System.Action).asyncLambda'></a>
+<a name='DevFast.Net.Extensions.Etc.Lambdas.ExecuteAsync_TError_(thisSystem.Func_System.Threading.Tasks.ValueTask_,System.Action_System.Runtime.ExceptionServices.ExceptionDispatchInfo,TError_,System.Action).asyncLambda'></a>
 
 `asyncLambda` [System.Func&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Func-1 'System.Func`1')[System.Threading.Tasks.ValueTask](https://docs.microsoft.com/en-us/dotnet/api/System.Threading.Tasks.ValueTask 'System.Threading.Tasks.ValueTask')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Func-1 'System.Func`1')
 
 Lambda to execute inside try clause
 
-<a name='DevFast.Net.Extensions.Etc.Lambdas.ExecuteAsync_TError_(thisSystem.Func_ValueTask_,System.Action_System.Runtime.ExceptionServices.ExceptionDispatchInfo,TError_,System.Action).errorHandler'></a>
+<a name='DevFast.Net.Extensions.Etc.Lambdas.ExecuteAsync_TError_(thisSystem.Func_System.Threading.Tasks.ValueTask_,System.Action_System.Runtime.ExceptionServices.ExceptionDispatchInfo,TError_,System.Action).errorHandler'></a>
 
-`errorHandler` [System.Action&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Action-2 'System.Action`2')[System.Runtime.ExceptionServices.ExceptionDispatchInfo](https://docs.microsoft.com/en-us/dotnet/api/System.Runtime.ExceptionServices.ExceptionDispatchInfo 'System.Runtime.ExceptionServices.ExceptionDispatchInfo')[,](https://docs.microsoft.com/en-us/dotnet/api/System.Action-2 'System.Action`2')[TError](DevFast.Net.Extensions.Etc.Lambdas.md#DevFast.Net.Extensions.Etc.Lambdas.ExecuteAsync_TError_(thisSystem.Func_ValueTask_,System.Action_System.Runtime.ExceptionServices.ExceptionDispatchInfo,TError_,System.Action).TError 'DevFast.Net.Extensions.Etc.Lambdas.ExecuteAsync<TError>(this System.Func<ValueTask>, System.Action<System.Runtime.ExceptionServices.ExceptionDispatchInfo,TError>, System.Action).TError')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Action-2 'System.Action`2')
+`errorHandler` [System.Action&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Action-2 'System.Action`2')[System.Runtime.ExceptionServices.ExceptionDispatchInfo](https://docs.microsoft.com/en-us/dotnet/api/System.Runtime.ExceptionServices.ExceptionDispatchInfo 'System.Runtime.ExceptionServices.ExceptionDispatchInfo')[,](https://docs.microsoft.com/en-us/dotnet/api/System.Action-2 'System.Action`2')[TError](DevFast.Net.Extensions.Etc.Lambdas.md#DevFast.Net.Extensions.Etc.Lambdas.ExecuteAsync_TError_(thisSystem.Func_System.Threading.Tasks.ValueTask_,System.Action_System.Runtime.ExceptionServices.ExceptionDispatchInfo,TError_,System.Action).TError 'DevFast.Net.Extensions.Etc.Lambdas.ExecuteAsync<TError>(this System.Func<System.Threading.Tasks.ValueTask>, System.Action<System.Runtime.ExceptionServices.ExceptionDispatchInfo,TError>, System.Action).TError')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Action-2 'System.Action`2')
 
 Error handler to invoke inside catch clause
 
-<a name='DevFast.Net.Extensions.Etc.Lambdas.ExecuteAsync_TError_(thisSystem.Func_ValueTask_,System.Action_System.Runtime.ExceptionServices.ExceptionDispatchInfo,TError_,System.Action).finallyClause'></a>
+<a name='DevFast.Net.Extensions.Etc.Lambdas.ExecuteAsync_TError_(thisSystem.Func_System.Threading.Tasks.ValueTask_,System.Action_System.Runtime.ExceptionServices.ExceptionDispatchInfo,TError_,System.Action).finallyClause'></a>
 
 `finallyClause` [System.Action](https://docs.microsoft.com/en-us/dotnet/api/System.Action 'System.Action')
 
@@ -1310,59 +1310,59 @@ Code to run inside finally clause
 #### Returns
 [System.Threading.Tasks.Task](https://docs.microsoft.com/en-us/dotnet/api/System.Threading.Tasks.Task 'System.Threading.Tasks.Task')
 
-<a name='DevFast.Net.Extensions.Etc.Lambdas.ExecuteAsync_TState,TError_(thisSystem.Func_TState,ValueTask_,TState,System.Action_System.Runtime.ExceptionServices.ExceptionDispatchInfo,TError,TState_,System.Action)'></a>
+<a name='DevFast.Net.Extensions.Etc.Lambdas.ExecuteAsync_TState,TError_(thisSystem.Func_TState,System.Threading.Tasks.ValueTask_,TState,System.Action_System.Runtime.ExceptionServices.ExceptionDispatchInfo,TError,TState_,System.Action)'></a>
 
 ## Lambdas.ExecuteAsync<TState,TError>(this Func<TState,ValueTask>, TState, Action<ExceptionDispatchInfo,TError,TState>, Action) Method
 
-Asynchronously executes [asyncLambda](DevFast.Net.Extensions.Etc.Lambdas.md#DevFast.Net.Extensions.Etc.Lambdas.ExecuteAsync_TState,TError_(thisSystem.Func_TState,ValueTask_,TState,System.Action_System.Runtime.ExceptionServices.ExceptionDispatchInfo,TError,TState_,System.Action).asyncLambda 'DevFast.Net.Extensions.Etc.Lambdas.ExecuteAsync<TState,TError>(this System.Func<TState,ValueTask>, TState, System.Action<System.Runtime.ExceptionServices.ExceptionDispatchInfo,TError,TState>, System.Action).asyncLambda') inside try block and returns its value.
-If any exception of type [TError](DevFast.Net.Extensions.Etc.Lambdas.md#DevFast.Net.Extensions.Etc.Lambdas.ExecuteAsync_TState,TError_(thisSystem.Func_TState,ValueTask_,TState,System.Action_System.Runtime.ExceptionServices.ExceptionDispatchInfo,TError,TState_,System.Action).TError 'DevFast.Net.Extensions.Etc.Lambdas.ExecuteAsync<TState,TError>(this System.Func<TState,ValueTask>, TState, System.Action<System.Runtime.ExceptionServices.ExceptionDispatchInfo,TError,TState>, System.Action).TError') (or
-its derived types) occurs during [asyncLambda](DevFast.Net.Extensions.Etc.Lambdas.md#DevFast.Net.Extensions.Etc.Lambdas.ExecuteAsync_TState,TError_(thisSystem.Func_TState,ValueTask_,TState,System.Action_System.Runtime.ExceptionServices.ExceptionDispatchInfo,TError,TState_,System.Action).asyncLambda 'DevFast.Net.Extensions.Etc.Lambdas.ExecuteAsync<TState,TError>(this System.Func<TState,ValueTask>, TState, System.Action<System.Runtime.ExceptionServices.ExceptionDispatchInfo,TError,TState>, System.Action).asyncLambda')
-execution, relevant information is passed to [errorHandler](DevFast.Net.Extensions.Etc.Lambdas.md#DevFast.Net.Extensions.Etc.Lambdas.ExecuteAsync_TState,TError_(thisSystem.Func_TState,ValueTask_,TState,System.Action_System.Runtime.ExceptionServices.ExceptionDispatchInfo,TError,TState_,System.Action).errorHandler 'DevFast.Net.Extensions.Etc.Lambdas.ExecuteAsync<TState,TError>(this System.Func<TState,ValueTask>, TState, System.Action<System.Runtime.ExceptionServices.ExceptionDispatchInfo,TError,TState>, System.Action).errorHandler')
+Asynchronously executes [asyncLambda](DevFast.Net.Extensions.Etc.Lambdas.md#DevFast.Net.Extensions.Etc.Lambdas.ExecuteAsync_TState,TError_(thisSystem.Func_TState,System.Threading.Tasks.ValueTask_,TState,System.Action_System.Runtime.ExceptionServices.ExceptionDispatchInfo,TError,TState_,System.Action).asyncLambda 'DevFast.Net.Extensions.Etc.Lambdas.ExecuteAsync<TState,TError>(this System.Func<TState,System.Threading.Tasks.ValueTask>, TState, System.Action<System.Runtime.ExceptionServices.ExceptionDispatchInfo,TError,TState>, System.Action).asyncLambda') inside try block and returns its value.
+If any exception of type [TError](DevFast.Net.Extensions.Etc.Lambdas.md#DevFast.Net.Extensions.Etc.Lambdas.ExecuteAsync_TState,TError_(thisSystem.Func_TState,System.Threading.Tasks.ValueTask_,TState,System.Action_System.Runtime.ExceptionServices.ExceptionDispatchInfo,TError,TState_,System.Action).TError 'DevFast.Net.Extensions.Etc.Lambdas.ExecuteAsync<TState,TError>(this System.Func<TState,System.Threading.Tasks.ValueTask>, TState, System.Action<System.Runtime.ExceptionServices.ExceptionDispatchInfo,TError,TState>, System.Action).TError') (or
+its derived types) occurs during [asyncLambda](DevFast.Net.Extensions.Etc.Lambdas.md#DevFast.Net.Extensions.Etc.Lambdas.ExecuteAsync_TState,TError_(thisSystem.Func_TState,System.Threading.Tasks.ValueTask_,TState,System.Action_System.Runtime.ExceptionServices.ExceptionDispatchInfo,TError,TState_,System.Action).asyncLambda 'DevFast.Net.Extensions.Etc.Lambdas.ExecuteAsync<TState,TError>(this System.Func<TState,System.Threading.Tasks.ValueTask>, TState, System.Action<System.Runtime.ExceptionServices.ExceptionDispatchInfo,TError,TState>, System.Action).asyncLambda')
+execution, relevant information is passed to [errorHandler](DevFast.Net.Extensions.Etc.Lambdas.md#DevFast.Net.Extensions.Etc.Lambdas.ExecuteAsync_TState,TError_(thisSystem.Func_TState,System.Threading.Tasks.ValueTask_,TState,System.Action_System.Runtime.ExceptionServices.ExceptionDispatchInfo,TError,TState_,System.Action).errorHandler 'DevFast.Net.Extensions.Etc.Lambdas.ExecuteAsync<TState,TError>(this System.Func<TState,System.Threading.Tasks.ValueTask>, TState, System.Action<System.Runtime.ExceptionServices.ExceptionDispatchInfo,TError,TState>, System.Action).errorHandler')
 to obtain the return value.
-If any [finallyClause](DevFast.Net.Extensions.Etc.Lambdas.md#DevFast.Net.Extensions.Etc.Lambdas.ExecuteAsync_TState,TError_(thisSystem.Func_TState,ValueTask_,TState,System.Action_System.Runtime.ExceptionServices.ExceptionDispatchInfo,TError,TState_,System.Action).finallyClause 'DevFast.Net.Extensions.Etc.Lambdas.ExecuteAsync<TState,TError>(this System.Func<TState,ValueTask>, TState, System.Action<System.Runtime.ExceptionServices.ExceptionDispatchInfo,TError,TState>, System.Action).finallyClause') is provided, it will be executed inside finally.
+If any [finallyClause](DevFast.Net.Extensions.Etc.Lambdas.md#DevFast.Net.Extensions.Etc.Lambdas.ExecuteAsync_TState,TError_(thisSystem.Func_TState,System.Threading.Tasks.ValueTask_,TState,System.Action_System.Runtime.ExceptionServices.ExceptionDispatchInfo,TError,TState_,System.Action).finallyClause 'DevFast.Net.Extensions.Etc.Lambdas.ExecuteAsync<TState,TError>(this System.Func<TState,System.Threading.Tasks.ValueTask>, TState, System.Action<System.Runtime.ExceptionServices.ExceptionDispatchInfo,TError,TState>, System.Action).finallyClause') is provided, it will be executed inside finally.
 
 NOTE: The code itself will NOT re-throw caught exception, but,
-[errorHandler](DevFast.Net.Extensions.Etc.Lambdas.md#DevFast.Net.Extensions.Etc.Lambdas.ExecuteAsync_TState,TError_(thisSystem.Func_TState,ValueTask_,TState,System.Action_System.Runtime.ExceptionServices.ExceptionDispatchInfo,TError,TState_,System.Action).errorHandler 'DevFast.Net.Extensions.Etc.Lambdas.ExecuteAsync<TState,TError>(this System.Func<TState,ValueTask>, TState, System.Action<System.Runtime.ExceptionServices.ExceptionDispatchInfo,TError,TState>, System.Action).errorHandler') may itself re-throw those (e.g.
+[errorHandler](DevFast.Net.Extensions.Etc.Lambdas.md#DevFast.Net.Extensions.Etc.Lambdas.ExecuteAsync_TState,TError_(thisSystem.Func_TState,System.Threading.Tasks.ValueTask_,TState,System.Action_System.Runtime.ExceptionServices.ExceptionDispatchInfo,TError,TState_,System.Action).errorHandler 'DevFast.Net.Extensions.Etc.Lambdas.ExecuteAsync<TState,TError>(this System.Func<TState,System.Threading.Tasks.ValueTask>, TState, System.Action<System.Runtime.ExceptionServices.ExceptionDispatchInfo,TError,TState>, System.Action).errorHandler') may itself re-throw those (e.g.
 [System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw](https://docs.microsoft.com/en-us/dotnet/api/System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw 'System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw')), if needed.
 
 ```csharp
-public static ValueTask ExecuteAsync<TState,TError>(this System.Func<TState,ValueTask> asyncLambda, TState state, System.Action<System.Runtime.ExceptionServices.ExceptionDispatchInfo,TError,TState> errorHandler, System.Action? finallyClause=null)
+public static System.Threading.Tasks.ValueTask ExecuteAsync<TState,TError>(this System.Func<TState,System.Threading.Tasks.ValueTask> asyncLambda, TState state, System.Action<System.Runtime.ExceptionServices.ExceptionDispatchInfo,TError,TState> errorHandler, System.Action? finallyClause=null)
     where TError : System.Exception;
 ```
 #### Type parameters
 
-<a name='DevFast.Net.Extensions.Etc.Lambdas.ExecuteAsync_TState,TError_(thisSystem.Func_TState,ValueTask_,TState,System.Action_System.Runtime.ExceptionServices.ExceptionDispatchInfo,TError,TState_,System.Action).TState'></a>
+<a name='DevFast.Net.Extensions.Etc.Lambdas.ExecuteAsync_TState,TError_(thisSystem.Func_TState,System.Threading.Tasks.ValueTask_,TState,System.Action_System.Runtime.ExceptionServices.ExceptionDispatchInfo,TError,TState_,System.Action).TState'></a>
 
 `TState`
 
 State type
 
-<a name='DevFast.Net.Extensions.Etc.Lambdas.ExecuteAsync_TState,TError_(thisSystem.Func_TState,ValueTask_,TState,System.Action_System.Runtime.ExceptionServices.ExceptionDispatchInfo,TError,TState_,System.Action).TError'></a>
+<a name='DevFast.Net.Extensions.Etc.Lambdas.ExecuteAsync_TState,TError_(thisSystem.Func_TState,System.Threading.Tasks.ValueTask_,TState,System.Action_System.Runtime.ExceptionServices.ExceptionDispatchInfo,TError,TState_,System.Action).TError'></a>
 
 `TError`
 
 Exception type
 #### Parameters
 
-<a name='DevFast.Net.Extensions.Etc.Lambdas.ExecuteAsync_TState,TError_(thisSystem.Func_TState,ValueTask_,TState,System.Action_System.Runtime.ExceptionServices.ExceptionDispatchInfo,TError,TState_,System.Action).asyncLambda'></a>
+<a name='DevFast.Net.Extensions.Etc.Lambdas.ExecuteAsync_TState,TError_(thisSystem.Func_TState,System.Threading.Tasks.ValueTask_,TState,System.Action_System.Runtime.ExceptionServices.ExceptionDispatchInfo,TError,TState_,System.Action).asyncLambda'></a>
 
-`asyncLambda` [System.Func&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Func-2 'System.Func`2')[TState](DevFast.Net.Extensions.Etc.Lambdas.md#DevFast.Net.Extensions.Etc.Lambdas.ExecuteAsync_TState,TError_(thisSystem.Func_TState,ValueTask_,TState,System.Action_System.Runtime.ExceptionServices.ExceptionDispatchInfo,TError,TState_,System.Action).TState 'DevFast.Net.Extensions.Etc.Lambdas.ExecuteAsync<TState,TError>(this System.Func<TState,ValueTask>, TState, System.Action<System.Runtime.ExceptionServices.ExceptionDispatchInfo,TError,TState>, System.Action).TState')[,](https://docs.microsoft.com/en-us/dotnet/api/System.Func-2 'System.Func`2')[System.Threading.Tasks.ValueTask](https://docs.microsoft.com/en-us/dotnet/api/System.Threading.Tasks.ValueTask 'System.Threading.Tasks.ValueTask')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Func-2 'System.Func`2')
+`asyncLambda` [System.Func&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Func-2 'System.Func`2')[TState](DevFast.Net.Extensions.Etc.Lambdas.md#DevFast.Net.Extensions.Etc.Lambdas.ExecuteAsync_TState,TError_(thisSystem.Func_TState,System.Threading.Tasks.ValueTask_,TState,System.Action_System.Runtime.ExceptionServices.ExceptionDispatchInfo,TError,TState_,System.Action).TState 'DevFast.Net.Extensions.Etc.Lambdas.ExecuteAsync<TState,TError>(this System.Func<TState,System.Threading.Tasks.ValueTask>, TState, System.Action<System.Runtime.ExceptionServices.ExceptionDispatchInfo,TError,TState>, System.Action).TState')[,](https://docs.microsoft.com/en-us/dotnet/api/System.Func-2 'System.Func`2')[System.Threading.Tasks.ValueTask](https://docs.microsoft.com/en-us/dotnet/api/System.Threading.Tasks.ValueTask 'System.Threading.Tasks.ValueTask')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Func-2 'System.Func`2')
 
 Lambda to execute inside try clause
 
-<a name='DevFast.Net.Extensions.Etc.Lambdas.ExecuteAsync_TState,TError_(thisSystem.Func_TState,ValueTask_,TState,System.Action_System.Runtime.ExceptionServices.ExceptionDispatchInfo,TError,TState_,System.Action).state'></a>
+<a name='DevFast.Net.Extensions.Etc.Lambdas.ExecuteAsync_TState,TError_(thisSystem.Func_TState,System.Threading.Tasks.ValueTask_,TState,System.Action_System.Runtime.ExceptionServices.ExceptionDispatchInfo,TError,TState_,System.Action).state'></a>
 
-`state` [TState](DevFast.Net.Extensions.Etc.Lambdas.md#DevFast.Net.Extensions.Etc.Lambdas.ExecuteAsync_TState,TError_(thisSystem.Func_TState,ValueTask_,TState,System.Action_System.Runtime.ExceptionServices.ExceptionDispatchInfo,TError,TState_,System.Action).TState 'DevFast.Net.Extensions.Etc.Lambdas.ExecuteAsync<TState,TError>(this System.Func<TState,ValueTask>, TState, System.Action<System.Runtime.ExceptionServices.ExceptionDispatchInfo,TError,TState>, System.Action).TState')
+`state` [TState](DevFast.Net.Extensions.Etc.Lambdas.md#DevFast.Net.Extensions.Etc.Lambdas.ExecuteAsync_TState,TError_(thisSystem.Func_TState,System.Threading.Tasks.ValueTask_,TState,System.Action_System.Runtime.ExceptionServices.ExceptionDispatchInfo,TError,TState_,System.Action).TState 'DevFast.Net.Extensions.Etc.Lambdas.ExecuteAsync<TState,TError>(this System.Func<TState,System.Threading.Tasks.ValueTask>, TState, System.Action<System.Runtime.ExceptionServices.ExceptionDispatchInfo,TError,TState>, System.Action).TState')
 
 Lambda state
 
-<a name='DevFast.Net.Extensions.Etc.Lambdas.ExecuteAsync_TState,TError_(thisSystem.Func_TState,ValueTask_,TState,System.Action_System.Runtime.ExceptionServices.ExceptionDispatchInfo,TError,TState_,System.Action).errorHandler'></a>
+<a name='DevFast.Net.Extensions.Etc.Lambdas.ExecuteAsync_TState,TError_(thisSystem.Func_TState,System.Threading.Tasks.ValueTask_,TState,System.Action_System.Runtime.ExceptionServices.ExceptionDispatchInfo,TError,TState_,System.Action).errorHandler'></a>
 
-`errorHandler` [System.Action&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Action-3 'System.Action`3')[System.Runtime.ExceptionServices.ExceptionDispatchInfo](https://docs.microsoft.com/en-us/dotnet/api/System.Runtime.ExceptionServices.ExceptionDispatchInfo 'System.Runtime.ExceptionServices.ExceptionDispatchInfo')[,](https://docs.microsoft.com/en-us/dotnet/api/System.Action-3 'System.Action`3')[TError](DevFast.Net.Extensions.Etc.Lambdas.md#DevFast.Net.Extensions.Etc.Lambdas.ExecuteAsync_TState,TError_(thisSystem.Func_TState,ValueTask_,TState,System.Action_System.Runtime.ExceptionServices.ExceptionDispatchInfo,TError,TState_,System.Action).TError 'DevFast.Net.Extensions.Etc.Lambdas.ExecuteAsync<TState,TError>(this System.Func<TState,ValueTask>, TState, System.Action<System.Runtime.ExceptionServices.ExceptionDispatchInfo,TError,TState>, System.Action).TError')[,](https://docs.microsoft.com/en-us/dotnet/api/System.Action-3 'System.Action`3')[TState](DevFast.Net.Extensions.Etc.Lambdas.md#DevFast.Net.Extensions.Etc.Lambdas.ExecuteAsync_TState,TError_(thisSystem.Func_TState,ValueTask_,TState,System.Action_System.Runtime.ExceptionServices.ExceptionDispatchInfo,TError,TState_,System.Action).TState 'DevFast.Net.Extensions.Etc.Lambdas.ExecuteAsync<TState,TError>(this System.Func<TState,ValueTask>, TState, System.Action<System.Runtime.ExceptionServices.ExceptionDispatchInfo,TError,TState>, System.Action).TState')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Action-3 'System.Action`3')
+`errorHandler` [System.Action&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Action-3 'System.Action`3')[System.Runtime.ExceptionServices.ExceptionDispatchInfo](https://docs.microsoft.com/en-us/dotnet/api/System.Runtime.ExceptionServices.ExceptionDispatchInfo 'System.Runtime.ExceptionServices.ExceptionDispatchInfo')[,](https://docs.microsoft.com/en-us/dotnet/api/System.Action-3 'System.Action`3')[TError](DevFast.Net.Extensions.Etc.Lambdas.md#DevFast.Net.Extensions.Etc.Lambdas.ExecuteAsync_TState,TError_(thisSystem.Func_TState,System.Threading.Tasks.ValueTask_,TState,System.Action_System.Runtime.ExceptionServices.ExceptionDispatchInfo,TError,TState_,System.Action).TError 'DevFast.Net.Extensions.Etc.Lambdas.ExecuteAsync<TState,TError>(this System.Func<TState,System.Threading.Tasks.ValueTask>, TState, System.Action<System.Runtime.ExceptionServices.ExceptionDispatchInfo,TError,TState>, System.Action).TError')[,](https://docs.microsoft.com/en-us/dotnet/api/System.Action-3 'System.Action`3')[TState](DevFast.Net.Extensions.Etc.Lambdas.md#DevFast.Net.Extensions.Etc.Lambdas.ExecuteAsync_TState,TError_(thisSystem.Func_TState,System.Threading.Tasks.ValueTask_,TState,System.Action_System.Runtime.ExceptionServices.ExceptionDispatchInfo,TError,TState_,System.Action).TState 'DevFast.Net.Extensions.Etc.Lambdas.ExecuteAsync<TState,TError>(this System.Func<TState,System.Threading.Tasks.ValueTask>, TState, System.Action<System.Runtime.ExceptionServices.ExceptionDispatchInfo,TError,TState>, System.Action).TState')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Action-3 'System.Action`3')
 
 Error handler to invoke inside catch clause
 
-<a name='DevFast.Net.Extensions.Etc.Lambdas.ExecuteAsync_TState,TError_(thisSystem.Func_TState,ValueTask_,TState,System.Action_System.Runtime.ExceptionServices.ExceptionDispatchInfo,TError,TState_,System.Action).finallyClause'></a>
+<a name='DevFast.Net.Extensions.Etc.Lambdas.ExecuteAsync_TState,TError_(thisSystem.Func_TState,System.Threading.Tasks.ValueTask_,TState,System.Action_System.Runtime.ExceptionServices.ExceptionDispatchInfo,TError,TState_,System.Action).finallyClause'></a>
 
 `finallyClause` [System.Action](https://docs.microsoft.com/en-us/dotnet/api/System.Action 'System.Action')
 
@@ -1371,61 +1371,61 @@ Code to run inside finally clause
 #### Returns
 [System.Threading.Tasks.ValueTask](https://docs.microsoft.com/en-us/dotnet/api/System.Threading.Tasks.ValueTask 'System.Threading.Tasks.ValueTask')
 
-<a name='DevFast.Net.Extensions.Etc.Lambdas.ExecuteAsync_TState,TError_(thisSystem.Func_TState,ValueTask_,TState,System.Action_System.Runtime.ExceptionServices.ExceptionDispatchInfo,TError,TState_,System.Action_TState_)'></a>
+<a name='DevFast.Net.Extensions.Etc.Lambdas.ExecuteAsync_TState,TError_(thisSystem.Func_TState,System.Threading.Tasks.ValueTask_,TState,System.Action_System.Runtime.ExceptionServices.ExceptionDispatchInfo,TError,TState_,System.Action_TState_)'></a>
 
 ## Lambdas.ExecuteAsync<TState,TError>(this Func<TState,ValueTask>, TState, Action<ExceptionDispatchInfo,TError,TState>, Action<TState>) Method
 
-Asynchronously executes [asyncLambda](DevFast.Net.Extensions.Etc.Lambdas.md#DevFast.Net.Extensions.Etc.Lambdas.ExecuteAsync_TState,TError_(thisSystem.Func_TState,ValueTask_,TState,System.Action_System.Runtime.ExceptionServices.ExceptionDispatchInfo,TError,TState_,System.Action_TState_).asyncLambda 'DevFast.Net.Extensions.Etc.Lambdas.ExecuteAsync<TState,TError>(this System.Func<TState,ValueTask>, TState, System.Action<System.Runtime.ExceptionServices.ExceptionDispatchInfo,TError,TState>, System.Action<TState>).asyncLambda') inside try block and returns its value.
-If any exception of type [TError](DevFast.Net.Extensions.Etc.Lambdas.md#DevFast.Net.Extensions.Etc.Lambdas.ExecuteAsync_TState,TError_(thisSystem.Func_TState,ValueTask_,TState,System.Action_System.Runtime.ExceptionServices.ExceptionDispatchInfo,TError,TState_,System.Action_TState_).TError 'DevFast.Net.Extensions.Etc.Lambdas.ExecuteAsync<TState,TError>(this System.Func<TState,ValueTask>, TState, System.Action<System.Runtime.ExceptionServices.ExceptionDispatchInfo,TError,TState>, System.Action<TState>).TError') (or
-its derived types) occurs during [asyncLambda](DevFast.Net.Extensions.Etc.Lambdas.md#DevFast.Net.Extensions.Etc.Lambdas.ExecuteAsync_TState,TError_(thisSystem.Func_TState,ValueTask_,TState,System.Action_System.Runtime.ExceptionServices.ExceptionDispatchInfo,TError,TState_,System.Action_TState_).asyncLambda 'DevFast.Net.Extensions.Etc.Lambdas.ExecuteAsync<TState,TError>(this System.Func<TState,ValueTask>, TState, System.Action<System.Runtime.ExceptionServices.ExceptionDispatchInfo,TError,TState>, System.Action<TState>).asyncLambda')
-execution, relevant information is passed to [errorHandler](DevFast.Net.Extensions.Etc.Lambdas.md#DevFast.Net.Extensions.Etc.Lambdas.ExecuteAsync_TState,TError_(thisSystem.Func_TState,ValueTask_,TState,System.Action_System.Runtime.ExceptionServices.ExceptionDispatchInfo,TError,TState_,System.Action_TState_).errorHandler 'DevFast.Net.Extensions.Etc.Lambdas.ExecuteAsync<TState,TError>(this System.Func<TState,ValueTask>, TState, System.Action<System.Runtime.ExceptionServices.ExceptionDispatchInfo,TError,TState>, System.Action<TState>).errorHandler')
+Asynchronously executes [asyncLambda](DevFast.Net.Extensions.Etc.Lambdas.md#DevFast.Net.Extensions.Etc.Lambdas.ExecuteAsync_TState,TError_(thisSystem.Func_TState,System.Threading.Tasks.ValueTask_,TState,System.Action_System.Runtime.ExceptionServices.ExceptionDispatchInfo,TError,TState_,System.Action_TState_).asyncLambda 'DevFast.Net.Extensions.Etc.Lambdas.ExecuteAsync<TState,TError>(this System.Func<TState,System.Threading.Tasks.ValueTask>, TState, System.Action<System.Runtime.ExceptionServices.ExceptionDispatchInfo,TError,TState>, System.Action<TState>).asyncLambda') inside try block and returns its value.
+If any exception of type [TError](DevFast.Net.Extensions.Etc.Lambdas.md#DevFast.Net.Extensions.Etc.Lambdas.ExecuteAsync_TState,TError_(thisSystem.Func_TState,System.Threading.Tasks.ValueTask_,TState,System.Action_System.Runtime.ExceptionServices.ExceptionDispatchInfo,TError,TState_,System.Action_TState_).TError 'DevFast.Net.Extensions.Etc.Lambdas.ExecuteAsync<TState,TError>(this System.Func<TState,System.Threading.Tasks.ValueTask>, TState, System.Action<System.Runtime.ExceptionServices.ExceptionDispatchInfo,TError,TState>, System.Action<TState>).TError') (or
+its derived types) occurs during [asyncLambda](DevFast.Net.Extensions.Etc.Lambdas.md#DevFast.Net.Extensions.Etc.Lambdas.ExecuteAsync_TState,TError_(thisSystem.Func_TState,System.Threading.Tasks.ValueTask_,TState,System.Action_System.Runtime.ExceptionServices.ExceptionDispatchInfo,TError,TState_,System.Action_TState_).asyncLambda 'DevFast.Net.Extensions.Etc.Lambdas.ExecuteAsync<TState,TError>(this System.Func<TState,System.Threading.Tasks.ValueTask>, TState, System.Action<System.Runtime.ExceptionServices.ExceptionDispatchInfo,TError,TState>, System.Action<TState>).asyncLambda')
+execution, relevant information is passed to [errorHandler](DevFast.Net.Extensions.Etc.Lambdas.md#DevFast.Net.Extensions.Etc.Lambdas.ExecuteAsync_TState,TError_(thisSystem.Func_TState,System.Threading.Tasks.ValueTask_,TState,System.Action_System.Runtime.ExceptionServices.ExceptionDispatchInfo,TError,TState_,System.Action_TState_).errorHandler 'DevFast.Net.Extensions.Etc.Lambdas.ExecuteAsync<TState,TError>(this System.Func<TState,System.Threading.Tasks.ValueTask>, TState, System.Action<System.Runtime.ExceptionServices.ExceptionDispatchInfo,TError,TState>, System.Action<TState>).errorHandler')
 to obtain the return value.
-And, [finallyClause](DevFast.Net.Extensions.Etc.Lambdas.md#DevFast.Net.Extensions.Etc.Lambdas.ExecuteAsync_TState,TError_(thisSystem.Func_TState,ValueTask_,TState,System.Action_System.Runtime.ExceptionServices.ExceptionDispatchInfo,TError,TState_,System.Action_TState_).finallyClause 'DevFast.Net.Extensions.Etc.Lambdas.ExecuteAsync<TState,TError>(this System.Func<TState,ValueTask>, TState, System.Action<System.Runtime.ExceptionServices.ExceptionDispatchInfo,TError,TState>, System.Action<TState>).finallyClause') will be executed inside finally.
+And, [finallyClause](DevFast.Net.Extensions.Etc.Lambdas.md#DevFast.Net.Extensions.Etc.Lambdas.ExecuteAsync_TState,TError_(thisSystem.Func_TState,System.Threading.Tasks.ValueTask_,TState,System.Action_System.Runtime.ExceptionServices.ExceptionDispatchInfo,TError,TState_,System.Action_TState_).finallyClause 'DevFast.Net.Extensions.Etc.Lambdas.ExecuteAsync<TState,TError>(this System.Func<TState,System.Threading.Tasks.ValueTask>, TState, System.Action<System.Runtime.ExceptionServices.ExceptionDispatchInfo,TError,TState>, System.Action<TState>).finallyClause') will be executed inside finally.
 
 NOTE: The code itself will NOT re-throw caught exception, but,
-[errorHandler](DevFast.Net.Extensions.Etc.Lambdas.md#DevFast.Net.Extensions.Etc.Lambdas.ExecuteAsync_TState,TError_(thisSystem.Func_TState,ValueTask_,TState,System.Action_System.Runtime.ExceptionServices.ExceptionDispatchInfo,TError,TState_,System.Action_TState_).errorHandler 'DevFast.Net.Extensions.Etc.Lambdas.ExecuteAsync<TState,TError>(this System.Func<TState,ValueTask>, TState, System.Action<System.Runtime.ExceptionServices.ExceptionDispatchInfo,TError,TState>, System.Action<TState>).errorHandler') may itself re-throw those (e.g.
+[errorHandler](DevFast.Net.Extensions.Etc.Lambdas.md#DevFast.Net.Extensions.Etc.Lambdas.ExecuteAsync_TState,TError_(thisSystem.Func_TState,System.Threading.Tasks.ValueTask_,TState,System.Action_System.Runtime.ExceptionServices.ExceptionDispatchInfo,TError,TState_,System.Action_TState_).errorHandler 'DevFast.Net.Extensions.Etc.Lambdas.ExecuteAsync<TState,TError>(this System.Func<TState,System.Threading.Tasks.ValueTask>, TState, System.Action<System.Runtime.ExceptionServices.ExceptionDispatchInfo,TError,TState>, System.Action<TState>).errorHandler') may itself re-throw those (e.g.
 [System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw](https://docs.microsoft.com/en-us/dotnet/api/System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw 'System.Runtime.ExceptionServices.ExceptionDispatchInfo.Throw')), if needed.
 
 ```csharp
-public static ValueTask ExecuteAsync<TState,TError>(this System.Func<TState,ValueTask> asyncLambda, TState state, System.Action<System.Runtime.ExceptionServices.ExceptionDispatchInfo,TError,TState> errorHandler, System.Action<TState> finallyClause)
+public static System.Threading.Tasks.ValueTask ExecuteAsync<TState,TError>(this System.Func<TState,System.Threading.Tasks.ValueTask> asyncLambda, TState state, System.Action<System.Runtime.ExceptionServices.ExceptionDispatchInfo,TError,TState> errorHandler, System.Action<TState> finallyClause)
     where TError : System.Exception;
 ```
 #### Type parameters
 
-<a name='DevFast.Net.Extensions.Etc.Lambdas.ExecuteAsync_TState,TError_(thisSystem.Func_TState,ValueTask_,TState,System.Action_System.Runtime.ExceptionServices.ExceptionDispatchInfo,TError,TState_,System.Action_TState_).TState'></a>
+<a name='DevFast.Net.Extensions.Etc.Lambdas.ExecuteAsync_TState,TError_(thisSystem.Func_TState,System.Threading.Tasks.ValueTask_,TState,System.Action_System.Runtime.ExceptionServices.ExceptionDispatchInfo,TError,TState_,System.Action_TState_).TState'></a>
 
 `TState`
 
 State type
 
-<a name='DevFast.Net.Extensions.Etc.Lambdas.ExecuteAsync_TState,TError_(thisSystem.Func_TState,ValueTask_,TState,System.Action_System.Runtime.ExceptionServices.ExceptionDispatchInfo,TError,TState_,System.Action_TState_).TError'></a>
+<a name='DevFast.Net.Extensions.Etc.Lambdas.ExecuteAsync_TState,TError_(thisSystem.Func_TState,System.Threading.Tasks.ValueTask_,TState,System.Action_System.Runtime.ExceptionServices.ExceptionDispatchInfo,TError,TState_,System.Action_TState_).TError'></a>
 
 `TError`
 
 Exception type
 #### Parameters
 
-<a name='DevFast.Net.Extensions.Etc.Lambdas.ExecuteAsync_TState,TError_(thisSystem.Func_TState,ValueTask_,TState,System.Action_System.Runtime.ExceptionServices.ExceptionDispatchInfo,TError,TState_,System.Action_TState_).asyncLambda'></a>
+<a name='DevFast.Net.Extensions.Etc.Lambdas.ExecuteAsync_TState,TError_(thisSystem.Func_TState,System.Threading.Tasks.ValueTask_,TState,System.Action_System.Runtime.ExceptionServices.ExceptionDispatchInfo,TError,TState_,System.Action_TState_).asyncLambda'></a>
 
-`asyncLambda` [System.Func&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Func-2 'System.Func`2')[TState](DevFast.Net.Extensions.Etc.Lambdas.md#DevFast.Net.Extensions.Etc.Lambdas.ExecuteAsync_TState,TError_(thisSystem.Func_TState,ValueTask_,TState,System.Action_System.Runtime.ExceptionServices.ExceptionDispatchInfo,TError,TState_,System.Action_TState_).TState 'DevFast.Net.Extensions.Etc.Lambdas.ExecuteAsync<TState,TError>(this System.Func<TState,ValueTask>, TState, System.Action<System.Runtime.ExceptionServices.ExceptionDispatchInfo,TError,TState>, System.Action<TState>).TState')[,](https://docs.microsoft.com/en-us/dotnet/api/System.Func-2 'System.Func`2')[System.Threading.Tasks.ValueTask](https://docs.microsoft.com/en-us/dotnet/api/System.Threading.Tasks.ValueTask 'System.Threading.Tasks.ValueTask')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Func-2 'System.Func`2')
+`asyncLambda` [System.Func&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Func-2 'System.Func`2')[TState](DevFast.Net.Extensions.Etc.Lambdas.md#DevFast.Net.Extensions.Etc.Lambdas.ExecuteAsync_TState,TError_(thisSystem.Func_TState,System.Threading.Tasks.ValueTask_,TState,System.Action_System.Runtime.ExceptionServices.ExceptionDispatchInfo,TError,TState_,System.Action_TState_).TState 'DevFast.Net.Extensions.Etc.Lambdas.ExecuteAsync<TState,TError>(this System.Func<TState,System.Threading.Tasks.ValueTask>, TState, System.Action<System.Runtime.ExceptionServices.ExceptionDispatchInfo,TError,TState>, System.Action<TState>).TState')[,](https://docs.microsoft.com/en-us/dotnet/api/System.Func-2 'System.Func`2')[System.Threading.Tasks.ValueTask](https://docs.microsoft.com/en-us/dotnet/api/System.Threading.Tasks.ValueTask 'System.Threading.Tasks.ValueTask')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Func-2 'System.Func`2')
 
 Lambda to execute inside try clause
 
-<a name='DevFast.Net.Extensions.Etc.Lambdas.ExecuteAsync_TState,TError_(thisSystem.Func_TState,ValueTask_,TState,System.Action_System.Runtime.ExceptionServices.ExceptionDispatchInfo,TError,TState_,System.Action_TState_).state'></a>
+<a name='DevFast.Net.Extensions.Etc.Lambdas.ExecuteAsync_TState,TError_(thisSystem.Func_TState,System.Threading.Tasks.ValueTask_,TState,System.Action_System.Runtime.ExceptionServices.ExceptionDispatchInfo,TError,TState_,System.Action_TState_).state'></a>
 
-`state` [TState](DevFast.Net.Extensions.Etc.Lambdas.md#DevFast.Net.Extensions.Etc.Lambdas.ExecuteAsync_TState,TError_(thisSystem.Func_TState,ValueTask_,TState,System.Action_System.Runtime.ExceptionServices.ExceptionDispatchInfo,TError,TState_,System.Action_TState_).TState 'DevFast.Net.Extensions.Etc.Lambdas.ExecuteAsync<TState,TError>(this System.Func<TState,ValueTask>, TState, System.Action<System.Runtime.ExceptionServices.ExceptionDispatchInfo,TError,TState>, System.Action<TState>).TState')
+`state` [TState](DevFast.Net.Extensions.Etc.Lambdas.md#DevFast.Net.Extensions.Etc.Lambdas.ExecuteAsync_TState,TError_(thisSystem.Func_TState,System.Threading.Tasks.ValueTask_,TState,System.Action_System.Runtime.ExceptionServices.ExceptionDispatchInfo,TError,TState_,System.Action_TState_).TState 'DevFast.Net.Extensions.Etc.Lambdas.ExecuteAsync<TState,TError>(this System.Func<TState,System.Threading.Tasks.ValueTask>, TState, System.Action<System.Runtime.ExceptionServices.ExceptionDispatchInfo,TError,TState>, System.Action<TState>).TState')
 
 Lambda state
 
-<a name='DevFast.Net.Extensions.Etc.Lambdas.ExecuteAsync_TState,TError_(thisSystem.Func_TState,ValueTask_,TState,System.Action_System.Runtime.ExceptionServices.ExceptionDispatchInfo,TError,TState_,System.Action_TState_).errorHandler'></a>
+<a name='DevFast.Net.Extensions.Etc.Lambdas.ExecuteAsync_TState,TError_(thisSystem.Func_TState,System.Threading.Tasks.ValueTask_,TState,System.Action_System.Runtime.ExceptionServices.ExceptionDispatchInfo,TError,TState_,System.Action_TState_).errorHandler'></a>
 
-`errorHandler` [System.Action&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Action-3 'System.Action`3')[System.Runtime.ExceptionServices.ExceptionDispatchInfo](https://docs.microsoft.com/en-us/dotnet/api/System.Runtime.ExceptionServices.ExceptionDispatchInfo 'System.Runtime.ExceptionServices.ExceptionDispatchInfo')[,](https://docs.microsoft.com/en-us/dotnet/api/System.Action-3 'System.Action`3')[TError](DevFast.Net.Extensions.Etc.Lambdas.md#DevFast.Net.Extensions.Etc.Lambdas.ExecuteAsync_TState,TError_(thisSystem.Func_TState,ValueTask_,TState,System.Action_System.Runtime.ExceptionServices.ExceptionDispatchInfo,TError,TState_,System.Action_TState_).TError 'DevFast.Net.Extensions.Etc.Lambdas.ExecuteAsync<TState,TError>(this System.Func<TState,ValueTask>, TState, System.Action<System.Runtime.ExceptionServices.ExceptionDispatchInfo,TError,TState>, System.Action<TState>).TError')[,](https://docs.microsoft.com/en-us/dotnet/api/System.Action-3 'System.Action`3')[TState](DevFast.Net.Extensions.Etc.Lambdas.md#DevFast.Net.Extensions.Etc.Lambdas.ExecuteAsync_TState,TError_(thisSystem.Func_TState,ValueTask_,TState,System.Action_System.Runtime.ExceptionServices.ExceptionDispatchInfo,TError,TState_,System.Action_TState_).TState 'DevFast.Net.Extensions.Etc.Lambdas.ExecuteAsync<TState,TError>(this System.Func<TState,ValueTask>, TState, System.Action<System.Runtime.ExceptionServices.ExceptionDispatchInfo,TError,TState>, System.Action<TState>).TState')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Action-3 'System.Action`3')
+`errorHandler` [System.Action&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Action-3 'System.Action`3')[System.Runtime.ExceptionServices.ExceptionDispatchInfo](https://docs.microsoft.com/en-us/dotnet/api/System.Runtime.ExceptionServices.ExceptionDispatchInfo 'System.Runtime.ExceptionServices.ExceptionDispatchInfo')[,](https://docs.microsoft.com/en-us/dotnet/api/System.Action-3 'System.Action`3')[TError](DevFast.Net.Extensions.Etc.Lambdas.md#DevFast.Net.Extensions.Etc.Lambdas.ExecuteAsync_TState,TError_(thisSystem.Func_TState,System.Threading.Tasks.ValueTask_,TState,System.Action_System.Runtime.ExceptionServices.ExceptionDispatchInfo,TError,TState_,System.Action_TState_).TError 'DevFast.Net.Extensions.Etc.Lambdas.ExecuteAsync<TState,TError>(this System.Func<TState,System.Threading.Tasks.ValueTask>, TState, System.Action<System.Runtime.ExceptionServices.ExceptionDispatchInfo,TError,TState>, System.Action<TState>).TError')[,](https://docs.microsoft.com/en-us/dotnet/api/System.Action-3 'System.Action`3')[TState](DevFast.Net.Extensions.Etc.Lambdas.md#DevFast.Net.Extensions.Etc.Lambdas.ExecuteAsync_TState,TError_(thisSystem.Func_TState,System.Threading.Tasks.ValueTask_,TState,System.Action_System.Runtime.ExceptionServices.ExceptionDispatchInfo,TError,TState_,System.Action_TState_).TState 'DevFast.Net.Extensions.Etc.Lambdas.ExecuteAsync<TState,TError>(this System.Func<TState,System.Threading.Tasks.ValueTask>, TState, System.Action<System.Runtime.ExceptionServices.ExceptionDispatchInfo,TError,TState>, System.Action<TState>).TState')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Action-3 'System.Action`3')
 
 Error handler to invoke inside catch clause
 
-<a name='DevFast.Net.Extensions.Etc.Lambdas.ExecuteAsync_TState,TError_(thisSystem.Func_TState,ValueTask_,TState,System.Action_System.Runtime.ExceptionServices.ExceptionDispatchInfo,TError,TState_,System.Action_TState_).finallyClause'></a>
+<a name='DevFast.Net.Extensions.Etc.Lambdas.ExecuteAsync_TState,TError_(thisSystem.Func_TState,System.Threading.Tasks.ValueTask_,TState,System.Action_System.Runtime.ExceptionServices.ExceptionDispatchInfo,TError,TState_,System.Action_TState_).finallyClause'></a>
 
-`finallyClause` [System.Action&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Action-1 'System.Action`1')[TState](DevFast.Net.Extensions.Etc.Lambdas.md#DevFast.Net.Extensions.Etc.Lambdas.ExecuteAsync_TState,TError_(thisSystem.Func_TState,ValueTask_,TState,System.Action_System.Runtime.ExceptionServices.ExceptionDispatchInfo,TError,TState_,System.Action_TState_).TState 'DevFast.Net.Extensions.Etc.Lambdas.ExecuteAsync<TState,TError>(this System.Func<TState,ValueTask>, TState, System.Action<System.Runtime.ExceptionServices.ExceptionDispatchInfo,TError,TState>, System.Action<TState>).TState')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Action-1 'System.Action`1')
+`finallyClause` [System.Action&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Action-1 'System.Action`1')[TState](DevFast.Net.Extensions.Etc.Lambdas.md#DevFast.Net.Extensions.Etc.Lambdas.ExecuteAsync_TState,TError_(thisSystem.Func_TState,System.Threading.Tasks.ValueTask_,TState,System.Action_System.Runtime.ExceptionServices.ExceptionDispatchInfo,TError,TState_,System.Action_TState_).TState 'DevFast.Net.Extensions.Etc.Lambdas.ExecuteAsync<TState,TError>(this System.Func<TState,System.Threading.Tasks.ValueTask>, TState, System.Action<System.Runtime.ExceptionServices.ExceptionDispatchInfo,TError,TState>, System.Action<TState>).TState')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Action-1 'System.Action`1')
 
 Code to run inside finally clause
 
@@ -2087,73 +2087,73 @@ Code to run inside finally clause
 #### Returns
 [System.Threading.Tasks.Task](https://docs.microsoft.com/en-us/dotnet/api/System.Threading.Tasks.Task 'System.Threading.Tasks.Task')
 
-<a name='DevFast.Net.Extensions.Etc.Lambdas.ExecuteAsync_TState_(thisSystem.Func_TState,ValueTask_,TState)'></a>
+<a name='DevFast.Net.Extensions.Etc.Lambdas.ExecuteAsync_TState_(thisSystem.Func_TState,System.Threading.Tasks.ValueTask_,TState)'></a>
 
 ## Lambdas.ExecuteAsync<TState>(this Func<TState,ValueTask>, TState) Method
 
-Executes the given [lambda](DevFast.Net.Extensions.Etc.Lambdas.md#DevFast.Net.Extensions.Etc.Lambdas.ExecuteAsync_TState_(thisSystem.Func_TState,ValueTask_,TState).lambda 'DevFast.Net.Extensions.Etc.Lambdas.ExecuteAsync<TState>(this System.Func<TState,ValueTask>, TState).lambda') asynchronously.
+Executes the given [lambda](DevFast.Net.Extensions.Etc.Lambdas.md#DevFast.Net.Extensions.Etc.Lambdas.ExecuteAsync_TState_(thisSystem.Func_TState,System.Threading.Tasks.ValueTask_,TState).lambda 'DevFast.Net.Extensions.Etc.Lambdas.ExecuteAsync<TState>(this System.Func<TState,System.Threading.Tasks.ValueTask>, TState).lambda') asynchronously.
 
 ```csharp
-public static ValueTask ExecuteAsync<TState>(this System.Func<TState,ValueTask> lambda, TState state);
+public static System.Threading.Tasks.ValueTask ExecuteAsync<TState>(this System.Func<TState,System.Threading.Tasks.ValueTask> lambda, TState state);
 ```
 #### Type parameters
 
-<a name='DevFast.Net.Extensions.Etc.Lambdas.ExecuteAsync_TState_(thisSystem.Func_TState,ValueTask_,TState).TState'></a>
+<a name='DevFast.Net.Extensions.Etc.Lambdas.ExecuteAsync_TState_(thisSystem.Func_TState,System.Threading.Tasks.ValueTask_,TState).TState'></a>
 
 `TState`
 
 State type
 #### Parameters
 
-<a name='DevFast.Net.Extensions.Etc.Lambdas.ExecuteAsync_TState_(thisSystem.Func_TState,ValueTask_,TState).lambda'></a>
+<a name='DevFast.Net.Extensions.Etc.Lambdas.ExecuteAsync_TState_(thisSystem.Func_TState,System.Threading.Tasks.ValueTask_,TState).lambda'></a>
 
-`lambda` [System.Func&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Func-2 'System.Func`2')[TState](DevFast.Net.Extensions.Etc.Lambdas.md#DevFast.Net.Extensions.Etc.Lambdas.ExecuteAsync_TState_(thisSystem.Func_TState,ValueTask_,TState).TState 'DevFast.Net.Extensions.Etc.Lambdas.ExecuteAsync<TState>(this System.Func<TState,ValueTask>, TState).TState')[,](https://docs.microsoft.com/en-us/dotnet/api/System.Func-2 'System.Func`2')[System.Threading.Tasks.ValueTask](https://docs.microsoft.com/en-us/dotnet/api/System.Threading.Tasks.ValueTask 'System.Threading.Tasks.ValueTask')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Func-2 'System.Func`2')
+`lambda` [System.Func&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Func-2 'System.Func`2')[TState](DevFast.Net.Extensions.Etc.Lambdas.md#DevFast.Net.Extensions.Etc.Lambdas.ExecuteAsync_TState_(thisSystem.Func_TState,System.Threading.Tasks.ValueTask_,TState).TState 'DevFast.Net.Extensions.Etc.Lambdas.ExecuteAsync<TState>(this System.Func<TState,System.Threading.Tasks.ValueTask>, TState).TState')[,](https://docs.microsoft.com/en-us/dotnet/api/System.Func-2 'System.Func`2')[System.Threading.Tasks.ValueTask](https://docs.microsoft.com/en-us/dotnet/api/System.Threading.Tasks.ValueTask 'System.Threading.Tasks.ValueTask')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Func-2 'System.Func`2')
 
 Lambda to execute.
 
-<a name='DevFast.Net.Extensions.Etc.Lambdas.ExecuteAsync_TState_(thisSystem.Func_TState,ValueTask_,TState).state'></a>
+<a name='DevFast.Net.Extensions.Etc.Lambdas.ExecuteAsync_TState_(thisSystem.Func_TState,System.Threading.Tasks.ValueTask_,TState).state'></a>
 
-`state` [TState](DevFast.Net.Extensions.Etc.Lambdas.md#DevFast.Net.Extensions.Etc.Lambdas.ExecuteAsync_TState_(thisSystem.Func_TState,ValueTask_,TState).TState 'DevFast.Net.Extensions.Etc.Lambdas.ExecuteAsync<TState>(this System.Func<TState,ValueTask>, TState).TState')
+`state` [TState](DevFast.Net.Extensions.Etc.Lambdas.md#DevFast.Net.Extensions.Etc.Lambdas.ExecuteAsync_TState_(thisSystem.Func_TState,System.Threading.Tasks.ValueTask_,TState).TState 'DevFast.Net.Extensions.Etc.Lambdas.ExecuteAsync<TState>(this System.Func<TState,System.Threading.Tasks.ValueTask>, TState).TState')
 
 Lambda state
 
 #### Returns
 [System.Threading.Tasks.ValueTask](https://docs.microsoft.com/en-us/dotnet/api/System.Threading.Tasks.ValueTask 'System.Threading.Tasks.ValueTask')
 
-<a name='DevFast.Net.Extensions.Etc.Lambdas.ExecuteAsync_TState_(thisSystem.Func_TState,ValueTask_,TState,System.Action)'></a>
+<a name='DevFast.Net.Extensions.Etc.Lambdas.ExecuteAsync_TState_(thisSystem.Func_TState,System.Threading.Tasks.ValueTask_,TState,System.Action)'></a>
 
 ## Lambdas.ExecuteAsync<TState>(this Func<TState,ValueTask>, TState, Action) Method
 
-Asynchronously executes [asyncLambda](DevFast.Net.Extensions.Etc.Lambdas.md#DevFast.Net.Extensions.Etc.Lambdas.ExecuteAsync_TState_(thisSystem.Func_TState,ValueTask_,TState,System.Action).asyncLambda 'DevFast.Net.Extensions.Etc.Lambdas.ExecuteAsync<TState>(this System.Func<TState,ValueTask>, TState, System.Action).asyncLambda') inside try block and returns
-after excuting [finallyClause](DevFast.Net.Extensions.Etc.Lambdas.md#DevFast.Net.Extensions.Etc.Lambdas.ExecuteAsync_TState_(thisSystem.Func_TState,ValueTask_,TState,System.Action).finallyClause 'DevFast.Net.Extensions.Etc.Lambdas.ExecuteAsync<TState>(this System.Func<TState,ValueTask>, TState, System.Action).finallyClause') inside finally.
+Asynchronously executes [asyncLambda](DevFast.Net.Extensions.Etc.Lambdas.md#DevFast.Net.Extensions.Etc.Lambdas.ExecuteAsync_TState_(thisSystem.Func_TState,System.Threading.Tasks.ValueTask_,TState,System.Action).asyncLambda 'DevFast.Net.Extensions.Etc.Lambdas.ExecuteAsync<TState>(this System.Func<TState,System.Threading.Tasks.ValueTask>, TState, System.Action).asyncLambda') inside try block and returns
+after excuting [finallyClause](DevFast.Net.Extensions.Etc.Lambdas.md#DevFast.Net.Extensions.Etc.Lambdas.ExecuteAsync_TState_(thisSystem.Func_TState,System.Threading.Tasks.ValueTask_,TState,System.Action).finallyClause 'DevFast.Net.Extensions.Etc.Lambdas.ExecuteAsync<TState>(this System.Func<TState,System.Threading.Tasks.ValueTask>, TState, System.Action).finallyClause') inside finally.
 
 NOTE: The code itself will NOT catch any [System.Exception](https://docs.microsoft.com/en-us/dotnet/api/System.Exception 'System.Exception').
 
 ```csharp
-public static ValueTask ExecuteAsync<TState>(this System.Func<TState,ValueTask> asyncLambda, TState state, System.Action finallyClause);
+public static System.Threading.Tasks.ValueTask ExecuteAsync<TState>(this System.Func<TState,System.Threading.Tasks.ValueTask> asyncLambda, TState state, System.Action finallyClause);
 ```
 #### Type parameters
 
-<a name='DevFast.Net.Extensions.Etc.Lambdas.ExecuteAsync_TState_(thisSystem.Func_TState,ValueTask_,TState,System.Action).TState'></a>
+<a name='DevFast.Net.Extensions.Etc.Lambdas.ExecuteAsync_TState_(thisSystem.Func_TState,System.Threading.Tasks.ValueTask_,TState,System.Action).TState'></a>
 
 `TState`
 
 State type
 #### Parameters
 
-<a name='DevFast.Net.Extensions.Etc.Lambdas.ExecuteAsync_TState_(thisSystem.Func_TState,ValueTask_,TState,System.Action).asyncLambda'></a>
+<a name='DevFast.Net.Extensions.Etc.Lambdas.ExecuteAsync_TState_(thisSystem.Func_TState,System.Threading.Tasks.ValueTask_,TState,System.Action).asyncLambda'></a>
 
-`asyncLambda` [System.Func&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Func-2 'System.Func`2')[TState](DevFast.Net.Extensions.Etc.Lambdas.md#DevFast.Net.Extensions.Etc.Lambdas.ExecuteAsync_TState_(thisSystem.Func_TState,ValueTask_,TState,System.Action).TState 'DevFast.Net.Extensions.Etc.Lambdas.ExecuteAsync<TState>(this System.Func<TState,ValueTask>, TState, System.Action).TState')[,](https://docs.microsoft.com/en-us/dotnet/api/System.Func-2 'System.Func`2')[System.Threading.Tasks.ValueTask](https://docs.microsoft.com/en-us/dotnet/api/System.Threading.Tasks.ValueTask 'System.Threading.Tasks.ValueTask')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Func-2 'System.Func`2')
+`asyncLambda` [System.Func&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Func-2 'System.Func`2')[TState](DevFast.Net.Extensions.Etc.Lambdas.md#DevFast.Net.Extensions.Etc.Lambdas.ExecuteAsync_TState_(thisSystem.Func_TState,System.Threading.Tasks.ValueTask_,TState,System.Action).TState 'DevFast.Net.Extensions.Etc.Lambdas.ExecuteAsync<TState>(this System.Func<TState,System.Threading.Tasks.ValueTask>, TState, System.Action).TState')[,](https://docs.microsoft.com/en-us/dotnet/api/System.Func-2 'System.Func`2')[System.Threading.Tasks.ValueTask](https://docs.microsoft.com/en-us/dotnet/api/System.Threading.Tasks.ValueTask 'System.Threading.Tasks.ValueTask')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Func-2 'System.Func`2')
 
 Lambda to execute inside try clause
 
-<a name='DevFast.Net.Extensions.Etc.Lambdas.ExecuteAsync_TState_(thisSystem.Func_TState,ValueTask_,TState,System.Action).state'></a>
+<a name='DevFast.Net.Extensions.Etc.Lambdas.ExecuteAsync_TState_(thisSystem.Func_TState,System.Threading.Tasks.ValueTask_,TState,System.Action).state'></a>
 
-`state` [TState](DevFast.Net.Extensions.Etc.Lambdas.md#DevFast.Net.Extensions.Etc.Lambdas.ExecuteAsync_TState_(thisSystem.Func_TState,ValueTask_,TState,System.Action).TState 'DevFast.Net.Extensions.Etc.Lambdas.ExecuteAsync<TState>(this System.Func<TState,ValueTask>, TState, System.Action).TState')
+`state` [TState](DevFast.Net.Extensions.Etc.Lambdas.md#DevFast.Net.Extensions.Etc.Lambdas.ExecuteAsync_TState_(thisSystem.Func_TState,System.Threading.Tasks.ValueTask_,TState,System.Action).TState 'DevFast.Net.Extensions.Etc.Lambdas.ExecuteAsync<TState>(this System.Func<TState,System.Threading.Tasks.ValueTask>, TState, System.Action).TState')
 
 Lambda state
 
-<a name='DevFast.Net.Extensions.Etc.Lambdas.ExecuteAsync_TState_(thisSystem.Func_TState,ValueTask_,TState,System.Action).finallyClause'></a>
+<a name='DevFast.Net.Extensions.Etc.Lambdas.ExecuteAsync_TState_(thisSystem.Func_TState,System.Threading.Tasks.ValueTask_,TState,System.Action).finallyClause'></a>
 
 `finallyClause` [System.Action](https://docs.microsoft.com/en-us/dotnet/api/System.Action 'System.Action')
 
@@ -2162,42 +2162,42 @@ Code to run inside finally clause
 #### Returns
 [System.Threading.Tasks.ValueTask](https://docs.microsoft.com/en-us/dotnet/api/System.Threading.Tasks.ValueTask 'System.Threading.Tasks.ValueTask')
 
-<a name='DevFast.Net.Extensions.Etc.Lambdas.ExecuteAsync_TState_(thisSystem.Func_TState,ValueTask_,TState,System.Action_TState_)'></a>
+<a name='DevFast.Net.Extensions.Etc.Lambdas.ExecuteAsync_TState_(thisSystem.Func_TState,System.Threading.Tasks.ValueTask_,TState,System.Action_TState_)'></a>
 
 ## Lambdas.ExecuteAsync<TState>(this Func<TState,ValueTask>, TState, Action<TState>) Method
 
-Asynchronously executes [asyncLambda](DevFast.Net.Extensions.Etc.Lambdas.md#DevFast.Net.Extensions.Etc.Lambdas.ExecuteAsync_TState_(thisSystem.Func_TState,ValueTask_,TState,System.Action_TState_).asyncLambda 'DevFast.Net.Extensions.Etc.Lambdas.ExecuteAsync<TState>(this System.Func<TState,ValueTask>, TState, System.Action<TState>).asyncLambda') inside try block and returns
-after excuting [finallyClause](DevFast.Net.Extensions.Etc.Lambdas.md#DevFast.Net.Extensions.Etc.Lambdas.ExecuteAsync_TState_(thisSystem.Func_TState,ValueTask_,TState,System.Action_TState_).finallyClause 'DevFast.Net.Extensions.Etc.Lambdas.ExecuteAsync<TState>(this System.Func<TState,ValueTask>, TState, System.Action<TState>).finallyClause') inside finally.
+Asynchronously executes [asyncLambda](DevFast.Net.Extensions.Etc.Lambdas.md#DevFast.Net.Extensions.Etc.Lambdas.ExecuteAsync_TState_(thisSystem.Func_TState,System.Threading.Tasks.ValueTask_,TState,System.Action_TState_).asyncLambda 'DevFast.Net.Extensions.Etc.Lambdas.ExecuteAsync<TState>(this System.Func<TState,System.Threading.Tasks.ValueTask>, TState, System.Action<TState>).asyncLambda') inside try block and returns
+after excuting [finallyClause](DevFast.Net.Extensions.Etc.Lambdas.md#DevFast.Net.Extensions.Etc.Lambdas.ExecuteAsync_TState_(thisSystem.Func_TState,System.Threading.Tasks.ValueTask_,TState,System.Action_TState_).finallyClause 'DevFast.Net.Extensions.Etc.Lambdas.ExecuteAsync<TState>(this System.Func<TState,System.Threading.Tasks.ValueTask>, TState, System.Action<TState>).finallyClause') inside finally.
 
 NOTE: The code itself will NOT catch any [System.Exception](https://docs.microsoft.com/en-us/dotnet/api/System.Exception 'System.Exception').
 
 ```csharp
-public static ValueTask ExecuteAsync<TState>(this System.Func<TState,ValueTask> asyncLambda, TState state, System.Action<TState> finallyClause);
+public static System.Threading.Tasks.ValueTask ExecuteAsync<TState>(this System.Func<TState,System.Threading.Tasks.ValueTask> asyncLambda, TState state, System.Action<TState> finallyClause);
 ```
 #### Type parameters
 
-<a name='DevFast.Net.Extensions.Etc.Lambdas.ExecuteAsync_TState_(thisSystem.Func_TState,ValueTask_,TState,System.Action_TState_).TState'></a>
+<a name='DevFast.Net.Extensions.Etc.Lambdas.ExecuteAsync_TState_(thisSystem.Func_TState,System.Threading.Tasks.ValueTask_,TState,System.Action_TState_).TState'></a>
 
 `TState`
 
 State type
 #### Parameters
 
-<a name='DevFast.Net.Extensions.Etc.Lambdas.ExecuteAsync_TState_(thisSystem.Func_TState,ValueTask_,TState,System.Action_TState_).asyncLambda'></a>
+<a name='DevFast.Net.Extensions.Etc.Lambdas.ExecuteAsync_TState_(thisSystem.Func_TState,System.Threading.Tasks.ValueTask_,TState,System.Action_TState_).asyncLambda'></a>
 
-`asyncLambda` [System.Func&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Func-2 'System.Func`2')[TState](DevFast.Net.Extensions.Etc.Lambdas.md#DevFast.Net.Extensions.Etc.Lambdas.ExecuteAsync_TState_(thisSystem.Func_TState,ValueTask_,TState,System.Action_TState_).TState 'DevFast.Net.Extensions.Etc.Lambdas.ExecuteAsync<TState>(this System.Func<TState,ValueTask>, TState, System.Action<TState>).TState')[,](https://docs.microsoft.com/en-us/dotnet/api/System.Func-2 'System.Func`2')[System.Threading.Tasks.ValueTask](https://docs.microsoft.com/en-us/dotnet/api/System.Threading.Tasks.ValueTask 'System.Threading.Tasks.ValueTask')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Func-2 'System.Func`2')
+`asyncLambda` [System.Func&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Func-2 'System.Func`2')[TState](DevFast.Net.Extensions.Etc.Lambdas.md#DevFast.Net.Extensions.Etc.Lambdas.ExecuteAsync_TState_(thisSystem.Func_TState,System.Threading.Tasks.ValueTask_,TState,System.Action_TState_).TState 'DevFast.Net.Extensions.Etc.Lambdas.ExecuteAsync<TState>(this System.Func<TState,System.Threading.Tasks.ValueTask>, TState, System.Action<TState>).TState')[,](https://docs.microsoft.com/en-us/dotnet/api/System.Func-2 'System.Func`2')[System.Threading.Tasks.ValueTask](https://docs.microsoft.com/en-us/dotnet/api/System.Threading.Tasks.ValueTask 'System.Threading.Tasks.ValueTask')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Func-2 'System.Func`2')
 
 Lambda to execute inside try clause
 
-<a name='DevFast.Net.Extensions.Etc.Lambdas.ExecuteAsync_TState_(thisSystem.Func_TState,ValueTask_,TState,System.Action_TState_).state'></a>
+<a name='DevFast.Net.Extensions.Etc.Lambdas.ExecuteAsync_TState_(thisSystem.Func_TState,System.Threading.Tasks.ValueTask_,TState,System.Action_TState_).state'></a>
 
-`state` [TState](DevFast.Net.Extensions.Etc.Lambdas.md#DevFast.Net.Extensions.Etc.Lambdas.ExecuteAsync_TState_(thisSystem.Func_TState,ValueTask_,TState,System.Action_TState_).TState 'DevFast.Net.Extensions.Etc.Lambdas.ExecuteAsync<TState>(this System.Func<TState,ValueTask>, TState, System.Action<TState>).TState')
+`state` [TState](DevFast.Net.Extensions.Etc.Lambdas.md#DevFast.Net.Extensions.Etc.Lambdas.ExecuteAsync_TState_(thisSystem.Func_TState,System.Threading.Tasks.ValueTask_,TState,System.Action_TState_).TState 'DevFast.Net.Extensions.Etc.Lambdas.ExecuteAsync<TState>(this System.Func<TState,System.Threading.Tasks.ValueTask>, TState, System.Action<TState>).TState')
 
 Lambda state
 
-<a name='DevFast.Net.Extensions.Etc.Lambdas.ExecuteAsync_TState_(thisSystem.Func_TState,ValueTask_,TState,System.Action_TState_).finallyClause'></a>
+<a name='DevFast.Net.Extensions.Etc.Lambdas.ExecuteAsync_TState_(thisSystem.Func_TState,System.Threading.Tasks.ValueTask_,TState,System.Action_TState_).finallyClause'></a>
 
-`finallyClause` [System.Action&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Action-1 'System.Action`1')[TState](DevFast.Net.Extensions.Etc.Lambdas.md#DevFast.Net.Extensions.Etc.Lambdas.ExecuteAsync_TState_(thisSystem.Func_TState,ValueTask_,TState,System.Action_TState_).TState 'DevFast.Net.Extensions.Etc.Lambdas.ExecuteAsync<TState>(this System.Func<TState,ValueTask>, TState, System.Action<TState>).TState')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Action-1 'System.Action`1')
+`finallyClause` [System.Action&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Action-1 'System.Action`1')[TState](DevFast.Net.Extensions.Etc.Lambdas.md#DevFast.Net.Extensions.Etc.Lambdas.ExecuteAsync_TState_(thisSystem.Func_TState,System.Threading.Tasks.ValueTask_,TState,System.Action_TState_).TState 'DevFast.Net.Extensions.Etc.Lambdas.ExecuteAsync<TState>(this System.Func<TState,System.Threading.Tasks.ValueTask>, TState, System.Action<TState>).TState')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Action-1 'System.Action`1')
 
 Code to run inside finally clause
 

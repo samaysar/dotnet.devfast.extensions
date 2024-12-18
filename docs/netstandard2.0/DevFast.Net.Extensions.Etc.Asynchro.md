@@ -32,7 +32,7 @@ Inheritance [System.Object](https://docs.microsoft.com/en-us/dotnet/api/System.O
 Gets a task that has already completed successfully.
 
 ```csharp
-public static ValueTask CompletedTask { get; }
+public static System.Threading.Tasks.ValueTask CompletedTask { get; }
 ```
 
 #### Property Value

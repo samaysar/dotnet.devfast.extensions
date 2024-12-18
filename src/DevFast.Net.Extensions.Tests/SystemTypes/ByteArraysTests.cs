@@ -50,7 +50,7 @@ namespace DevFast.Net.Extensions.Tests.SystemTypes
             var a = Enumerable.Range(0, initial).Select(x => (byte)x).ToArray();
             var b = a.DoubleByteCapacity();
             That(b, Has.Length.EqualTo(expected));
-            Enumerable.Range(0, initial).ForEach((x, _) => That(a[x], Is.EqualTo(b[x])), CancellationToken.None);
+            Enumerable.Range(0, initial).ForEach((x, _) => That(a[x], Is.EqualTo(b[x])), Token.None);
         }
 
         [TestCase(0, 0, 0)]
@@ -62,7 +62,7 @@ namespace DevFast.Net.Extensions.Tests.SystemTypes
             var a = Enumerable.Range(0, initial).Select(x => (byte)x).ToArray();
             var b = a.EnsureByteCapacity(target);
             That(b, Has.Length.EqualTo(expected));
-            Enumerable.Range(0, initial).ForEach((x, _) => That(a[x], Is.EqualTo(b[x])), CancellationToken.None);
+            Enumerable.Range(0, initial).ForEach((x, _) => That(a[x], Is.EqualTo(b[x])), Token.None);
         }
 
         [Test]
