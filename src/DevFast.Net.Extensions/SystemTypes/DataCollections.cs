@@ -15,7 +15,7 @@ public static class DataCollections
     /// <param name="maxSize">Maximum size of a given chunk</param>
     /// <param name="token">Cancellation token to observe.</param>
     /// <param name="observeTokenInChunkEnumeration">When <see langword="true"/> token cancellation is observed during chunk enumeration (may slow-down enumeration)</param>
-    public static IEnumerable<IEnumerable<T>> ToChunks<T>(this IList<T> list,
+    public static IEnumerable<IEnumerable<T>> Chunk<T>(this IList<T> list,
         int maxSize,
         Token token,
         bool observeTokenInChunkEnumeration = false)
